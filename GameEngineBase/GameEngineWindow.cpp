@@ -118,14 +118,22 @@ void GameEngineWindow::ShowGameWindow()
 	UpdateWindow(hWnd_);
 }
 
-void GameEngineWindow::MessageLoop(void(*_LoopFunction)())
+void GameEngineWindow::MessageLoop(void(*_InitFunction)(), void(*_LoopFunction)())
 {
+	// 루프를 돌기전에
+	// 뭔가 준비할게 있다면 준비함수를 실행한다.
+
+
+	if (nullptr != _InitFunction)
+	{
+		_InitFunction();
+	}
+
 	MSG msg;
 
 	// 윈도우 내부에서는 보이지 않지만
 	// std::list<MSG> MessageQueue;
 	// 메세지를 처리했다면 MessageQueue.clear();
-
 
 	while (WindowOn_)
 	{

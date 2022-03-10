@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Ending">
+      <UniqueIdentifier>{ebbd6534-0287-45bc-bb35-eaa6d6043252}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level">
+      <UniqueIdentifier>{2cb1989b-70b4-4e81-9215-bb9b3472bc41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Play">
+      <UniqueIdentifier>{c34f94c0-33f6-4faa-897a-09a3069fccce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Talk">
+      <UniqueIdentifier>{151494ec-8774-407b-b98d-6ccca436cb2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Title">
+      <UniqueIdentifier>{033f8729-5ab4-49c0-be6f-ab5c0b45dfe7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HellTakerGame.h" />
+    <ClInclude Include="EndingLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="TalkLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingCredit.h">
+      <Filter>Ending</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleLogo.h">
+      <Filter>Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Play</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>Play</Filter>
+    </ClInclude>
+    <ClInclude Include="StandingCG.h">
+      <Filter>Talk</Filter>
+    </ClInclude>
+    <ClInclude Include="Skull.h">
+      <Filter>Play</Filter>
+    </ClInclude>
+    <ClInclude Include="Demon.h">
+      <Filter>Play</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="HellTakerGame.cpp" />
+    <ClCompile Include="EndingLevel.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayLevel.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleLevel.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkLevel.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingCredit.cpp">
+      <Filter>Ending</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleLogo.cpp">
+      <Filter>Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Play</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>Play</Filter>
+    </ClCompile>
+    <ClCompile Include="StandingCG.cpp">
+      <Filter>Talk</Filter>
+    </ClCompile>
+    <ClCompile Include="Skull.cpp">
+      <Filter>Play</Filter>
+    </ClCompile>
+    <ClCompile Include="Demon.cpp">
+      <Filter>Play</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
