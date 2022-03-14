@@ -11,3 +11,7 @@ TalkLevel::~TalkLevel()
 void TalkLevel::Loading()
 {
 }
+
+void TalkLevel::Update()
+{
+}
