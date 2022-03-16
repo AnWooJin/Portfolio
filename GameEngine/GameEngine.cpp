@@ -45,7 +45,18 @@ void GameEngine::EngineLoop()
 
 	if (nullptr != NextLevel_)
 	{
+		
+		if (nullptr != CurrentLevel_)
+		{
+			// 레벨이 체인지 되기 전에 실행되는 함수
+			CurrentLevel_->SceneChangeEnd();
+		}
 		CurrentLevel_ = NextLevel_;
+
+		if (nullptr != CurrentLevel_)
+		{
+			CurrentLevel_->SceneChangeStart();
+		}
 		NextLevel_ = nullptr;
 	}
 
@@ -56,6 +67,8 @@ void GameEngine::EngineLoop()
 
 	// 레벨 수준에서 매 프레임마다 체크하는 일을 넣어놓는 함수
 	CurrentLevel_->Update();
+	CurrentLevel_->ActorUpdate();
+	CurrentLevel_->ActorRender();
 }
 
 // 엔진이 종료하고 난 후 힙에 할당한 메모리를 삭제하는 함수

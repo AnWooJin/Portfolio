@@ -16,3 +16,8 @@ void PlayLevel::Update()
 {
 
 }
+
+void PlayLevel::SceneChangeStart()
+{
+	int a = 0;
+}
