@@ -37,10 +37,11 @@ protected:
 	ActorType* CreateActor(const std::string& _Name, int _Order)
 	{
 		ActorType* NewActor = new ActorType();
+		GameEngineActor* StartActor = NewActor;
 		NewActor->SetName(_Name);
 
 		NewActor->SetLevel(this);
-
+		StartActor->Start();
 		std::list<GameEngineActor*>& Group = AllActor_[_Order];
 		Group.push_back(NewActor);
 
