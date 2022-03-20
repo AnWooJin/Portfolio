@@ -13,3 +13,4 @@ int __stdcall WinMain(_In_ HINSTANCE hInstance,
 	// 윈도우를 만들어 준다.
 	GameEngine::Start<HellTakerGame>();
 }
+

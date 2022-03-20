@@ -4,6 +4,7 @@
 #include <GameEngineBase/GameEngineDebug.h>
 
 // 게임엔진은 게임 그 자체의 시작점과 끝점 실행중을 담당한다.
+class GameEngineImage;
 class GameEngineLevel;
 class GameEngine
 {
@@ -17,6 +18,13 @@ public:
 	GameEngine(GameEngine&& _Other) noexcept = delete;
 	GameEngine& operator=(const GameEngine& _Other) = delete;
 	GameEngine& operator=(GameEngine&& _Other) noexcept = delete;
+
+	static inline GameEngineImage* BackBufferImage()
+	{
+		return BackBufferImage_;
+	}
+
+	static HDC BackBufferDC();
 
 	virtual void GameInit() = 0;
 	virtual void GameLoop() = 0;
@@ -69,6 +77,10 @@ private:
 	static GameEngineLevel* CurrentLevel_;
 	static GameEngineLevel* NextLevel_;
 	static GameEngine* UserContents_;
+
+	static GameEngineImage* WindowMainImage_;
+	static GameEngineImage* BackBufferImage_;
+
 
 	static void WindowCreate();
 	static void EngineInit();
