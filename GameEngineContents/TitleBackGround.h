@@ -15,9 +15,7 @@ public:
 	TitleBackGround& operator=(TitleBackGround&& _Other) noexcept = delete;
 
 protected:
-	void Start() override;
-	
-	void Render() override;
+	void Start();
 
 private:
 
