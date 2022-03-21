@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Actor">
-      <UniqueIdentifier>{022f0cb1-6bff-481f-8360-df212b75f872}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object">
       <UniqueIdentifier>{eb43d150-a366-4ad3-ad98-c017253b944c}</UniqueIdentifier>
     </Filter>
@@ -13,11 +10,20 @@
     <Filter Include="Resource\Manager">
       <UniqueIdentifier>{b32d34b7-d5a9-464e-9e43-72cbf7e88547}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Global">
+      <UniqueIdentifier>{57d09a89-bbe7-4780-9d2c-51675bd710f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Actor">
+      <UniqueIdentifier>{022f0cb1-6bff-481f-8360-df212b75f872}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Actor\SubObject">
+      <UniqueIdentifier>{7b0c91af-18e8-4816-b899-c25ec046d6e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="GameEngineActor.h">
-      <Filter>Actor</Filter>
+      <Filter>Object\Actor</Filter>
     </ClInclude>
     <ClInclude Include="GameEngineLevel.h">
       <Filter>Object</Filter>
@@ -31,11 +37,17 @@
     <ClInclude Include="GameEngineSound.h">
       <Filter>Resource</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineEnum.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineRenderer.h">
+      <Filter>Object\Actor\SubObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="GameEngineActor.cpp">
-      <Filter>Actor</Filter>
+      <Filter>Object\Actor</Filter>
     </ClCompile>
     <ClCompile Include="GameEngineLevel.cpp">
       <Filter>Object</Filter>
@@ -48,6 +60,9 @@
     </ClCompile>
     <ClCompile Include="GameEngineSound.cpp">
       <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineRenderer.cpp">
+      <Filter>Object\Actor\SubObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

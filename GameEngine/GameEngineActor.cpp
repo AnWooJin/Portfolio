@@ -23,3 +23,11 @@ void GameEngineActor::DebugRectRender()
 		DebugRect.CenterBot()
 	);
 }
+GameEngineRenderer* GameEngineActor::CreateRenderer(
+	const std::string& _Image,
+	RenderPivot _PivotType /*= RenderPivot::CENTER*/,
+	const float4& _PivotPos /*= { 0,0 }*/
+)
+{
+	return;
+}

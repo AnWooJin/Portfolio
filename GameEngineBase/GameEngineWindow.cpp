@@ -1,5 +1,5 @@
 #include "GameEngineWindow.h"
-#include "GameEngineDebug.h"
+
 
 // HWND hWnd 어떤 윈도우에 무슨일이 생겼는지 그 윈도우의 핸들
 // UINT message 그 메시지의 종류가 뭔지

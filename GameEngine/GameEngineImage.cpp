@@ -66,11 +66,72 @@ bool GameEngineImage::Create(float4 _Scale)
 	return true;
 }
 
+bool GameEngineImage::Load(const std::string& _Path)
+{
+	BitMap_ = static_cast<HBITMAP>(LoadImageA(
+		nullptr,
+		_Path.c_str(),
+		IMAGE_BITMAP,
+		0,
+		0,
+		LR_LOADFROMFILE
+	));
+
+	if (nullptr == BitMap_)
+	{
+		MsgBoxAssertString(_Path + "이미지 로드에 실패했습니다. 여러분들이 살펴봐야할 문제 1. 경로는 제대로 됐나요? 2. 디버깅은 제대로 봤나요");
+	}
+
+	ImageDC_ = CreateCompatibleDC(nullptr);
+
+	if (nullptr == BitMap_)
+	{
+		MsgBoxAssert("ImageDC 생성에 실패했습니다");
+	}
+
+	OldBitMap_ = (HBITMAP)SelectObject(ImageDC_, BitMap_);
+
+	ImageScaleCheck();
+
+	return true;
+}
+
 void GameEngineImage::ImageScaleCheck()
 {
 	// DC 내부에 들어있는 비트맵을 꺼내오는 함수
 	HBITMAP CurrentBitMap = (HBITMAP)GetCurrentObject(ImageDC_, OBJ_BITMAP);
 	GetObject(CurrentBitMap, sizeof(BITMAP), &Info_);
+}
+
+void GameEngineImage::BitCopy(GameEngineImage* _Other, const float4& _CopyPos)
+{
+	BitCopy(_Other, _CopyPos, float4{0,0}, _Other->GetScale());
+}
+
+void GameEngineImage::BitCopyCenter(GameEngineImage* _Other, const float4& _CopyPos)
+{
+	BitCopy(_Other, _CopyPos - _Other->GetScale().Half(), float4{ 0,0 }, _Other->GetScale());
+}
+
+void GameEngineImage::BitCopyCenterPivot(GameEngineImage* _Other, const float4& _CopyPos, const float4& _CopyPivot)
+{
+	BitCopy(_Other, _CopyPos - _Other->GetScale().Half() + _CopyPivot, float4{ 0,0 }, _Other->GetScale());
+}
+
+void GameEngineImage::BitCopyBot(GameEngineImage* _Other, const float4& _CopyPos)
+{
+	float4 ImagePivot = _Other->GetScale().Half();
+	ImagePivot.y = _Other->GetScale().y;
+
+	BitCopy(_Other, _CopyPos - ImagePivot, float4{ 0,0 }, _Other->GetScale());
+}
+
+void GameEngineImage::BitCopyBotPivot(GameEngineImage* _Other, const float4& _CopyPos, const float4& _CopyPivot)
+{
+	float4 ImagePivot = _Other->GetScale().Half();
+	ImagePivot.y = _Other->GetScale().y;
+
+	BitCopy(_Other, _CopyPos - ImagePivot + _CopyPivot, float4{ 0,0 }, _Other->GetScale());
 }
 
 void GameEngineImage::BitCopy(GameEngineImage* _Other)

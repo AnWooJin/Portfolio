@@ -1,10 +1,14 @@
 #pragma once
 #include <GameEngineBase/GameEngineNameObject.h>
 #include <GameEngineBase/GameEngineMath.h>
+#include "GameEngineEnum.h"
+#include <list>
 
+class GameEngineRenderer;
 class GameEngineLevel;
 class GameEngineActor : public GameEngineNameObject
 {
+// Actor가 기본적으로 가져야 하는 기능들
 public:
 	friend GameEngineLevel;
 
@@ -53,10 +57,19 @@ private:
 	float4 Position_;
 	float4 Scale_;
 
+	// 액터를 만들어준 레벨을 설정하는 함수
 	inline void SetLevel(GameEngineLevel* _Level)
 	{
 		Level_ = _Level;
 	}
+
+	////////////////////// 그리는 것과 연관이 있는 함수와 변수
+
+public:
+	GameEngineRenderer* CreateRenderer(const std::string& _Image, RenderPivot _PivotType = RenderPivot::CENTER, const float4& _PivotPos = { 0,0 });
+
+private:
+	std::list<GameEngineRenderer*> RenderList_;
 
 };
 
