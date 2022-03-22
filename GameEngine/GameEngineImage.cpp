@@ -103,14 +103,17 @@ void GameEngineImage::ImageScaleCheck()
 	GetObject(CurrentBitMap, sizeof(BITMAP), &Info_);
 }
 
+
+////////////////////////////////////////////////////////BitBlt
+
 void GameEngineImage::BitCopy(GameEngineImage* _Other, const float4& _CopyPos)
 {
-	BitCopy(_Other, _CopyPos, float4{0,0}, _Other->GetScale());
+	BitCopy(_Other, _CopyPos, _Other->GetScale(), float4{ 0,0 });
 }
 
 void GameEngineImage::BitCopyCenter(GameEngineImage* _Other, const float4& _CopyPos)
 {
-	BitCopy(_Other, _CopyPos - _Other->GetScale().Half(), float4{ 0,0 }, _Other->GetScale());
+	BitCopy(_Other, _CopyPos - _Other->GetScale().Half(), _Other->GetScale(), float4{ 0,0 });
 }
 
 void GameEngineImage::BitCopyCenterPivot(GameEngineImage* _Other, const float4& _CopyPos, const float4& _CopyPivot)
@@ -123,7 +126,7 @@ void GameEngineImage::BitCopyBot(GameEngineImage* _Other, const float4& _CopyPos
 	float4 ImagePivot = _Other->GetScale().Half();
 	ImagePivot.y = _Other->GetScale().y;
 
-	BitCopy(_Other, _CopyPos - ImagePivot, float4{ 0,0 }, _Other->GetScale());
+	BitCopy(_Other, _CopyPos - ImagePivot, _Other->GetScale(), float4{ 0,0 });
 }
 
 void GameEngineImage::BitCopyBotPivot(GameEngineImage* _Other, const float4& _CopyPos, const float4& _CopyPivot)
@@ -131,26 +134,58 @@ void GameEngineImage::BitCopyBotPivot(GameEngineImage* _Other, const float4& _Co
 	float4 ImagePivot = _Other->GetScale().Half();
 	ImagePivot.y = _Other->GetScale().y;
 
-	BitCopy(_Other, _CopyPos - ImagePivot + _CopyPivot, float4{ 0,0 }, _Other->GetScale());
+	BitCopy(_Other, _CopyPos - ImagePivot + _CopyPivot, _Other->GetScale(), float4{ 0,0 });
 }
 
 void GameEngineImage::BitCopy(GameEngineImage* _Other)
 {
-	BitCopy(_Other, { 0,0 }, { 0, 0 }, _Other->GetScale());
+	BitCopy(_Other, { 0,0 }, _Other->GetScale(), { 0,0 });
 }
 
-void GameEngineImage::BitCopy(GameEngineImage* _Other, const float4& _CopyPos, const float4& _OtherPivot, const float4& _OtherPivotScale)
+void GameEngineImage::BitCopy(GameEngineImage* _Other, const float4& _CopyPos, const float4& _CopyScale, const float4& _OtherPivot)
 {
 	// 윈도우에서 지원하는 일반적인 DC VS DC의 복사함수
 	BitBlt(
 		ImageDC_,  // 이 DC에 복사해라
 		_CopyPos.ix(), // 내 이미지의 X
 		_CopyPos.iy(), // 내 이미지의 Y 부분에 복사해라
-		_OtherPivotScale.ix(), //  내 이미지의 이 크기만큼 X
-		_OtherPivotScale.iy(),	// 내 이미지의 이 크기만큼 Y
+		_CopyScale.ix(), //  내 이미지의 이 크기만큼 X
+		_CopyScale.iy(),	// 내 이미지의 이 크기만큼 Y
 		_Other->ImageDC_, // 복사하려는 대상의 DC
 		_OtherPivot.ix(), // 복사하려는 대상의 시작점X
 		_OtherPivot.iy(), // 복사하려는 대상의 시작점Y
 		SRCCOPY  // 복사하라는 명령
+	);
+}
+
+//////////////////////////////////////////////////////////////////trans
+
+void GameEngineImage::TransCopyCenterScale(GameEngineImage* _Other, const float4& _CopyPos, const float4& _RenderScale, unsigned int _TransColor)
+{
+	TransCopy(_Other, _CopyPos - _RenderScale.Half(), _RenderScale, float4{0,0}, _Other->GetScale(), _TransColor);
+}
+
+void GameEngineImage::TransCopyCenter(GameEngineImage* _Other, const float4& _CopyPos, unsigned int _TransColor)
+{
+	TransCopy(_Other, _CopyPos - _Other->GetScale().Half(), _Other->GetScale(), float4{ 0,0 }, _Other->GetScale(), _TransColor);
+}
+
+void GameEngineImage::TransCopy(GameEngineImage* _Other, const float4& _CopyPos, 
+	const float4& _CopyScale, 
+	const float4& _OtherPivot, const float4& _OtherScale, unsigned int _TransColor)
+{
+	// 윈도우에서 지원하는 일반적인 DC VS DC의 복사함수
+	TransparentBlt(
+		ImageDC_,  // 이 DC에 복사해라
+		_CopyPos.ix(), // 내 이미지의 X
+		_CopyPos.iy(), // 내 이미지의 Y 부분에 복사해라
+		_CopyScale.ix(), //  내 이미지의 이 크기만큼 X
+		_CopyScale.iy(),	// 내 이미지의 이 크기만큼 Y
+		_Other->ImageDC_, // 복사하려는 대상의 DC
+		_OtherPivot.ix(), // 복사하려는 대상의 시작점X
+		_OtherPivot.iy(), // 복사하려는 대상의 시작점Y
+		_OtherScale.ix(), // 복사하려는 대상의 이미지 크기 X
+		_OtherScale.iy(), // 복사하려는 대상의 이미지 크기 Y
+		_TransColor  // 복사하라는 명령
 	);
 }
