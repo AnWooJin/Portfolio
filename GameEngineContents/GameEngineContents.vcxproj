@@ -19,15 +19,168 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Block.h">
+    <ClInclude Include="BadEnding.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Demon.h">
+    <ClInclude Include="Block.h" />
+    <ClInclude Include="BotUI.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="EndingCredit.h">
+    <ClInclude Include="Chapter1DevilSCG.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter1DevilSD.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter1Level.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter1Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter2DevilSCG.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter2DevilSD.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter2Level.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter2Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter3DevilSCG.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter3DevilSD.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter3Level.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter3Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter4DevilSCG.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter4DevilSD.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter4Level.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter4Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter5DevilSCG.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter5DevilSD.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter5Level.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter5Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter6DevilSCG.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter6DevilSD.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter6Level.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter6Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter7DevilSCG.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter7DevilSD.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter7Level.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter7Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter8BackGround.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter8DevilSCG.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter8DevilSD.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter8ExtraSCG.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter8Level.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter8Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter9Level.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Chapter9Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ClearAni.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="DeathAni.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="DevilName.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -35,15 +188,60 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EndingScene.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Flame.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="HellTakerGame.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="Key.h">
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="LookBlock.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MoveAni.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="OpeningAni.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="OpeningLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayBackGround.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Player.h" />
     <ClInclude Include="PlayLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PrologueLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PrologueScene.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SelectActor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SideUI.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -51,11 +249,19 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="StandingCG.h">
+    <ClInclude Include="SkullBrokenAni.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="TalkLevel.h">
+    <ClInclude Include="Sucesss.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TextArea.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Thorn.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -63,25 +269,182 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TitleCG.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TitleLevel.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="TitleLogo.h">
+    <ClInclude Include="Transition.h">
       <SubType>
       </SubType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Block.cpp">
+    <ClCompile Include="BadEnding.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Demon.cpp">
+    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="BotUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="EndingCredit.cpp">
+    <ClCompile Include="Chapter1DevilSCG.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter1DevilSD.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter1Level.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter1Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter2DevilSCG.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter2DevilSD.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter2Level.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter2Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter3DevilSCG.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter3DevilSD.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter3Level.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter3Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter4DevilSCG.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter4DevilSD.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter4Level.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter4Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter5DevilSCG.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter5DevilSD.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter5Level.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter5Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter6DevilSCG.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter6DevilSD.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter6Level.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter6Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter7DevilSCG.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter7DevilSD.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter7Level.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter7Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter8BackGround.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter8DevilSCG.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter8DevilSD.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter8ExtraSCG.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter8Level.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter8Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter9Level.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Chapter9Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ClearAni.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="DeathAni.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="DevilName.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -89,15 +452,60 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="EndingScene.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Flame.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="HellTakerGame.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="Key.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="LookBlock.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MoveAni.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="OpeningAni.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="OpeningLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayBackGround.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PrologueLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PrologueScene.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SelectActor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SideUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -105,11 +513,19 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="StandingCG.cpp">
+    <ClCompile Include="SkullBrokenAni.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="TalkLevel.cpp">
+    <ClCompile Include="Sucesss.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TextArea.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Thorn.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -117,11 +533,15 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TitleCG.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="TitleLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="TitleLogo.cpp">
+    <ClCompile Include="Transition.cpp">
       <SubType>
       </SubType>
     </ClCompile>

@@ -1,5 +1,6 @@
 #pragma once
-class Block
+#include <GameEngine/GameEngineActor.h>
+class Block : public GameEngineActor
 {
 public:
 	//construcuter destructer
@@ -12,11 +13,12 @@ public:
 	Block& operator=(const Block& _Other) = delete;
 	Block& operator=(Block&& _Other) noexcept = delete;
 
+
 protected:
 
 
 private:
-
-
+	void Start() override {};
+	void Render() override {};
 };
 

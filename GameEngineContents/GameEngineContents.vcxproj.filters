@@ -1,20 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Ending">
-      <UniqueIdentifier>{ebbd6534-0287-45bc-bb35-eaa6d6043252}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Level">
       <UniqueIdentifier>{2cb1989b-70b4-4e81-9215-bb9b3472bc41}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Play">
-      <UniqueIdentifier>{c34f94c0-33f6-4faa-897a-09a3069fccce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Talk">
-      <UniqueIdentifier>{151494ec-8774-407b-b98d-6ccca436cb2f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Title">
       <UniqueIdentifier>{033f8729-5ab4-49c0-be6f-ab5c0b45dfe7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Global">
+      <UniqueIdentifier>{a8f3e960-ea93-442d-ba62-a9b03d42c80b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Opening">
+      <UniqueIdentifier>{200eb05a-767b-44ec-a6e8-c0eb9ee3f133}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ending">
+      <UniqueIdentifier>{63c4db3c-14c0-43d8-9ff1-c5fd0f2ac8ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chapter1">
+      <UniqueIdentifier>{d41652cd-e3e8-4e8d-a88f-fed38ae2f01d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chapter2">
+      <UniqueIdentifier>{a10f22ab-ea4f-437a-a3a6-271390b62412}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chapter3">
+      <UniqueIdentifier>{51f60a16-507d-4d3a-8b46-bc7199fee932}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chapter4">
+      <UniqueIdentifier>{9ef0e406-7187-467e-a3c8-d1e4a23729da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chapter5">
+      <UniqueIdentifier>{42b09a62-7e4f-4ff4-acce-78c27b422042}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chapter6">
+      <UniqueIdentifier>{1e7456c3-cc22-44fd-a6ad-e2d94c566501}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chapter7">
+      <UniqueIdentifier>{849b8c3b-0afe-4f8d-bcf4-61f7c9fbe9c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chapter8">
+      <UniqueIdentifier>{a3ca82b7-5bff-4683-b62d-978b16ab1c16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chapter9">
+      <UniqueIdentifier>{1f018598-4965-41bc-a760-8ae6a18fe50b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Prologue">
+      <UniqueIdentifier>{46a2b12c-9627-423c-ab71-60c1379a74e1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -28,32 +58,194 @@
     <ClInclude Include="TitleLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
-    <ClInclude Include="TalkLevel.h">
-      <Filter>Level</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingCredit.h">
-      <Filter>Ending</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleLogo.h">
-      <Filter>Title</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Play</Filter>
-    </ClInclude>
-    <ClInclude Include="Block.h">
-      <Filter>Play</Filter>
-    </ClInclude>
-    <ClInclude Include="StandingCG.h">
-      <Filter>Talk</Filter>
-    </ClInclude>
-    <ClInclude Include="Skull.h">
-      <Filter>Play</Filter>
-    </ClInclude>
-    <ClInclude Include="Demon.h">
-      <Filter>Play</Filter>
-    </ClInclude>
     <ClInclude Include="TitleBackGround.h">
       <Filter>Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveAni.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Skull.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="SkullBrokenAni.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathAni.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="BadEnding.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Thorn.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Flame.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="LookBlock.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Key.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="SideUI.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="BotUI.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="TextArea.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="DevilName.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Sucesss.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectActor.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="Transition.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayBackGround.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="ClearAni.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="PrologueScene.h">
+      <Filter>Prologue</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleCG.h">
+      <Filter>Title</Filter>
+    </ClInclude>
+    <ClInclude Include="OpeningAni.h">
+      <Filter>Opening</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingScene.h">
+      <Filter>Ending</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter1Map.h">
+      <Filter>Chapter1</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter1DevilSD.h">
+      <Filter>Chapter1</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter2Map.h">
+      <Filter>Chapter2</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter2DevilSD.h">
+      <Filter>Chapter2</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter1DevilSCG.h">
+      <Filter>Chapter1</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter2DevilSCG.h">
+      <Filter>Chapter2</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter3Map.h">
+      <Filter>Chapter3</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter3DevilSCG.h">
+      <Filter>Chapter3</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter3DevilSD.h">
+      <Filter>Chapter3</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter4Map.h">
+      <Filter>Chapter4</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter4DevilSD.h">
+      <Filter>Chapter4</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter4DevilSCG.h">
+      <Filter>Chapter4</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter5Map.h">
+      <Filter>Chapter5</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter5DevilSD.h">
+      <Filter>Chapter5</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter5DevilSCG.h">
+      <Filter>Chapter5</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter6Map.h">
+      <Filter>Chapter6</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter6DevilSD.h">
+      <Filter>Chapter6</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter6DevilSCG.h">
+      <Filter>Chapter6</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter7Map.h">
+      <Filter>Chapter7</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter7DevilSD.h">
+      <Filter>Chapter7</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter7DevilSCG.h">
+      <Filter>Chapter7</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter8Map.h">
+      <Filter>Chapter8</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter8DevilSD.h">
+      <Filter>Chapter8</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter8DevilSCG.h">
+      <Filter>Chapter8</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter9Map.h">
+      <Filter>Chapter9</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter8BackGround.h">
+      <Filter>Chapter8</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter8ExtraSCG.h">
+      <Filter>Chapter8</Filter>
+    </ClInclude>
+    <ClInclude Include="OpeningLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="PrologueLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter1Level.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter2Level.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter3Level.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter4Level.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter5Level.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter6Level.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter7Level.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter8Level.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Chapter9Level.h">
+      <Filter>Level</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -67,32 +259,194 @@
     <ClCompile Include="TitleLevel.cpp">
       <Filter>Level</Filter>
     </ClCompile>
-    <ClCompile Include="TalkLevel.cpp">
-      <Filter>Level</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingCredit.cpp">
-      <Filter>Ending</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleLogo.cpp">
-      <Filter>Title</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Play</Filter>
-    </ClCompile>
-    <ClCompile Include="Block.cpp">
-      <Filter>Play</Filter>
-    </ClCompile>
-    <ClCompile Include="StandingCG.cpp">
-      <Filter>Talk</Filter>
-    </ClCompile>
-    <ClCompile Include="Skull.cpp">
-      <Filter>Play</Filter>
-    </ClCompile>
-    <ClCompile Include="Demon.cpp">
-      <Filter>Play</Filter>
-    </ClCompile>
     <ClCompile Include="TitleBackGround.cpp">
       <Filter>Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveAni.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="Skull.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="SkullBrokenAni.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathAni.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="BadEnding.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="Thorn.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="Flame.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="LookBlock.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="Key.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="SideUI.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="BotUI.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="TextArea.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="DevilName.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="Sucesss.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectActor.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="Transition.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayBackGround.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="ClearAni.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="PrologueScene.cpp">
+      <Filter>Prologue</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleCG.cpp">
+      <Filter>Title</Filter>
+    </ClCompile>
+    <ClCompile Include="OpeningAni.cpp">
+      <Filter>Opening</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingScene.cpp">
+      <Filter>Ending</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter1Map.cpp">
+      <Filter>Chapter1</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter1DevilSD.cpp">
+      <Filter>Chapter1</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter2Map.cpp">
+      <Filter>Chapter2</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter2DevilSD.cpp">
+      <Filter>Chapter2</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter1DevilSCG.cpp">
+      <Filter>Chapter1</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter2DevilSCG.cpp">
+      <Filter>Chapter2</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter3Map.cpp">
+      <Filter>Chapter3</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter3DevilSCG.cpp">
+      <Filter>Chapter3</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter3DevilSD.cpp">
+      <Filter>Chapter3</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter4Map.cpp">
+      <Filter>Chapter4</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter4DevilSD.cpp">
+      <Filter>Chapter4</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter4DevilSCG.cpp">
+      <Filter>Chapter4</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter5Map.cpp">
+      <Filter>Chapter5</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter5DevilSD.cpp">
+      <Filter>Chapter5</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter5DevilSCG.cpp">
+      <Filter>Chapter5</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter6Map.cpp">
+      <Filter>Chapter6</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter6DevilSD.cpp">
+      <Filter>Chapter6</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter6DevilSCG.cpp">
+      <Filter>Chapter6</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter7Map.cpp">
+      <Filter>Chapter7</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter7DevilSD.cpp">
+      <Filter>Chapter7</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter7DevilSCG.cpp">
+      <Filter>Chapter7</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter8Map.cpp">
+      <Filter>Chapter8</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter8DevilSD.cpp">
+      <Filter>Chapter8</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter8DevilSCG.cpp">
+      <Filter>Chapter8</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter9Map.cpp">
+      <Filter>Chapter9</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter8BackGround.cpp">
+      <Filter>Chapter8</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter8ExtraSCG.cpp">
+      <Filter>Chapter8</Filter>
+    </ClCompile>
+    <ClCompile Include="OpeningLevel.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="PrologueLevel.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter1Level.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter2Level.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter3Level.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter4Level.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter5Level.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter6Level.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter7Level.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter8Level.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Chapter9Level.cpp">
+      <Filter>Level</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

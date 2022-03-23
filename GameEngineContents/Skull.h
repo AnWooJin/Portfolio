@@ -1,5 +1,7 @@
 #pragma once
-class Skull
+#include <GameEngine/GameEngineActor.h>
+
+class Skull : public GameEngineActor
 {
 public:
 	//construcuter destructer
@@ -15,6 +17,7 @@ public:
 protected:
 
 private:
-
+	void Start() override {};
+	void Render() override {};
 };
 
