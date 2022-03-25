@@ -9,7 +9,7 @@ GameEngineRenderer::GameEngineRenderer()
 	: Image_(nullptr)
 	, PivotType_(RenderPivot::CENTER)
 	, ScaleMode_(RenderScaleMode::Image)
-	, TransColor_(RGB(255,255,255))
+	, TransColor_(RGB(0,0,0))
 {
 }	
 
@@ -22,7 +22,7 @@ void GameEngineRenderer::SetImageScale()
 {
 	if (nullptr == Image_)
 	{
-		MsgBoxAssert("존재하하지 않는 이미지로 크기를 조절하려고 했습니다.");
+		MsgBoxAssert("존재하지 않는 이미지로 크기를 조절하려고 했습니다.");
 		return;
 	}
 

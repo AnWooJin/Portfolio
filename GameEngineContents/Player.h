@@ -17,7 +17,8 @@ public:
 protected:
 
 private:
-	void Start() override {};
-	void Render() override {};
+	void Start() override;
+	void Update() override;
+	void Render() override;
 };
 

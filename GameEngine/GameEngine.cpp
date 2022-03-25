@@ -2,6 +2,8 @@
 #include <GameEngineBase/GameEngineWindow.h>
 #include "GameEngineLevel.h"
 #include "GameEngineImageManager.h"
+#include <GameEngineBase/GameEngineInput.h>
+#include <GameEngineBase/GameEngineTime.h>
 
 std::map<std::string, GameEngineLevel*> GameEngine::AllLevel_;
 GameEngineLevel* GameEngine::CurrentLevel_ = nullptr;
@@ -53,6 +55,9 @@ void GameEngine::EngineInit()
 }
 void GameEngine::EngineLoop()
 {
+	// 컴퓨터 성능에 따라 게임 속도가 달라지지 않도록 시간을 이용해
+	// 속도를 맞추기 위해 시간을 재는 함수
+	GameEngineTime::GetInst()->Update();
 	// 엔진 수준에서 매 프레임마다 체크하고 싶은 것을 넣는 부분
 	UserContents_->GameLoop();
 
@@ -71,12 +76,15 @@ void GameEngine::EngineLoop()
 			CurrentLevel_->LevelChangeStart();
 		}
 		NextLevel_ = nullptr;
+		GameEngineTime::GetInst()->Reset();
 	}
 
 	if (nullptr == CurrentLevel_)
 	{
 		MsgBoxAssert("Level is nullptr => GameEngine Loop ERROR");
 	}
+
+	GameEngineInput::GetInst()->Update();
 
 	// 레벨 수준에서 매 프레임마다 체크하는 일을 넣어놓는 함수
 	CurrentLevel_->Update();
@@ -104,6 +112,8 @@ void GameEngine::EngineEnd()
 
 
 	GameEngineImageManager::Destory();
+	GameEngineInput::Destroy();
+	GameEngineTime::Destory();
 	GameEngineWindow::Destory();
 }
 
