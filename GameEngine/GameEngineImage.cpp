@@ -160,15 +160,6 @@ void GameEngineImage::BitCopy(GameEngineImage* _Other, const float4& _CopyPos, c
 
 //////////////////////////////////////////////////////////////////trans
 
-void GameEngineImage::TransCopyCenterScale(GameEngineImage* _Other, const float4& _CopyPos, const float4& _RenderScale, unsigned int _TransColor)
-{
-	TransCopy(_Other, _CopyPos - _RenderScale.Half(), _RenderScale, float4{0,0}, _Other->GetScale(), _TransColor);
-}
-
-void GameEngineImage::TransCopyCenter(GameEngineImage* _Other, const float4& _CopyPos, unsigned int _TransColor)
-{
-	TransCopy(_Other, _CopyPos - _Other->GetScale().Half(), _Other->GetScale(), float4{ 0,0 }, _Other->GetScale(), _TransColor);
-}
 
 void GameEngineImage::TransCopy(GameEngineImage* _Other, const float4& _CopyPos, 
 	const float4& _CopyScale, 
@@ -188,4 +179,29 @@ void GameEngineImage::TransCopy(GameEngineImage* _Other, const float4& _CopyPos,
 		_OtherScale.iy(), // 복사하려는 대상의 이미지 크기 Y
 		_TransColor  // 복사하라는 명령
 	);
+}
+
+void GameEngineImage::Cut(const float4& _CutScale)
+{
+	if (0 != (GetScale().ix() % _CutScale.ix()))
+	{
+		MsgBoxAssert("자를수 있는 수치가 딱 맞아떨어지지 않습니다.");
+	}
+
+	if (0 != (GetScale().iy() % _CutScale.iy()))
+	{
+		MsgBoxAssert("자를수 있는 수치가 딱 맞아떨어지지 않습니다.");
+	}
+
+	int XCount = GetScale().ix() / _CutScale.ix();
+	int YCount = GetScale().iy() / _CutScale.iy();
+
+	for (int y = 0; y < YCount ; y++)
+	{
+		for (int x = 0; x < XCount; x++)
+		{
+			CutPivot_.push_back({ static_cast<float>(x * _CutScale.ix()), static_cast<float>(y * _CutScale.iy()) });
+			CutScale_.push_back(_CutScale);
+		}
+	}
 }

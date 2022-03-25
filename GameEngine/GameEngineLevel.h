@@ -23,23 +23,12 @@ public:
 	GameEngineLevel& operator=(const GameEngineLevel& _Other) = delete;
 	GameEngineLevel& operator=(GameEngineLevel&& _Other) noexcept = delete;
 
-protected:
-	// 리소스나 가져오거나 엑터를 만드는 함수
-	virtual void Loading() = 0;
-	// 현재 해야하는 일을 실행하는 함수
-	virtual void Update() = 0;
-	// CurrentLevel->NextLevel로 전환할 때 CurrentLevel이 실행하는 함수
-	virtual void LevelChangeStart() {}
-	// CurrentLevel->NextLevel로 전환할 때 NextLevel이 실행하는 함수
-	virtual void LevelChangeEnd() {}
-	
 	template<typename ActorType>
-	ActorType* CreateActor(const std::string& _Name, int _Order)
+	ActorType* CreateActor(int _Order = 0, const std::string& _Name = "")
 	{
 		ActorType* NewActor = new ActorType();
 		GameEngineActor* StartActor = NewActor;
 		NewActor->SetName(_Name);
-
 		NewActor->SetLevel(this);
 		StartActor->Start();
 		std::list<GameEngineActor*>& Group = AllActor_[_Order];
@@ -62,13 +51,24 @@ protected:
 		//	FindGroup = AllActor_.find(_Order);
 		//}
 
-		return nullptr;
+		return NewActor;
 	}
+protected:
+	// 리소스나 가져오거나 엑터를 만드는 함수
+	virtual void Loading() = 0;
+	// 현재 해야하는 일을 실행하는 함수
+	virtual void Update() = 0;
+	// CurrentLevel->NextLevel로 전환할 때 CurrentLevel이 실행하는 함수
+	virtual void LevelChangeStart() {}
+	// CurrentLevel->NextLevel로 전환할 때 NextLevel이 실행하는 함수
+	virtual void LevelChangeEnd() {}
+	
 private:
 
 	std::map<int, std::list<GameEngineActor*>>AllActor_;
 
 	void ActorUpdate();
 	void ActorRender();
+	void ActorRelease();
 };
 

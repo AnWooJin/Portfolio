@@ -91,6 +91,8 @@ void GameEngine::EngineLoop()
 	CurrentLevel_->ActorUpdate();
 	CurrentLevel_->ActorRender();
 	WindowMainImage_->BitCopy(BackBufferImage_);
+
+	CurrentLevel_->ActorRelease();
 }
 
 // 엔진이 종료하고 난 후 힙에 할당한 메모리를 삭제하는 함수

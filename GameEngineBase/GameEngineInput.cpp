@@ -1,6 +1,6 @@
 #include "GameEngineInput.h"
 #include "GameEngineDebug.h"
-
+#include "GameEngineString.h"
 
 
 ///////////////////////////////////////// GameEngineKey의 맴버함수///////////////////////////////////
@@ -57,7 +57,8 @@ GameEngineInput::~GameEngineInput()
 
 bool GameEngineInput::IsKey(const std::string& _Name)
 {
-	if (AllInputKey_.end() != AllInputKey_.find(_Name))
+	std::string UpperKey = GameEngineString::ToUpperReturn(_Name);
+	if (AllInputKey_.end() != AllInputKey_.find(UpperKey))
 	{
 		return true;
 	}
@@ -67,7 +68,8 @@ bool GameEngineInput::IsKey(const std::string& _Name)
 
 void GameEngineInput::CreateKey(const std::string& _Name, int _Key)
 {
-	if (AllInputKey_.end() != AllInputKey_.find(_Name))
+	std::string UpperKey = GameEngineString::ToUpperReturn(_Name);
+	if (AllInputKey_.end() != AllInputKey_.find(UpperKey))
 	{
 		MsgBoxAssert("이미 존재하는 이름의 키를 또 만들려고 했습니다");
 		return;
@@ -78,9 +80,9 @@ void GameEngineInput::CreateKey(const std::string& _Name, int _Key)
 		_Key = std::toupper(_Key);
 	}
 
-	AllInputKey_.insert(std::make_pair(_Name, GameEngineKey()));
-	AllInputKey_[_Name].Key_ = _Key;
-	AllInputKey_[_Name].Reset();
+	AllInputKey_.insert(std::make_pair(UpperKey, GameEngineKey()));
+	AllInputKey_[UpperKey].Key_ = _Key;
+	AllInputKey_[UpperKey].Reset();
 }
 
 void GameEngineInput::Update()
@@ -99,42 +101,46 @@ void GameEngineInput::Update()
 
 bool GameEngineInput::IsDown(const std::string& _Name)
 {
-	if (AllInputKey_.end() == AllInputKey_.find(_Name))
+	std::string UpperKey = GameEngineString::ToUpperReturn(_Name);
+	if (AllInputKey_.end() == AllInputKey_.find(UpperKey))
 	{
 		MsgBoxAssert("존재하지 않는 키 입니다.");
 		return false;
 	}
 
-	return AllInputKey_[_Name].Down_;
+	return AllInputKey_[UpperKey].Down_;
 }
 
 bool GameEngineInput::IsUp(const std::string& _Name)
 {
-	if (AllInputKey_.end() == AllInputKey_.find(_Name))
+	std::string UpperKey = GameEngineString::ToUpperReturn(_Name);
+	if (AllInputKey_.end() == AllInputKey_.find(UpperKey))
 	{
 		MsgBoxAssert("존재하지 않는 키 입니다.");
 		return false;
 	}
 
-	return AllInputKey_[_Name].Up_;
+	return AllInputKey_[UpperKey].Up_;
 }
 
 bool GameEngineInput::IsPress(const std::string& _Name)
 {
-	if (AllInputKey_.end() == AllInputKey_.find(_Name))
+	std::string UpperKey = GameEngineString::ToUpperReturn(_Name);
+	if (AllInputKey_.end() == AllInputKey_.find(UpperKey))
 	{
 		MsgBoxAssert("존재하지 않는 키 입니다.");
 		return false;
 	}
-	return AllInputKey_[_Name].Press_;
+	return AllInputKey_[UpperKey].Press_;
 }
 
 bool GameEngineInput::IsFree(const std::string& _Name)
 {
-	if (AllInputKey_.end() == AllInputKey_.find(_Name))
+	std::string UpperKey = GameEngineString::ToUpperReturn(_Name);
+	if (AllInputKey_.end() == AllInputKey_.find(UpperKey))
 	{
 		MsgBoxAssert("존재하지 않는 키 입니다.");
 		return false;
 	}
-	return AllInputKey_[_Name].Free_;
+	return AllInputKey_[UpperKey].Free_;
 }
