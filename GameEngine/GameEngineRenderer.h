@@ -48,7 +48,7 @@ public:
 
 	void SetImage(const std::string& _Name);
 
-	void SetIndex(size_t _Index);
+	void SetIndex(size_t _Index, float4 _Scale);
 
 protected:
 	void Render();
@@ -59,8 +59,10 @@ private:
 	RenderScaleMode ScaleMode_;
 
 	float4 RenderPivot_;
+	// 화면에 그려지는 크기
 	float4 RenderScale_;
 
+	// 이미지에서 잘라내는 크기
 	float4 RenderImageScale_;
 	float4 RenderImagePivot_;
 
