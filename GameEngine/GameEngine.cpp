@@ -87,7 +87,7 @@ void GameEngine::EngineLoop()
 		MsgBoxAssert("Level is nullptr => GameEngine Loop ERROR");
 	}
 
-	GameEngineInput::GetInst()->Update();
+	GameEngineInput::GetInst()->Update(GameEngineTime::GetInst()->GetDeltaTime());
 
 	// 레벨 수준에서 매 프레임마다 체크하는 일을 넣어놓는 함수
 	CurrentLevel_->Update();

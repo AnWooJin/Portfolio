@@ -29,7 +29,7 @@ public:
 		RenderPivot_ = _Pos;
 	}
 
-	inline void SetType(const RenderPivot& _Type)
+	inline void SetPivotType(const RenderPivot& _Type)
 	{
 		PivotType_ = _Type;
 	}
@@ -75,6 +75,8 @@ private:
 	float4 RenderImagePivot_;
 
 	unsigned int TransColor_;
+
+	bool IsCameraEffect_;
 
 
 

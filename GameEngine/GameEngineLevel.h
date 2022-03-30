@@ -1,5 +1,6 @@
 #pragma once
 #include "GameEngineBase/GameEngineNameObject.h"
+#include <GameEngineBase/GameEngineMath.h>
 #include <list>
 #include <map>
 
@@ -53,6 +54,21 @@ public:
 
 		return NewActor;
 	}
+
+	inline float4 GetCameraPos()
+	{
+		return CameraPos_;
+	}
+
+	inline void MoveCameraPos(const float4& _Value)
+	{
+		CameraPos_ += _Value;
+	}
+
+	inline void SetCameraPos(const float4& _Value)
+	{
+		CameraPos_ = _Value;
+	}
 protected:
 	// 리소스나 가져오거나 엑터를 만드는 함수
 	virtual void Loading() = 0;
@@ -66,6 +82,8 @@ protected:
 private:
 
 	std::map<int, std::list<GameEngineActor*>>AllActor_;
+	
+	float4 CameraPos_;
 
 	void ActorUpdate();
 	void ActorRender();

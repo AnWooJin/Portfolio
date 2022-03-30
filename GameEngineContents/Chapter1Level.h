@@ -15,8 +15,9 @@ public:
 	Chapter1Level& operator=(Chapter1Level&& _Other) noexcept = delete;
 
 protected:
-	void Loading() override {};
-	void Update() override {};
+	void Loading() override ;
+	void Update() override ;
+	void LevelChangeStart() override;
 
 private:
 

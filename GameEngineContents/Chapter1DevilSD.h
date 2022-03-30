@@ -1,5 +1,7 @@
 #pragma once
-class Chapter1DevilSD
+#include <GameEngine/GameEngineActor.h>
+
+class Chapter1DevilSD : public GameEngineActor
 {
 public:
 	//construcuter destructer
@@ -11,5 +13,13 @@ public:
 	Chapter1DevilSD(Chapter1DevilSD&& _Other) noexcept = delete;
 	Chapter1DevilSD& operator=(const Chapter1DevilSD& _Other) = delete;
 	Chapter1DevilSD& operator=(Chapter1DevilSD&& _Other) noexcept = delete;
+
+protected:
+
+private:
+
+	void Start() override;
+	void Update() override;
+	void Render() override;
 };
 
