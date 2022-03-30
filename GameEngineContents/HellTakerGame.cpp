@@ -32,6 +32,9 @@ void HellTakerGame::GameInit()
 		GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
 	}
 
+	GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter1Devil.bmp");
+	Image->Cut({ 64, 64 });
+
 	CreateLevel<TitleLevel>("Title");
 	CreateLevel<Chapter1Level>("Chapter1Level");
 	CreateLevel<PlayLevel>("Play");
