@@ -5,8 +5,9 @@
 #include "GameEngineEnum.h"
 #include <list>
 
-class GameEngineRenderer;
 class GameEngineLevel;
+class GameEngineRenderer;
+class GameEngineCollision;
 class GameEngineActor : public GameEngineNameObject, public GameEngineUpdateObject
 {
 // Actor가 기본적으로 가져야 하는 기능들
@@ -89,5 +90,15 @@ private:
 
 	std::list<GameEngineRenderer*> RenderList_;
 
+
+	///////////////////////////////////////////////////////////////////////////////////////////// Collision
+
+public:
+	GameEngineCollision* CreateCollision(const std::string& _GroupName, float4 _Scale, float4 _Pivot = { 0, 0 });
+
+
+private:
+	// 이터레이터
+	std::list<GameEngineCollision*> CollisionList_;
 };
 

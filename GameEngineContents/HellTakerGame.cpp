@@ -31,9 +31,20 @@ void HellTakerGame::GameInit()
 	{
 		GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
 	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter1Devil.bmp");
+		Image->Cut({ 64, 64 });
+	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Right.bmp");
+		Image->Cut({ 80, 80 });
+	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Left.bmp");
+		Image->Cut({ 80, 80 });
+	}
 
-	GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter1Devil.bmp");
-	Image->Cut({ 64, 64 });
+	
 
 	CreateLevel<TitleLevel>("Title");
 	CreateLevel<Chapter1Level>("Chapter1Level");

@@ -1,14 +1,17 @@
 #pragma once
-#include "GameEngineBase/GameEngineNameObject.h"
-#include <GameEngineBase/GameEngineMath.h>
 #include <list>
 #include <map>
+#include "GameEngineBase/GameEngineNameObject.h"
+#include <GameEngineBase/GameEngineMath.h>
 
 class GameEngine;
 class GameEngineActor;
+class GameEngineCollision;
 class GameEngineLevel : public GameEngineNameObject
 {
 	friend GameEngine;
+	friend GameEngineActor;
+	friend GameEngineCollision;
 public:
 	//construcuter destructer
 	GameEngineLevel();
@@ -88,5 +91,13 @@ private:
 	void ActorUpdate();
 	void ActorRender();
 	void ActorRelease();
+
+
+private:
+	// 삭제는 엑터가 하지만 실제 사용은 Level
+	// 여기서는 GameEngineCollision*를 delete 하면 안된다.
+	std::map<std::string, std::list<GameEngineCollision*>> AllCollision_;
+
+	void AddCollision(const std::string& _GroupName, GameEngineCollision* _Collision);
 };
 

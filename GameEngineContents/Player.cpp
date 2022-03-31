@@ -2,6 +2,7 @@
 #include <GameEngine/GameEngine.h>
 #include <GameEngineBase/GameEngineWindow.h>
 #include <GameEngine/GameEngineImageManager.h>
+#include <GameEngine/GameEngineRenderer.h>
 #include <GameEngineBase/GameEngineInput.h>
 #include <GameEngineBase/GameEngineTime.h>
 Player::Player()
@@ -14,10 +15,11 @@ Player::~Player()
 
 void Player::Start()
 {
-	SetPosition(GameEngineWindow::GetScale().Half());
-	SetScale({ 100,100 });
+	SetPosition({ 742,400 });
+	GameEngineRenderer* Render = CreateRenderer("Player_Right.bmp");
+	Render->CreateAnimation("Player_Right.bmp", "Player", 0, 10, 0.08f);
+	Render->ChangeAnimation("Player");
 
-	CreateRenderer("TitleCG");
 
 	if (false == GameEngineInput::GetInst()->IsKey("MoveLeft"));
 	{
@@ -32,9 +34,13 @@ void Player::Start()
 
 void Player::Update()
 {
-	if (true == GameEngineInput::GetInst()->IsPress("MoveLeft"))
+	if (true == GameEngineInput::GetInst()->IsDown("MoveLeft"))
 	{
-		SetMove(float4::LEFT);
+		GameEngineRenderer* Render = CreateRenderer("Player_Left.bmp");
+		Render->CreateAnimation("Player_Left.bmp", "Player", 0, 10, 0.08f);
+		Render->ChangeAnimation("Player");
+		SetPosition(GetPosition() + float4{ -80.0f,0.0f });
+		
 	}
 
 	if (true == GameEngineInput::GetInst()->IsPress("MoveRight"))
