@@ -47,7 +47,7 @@ public:
 	// 다른 클래스에서 내가 만든 게임엔진에 접근하기 위한 함수
 	// 게임이 실행될 때 엔진도 무조건 실행되어야 하기 때문에
 	// 실행되지 않을 시 프로그램이 터진다.
-	static GameEngine& GlobalEngine()
+	static GameEngine& GetInst()
 	{
 		
 		if (nullptr == UserContents_)

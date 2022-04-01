@@ -2,6 +2,7 @@
 #include "GameEngineActorSubObject.h"
 #include "GameEngineEnum.h"
 #include <map>
+#include <vector>
 
 class GameEngineImage;
 class GameEngineCollision : public GameEngineActorSubObject
@@ -29,11 +30,30 @@ public:
 		Scale_ = _Scale;
 	}
 
+	inline float4 GetCollisionPos()
+	{
+		return GetActor()->GetPosition() + Pivot_;
+	}
+
+	inline GameEngineRect GetRect()
+	{
+		return GameEngineRect(GetActor()->GetPosition() + Pivot_, Scale_);
+	}
+
 	bool CollisionCheck(
 		const std::string& _TargetGroup,
 		CollisionType _This = CollisionType::Circle,
 		CollisionType _Target = CollisionType::Circle
 	);
+
+	bool CollisionResult(
+		const std::string& _TargetGroup,
+		std::vector<GameEngineCollision*>& _ColResult,
+		CollisionType _This = CollisionType::Circle,
+		CollisionType _Target = CollisionType::Circle
+	);
+
+	void DebugRender();
 
 private:
 	friend class FrameAnimation;

@@ -1,4 +1,5 @@
 #pragma once
+#include "GameEngineLevel.h"
 #include <GameEngineBase/GameEngineNameObject.h>
 #include <GameEngineBase/GameEngineUpdateObject.h>
 #include <GameEngineBase/GameEngineMath.h>
@@ -27,6 +28,11 @@ public:
 	inline GameEngineLevel* GetLevel()
 	{
 		return Level_;
+	}
+
+	inline float4 GetCameraEffectPostion()
+	{
+		return Position_ - GetLevel()->GetCameraPos();
 	}
 
 	inline float4 GetPosition()
@@ -60,6 +66,8 @@ protected:
 	virtual void Update() {}
 	// 지속적으로 게임이 실행될 때 엑터의 이미지를 그리는 함수
 	virtual void Render() {}
+
+	void Release();
 
 	void DebugRectRender();
 
