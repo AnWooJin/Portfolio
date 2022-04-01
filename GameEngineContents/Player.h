@@ -20,5 +20,12 @@ private:
 	void Start() override;
 	void Update() override;
 	void Render() override;
+	void KeyCheck();
+
+private:
+	GameEngineRenderer* MyRender_;
+	GameEngineRenderer* MyMoveRender_;
+	float KeyCheckTime_;
+	bool IsKeyOn_;
 };
 

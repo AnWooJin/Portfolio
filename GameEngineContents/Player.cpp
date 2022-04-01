@@ -6,6 +6,9 @@
 #include <GameEngineBase/GameEngineInput.h>
 #include <GameEngineBase/GameEngineTime.h>
 Player::Player()
+	: MyRender_(nullptr),
+	KeyCheckTime_(0.2f),
+	IsKeyOn_(false)
 {
 }
 
@@ -15,10 +18,15 @@ Player::~Player()
 
 void Player::Start()
 {
-	SetPosition({ 742,400 });
-	GameEngineRenderer* Render = CreateRenderer("Player_Right.bmp");
-	Render->CreateAnimation("Player_Right.bmp", "Player", 0, 10, 0.08f);
-	Render->ChangeAnimation("Player");
+	//SetPosition({ 774,175 });
+	SetPosition({ 774,190 });
+	MyRender_ = CreateRenderer();
+	MyMoveRender_ = CreateRenderer();
+	MyRender_->CreateAnimation("Player_Right.bmp", "Player_Right", 0, 10, 0.08f);
+	MyRender_->CreateAnimation("Player_Left.bmp", "Player_Left", 0, 10, 0.08f);
+	MyMoveRender_->CreateAnimation("Move_Right.bmp", "Move_Right", 0, 2, 0.1f, false);
+	MyMoveRender_->ChangeAnimation("Move_Right");
+	MyRender_->ChangeAnimation("Player_Left");
 
 
 	if (false == GameEngineInput::GetInst()->IsKey("MoveLeft"));
@@ -27,40 +35,92 @@ void Player::Start()
 		GameEngineInput::GetInst()->CreateKey("MoveRight", 'D');
 		GameEngineInput::GetInst()->CreateKey("MoveUp", 'W');
 		GameEngineInput::GetInst()->CreateKey("MoveDown", 'S');
-		GameEngineInput::GetInst()->CreateKey("PlayerJump", VK_LSHIFT);
-		GameEngineInput::GetInst()->CreateKey("Fire", VK_SPACE);
 	}
 }
 
 void Player::Update()
 {
-	if (true == GameEngineInput::GetInst()->IsDown("MoveLeft"))
+	KeyCheckTime_ -= GameEngineTime::GetDeltaTime();
+	if (KeyCheckTime_ <= 0)
 	{
-		GameEngineRenderer* Render = CreateRenderer("Player_Left.bmp");
-		Render->CreateAnimation("Player_Left.bmp", "Player", 0, 10, 0.08f);
-		Render->ChangeAnimation("Player");
-		SetPosition(GetPosition() + float4{ -80.0f,0.0f });
-		
+		IsKeyOn_ = true;
 	}
-
-	if (true == GameEngineInput::GetInst()->IsPress("MoveRight"))
-	{
-		SetMove(float4::RIGHT);
-	}
-
-	if (true == GameEngineInput::GetInst()->IsPress("MoveUp"))
-	{
-		SetMove(float4::UP);
-	}
-
-	if (true == GameEngineInput::GetInst()->IsPress("MoveDown"))
-	{
-		SetMove(float4::DOWN);
-	}
+	KeyCheck();
 }
 
 
 void Player::Render()
+{
+
+}
+
+
+void Player::KeyCheck()
+{
+	if (true == IsKeyOn_)
+	{
+		if (true == GameEngineInput::GetInst()->IsDown("MoveLeft"))
+		{
+			MyRender_->ChangeAnimation("Player_Left");
+			SetMove(float4::LEFT * 66);
+			IsKeyOn_ = false;
+			KeyCheckTime_ = 0.2f;
+		}
+		else if (true == GameEngineInput::GetInst()->IsDown("MoveRight"))
+		{
+			MyRender_->ChangeAnimation("Player_Right");
+			SetMove(float4::RIGHT * 66);
+			IsKeyOn_ = false;
+			KeyCheckTime_ = 0.2f;
+		}
+
+		else if (true == GameEngineInput::GetInst()->IsDown("MoveUp"))
+		{
+			SetMove(float4::UP * 65);
+			IsKeyOn_ = false;
+			KeyCheckTime_ = 0.2f;
+		}
+
+		else if (true == GameEngineInput::GetInst()->IsDown("MoveDown"))
+		{
+			SetMove(float4::DOWN * 65);
+			IsKeyOn_ = false;
+			KeyCheckTime_ = 0.2f;
+		}
+
+		else if (true == GameEngineInput::GetInst()->IsPress("MoveLeft"))
+		{
+			MyRender_->ChangeAnimation("Player_Left");
+			SetMove(float4::LEFT * 66);
+			IsKeyOn_ = false;
+			KeyCheckTime_ = 0.2f;
+		}
+
+		else if (true == GameEngineInput::GetInst()->IsPress("MoveRight"))
+		{
+			MyRender_->ChangeAnimation("Player_Right");
+			SetMove(float4::RIGHT * 66);
+			IsKeyOn_ = false;
+			KeyCheckTime_ = 0.2f;
+		}
+
+		else if (true == GameEngineInput::GetInst()->IsPress("MoveUp"))
+		{
+			SetMove(float4::UP * 67);
+			IsKeyOn_ = false;
+			KeyCheckTime_ = 0.2f;
+		}
+
+		else if (true == GameEngineInput::GetInst()->IsPress("MoveDown"))
+		{
+			SetMove(float4::DOWN * 67);
+			IsKeyOn_ = false;
+			KeyCheckTime_ = 0.2f;
+		}	
+	}
+}
+
+void IsKeyFree()
 {
 
 }
