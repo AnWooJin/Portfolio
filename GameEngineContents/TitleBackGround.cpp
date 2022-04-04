@@ -13,7 +13,7 @@ TitleBackGround::~TitleBackGround()
 void TitleBackGround::Start()
 {
 	SetPosition(GameEngineWindow::GetScale().Half());
-	CreateRenderer("TitleBackGround.bmp", RenderPivot::CENTER);
+	CreateRenderer("TitleBackGround.bmp");
 }
 
 void TitleBackGround::Render()

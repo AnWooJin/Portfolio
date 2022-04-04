@@ -7,6 +7,7 @@ class GameEngineImage;
 class GameEngineRenderer : public GameEngineActorSubObject
 {
 	friend GameEngineActor;
+	friend GameEngineLevel;
 
 public:
 	//construcuter destructer
@@ -65,6 +66,8 @@ public:
 	{
 		IsCameraEffect_ = true;
 	}
+
+	void SetOrder(int _Order) override;
 
 protected:
 	void Render();

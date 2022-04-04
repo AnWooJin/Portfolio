@@ -19,6 +19,7 @@ void Chapter1Map::Start()
 {
 	SetPosition(GameEngineWindow::GetScale().Half());
 	CreateRenderer("chapterBG01.bmp");
+	CreateRenderer("SideUI.bmp");
 }
 
 void Chapter1Map::Render()
