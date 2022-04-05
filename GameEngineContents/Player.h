@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngine/GameEngineActor.h>
 
+class GameEngineImage;
 class Player : public GameEngineActor
 {
 public:
@@ -25,6 +26,7 @@ private:
 private:
 	GameEngineRenderer* MyRender_;
 	GameEngineRenderer* MyMoveRender_;
+	GameEngineImage* MapColImage_;
 	float KeyCheckTime_;
 	bool IsKeyOn_;
 };

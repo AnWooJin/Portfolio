@@ -48,6 +48,14 @@ void HellTakerGame::GameInit()
 		Image->Cut({ 80, 80 });
 	}
 	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Kick_Right.bmp");
+		Image->Cut({ 70, 72 });
+	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Kick_Left.bmp");
+		Image->Cut({ 70, 72 });
+	}
+	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Move_Right.bmp");
 		Image->Cut({ 64, 64 });
 	}

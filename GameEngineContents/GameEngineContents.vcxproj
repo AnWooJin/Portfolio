@@ -180,10 +180,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="DevilName.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="EndingLevel.h">
       <SubType>
       </SubType>
@@ -246,10 +242,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Skull.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="SkullBrokenAni.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -444,10 +436,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="DevilName.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="EndingLevel.cpp">
       <SubType>
       </SubType>
@@ -510,10 +498,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Skull.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="SkullBrokenAni.cpp">
       <SubType>
       </SubType>
     </ClCompile>

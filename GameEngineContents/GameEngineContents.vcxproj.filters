@@ -73,9 +73,6 @@
     <ClInclude Include="Skull.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="SkullBrokenAni.h">
-      <Filter>Global</Filter>
-    </ClInclude>
     <ClInclude Include="DeathAni.h">
       <Filter>Global</Filter>
     </ClInclude>
@@ -101,9 +98,6 @@
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="TextArea.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="DevilName.h">
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="Sucesss.h">
@@ -274,9 +268,6 @@
     <ClCompile Include="Skull.cpp">
       <Filter>Global</Filter>
     </ClCompile>
-    <ClCompile Include="SkullBrokenAni.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
     <ClCompile Include="DeathAni.cpp">
       <Filter>Global</Filter>
     </ClCompile>
@@ -302,9 +293,6 @@
       <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="TextArea.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="DevilName.cpp">
       <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="Sucesss.cpp">
