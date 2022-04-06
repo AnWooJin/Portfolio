@@ -4,6 +4,7 @@
 #include <map>
 
 class GameEngineImage;
+class GameEngineFolderImage;
 class GameEngineRenderer : public GameEngineActorSubObject
 {
 	friend GameEngineActor;
@@ -40,6 +41,7 @@ public:
 		ScaleMode_ = _Mode;
 	}
 
+	// 랜더 스케일(화면에 그려지는 크기)와 이미지 스케일(이미지에서 그릴 부분을 잘라오는 크기)를 같이 맞춰준다.
 	void SetImageScale();
 
 	inline void SetScale(const float4& _Scale)
@@ -78,15 +80,16 @@ private:
 	bool IsCameraEffect_;
 	GameEngineImage* Image_;
 	RenderPivot PivotType_; // CENTER, BOT
-	RenderScaleMode ScaleMode_;
+	RenderScaleMode ScaleMode_; 
 
+	// 화면에 그려지는 좌표
 	float4 RenderPivot_;
 	// 화면에 그려지는 크기
 	float4 RenderScale_;
 
 	// 이미지에서 잘라내는 크기
-	float4 RenderImageScale_;
-	float4 RenderImagePivot_;
+	float4 RenderImageScale_; // 복사받으려는 이미지의 크기
+	float4 RenderImagePivot_; // 복사받으려는 이미지를 잘라오는 시작 좌표
 
 	unsigned int TransColor_;
 
@@ -97,17 +100,19 @@ private:
 ////////////////////////////////////////////////////////////// 애니메이션
 
 private:
-	class FrameAnimation
+	class FrameAnimation : public GameEngineNameObject
 	{
 	public:
 		GameEngineRenderer* Renderer_;
 		GameEngineImage* Image_;
+		GameEngineFolderImage* FolderImage_;
 		int CurrentFrame_;
 		int StartFrame_;
 		int EndFrame_;
 		float CurrentInterTime_;
 		float InterTime_;
-		bool Loop_;
+		bool Loop_ = false;
+		bool IsEnd;
 
 	public:
 		FrameAnimation()
@@ -126,6 +131,7 @@ private:
 
 		void Reset()
 		{
+			IsEnd = false;
 			CurrentFrame_ = StartFrame_;
 			CurrentInterTime_ = InterTime_;
 		}
@@ -133,8 +139,13 @@ private:
 
 public:
 	void CreateAnimation(const std::string& _Image, const std::string& _Name, int _StartIndex, int _EndIndex, float _InterTime, bool _Loop = true);
+	void CreateFolderAnimation(const std::string& _Image, const std::string& _Name, int _StartIndex, int _EndIndex, float _InterTime, bool _Loop = true);
 
 	void ChangeAnimation(const std::string& _Name);
+
+	bool IsEndAnimation();
+
+	bool IsAnimationName(const std::string& _Name);
 
 private:
 	std::map<std::string, FrameAnimation> Animations_;

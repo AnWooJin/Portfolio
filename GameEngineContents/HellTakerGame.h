@@ -21,6 +21,7 @@ public:
 protected:
 
 private:
-
+	void GameImageLoad();
+	void GameImageCut();
 };
 

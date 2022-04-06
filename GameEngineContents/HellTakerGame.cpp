@@ -19,18 +19,122 @@ HellTakerGame::~HellTakerGame()
 void HellTakerGame::GameInit()
 {
 	GameEngineWindow::GetInst().SetWindowScaleAndPosition({ 100, 100 }, { 1280, 720 });
+	GameImageLoad();
+	GameImageCut();
 
-	GameEngineDirectory ResourceDir;
 	
-	ResourceDir.MoveParent("Portfolio");
-	ResourceDir.Move("Resource");
-	
-	std::vector<GameEngineFile> AllImageFileList = ResourceDir.GetAllFile("Bmp");
 
-	for (size_t i = 0; i < AllImageFileList.size(); i++)
+	CreateLevel<TitleLevel>("Title");
+	CreateLevel<Chapter1Level>("Chapter1Level");
+	CreateLevel<PlayLevel>("Play");
+	CreateLevel<EndingLevel>("Ending");
+	ChangeLevel("Chapter1Level");
+}
+
+void HellTakerGame::GameLoop()
+{
+}
+
+void HellTakerGame::GameEnd()
+{
+}
+
+void  HellTakerGame::GameImageLoad()
+{
 	{
-		GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
+		GameEngineDirectory ResourceDir;
+
+		ResourceDir.MoveParent("Portfolio");
+		ResourceDir.Move("Resource");
+		ResourceDir.Move("Image");
+		ResourceDir.Move("Player");
+		std::vector<GameEngineFile> AllImageFileList = ResourceDir.GetAllFile("Bmp");
+
+		for (size_t i = 0; i < AllImageFileList.size(); i++)
+		{
+			GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
+		}
 	}
+
+
+	{
+		GameEngineDirectory ResourceDir;
+
+		ResourceDir.MoveParent("Portfolio");
+		ResourceDir.Move("Resource");
+		ResourceDir.Move("Image");
+		ResourceDir.Move("Map");
+		std::vector<GameEngineFile> AllImageFileList = ResourceDir.GetAllFile("Bmp");
+
+		for (size_t i = 0; i < AllImageFileList.size(); i++)
+		{
+			GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
+		}
+	}
+
+	{
+		GameEngineDirectory ResourceDir;
+
+		ResourceDir.MoveParent("Portfolio");
+		ResourceDir.Move("Resource");
+		ResourceDir.Move("Image");
+		ResourceDir.Move("BackGround");
+		std::vector<GameEngineFile> AllImageFileList = ResourceDir.GetAllFile("Bmp");
+
+		for (size_t i = 0; i < AllImageFileList.size(); i++)
+		{
+			GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
+		}
+	}
+
+	{
+		GameEngineDirectory ResourceDir;
+
+		ResourceDir.MoveParent("Portfolio");
+		ResourceDir.Move("Resource");
+		ResourceDir.Move("Image");
+		ResourceDir.Move("UI");
+		std::vector<GameEngineFile> AllImageFileList = ResourceDir.GetAllFile("Bmp");
+
+		for (size_t i = 0; i < AllImageFileList.size(); i++)
+		{
+			GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
+		}
+	}
+
+	{
+		GameEngineDirectory ResourceDir;
+
+		ResourceDir.MoveParent("Portfolio");
+		ResourceDir.Move("Resource");
+		ResourceDir.Move("Image");
+		ResourceDir.Move("SCG");
+		std::vector<GameEngineFile> AllImageFileList = ResourceDir.GetAllFile("Bmp");
+
+		for (size_t i = 0; i < AllImageFileList.size(); i++)
+		{
+			GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
+		}
+	}
+
+
+	{
+		GameEngineDirectory ResourceDir;
+
+		ResourceDir.MoveParent("Portfolio");
+		ResourceDir.Move("Resource");
+		ResourceDir.Move("Image");
+		std::vector<GameEngineFile> AllImageFileList = ResourceDir.GetAllFile("Bmp");
+
+		for (size_t i = 0; i < AllImageFileList.size(); i++)
+		{
+			GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
+		}
+	}
+}
+
+void HellTakerGame::GameImageCut()
+{
 	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter1Devil.bmp");
 		Image->Cut({ 64, 64 });
@@ -59,20 +163,9 @@ void HellTakerGame::GameInit()
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Move_Right.bmp");
 		Image->Cut({ 64, 64 });
 	}
-
-	
-
-	CreateLevel<TitleLevel>("Title");
-	CreateLevel<Chapter1Level>("Chapter1Level");
-	CreateLevel<PlayLevel>("Play");
-	CreateLevel<EndingLevel>("Ending");
-	ChangeLevel("Chapter1Level");
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Victory.bmp");
+		Image->Cut({ 60, 82 });
+	}
 }
 
-void HellTakerGame::GameLoop()
-{
-}
-
-void HellTakerGame::GameEnd()
-{
-}

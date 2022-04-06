@@ -149,7 +149,35 @@ void GameEngineLevel::CollisionDebugRender()
 
 void GameEngineLevel::ActorRelease()
 {
-	// 레벨이 관리하는 AllCollision_에서 삭제된 콜리즌을 제거한다. 절대 delete로 제거해서는 안된다.
+	// 레벨도 렌더러를 관리하므로 list에서 랜더러를 지워준다, 콜리전과 마찬가지로 delete를 해서는 안된다. 
+	{
+		std::map<int, std::list<GameEngineRenderer*>>::iterator GroupStart = AllRenderer_.begin();
+		std::map<int, std::list<GameEngineRenderer*>>::iterator GroupEnd = AllRenderer_.end();
+
+		std::list<GameEngineRenderer*>::iterator StartRenderer;
+		std::list<GameEngineRenderer*>::iterator EndRenderer;
+
+		for (; GroupStart != GroupEnd; ++GroupStart)
+		{
+			std::list<GameEngineRenderer*>& Group = GroupStart->second;
+			StartRenderer = Group.begin();
+			StartRenderer = Group.end();
+
+			for (; StartRenderer != StartRenderer; ++StartRenderer)
+			{
+				if (false == (*StartRenderer)->IsDeath())
+				{
+					++StartRenderer;
+					continue;
+				}
+
+				StartRenderer = Group.erase(StartRenderer);
+			}
+		}
+	}
+
+
+	// 레벨이 관리하는 AllCollision_에서 삭제된 콜리전을 제거한다. 절대 delete로 제거해서는 안된다.
 	{
 		std::map<std::string, std::list<GameEngineCollision*>>::iterator GroupStart = AllCollision_.begin();
 		std::map<std::string, std::list<GameEngineCollision*>>::iterator GroupEnd = AllCollision_.end();

@@ -23,14 +23,15 @@ void Player::Start()
 	
 	MyRender_ = CreateRenderer();
 	MyMoveRender_ = CreateRenderer();
-	MapColImage_ = GameEngineImageManager::GetInst()->Find("chapterBG01_Col.bmp");
-	MyRender_->CreateAnimation("Player_Right.bmp", "Player_Right", 0, 10, 0.15f);
-	MyRender_->CreateAnimation("Player_Left.bmp", "Player_Left", 0, 10, 0.15f);
+	MapColImage_ = GameEngineImageManager::GetInst()->Find("chapter1_ColMap.bmp");
+	MyRender_->CreateAnimation("Player_Right.bmp", "Player_Right", 0, 10, 0.075f);
+	MyRender_->CreateAnimation("Player_Left.bmp", "Player_Left", 0, 10, 0.075f);
 	MyRender_->CreateAnimation("Player_Kick_Left.bmp", "Player_Kick_Left", 0, 8, 0.15f);
+	MyRender_->CreateAnimation("Player_Victory.bmp", "Player_Victory", 0, 18, 0.1f);
 	MyMoveRender_->CreateAnimation("Move_Right.bmp", "Move_Right", 0, 2, 0.3f, true);
 	MyMoveRender_->ChangeAnimation("Move_Right");
 	MyMoveRender_->Off();
-	MyRender_->ChangeAnimation("Player_Right");
+	MyRender_->ChangeAnimation("Player_Victory");
 
 
 	if (false == GameEngineInput::GetInst()->IsKey("MoveLeft"));
@@ -104,7 +105,7 @@ void Player::KeyCheck()
 		}
 		else if (true == GameEngineInput::GetInst()->IsDown("Die"))
 		{
-			MyRender_->ChangeAnimation("Player_Kick_Left");
+			MyRender_->ChangeAnimation("Player_Victory");
 		}
 
 		else if (true == GameEngineInput::GetInst()->IsPress("MoveLeft"))
