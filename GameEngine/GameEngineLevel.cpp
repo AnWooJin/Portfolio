@@ -191,7 +191,7 @@ void GameEngineLevel::ActorRelease()
 			StartCollision = Group.begin();
 			EndCollision = Group.end();
 
-			for (; StartCollision != EndCollision; ++StartCollision)
+			for (; StartCollision != EndCollision;)
 			{
 				if (false == (*StartCollision)->IsDeath())
 				{

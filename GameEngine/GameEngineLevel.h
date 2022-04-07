@@ -76,7 +76,7 @@ public:
 		CameraPos_ = _Value;
 	}
 protected:
-	// 리소스나 가져오거나 엑터를 만드는 함수
+	// 리소스를 가져오거나 엑터를 만드는 함수
 	virtual void Loading() = 0;
 	// 현재 해야하는 일을 실행하는 함수
 	virtual void Update() = 0;

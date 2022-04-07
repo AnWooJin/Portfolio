@@ -1,7 +1,10 @@
 #pragma once
 #include <GameEngine/GameEngineLevel.h>
+#include <vector>
 
 class GameEngineActor;
+class Block;
+class Skull;
 class Chapter1Level : public GameEngineLevel
 {
 public:
@@ -21,6 +24,13 @@ protected:
 	void LevelChangeStart() override;
 
 private:
+	void SkullSeting();
+	void BlockSetting();
+
+
+private:
 	GameEngineActor* MyPlayer_;
+	std::vector<Block*> Blocks_;
+	std::vector<Skull*> Skulls_;
 };
 

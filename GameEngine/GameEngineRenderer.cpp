@@ -102,7 +102,7 @@ void GameEngineRenderer::SetIndex(size_t _Index, float4 _Scale)
 	{
 		RenderScale_ = _Scale;
 	}
-	RenderImagePivot_ = Image_->GetCutPivot(_Index); // Cut 함수로 저장한 이미지를 잘아오는 위치와
+	RenderImagePivot_ = Image_->GetCutPivot(_Index); // Cut 함수로 저장한 이미지를 잘라오는 위치와
 	RenderImageScale_ = Image_->GetCutScale(_Index); //  크기를 받아온다.
 }
 
