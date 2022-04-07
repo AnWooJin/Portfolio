@@ -13,10 +13,12 @@ public:
 	MoveAni& operator=(const MoveAni& _Other) = delete;
 	MoveAni& operator=(MoveAni&& _Other) noexcept = delete;
 
+	float Time_;
 protected:
 
 private:
-	void Start() override {};
+	void Start() override;
+	void Update() override;
 	void Render() override {};
 };
 

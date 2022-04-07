@@ -4,6 +4,7 @@
 #include "Chapter1Map.h"
 
 Chapter1Level::Chapter1Level()
+	: MyPlayer_(nullptr)
 {
 }
 
@@ -23,7 +24,10 @@ void Chapter1Level::Update()
 
 void  Chapter1Level::LevelChangeStart()
 {
-	CreateActor<Chapter1DevilSD>(1);
-	CreateActor<Player>(1);
-	CreateActor<Chapter1Map>(0);
+	if (MyPlayer_ == nullptr)
+	{
+		CreateActor<Chapter1DevilSD>(1);
+		MyPlayer_ = CreateActor<Player>(1);
+		CreateActor<Chapter1Map>(0);
+	}
 }

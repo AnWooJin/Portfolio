@@ -8,8 +8,8 @@
 #include <GameEngineBase/GameEngineTime.h>
 Player::Player()
 	: MyRender_(nullptr),
-	KeyCheckTime_(0.2f),
-	IsKeyOn_(false)
+	 KeyCheckTime_(0.2f),
+	 IsKeyOn_(false)
 {
 }
 
@@ -19,22 +19,21 @@ Player::~Player()
 
 void Player::Start()
 {
-	SetPosition({ 774,175 });
+	SetPosition({ 774,175});
+	if (nullptr == MyRender_)
+	{
+		MyRender_ = CreateRenderer();
+		MapColImage_ = GameEngineImageManager::GetInst()->Find("chapter1_ColMap.bmp");
+		MyRender_->CreateAnimation("Player_Right.bmp", "Player_Right", 0, 10, 0.075f);
+		MyRender_->CreateAnimation("Player_Left.bmp", "Player_Left", 0, 10, 0.075f);
+		MyRender_->CreateAnimation("Player_Kick_Left.bmp", "Player_Kick_Left", 0, 8, 0.15f);
+		MyRender_->CreateAnimation("Player_Victory.bmp", "Player_Victory", 0, 18, 0.1f);
+		MyRender_->ChangeAnimation("Player_Victory");
+	}
 	
-	MyRender_ = CreateRenderer();
-	MyMoveRender_ = CreateRenderer();
-	MapColImage_ = GameEngineImageManager::GetInst()->Find("chapter1_ColMap.bmp");
-	MyRender_->CreateAnimation("Player_Right.bmp", "Player_Right", 0, 10, 0.075f);
-	MyRender_->CreateAnimation("Player_Left.bmp", "Player_Left", 0, 10, 0.075f);
-	MyRender_->CreateAnimation("Player_Kick_Left.bmp", "Player_Kick_Left", 0, 8, 0.15f);
-	MyRender_->CreateAnimation("Player_Victory.bmp", "Player_Victory", 0, 18, 0.1f);
-	MyMoveRender_->CreateAnimation("Move_Right.bmp", "Move_Right", 0, 2, 0.3f, true);
-	MyMoveRender_->ChangeAnimation("Move_Right");
-	MyMoveRender_->Off();
-	MyRender_->ChangeAnimation("Player_Victory");
 
 
-	if (false == GameEngineInput::GetInst()->IsKey("MoveLeft"));
+	if (false == GameEngineInput::GetInst()->IsKey("MoveLeft"))
 	{
 		GameEngineInput::GetInst()->CreateKey("MoveLeft", 'A');
 		GameEngineInput::GetInst()->CreateKey("MoveRight", 'D');
@@ -76,8 +75,6 @@ void Player::KeyCheck()
 		if (true == GameEngineInput::GetInst()->IsDown("MoveLeft"))
 		{
 			MyRender_->ChangeAnimation("Player_Left");
-			MyMoveRender_->SetPivot({65,0});
-			MyMoveRender_->On();
 			IsKeyOn_ = false;
 			KeyCheckTime_ = 0.2f;
 			NextPos += float4::LEFT * 66;
@@ -105,7 +102,9 @@ void Player::KeyCheck()
 		}
 		else if (true == GameEngineInput::GetInst()->IsDown("Die"))
 		{
-			MyRender_->ChangeAnimation("Player_Victory");
+			GameEngine::GetInst().ChangeLevel("Title");
+			/*MyRender_->ChangeAnimation("Player_Victory");
+			NextPos = GetPosition() + (float4::UP * 6);*/
 		}
 
 		else if (true == GameEngineInput::GetInst()->IsPress("MoveLeft"))

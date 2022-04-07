@@ -18,7 +18,7 @@ void Chapter1DevilSD::Start()
 {
 	SetPosition({842,505});
 	GameEngineRenderer* Render = CreateRenderer("Chapter1Devil.bmp");
-	Render->CreateAnimation("Chapter1Devil.bmp","Chapter1Devil",0,11, 0.13f);
+	Render->CreateAnimation("Chapter1Devil.bmp","Chapter1Devil",0,11, 0.065f);
 	Render->ChangeAnimation("Chapter1Devil");
 }
 

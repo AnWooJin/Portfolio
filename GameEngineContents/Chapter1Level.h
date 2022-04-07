@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngine/GameEngineLevel.h>
 
+class GameEngineActor;
 class Chapter1Level : public GameEngineLevel
 {
 public:
@@ -20,6 +21,6 @@ protected:
 	void LevelChangeStart() override;
 
 private:
-
+	GameEngineActor* MyPlayer_;
 };
 

@@ -76,7 +76,7 @@ void GameEngineRenderer::Render()
 	{
 		float4 Scale = RenderScale_.Half();
 		Scale.y *= 2;
-		GameEngine::BackBufferImage()->TransCopy(Image_, Scale, RenderScale_, RenderImagePivot_, RenderImageScale_, TransColor_);
+		GameEngine::BackBufferImage()->TransCopy(Image_, RenderPos-Scale, RenderScale_, RenderImagePivot_, RenderImageScale_, TransColor_);
 		break;
 	}
 	default:
