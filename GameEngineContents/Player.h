@@ -22,7 +22,7 @@ private:
 	void Update() override;
 	void Render() override;
 	void KeyCheck();
-
+	void CreateMoveEffect();
 private:
 	GameEngineRenderer* MyRender_;
 	GameEngineRenderer* MyMoveRender_;

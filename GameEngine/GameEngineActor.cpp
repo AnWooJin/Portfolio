@@ -177,6 +177,8 @@ void GameEngineActor::Release()
 			delete (*StartIter);
 			(*StartIter) = nullptr;
 			StartIter = RenderList_.erase(StartIter);
+		
+			
 		}
 	}
 	

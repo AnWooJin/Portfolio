@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "MoveEffect.h"
 #include <GameEngine/GameEngine.h>
 #include <GameEngineBase/GameEngineWindow.h>
 #include <GameEngine/GameEngineImageManager.h>
@@ -6,6 +7,7 @@
 #include <GameEngine/GameEngineRenderer.h>
 #include <GameEngineBase/GameEngineInput.h>
 #include <GameEngineBase/GameEngineTime.h>
+
 Player::Player()
 	: MyRender_(nullptr),
 	 KeyCheckTime_(0.2f),
@@ -74,6 +76,7 @@ void Player::KeyCheck()
 	{
 		if (true == GameEngineInput::GetInst()->IsDown("MoveLeft"))
 		{
+			CreateMoveEffect();
 			MyRender_->ChangeAnimation("Player_Left");
 			IsKeyOn_ = false;
 			KeyCheckTime_ = 0.2f;
@@ -81,6 +84,7 @@ void Player::KeyCheck()
 		}
 		else if (true == GameEngineInput::GetInst()->IsDown("MoveRight"))
 		{
+			CreateMoveEffect();
 			MyRender_->ChangeAnimation("Player_Right");
 			NextPos += float4::RIGHT * 66;
 			IsKeyOn_ = false;
@@ -89,6 +93,7 @@ void Player::KeyCheck()
 
 		else if (true == GameEngineInput::GetInst()->IsDown("MoveUp"))
 		{
+			CreateMoveEffect();
 			NextPos += float4::UP * 65;
 			IsKeyOn_ = false;
 			KeyCheckTime_ = 0.2f;
@@ -96,6 +101,7 @@ void Player::KeyCheck()
 
 		else if (true == GameEngineInput::GetInst()->IsDown("MoveDown"))
 		{
+			CreateMoveEffect();
 			NextPos += float4::DOWN * 65;
 			IsKeyOn_ = false;
 			KeyCheckTime_ = 0.2f;
@@ -109,6 +115,7 @@ void Player::KeyCheck()
 
 		else if (true == GameEngineInput::GetInst()->IsPress("MoveLeft"))
 		{
+			CreateMoveEffect();
 			MyRender_->ChangeAnimation("Player_Left");
 			NextPos += float4::LEFT * 66;
 			IsKeyOn_ = false;
@@ -117,6 +124,7 @@ void Player::KeyCheck()
 
 		else if (true == GameEngineInput::GetInst()->IsPress("MoveRight"))
 		{
+			CreateMoveEffect();
 			MyRender_->ChangeAnimation("Player_Right");
 			NextPos += float4::RIGHT * 66;
 			IsKeyOn_ = false;
@@ -125,6 +133,7 @@ void Player::KeyCheck()
 
 		else if (true == GameEngineInput::GetInst()->IsPress("MoveUp"))
 		{
+			CreateMoveEffect();
 			NextPos += float4::UP * 65;
 			IsKeyOn_ = false;
 			KeyCheckTime_ = 0.2f;
@@ -132,6 +141,7 @@ void Player::KeyCheck()
 
 		else if (true == GameEngineInput::GetInst()->IsPress("MoveDown"))
 		{
+			CreateMoveEffect();
 			NextPos += float4::DOWN * 65;
 			IsKeyOn_ = false;
 			KeyCheckTime_ = 0.2f;
@@ -142,4 +152,10 @@ void Player::KeyCheck()
 	{
 		SetPosition(NextPos);
 	}
+}
+
+void Player::CreateMoveEffect()
+{
+	GameEngineActor* Actor = GetLevel()->CreateActor<MoveEffect>(1, "Move");
+	Actor->SetPosition(GetPosition());
 }

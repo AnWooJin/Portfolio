@@ -67,7 +67,7 @@
     <ClInclude Include="Player.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="MoveAni.h">
+    <ClInclude Include="MoveEffect.h">
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="Skull.h">
@@ -262,7 +262,7 @@
     <ClCompile Include="Player.cpp">
       <Filter>Global</Filter>
     </ClCompile>
-    <ClCompile Include="MoveAni.cpp">
+    <ClCompile Include="MoveEffect.cpp">
       <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="Skull.cpp">

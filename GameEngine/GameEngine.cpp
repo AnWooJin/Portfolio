@@ -90,13 +90,14 @@ void GameEngine::EngineLoop()
 	GameEngineInput::GetInst()->Update(GameEngineTime::GetInst()->GetDeltaTime());
 
 	// 레벨 수준에서 매 프레임마다 체크하는 일을 넣어놓는 함수
+	
 	CurrentLevel_->Update();
 	CurrentLevel_->ActorUpdate();
 	CurrentLevel_->ActorRender();
 	CurrentLevel_->CollisionDebugRender();
 	WindowMainImage_->BitCopy(BackBufferImage_);
-
 	CurrentLevel_->ActorRelease();
+	
 }
 
 // 엔진이 종료하고 난 후 힙에 할당한 메모리를 삭제하는 함수

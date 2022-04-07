@@ -204,7 +204,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="MoveAni.h">
+    <ClInclude Include="MoveEffect.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -460,7 +460,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="MoveAni.cpp">
+    <ClCompile Include="MoveEffect.cpp">
       <SubType>
       </SubType>
     </ClCompile>

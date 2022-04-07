@@ -161,9 +161,9 @@ void GameEngineLevel::ActorRelease()
 		{
 			std::list<GameEngineRenderer*>& Group = GroupStart->second;
 			StartRenderer = Group.begin();
-			StartRenderer = Group.end();
+			EndRenderer = Group.end();
 
-			for (; StartRenderer != StartRenderer; ++StartRenderer)
+			for (; StartRenderer != EndRenderer;)
 			{
 				if (false == (*StartRenderer)->IsDeath())
 				{
@@ -226,7 +226,7 @@ void GameEngineLevel::ActorRelease()
 			{
 				if (true == (*StartActor)->IsDeath())
 				{
-					delete* StartActor;
+					delete (*StartActor);
 					StartActor = Group.erase(StartActor);
 					continue;
 				}
@@ -246,6 +246,8 @@ void GameEngineLevel::AddRenderer(GameEngineRenderer* _Renderer)
 {
 	AllRenderer_[_Renderer->GetOrder()].push_back(_Renderer);
 }
+
+
 
 void GameEngineLevel::ChangeRenderOrder(GameEngineRenderer* _Renderer, int _NewOrder)
 {
