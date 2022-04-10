@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Skull.h"
 #include "Block.h"
+#include "Thorn.h"
 #include "Chapter1Map.h"
 
 Chapter1Level::Chapter1Level()
@@ -22,6 +23,7 @@ void Chapter1Level::Loading()
 	
 	SkullSeting();
 	BlockSetting();
+	CreateActor<Thorn>(1);
 }
 
 void Chapter1Level::Update()
@@ -44,7 +46,7 @@ void Chapter1Level::SkullSeting()
 {
 	for (size_t i = 0; i < 3; i++)
 	{
-		Skulls_.push_back(CreateActor<Skull>(1));
+		Skulls_.push_back(CreateActor<Skull>(2));
 	}
 
 	Skulls_[0]->SetPosition({ 642, 240 });
@@ -57,7 +59,7 @@ void Chapter1Level::BlockSetting()
 {
 	for (size_t i = 0; i < 4; i++)
 	{
-		Blocks_.push_back(CreateActor<Block>(1));
+		Blocks_.push_back(CreateActor<Block>(2));
 	}
 
 	Blocks_[0]->BlockRender_->SetIndex(0);

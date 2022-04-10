@@ -17,7 +17,7 @@ void TitleCG::Start()
 	SetPosition(GameEngineWindow::GetScale().Half());
 	CreateRenderer("TitleCG.bmp", static_cast<int>(EngineMax::RENDERORDERMAX), RenderPivot::CENTER, {0, -100});
 
-	if (false == GameEngineInput::GetInst()->IsKey("Change"));
+	if (false == GameEngineInput::GetInst()->IsKey("Change"))
 	{
 		GameEngineInput::GetInst()->CreateKey("Change", 'T');
 	}

@@ -12,5 +12,5 @@ Block::~Block()
 
 void Block::Start()
 {
-	BlockRender_ = CreateRenderer("Blocks.bmp");
+	BlockRender_ = CreateRenderer("Blocks_56.bmp");
 }
