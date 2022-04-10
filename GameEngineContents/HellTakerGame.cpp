@@ -1,7 +1,6 @@
 #include "HellTakerGame.h"
 #include "PlayLevel.h"
 #include "TitleLevel.h"
-#include "Chapter1Level.h"
 #include "EndingLevel.h"
 #include <GameEngineBase/GameEngineWindow.h>
 #include <GameEngineBase/GameEngineDirectory.h>
@@ -25,10 +24,9 @@ void HellTakerGame::GameInit()
 	
 
 	CreateLevel<TitleLevel>("Title");
-	CreateLevel<Chapter1Level>("Chapter1Level");
 	CreateLevel<PlayLevel>("Play");
 	CreateLevel<EndingLevel>("Ending");
-	ChangeLevel("Chapter1Level");
+	ChangeLevel("Play");
 }
 
 void HellTakerGame::GameLoop()
