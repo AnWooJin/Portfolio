@@ -31,6 +31,11 @@ public:
 		RenderPivot_ = _Pos;
 	}
 
+	inline float4 GetPivot()
+	{
+		return RenderPivot_;
+	}
+
 	inline void SetPivotType(const RenderPivot& _Type)
 	{
 		PivotType_ = _Type;
@@ -53,6 +58,16 @@ public:
 	inline GameEngineImage* GetImage()
 	{
 		return Image_;
+	}
+
+	inline void SetAlpha(unsigned int _Alpha)
+	{
+		Alpha_ = _Alpha;
+
+		if (Alpha_ >= 255)
+		{
+			Alpha_ = 255;
+		}
 	}
 
 	void SetImage(const std::string& _Name);
@@ -92,7 +107,7 @@ private:
 	float4 RenderImagePivot_; // 복사받으려는 이미지를 잘라오는 시작 좌표
 
 	unsigned int TransColor_;
-
+	unsigned int Alpha_;
 
 
 

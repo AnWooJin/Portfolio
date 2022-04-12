@@ -62,6 +62,23 @@ void DevilSD::ImageSetting(int _ChapterLevel)
 		}
 		break;
 	}
+	case 3:
+	{
+		{
+			SetPosition({ 710,505 });
+			GameEngineRenderer* Render = CreateRenderer("Chapter3_Devil.bmp");
+			Render->CreateAnimation("Chapter3_Devil.bmp", "Chapter3_Devil", 0, 11, 0.065f);
+			Render->ChangeAnimation("Chapter3_Devil");
+		}
+
+		{
+			GameEngineRenderer* Render = CreateRenderer("LoveSign.bmp");
+			Render->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
+			Render->ChangeAnimation("LoveSign");
+			Render->SetPivot({ -30, -20 });
+		}
+		break;
+	}
 	default:
 		break;
 	}

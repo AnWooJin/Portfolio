@@ -50,6 +50,10 @@ public:
 		const float4& _CopyScale,
 		const float4& _OtherPivot, const float4& _OtherScale, unsigned int _TransColor);
 
+	void AlphaCopy(GameEngineImage* _Other, const float4& _CopyPos,
+		const float4& _CopyScale,
+		const float4& _OtherPivot, const float4& _OtherScale, unsigned int _Alpha);
+
 	void Cut(const float4& _CutScale);
 
 	void CutCount(int _x, int _y);

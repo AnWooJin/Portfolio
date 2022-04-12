@@ -29,7 +29,7 @@ private:
 	static GameEngineSoundPlayer SoundPlayControl(const std::string& _Name);
 
 	// 단순히 사운드를 딱 한번만 재생하는 함수
-	static void SoundPlayOneShot(const std::string& _Name);
+	static void SoundPlayOneShot(const std::string& _Name, int LoopCount = 0);
 	static void Update();
 
 	////////////////////////////////////  리소스 매니지먼트 기능
