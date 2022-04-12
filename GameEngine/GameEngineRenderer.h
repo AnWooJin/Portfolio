@@ -123,7 +123,8 @@ private:
 			EndFrame_(-1),
 			CurrentInterTime_(0.1f),
 			InterTime_(0.1f),
-			Loop_(true)
+			Loop_(true),
+			TimeKey(0)
 		{
 		}
 

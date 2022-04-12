@@ -9,7 +9,7 @@
 
 
 PlayLevel::PlayLevel()
-	: ChapterLevel_(1),
+	: ChapterLevel_(2),
 	  MyPlayer_(nullptr)
 	, MyMap_(nullptr)
 	, MyDevil_(nullptr)

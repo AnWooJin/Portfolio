@@ -43,7 +43,7 @@ void Player::Start()
 		MyRender_->CreateAnimation("Player_Left.bmp", "Player_Left", 0, 10, 0.075f);
 		MyRender_->CreateAnimation("Player_Kick_Left.bmp", "Player_Kick_Left", 0, 8, 0.15f);
 		MyRender_->CreateAnimation("Player_Victory.bmp", "Player_Victory", 0, 18, 0.1f);
-		MyRender_->ChangeAnimation("Player_Victory");
+		MyRender_->ChangeAnimation("Player_Right");
 	}
 	
 
@@ -174,6 +174,7 @@ void Player::PlayerSetting(int _Chapter)
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter1_ColMap.bmp");
 		break;
 	case 2:
+		SetPosition({ 440,435 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter2_ColMap.bmp");
 		break;
 	case 3:

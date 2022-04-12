@@ -33,6 +33,7 @@ void GameEngineRenderer::SetImageScale()
 	ScaleMode_ = RenderScaleMode::Image;
 	RenderScale_ = Image_->GetScale(); // 실제 이미지 크기만큼 이미지를 잘라온다
 	RenderImageScale_ = Image_->GetScale(); // 실제 이미지 크기만큼 화면에 출력한다.
+	RenderImagePivot_ = float4::ZERO;
 }
 
 void GameEngineRenderer::SetImage(const std::string& _Name)

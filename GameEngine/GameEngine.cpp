@@ -8,6 +8,8 @@
 std::map<std::string, GameEngineLevel*> GameEngine::AllLevel_;
 GameEngineLevel* GameEngine::CurrentLevel_ = nullptr;
 GameEngineLevel* GameEngine::NextLevel_ = nullptr;
+GameEngineLevel* GameEngine::PrevLevel_ = nullptr;
+
 GameEngine* GameEngine::UserContents_ = nullptr;
 GameEngineImage* GameEngine::BackBufferImage_ = nullptr;
 GameEngineImage* GameEngine::WindowMainImage_ = nullptr;
@@ -63,7 +65,8 @@ void GameEngine::EngineLoop()
 
 	if (nullptr != NextLevel_)
 	{
-		
+		PrevLevel_ = CurrentLevel_;
+
 		if (nullptr != CurrentLevel_)
 		{
 			// 레벨이 체인지 되기 전에 실행되는 함수

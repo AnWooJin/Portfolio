@@ -169,6 +169,10 @@ void HellTakerGame::GameImageCut()
 		Image->Cut({ 64, 64 });
 	}
 	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter2_Devil.bmp");
+		Image->Cut({ 52, 64 });
+	}
+	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("PlayerDead.bmp");
 		Image->Cut({ 250, 700 });
 	}

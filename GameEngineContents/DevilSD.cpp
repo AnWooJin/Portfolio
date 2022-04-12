@@ -48,10 +48,10 @@ void DevilSD::ImageSetting(int _ChapterLevel)
 	case 2:
 	{
 		{
-			SetPosition({ 842,505 });
-			GameEngineRenderer* Render = CreateRenderer("Chapter1Devil.bmp");
-			Render->CreateAnimation("Chapter1Devil.bmp", "Chapter1Devil", 0, 11, 0.065f);
-			Render->ChangeAnimation("Chapter1Devil");
+			SetPosition({ 710,505 });
+			GameEngineRenderer* Render = CreateRenderer("Chapter2_Devil.bmp");
+			Render->CreateAnimation("Chapter2_Devil.bmp", "Chapter2_Devil", 0, 11, 0.065f);
+			Render->ChangeAnimation("Chapter2_Devil");
 		}
 
 		{
