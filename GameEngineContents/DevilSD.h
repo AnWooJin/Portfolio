@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngine/GameEngineActor.h>
 
+class GameEngineRenderer;
 class DevilSD : public GameEngineActor
 {
 public:
@@ -15,15 +16,16 @@ public:
 	DevilSD& operator=(const DevilSD& _Other) = delete;
 	DevilSD& operator=(DevilSD&& _Other) noexcept = delete;
 
+	void ImageSetting(int _ChapterLevel);
 protected:
 
 private:
-	int ChapterLevel_;
-
 	void Start() override;
 	void Update() override;
 	void Render() override;
 
-	void ImageSetting(int _ChapterLevel);
+	GameEngineRenderer* MyRenderer_;
+
+	
 };
 

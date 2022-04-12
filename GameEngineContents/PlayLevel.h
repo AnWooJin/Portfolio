@@ -5,6 +5,9 @@
 class GameEngineActor;
 class Block;
 class Skull;
+class BackGroundMap;
+class Player;
+class DevilSD;
 class PlayLevel : public GameEngineLevel
 {
 public:
@@ -24,10 +27,14 @@ protected:
 	void LevelChangeStart() override;
 private:
 	int ChapterLevel_;
-	GameEngineActor* MyPlayer_;
+	Player* MyPlayer_;
+	BackGroundMap* MyMap_;
+	DevilSD* MyDevil_;
 	std::vector<Block*> Blocks_;
 	std::vector<Skull*> Skulls_;
 
+
+	void NextChapter();
 	void SkullSeting(int _ChapterLevel);
 	void BlockSetting(int _ChapterLevel);
 

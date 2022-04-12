@@ -9,8 +9,10 @@
 
 
 PlayLevel::PlayLevel()
-	: ChapterLevel_(1),
+	: ChapterLevel_(2),
 	  MyPlayer_(nullptr)
+	, MyMap_(nullptr)
+	, MyDevil_(nullptr)
 {
 }
 
@@ -20,15 +22,19 @@ PlayLevel::~PlayLevel()
 
 void PlayLevel::Loading()
 {
-	SkullSeting(ChapterLevel_);
-	BlockSetting(ChapterLevel_);
 
 	if (MyPlayer_ == nullptr)
 	{
-		CreateActor<DevilSD>(1);
+		MyDevil_ = CreateActor<DevilSD>(1);
 		MyPlayer_ = CreateActor<Player>(1);
-		CreateActor<BackGroundMap>(0);
+		MyMap_ = CreateActor<BackGroundMap>(0);
 	}
+	SkullSeting(ChapterLevel_);
+	BlockSetting(ChapterLevel_);
+	MyPlayer_->PlayerSetting(ChapterLevel_);
+	MyDevil_->ImageSetting(ChapterLevel_);
+	MyMap_->MapSetting(ChapterLevel_);
+
 }
 
 void PlayLevel::Update()
@@ -40,6 +46,13 @@ void PlayLevel::LevelChangeStart()
 {
 	
 }
+
+
+void PlayLevel::NextChapter()
+{
+	++ChapterLevel_;
+}
+
 
 void PlayLevel::SkullSeting(int _ChapterLevel)
 {
@@ -85,8 +98,7 @@ void PlayLevel::BlockSetting(int _ChaptherLevel)
 				Blocks_[2]->SetPosition({ 510,500 + 10 });
 				Blocks_[3]->BlockRender_->SetIndex(3);
 				Blocks_[3]->SetPosition({ 642,500 + 10 });
-			}
-
+		}
 	default:
 		break;
 	}

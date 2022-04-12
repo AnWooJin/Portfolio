@@ -1,12 +1,12 @@
 #pragma once
 #include <GameEngine/GameEngineActor.h>
+#include <GameEngine/GameEngineRenderer.h>
 
 class BackGroundMap : public GameEngineActor
 {
 public:
 	//construcuter destructer
 	BackGroundMap();
-	BackGroundMap(int _Level);
 	~BackGroundMap();
 
 	//delete Function
@@ -15,14 +15,14 @@ public:
 	BackGroundMap& operator=(const BackGroundMap& _Other) = delete;
 	BackGroundMap& operator=(BackGroundMap&& _Other) noexcept = delete;
 
+	void MapSetting(int _Level);
 protected:
 
 private:
-	int ChapterLevel_;
-
+	GameEngineRenderer* MapRenderer_;
 	void Start() override;
 	void Render() override;
 
-	void MapSetting(int _Level);
+	
 };
 

@@ -15,6 +15,9 @@ public:
 	Player& operator=(const Player& _Other) = delete;
 	Player& operator=(Player&& _Other) noexcept = delete;
 
+public:
+	void PlayerSetting(int _Chapter);
+
 protected:
 
 private:
@@ -23,10 +26,11 @@ private:
 	void Render() override;
 	void KeyCheck();
 	void CreateMoveEffect();
+	bool IsMoveKey();
 private:
 	GameEngineRenderer* MyRender_;
 	GameEngineRenderer* MyMoveRender_;
-	GameEngineImage* MapColImage_;
+	GameEngineImage* ColMapImage_;
 	float KeyCheckTime_;
 	bool IsKeyOn_;
 };

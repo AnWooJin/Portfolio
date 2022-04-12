@@ -9,9 +9,11 @@
 #include <GameEngineBase/GameEngineTime.h>
 
 Player::Player()
-	: MyRender_(nullptr),
-	 KeyCheckTime_(0.2f),
-	 IsKeyOn_(false)
+	: MyRender_(nullptr)
+	 ,ColMapImage_(nullptr)
+	 ,MyMoveRender_(nullptr)
+	 ,KeyCheckTime_(0.2f)
+	 ,IsKeyOn_(false)
 {
 }
 
@@ -19,13 +21,24 @@ Player::~Player()
 {
 }
 
+bool Player::IsMoveKey()
+{
+	if (false == GameEngineInput::GetInst()->IsDown("MoveRight") &&
+		false == GameEngineInput::GetInst()->IsDown("MoveLeft") &&
+		false == GameEngineInput::GetInst()->IsDown("MoveUp") &&
+		false == GameEngineInput::GetInst()->IsDown("MoveDown"))
+	{
+		return false;
+	}
+
+	return true;
+}
+
 void Player::Start()
 {
-	SetPosition({ 774,175});
 	if (nullptr == MyRender_)
 	{
 		MyRender_ = CreateRenderer();
-		MapColImage_ = GameEngineImageManager::GetInst()->Find("chapter1_ColMap.bmp");
 		MyRender_->CreateAnimation("Player_Right.bmp", "Player_Right", 0, 10, 0.075f);
 		MyRender_->CreateAnimation("Player_Left.bmp", "Player_Left", 0, 10, 0.075f);
 		MyRender_->CreateAnimation("Player_Kick_Left.bmp", "Player_Kick_Left", 0, 8, 0.15f);
@@ -53,12 +66,9 @@ void Player::Update()
 	{
 		IsKeyOn_ = true;
 	}
-	KeyCheck();
-	int Color = MapColImage_->GetImagePixel(GetPosition());
-
-	if (RGB(0, 0, 0) == Color)
+	if (true == IsMoveKey())
 	{
-		int a = 0;
+		KeyCheck();
 	}
 }
 
@@ -76,7 +86,6 @@ void Player::KeyCheck()
 	{
 		if (true == GameEngineInput::GetInst()->IsDown("MoveLeft"))
 		{
-			CreateMoveEffect();
 			MyRender_->ChangeAnimation("Player_Left");
 			IsKeyOn_ = false;
 			KeyCheckTime_ = 0.2f;
@@ -84,7 +93,6 @@ void Player::KeyCheck()
 		}
 		else if (true == GameEngineInput::GetInst()->IsDown("MoveRight"))
 		{
-			CreateMoveEffect();
 			MyRender_->ChangeAnimation("Player_Right");
 			NextPos += float4::RIGHT * 66;
 			IsKeyOn_ = false;
@@ -93,7 +101,6 @@ void Player::KeyCheck()
 
 		else if (true == GameEngineInput::GetInst()->IsDown("MoveUp"))
 		{
-			CreateMoveEffect();
 			NextPos += float4::UP * 65;
 			IsKeyOn_ = false;
 			KeyCheckTime_ = 0.2f;
@@ -101,7 +108,6 @@ void Player::KeyCheck()
 
 		else if (true == GameEngineInput::GetInst()->IsDown("MoveDown"))
 		{
-			CreateMoveEffect();
 			NextPos += float4::DOWN * 65;
 			IsKeyOn_ = false;
 			KeyCheckTime_ = 0.2f;
@@ -115,7 +121,6 @@ void Player::KeyCheck()
 
 		else if (true == GameEngineInput::GetInst()->IsPress("MoveLeft"))
 		{
-			CreateMoveEffect();
 			MyRender_->ChangeAnimation("Player_Left");
 			NextPos += float4::LEFT * 66;
 			IsKeyOn_ = false;
@@ -124,7 +129,6 @@ void Player::KeyCheck()
 
 		else if (true == GameEngineInput::GetInst()->IsPress("MoveRight"))
 		{
-			CreateMoveEffect();
 			MyRender_->ChangeAnimation("Player_Right");
 			NextPos += float4::RIGHT * 66;
 			IsKeyOn_ = false;
@@ -133,7 +137,6 @@ void Player::KeyCheck()
 
 		else if (true == GameEngineInput::GetInst()->IsPress("MoveUp"))
 		{
-			CreateMoveEffect();
 			NextPos += float4::UP * 65;
 			IsKeyOn_ = false;
 			KeyCheckTime_ = 0.2f;
@@ -141,21 +144,60 @@ void Player::KeyCheck()
 
 		else if (true == GameEngineInput::GetInst()->IsPress("MoveDown"))
 		{
-			CreateMoveEffect();
+			
 			NextPos += float4::DOWN * 65;
 			IsKeyOn_ = false;
 			KeyCheckTime_ = 0.2f;
 		}	
+		int Color = ColMapImage_->GetImagePixel(NextPos);
+		if (RGB(0, 0, 0) != Color)
+		{
+			CreateMoveEffect();
+			SetPosition(NextPos);
+		}
 	}
-	int Color = MapColImage_->GetImagePixel(NextPos);
-	if (RGB(0, 0, 0) != Color)
-	{
-		SetPosition(NextPos);
-	}
+	
 }
 
 void Player::CreateMoveEffect()
 {
 	GameEngineActor* Actor = GetLevel()->CreateActor<MoveEffect>(1, "Move");
 	Actor->SetPosition(GetPosition());
+}
+
+void Player::PlayerSetting(int _Chapter)
+{
+	switch (_Chapter)
+	{
+	case 1:
+		SetPosition({ 774,175 });
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter1_ColMap.bmp");
+		break;
+	case 2:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter2_ColMap.bmp");
+		break;
+	case 3:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter3_ColMap.bmp");
+		break;
+	case 4:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter4_ColMap.bmp");
+		break;
+	case 5:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter5_ColMap.bmp");
+		break;
+	case 6:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter6_ColMap.bmp");
+		break;
+	case 7:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter7_ColMap.bmp");
+		break;
+	case 8:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter8_ColMap.bmp");
+		break;
+	case 9:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter9_ColMap.bmp");
+		break;
+	default:
+		break;
+	}
 }
