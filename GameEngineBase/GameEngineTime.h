@@ -38,7 +38,7 @@ public:
 
 	void SetTimeScale(int _Key, float _TimeScale)
 	{
-		if (TimeScale_.end() == TimeScale.find(_Key))
+		if (TimeScale_.end() == TimeScale_.find(_Key))
 		{
 			_TimeScale = 1.0f;
 		}
