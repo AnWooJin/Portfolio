@@ -23,10 +23,10 @@ Player::~Player()
 
 bool Player::IsMoveKey()
 {
-	if (false == GameEngineInput::GetInst()->IsDown("MoveRight") &&
-		false == GameEngineInput::GetInst()->IsDown("MoveLeft") &&
-		false == GameEngineInput::GetInst()->IsDown("MoveUp") &&
-		false == GameEngineInput::GetInst()->IsDown("MoveDown"))
+	if (false == GameEngineInput::GetInst()->IsPress("MoveRight") &&
+		false == GameEngineInput::GetInst()->IsPress("MoveLeft") &&
+		false == GameEngineInput::GetInst()->IsPress("MoveUp") &&
+		false == GameEngineInput::GetInst()->IsPress("MoveDown"))
 	{
 		return false;
 	}
@@ -84,47 +84,11 @@ void Player::KeyCheck()
 	float4 NextPos = GetPosition();
 	if (true == IsKeyOn_)
 	{
-		if (true == GameEngineInput::GetInst()->IsDown("MoveLeft"))
-		{
-			MyRender_->ChangeAnimation("Player_Left");
-			IsKeyOn_ = false;
-			KeyCheckTime_ = 0.2f;
-			NextPos += float4::LEFT * 66;
-		}
-		else if (true == GameEngineInput::GetInst()->IsDown("MoveRight"))
-		{
-			MyRender_->ChangeAnimation("Player_Right");
-			NextPos += float4::RIGHT * 66;
-			IsKeyOn_ = false;
-			KeyCheckTime_ = 0.2f;
-		}
-
-		else if (true == GameEngineInput::GetInst()->IsDown("MoveUp"))
-		{
-			NextPos += float4::UP * 65;
-			IsKeyOn_ = false;
-			KeyCheckTime_ = 0.2f;
-		}
-
-		else if (true == GameEngineInput::GetInst()->IsDown("MoveDown"))
-		{
-			NextPos += float4::DOWN * 65;
-			IsKeyOn_ = false;
-			KeyCheckTime_ = 0.2f;
-		}
-		else if (true == GameEngineInput::GetInst()->IsDown("Die"))
-		{
-			GameEngine::GetInst().ChangeLevel("Title");
-			/*MyRender_->ChangeAnimation("Player_Victory");
-			NextPos = GetPosition() + (float4::UP * 6);*/
-		}
-
-		else if (true == GameEngineInput::GetInst()->IsPress("MoveLeft"))
+		if (true == GameEngineInput::GetInst()->IsPress("MoveLeft"))
 		{
 			MyRender_->ChangeAnimation("Player_Left");
 			NextPos += float4::LEFT * 66;
 			IsKeyOn_ = false;
-			KeyCheckTime_ = 0.2f;
 		}
 
 		else if (true == GameEngineInput::GetInst()->IsPress("MoveRight"))
@@ -132,14 +96,12 @@ void Player::KeyCheck()
 			MyRender_->ChangeAnimation("Player_Right");
 			NextPos += float4::RIGHT * 66;
 			IsKeyOn_ = false;
-			KeyCheckTime_ = 0.2f;
 		}
 
 		else if (true == GameEngineInput::GetInst()->IsPress("MoveUp"))
 		{
 			NextPos += float4::UP * 65;
 			IsKeyOn_ = false;
-			KeyCheckTime_ = 0.2f;
 		}
 
 		else if (true == GameEngineInput::GetInst()->IsPress("MoveDown"))
@@ -147,13 +109,14 @@ void Player::KeyCheck()
 			
 			NextPos += float4::DOWN * 65;
 			IsKeyOn_ = false;
-			KeyCheckTime_ = 0.2f;
+			
 		}	
 		int Color = ColMapImage_->GetImagePixel(NextPos);
 		if (RGB(0, 0, 0) != Color)
 		{
 			CreateMoveEffect();
 			SetPosition(NextPos);
+			KeyCheckTime_ = 0.15f;
 		}
 	}
 	
@@ -162,7 +125,7 @@ void Player::KeyCheck()
 void Player::CreateMoveEffect()
 {
 	GameEngineActor* Actor = GetLevel()->CreateActor<MoveEffect>(1, "Move");
-	Actor->SetPosition(GetPosition());
+	Actor->SetPosition(GetPosition() + (float4::DOWN * 5.0f));
 }
 
 void Player::PlayerSetting(int _Chapter)

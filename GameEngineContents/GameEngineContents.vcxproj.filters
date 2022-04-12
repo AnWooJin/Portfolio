@@ -43,9 +43,6 @@
     <ClInclude Include="MoveEffect.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="Skull.h">
-      <Filter>Global</Filter>
-    </ClInclude>
     <ClInclude Include="DeathAni.h">
       <Filter>Global</Filter>
     </ClInclude>
@@ -62,9 +59,6 @@
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="Key.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="SideUI.h">
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="BotUI.h">
@@ -112,6 +106,12 @@
     <ClInclude Include="Player.h">
       <Filter>Play</Filter>
     </ClInclude>
+    <ClInclude Include="Skull.h">
+      <Filter>Play</Filter>
+    </ClInclude>
+    <ClInclude Include="SideUI.h">
+      <Filter>Play</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HellTakerGame.cpp" />
@@ -133,9 +133,6 @@
     <ClCompile Include="MoveEffect.cpp">
       <Filter>Global</Filter>
     </ClCompile>
-    <ClCompile Include="Skull.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
     <ClCompile Include="DeathAni.cpp">
       <Filter>Global</Filter>
     </ClCompile>
@@ -152,9 +149,6 @@
       <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="Key.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="SideUI.cpp">
       <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="BotUI.cpp">
@@ -200,6 +194,12 @@
       <Filter>Play</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
+      <Filter>Play</Filter>
+    </ClCompile>
+    <ClCompile Include="Skull.cpp">
+      <Filter>Play</Filter>
+    </ClCompile>
+    <ClCompile Include="SideUI.cpp">
       <Filter>Play</Filter>
     </ClCompile>
   </ItemGroup>

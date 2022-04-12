@@ -25,8 +25,8 @@ void PlayLevel::Loading()
 
 	if (MyPlayer_ == nullptr)
 	{
-		MyDevil_ = CreateActor<DevilSD>(1);
-		MyPlayer_ = CreateActor<Player>(1);
+		MyDevil_ = CreateActor<DevilSD>(2);
+		MyPlayer_ = CreateActor<Player>(2);
 		MyMap_ = CreateActor<BackGroundMap>(0);
 	}
 	SkullSeting(ChapterLevel_);
