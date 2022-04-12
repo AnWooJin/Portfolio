@@ -1,6 +1,7 @@
 #pragma once
 #include <list>
 #include <map>
+#include <vector>
 #include "GameEngineBase/GameEngineNameObject.h"
 #include <GameEngineBase/GameEngineMath.h>
 
@@ -8,6 +9,16 @@ class GameEngine;
 class GameEngineActor;
 class GameEngineCollision;
 class GameEngineRenderer;
+
+class GameEngineActor;
+struct ChangeOrderItem
+{
+	GameEngineActor* TargetObejct; // ¿Ã ø¢≈Õ∏¶
+	int ChangeOrder; // ¿Ã∑∏∞‘ πŸ≤„∂Û
+};
+
+
+
 class GameEngineLevel : public GameEngineNameObject
 {
 	friend GameEngine;
@@ -99,7 +110,11 @@ private:
 private:
 	std::map<int, std::list<GameEngineRenderer*>> AllRenderer_;
 
+	std::vector<ChangeOrderItem> ChangeOrderList;
+
 	void AddRenderer(GameEngineRenderer* _Renderer);
+
+	void ChangeUpdateOrder(GameEngineActor* _Actor, int _Order);
 
 	void ChangeRenderOrder(GameEngineRenderer* _Renderer, int _NewOrder);
 

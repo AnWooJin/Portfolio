@@ -61,6 +61,16 @@ void GameEngineLevel::ActorUpdate()
 			(*StartActor)->Update();
 		}
 	}
+
+	for (size_t i = 0; i < ChangeOrderList.size(); i++)
+	{
+		ChangeOrderItem& Data = ChangeOrderList[i]; // 오더가 변경된 엑터와 변경할 오더를 받는다.
+		AllActor_[Data.TargetObejct->GetOrder()].remove(Data.TargetObejct);  // 레벨이 관리하는 AllAcotr_에서 오더가 변경된 엑터를 삭제한다.
+		Data.TargetObejct->GameEngineUpdateObject::SetOrder(Data.ChangeOrder); // 엑터의 오더를 변경된 오더로 바꾼다.
+		AllActor_[Data.TargetObejct->GetOrder()].push_back(Data.TargetObejct); // 오더를 변경한 엑터를 다시 레벨이 관리하는 AllAcotr_에 재삽입한다.
+
+	}
+	ChangeOrderList.clear(); // 변경이 끝난 후 변경 리스트를 전부 제거한다.
 }
 
 void GameEngineLevel::ActorRender()
@@ -247,10 +257,23 @@ void GameEngineLevel::AddRenderer(GameEngineRenderer* _Renderer)
 	AllRenderer_[_Renderer->GetOrder()].push_back(_Renderer);
 }
 
+void GameEngineLevel::ChangeUpdateOrder(GameEngineActor* _Actor, int _NewOrder)
+{
+	if (_Actor->GetOrder() == _NewOrder)
+	{
+		return;
+	}
+	ChangeOrderList.push_back({ _Actor, _NewOrder });
+}
+
 
 
 void GameEngineLevel::ChangeRenderOrder(GameEngineRenderer* _Renderer, int _NewOrder)
 {
+	if (_Renderer->GetOrder() == _NewOrder)
+	{
+		return;
+	}
 	AllRenderer_[_Renderer->GetOrder()].remove(_Renderer);
 
 	_Renderer->GameEngineUpdateObject::SetOrder(_NewOrder);

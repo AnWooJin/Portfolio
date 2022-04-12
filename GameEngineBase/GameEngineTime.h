@@ -40,7 +40,7 @@ public:
 	{
 		if (TimeScale_.end() == TimeScale_.find(_Key))
 		{
-			_TimeScale = 1.0f;
+			_TimeScale =  1.0f;
 		}
 		TimeScale_[_Key] = _TimeScale;
 	}

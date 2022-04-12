@@ -59,6 +59,8 @@ public:
 		Scale_ = _Value;
 	}
 
+	void SetOrder(int _Order) override;
+
 protected:
 	// 시작할 때 뭔가를 하고 싶지만 생성자에서는 하지 못하는 부분을 담당하는 함수
 	virtual void Start() = 0;
