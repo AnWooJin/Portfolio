@@ -115,6 +115,9 @@
     <ClInclude Include="UnityLogo.h">
       <Filter>Opening</Filter>
     </ClInclude>
+    <ClInclude Include="TitleText.h">
+      <Filter>Title</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HellTakerGame.cpp" />
@@ -207,6 +210,9 @@
     </ClCompile>
     <ClCompile Include="UnityLogo.cpp">
       <Filter>Opening</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleText.cpp">
+      <Filter>Title</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

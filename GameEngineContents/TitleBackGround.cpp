@@ -4,6 +4,7 @@
 #include <GameEngine/GameEngineImageManager.h>
 
 TitleBackGround::TitleBackGround()
+	: MyRenderer_(nullptr)
 {
 }
 
@@ -17,7 +18,7 @@ void TitleBackGround::Start()
 	
 	MyRenderer_ = CreateRenderer("TitleBackGround.bmp");
 	MyRenderer_->CameraEffectOn();
-	SetPosition(MyRenderer_->GetImage()->GetScale().Half());
+	SetPosition(MyRenderer_->GetImage()->GetScale().Half() + (float4::DOWN * 100));
 }
 
 void TitleBackGround::Render()
