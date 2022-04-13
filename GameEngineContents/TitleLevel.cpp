@@ -16,10 +16,15 @@ void TitleLevel::Loading()
 {
 	CreateActor<TitleBackGround>(0);
 	CreateActor<TitleCG>(1);
+	SetCameraPos({ 680, 0 });
 
 }
 
 void TitleLevel::Update()
 {
-	//GameEngine::GlobalEngine().ChangeLevel("Play");
+	MoveCameraPos(float4::LEFT * 0.1f);
+	if (GetCameraPos().x <= 0.0f)
+	{
+		SetCameraPos({ 680,0 });
+	}
 }

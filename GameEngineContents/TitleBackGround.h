@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngine/GameEngineActor.h>
 
+class GameEngineRenderer;
 class TitleBackGround : public GameEngineActor
 {
 public:
@@ -20,6 +21,6 @@ protected:
 	void Render() override;
 
 private:
-
+	GameEngineRenderer* MyRenderer_;
 };
 
