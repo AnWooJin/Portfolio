@@ -84,6 +84,26 @@ public:
 		IsCameraEffect_ = true;
 	}
 
+	void SetPause(bool _Value)
+	{
+		Pause_ = _Value;
+	}
+
+	void PauseOn()
+	{
+		Pause_ = true;
+	}
+
+	void PauseOff()
+	{
+		Pause_ = false;
+	}
+
+	void PauseSwitch()
+	{
+		Pause_ = !Pause_;
+	}
+
 	void SetOrder(int _Order) override;
 
 protected:
@@ -92,7 +112,7 @@ protected:
 private:
 	friend class FrameAnimation;
 
-	bool IsCameraEffect_;
+	
 	GameEngineImage* Image_;
 	RenderPivot PivotType_; // CENTER, BOT
 	RenderScaleMode ScaleMode_; 
@@ -109,7 +129,8 @@ private:
 	unsigned int TransColor_;
 	unsigned int Alpha_;
 
-
+	bool IsCameraEffect_;
+	bool Pause_;
 
 
 ////////////////////////////////////////////////////////////// 애니메이션
@@ -117,7 +138,9 @@ private:
 private:
 	class FrameAnimation : public GameEngineNameObject
 	{
-	public:
+	private:
+		friend GameEngineRenderer;
+
 		GameEngineRenderer* Renderer_;
 		GameEngineImage* Image_;
 		GameEngineFolderImage* FolderImage_;
@@ -131,14 +154,38 @@ private:
 		bool IsEnd;
 
 	public:
+		inline int WorldCurrentFrame() const
+		{
+			return CurrentFrame_;
+		}
+
+		inline int WorldStartFrame() const
+		{
+			return StartFrame_;
+		}
+
+		inline int WorldEndFrame() const
+		{
+			return EndFrame_;
+		}
+
+		inline int LoopCurrentFrame() const
+		{
+			return StartFrame_ - CurrentFrame_;
+		}
+
+	public:
 		FrameAnimation()
 			: Image_(nullptr),
+			Renderer_(nullptr),
+			FolderImage_(nullptr),
 			CurrentFrame_(-1),
 			StartFrame_(-1),
 			EndFrame_(-1),
 			CurrentInterTime_(0.1f),
 			InterTime_(0.1f),
 			Loop_(true),
+			IsEnd(false),
 			TimeKey(0)
 		{
 		}
@@ -164,6 +211,13 @@ public:
 	bool IsEndAnimation();
 
 	bool IsAnimationName(const std::string& _Name);
+
+	const FrameAnimation* FindAnimation(const std::string& _Name);
+
+	inline const FrameAnimation* CurrentAnimation()
+	{
+		return CurrentAnimation_;
+	}
 
 private:
 	std::map<std::string, FrameAnimation> Animations_;

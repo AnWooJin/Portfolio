@@ -36,6 +36,6 @@ void UnityLogo::Update()
 
 	if (Alpha_ <= 0)
 	{
-		GameEngine::GetInst().ChangeLevel("Play");
+		GameEngine::GetInst().ChangeLevel("Title");
 	}
 }
