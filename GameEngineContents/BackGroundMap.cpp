@@ -2,6 +2,7 @@
 #include <GameEngineBase/GameEngineWindow.h>
 
 BackGroundMap::BackGroundMap()
+	: MapRenderer_(nullptr)
 {
 }
 

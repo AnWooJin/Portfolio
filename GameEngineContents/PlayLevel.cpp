@@ -34,7 +34,6 @@ void PlayLevel::Loading()
 	MyPlayer_->PlayerSetting(ChapterLevel_);
 	MyDevil_->ImageSetting(ChapterLevel_);
 	MyMap_->MapSetting(ChapterLevel_);
-
 }
 
 void PlayLevel::Update()

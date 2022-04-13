@@ -1,4 +1,5 @@
 #include "HellTakerGame.h"
+#include "OpeningLevel.h"
 #include "PlayLevel.h"
 #include "TitleLevel.h"
 #include "EndingLevel.h"
@@ -22,11 +23,11 @@ void HellTakerGame::GameInit()
 	GameImageCut();
 
 	
-
+	CreateLevel<OpeningLevel>("Opening");
 	CreateLevel<TitleLevel>("Title");
 	CreateLevel<PlayLevel>("Play");
 	CreateLevel<EndingLevel>("Ending");
-	ChangeLevel("Play");
+	ChangeLevel("Opening");
 }
 
 void HellTakerGame::GameLoop()

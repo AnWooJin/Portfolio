@@ -85,9 +85,6 @@
     <ClInclude Include="TitleCG.h">
       <Filter>Title</Filter>
     </ClInclude>
-    <ClInclude Include="OpeningAni.h">
-      <Filter>Opening</Filter>
-    </ClInclude>
     <ClInclude Include="EndingScene.h">
       <Filter>Ending</Filter>
     </ClInclude>
@@ -111,6 +108,12 @@
     </ClInclude>
     <ClInclude Include="SideUI.h">
       <Filter>Play</Filter>
+    </ClInclude>
+    <ClInclude Include="OpeningBackGround.h">
+      <Filter>Opening</Filter>
+    </ClInclude>
+    <ClInclude Include="UnityLogo.h">
+      <Filter>Opening</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -175,9 +178,6 @@
     <ClCompile Include="TitleCG.cpp">
       <Filter>Title</Filter>
     </ClCompile>
-    <ClCompile Include="OpeningAni.cpp">
-      <Filter>Opening</Filter>
-    </ClCompile>
     <ClCompile Include="EndingScene.cpp">
       <Filter>Ending</Filter>
     </ClCompile>
@@ -201,6 +201,12 @@
     </ClCompile>
     <ClCompile Include="SideUI.cpp">
       <Filter>Play</Filter>
+    </ClCompile>
+    <ClCompile Include="OpeningBackGround.cpp">
+      <Filter>Opening</Filter>
+    </ClCompile>
+    <ClCompile Include="UnityLogo.cpp">
+      <Filter>Opening</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
