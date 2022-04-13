@@ -3,6 +3,7 @@
 #include "TitleBackGround.h"
 #include "TitleCG.h"
 #include "TitleText.h"
+#include "Booper.h"
 
 
 TitleLevel::TitleLevel()
@@ -18,6 +19,7 @@ void TitleLevel::Loading()
 	CreateActor<TitleBackGround>(1);
 	CreateActor<TitleCG>(2);
 	CreateActor<TitleText>(3);
+	CreateActor<Booper>(4);
 	SetCameraPos({ 680, 0 });
 
 }

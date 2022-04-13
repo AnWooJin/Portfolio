@@ -64,9 +64,6 @@
     <ClInclude Include="BotUI.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="TextArea.h">
-      <Filter>Global</Filter>
-    </ClInclude>
     <ClInclude Include="Sucesss.h">
       <Filter>Global</Filter>
     </ClInclude>
@@ -118,6 +115,9 @@
     <ClInclude Include="TitleText.h">
       <Filter>Title</Filter>
     </ClInclude>
+    <ClInclude Include="Booper.h">
+      <Filter>Global</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HellTakerGame.cpp" />
@@ -158,9 +158,6 @@
       <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="BotUI.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="TextArea.cpp">
       <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="Sucesss.cpp">
@@ -213,6 +210,9 @@
     </ClCompile>
     <ClCompile Include="TitleText.cpp">
       <Filter>Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Booper.cpp">
+      <Filter>Global</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,0 +1,25 @@
+#pragma once
+#include <GameEngine/GameEngineActor.h>
+
+class Booper : public GameEngineActor
+{
+public:
+	//construcuter destructer
+	Booper();
+	~Booper();
+
+	//delete Function
+	Booper(const Booper& _Other) = delete;
+	Booper(Booper&& _Other) noexcept = delete;
+	Booper& operator=(const Booper& _Other) = delete;
+	Booper& operator=(Booper&& _Other) noexcept = delete;
+
+protected:
+
+private:
+	void Start() override;
+	void Update() override;
+	void Render() override {};
+
+};
+

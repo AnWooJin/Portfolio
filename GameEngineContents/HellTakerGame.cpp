@@ -236,5 +236,10 @@ void HellTakerGame::GameImageCut()
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("LoveSign.bmp");
 		Image->Cut({ 30,34 });
 	}
+
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Booper.bmp");
+		Image->Cut({ 60,60 });
+	}
 }
 
