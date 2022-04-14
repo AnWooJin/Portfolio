@@ -11,7 +11,7 @@ Booper::~Booper()
 
 void Booper::Start()
 {
-	SetPosition({ 640, 650 });
+	SetPosition({ 640, 630 });
 	GameEngineRenderer* Renderer = CreateRenderer();
 	Renderer->CreateAnimation("Booper.bmp", "Booper", 0, 18, 0.1f);
 	Renderer->ChangeAnimation("Booper");

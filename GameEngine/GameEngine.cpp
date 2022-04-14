@@ -71,12 +71,14 @@ void GameEngine::EngineLoop()
 		{
 			// 레벨이 체인지 되기 전에 실행되는 함수
 			CurrentLevel_->LevelChangeEnd();
+			CurrentLevel_->ActorLevelChangeEnd();
 		}
 		CurrentLevel_ = NextLevel_;
 
 		if (nullptr != CurrentLevel_)
 		{
 			CurrentLevel_->LevelChangeStart();
+			CurrentLevel_->ActorLevelChangeStart();
 		}
 		NextLevel_ = nullptr;
 		GameEngineTime::GetInst()->Reset();

@@ -241,5 +241,11 @@ void HellTakerGame::GameImageCut()
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Booper.bmp");
 		Image->Cut({ 60,60 });
 	}
+
+
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("TitleText_1.bmp");
+		Image->Cut({ 1280,244 });
+	}
 }
 

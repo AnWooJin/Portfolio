@@ -69,9 +69,14 @@ protected:
 	// 지속적으로 게임이 실행될 때 엑터의 이미지를 그리는 함수
 	virtual void Render() {}
 
+	virtual void LevelChangeStart() {}
+	virtual void LevelChangeEnd() {};
+
 	void Release();
 
 	void DebugRectRender();
+
+	void LevelRegist(std::string _RegistName = "");
 
 private:
 	GameEngineLevel* Level_;

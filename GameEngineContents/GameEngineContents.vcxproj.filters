@@ -118,6 +118,9 @@
     <ClInclude Include="Booper.h">
       <Filter>Global</Filter>
     </ClInclude>
+    <ClInclude Include="BlackBackGround.h">
+      <Filter>Global</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HellTakerGame.cpp" />
@@ -212,6 +215,9 @@
       <Filter>Title</Filter>
     </ClCompile>
     <ClCompile Include="Booper.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackBackGround.cpp">
       <Filter>Global</Filter>
     </ClCompile>
   </ItemGroup>

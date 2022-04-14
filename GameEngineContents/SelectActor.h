@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngine/GameEngineActor.h>
 
+class GameEngineRenderer;
 class SelectActor : public GameEngineActor
 {
 public:
@@ -17,7 +18,10 @@ public:
 protected:
 
 private:
-	void Start() override {};
+	GameEngineRenderer* MyRenderer_;
+
+	void Start() override;
+	void Update() override;
 	void Render() override {};
 };
 

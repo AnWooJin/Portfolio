@@ -86,19 +86,34 @@ public:
 	{
 		CameraPos_ = _Value;
 	}
+
+	template<typename ConvertType>
+	ConvertType* FindActor(const std::string& _Name)
+	{
+		return dynamic_cast<ConvertType*>(FindActor(_Name));
+	}
+
+	GameEngineActor* FindActor(const std::string& _Name);
+
+	void RegistActor(const std::string & _Name, GameEngineActor* _Actor);
+
 protected:
 	// 리소스를 가져오거나 엑터를 만드는 함수
 	virtual void Loading() = 0;
 	// 현재 해야하는 일을 실행하는 함수
 	virtual void Update() = 0;
 	// CurrentLevel->NextLevel로 전환할 때 CurrentLevel이 실행하는 함수
+	void ActorLevelChangeStart();
 	virtual void LevelChangeStart() {}
 	// CurrentLevel->NextLevel로 전환할 때 NextLevel이 실행하는 함수
+	void ActorLevelChangeEnd();
 	virtual void LevelChangeEnd() {}
 	
 private:
 
 	std::map<int, std::list<GameEngineActor*>>AllActor_;
+
+	std::map<std::string, GameEngineActor*> RegistActor_;
 	
 	float4 CameraPos_;
 
