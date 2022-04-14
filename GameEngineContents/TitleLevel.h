@@ -4,6 +4,8 @@
 class TitleLevel : public GameEngineLevel
 {
 public:
+	static int TextPage_;
+
 	//construcuter destructer
 	TitleLevel();
 	~TitleLevel();

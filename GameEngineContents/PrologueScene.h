@@ -1,5 +1,8 @@
 #pragma once
-class PrologueScene
+#include <GameEngine/GameEngineActor.h>
+
+class GameEngineRenderer;
+class PrologueScene : public GameEngineActor
 {
 public:
 	//construcuter destructer
@@ -15,6 +18,10 @@ public:
 protected:
 
 private:
+	GameEngineRenderer* MyRenderer_;
 
+	void Start() override;
+	void Update() override;
+	void Render() override {};
 };
 
