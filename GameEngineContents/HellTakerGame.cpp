@@ -8,6 +8,7 @@
 #include <GameEngineBase/GameEngineDirectory.h>
 #include <GameEngineBase/GameEngineFile.h>
 #include <GameEngine/GameEngineImageManager.h>
+#include <GameEngineBase/GameEngineSound.h>
 
 HellTakerGame::HellTakerGame()
 {
@@ -20,6 +21,7 @@ HellTakerGame::~HellTakerGame()
 void HellTakerGame::GameInit()
 {
 	GameEngineWindow::GetInst().SetWindowScaleAndPosition({ 100, 100 }, { 1280, 720 });
+	GameSoundLoad();
 	GameImageLoad();
 	GameImageCut();
 	FolderImageLoad();
@@ -40,6 +42,29 @@ void HellTakerGame::GameLoop()
 void HellTakerGame::GameEnd()
 {
 }
+
+
+void  HellTakerGame::GameSoundLoad()
+{
+	{
+
+		GameEngineDirectory ResourcesDir;
+		ResourcesDir.MoveParent("Portfolio");
+		ResourcesDir.Move("Resource");
+		ResourcesDir.Move("Sound");
+
+		// 폴더안에 모든 이미지 파일을 찾는다.
+		std::vector<GameEngineFile> AllImageFileList = ResourcesDir.GetAllFile();
+
+		for (size_t i = 0; i < AllImageFileList.size(); i++)
+		{
+			GameEngineSound::LoadRes(AllImageFileList[i].GetFullPath());
+		}
+
+	}
+}
+
+
 
 void  HellTakerGame::GameImageLoad()
 {

@@ -17,9 +17,10 @@ public:
 	TitleLevel& operator=(TitleLevel&& _Other) noexcept = delete;
 
 protected:
+
+private:
 	void Loading() override;
 	void Update() override;
-private:
-
+	void LevelChangeStart() override;
 };
 
