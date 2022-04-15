@@ -18,8 +18,6 @@ public:
 	GameEngineSoundPlayer MyBgmPlayer_;
 
 protected:
-	
-private:
 	void Loading() override;
 	void Update() override;
 	void LevelChangeStart() override;

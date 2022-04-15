@@ -23,7 +23,7 @@ protected:
 private:
 	FMOD::Sound* Sound;
 
-public:
+
 	///////////////////////////////// 사운드 매니지먼트 기능
 
 	static GameEngineSoundPlayer SoundPlayControl(const std::string& _Name);
