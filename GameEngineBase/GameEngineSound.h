@@ -39,7 +39,7 @@ public:
 	static GameEngineSound* LoadRes(const std::string& _Path);
 	static GameEngineSound* LoadRes(const std::string& _Path, const std::string& _Name);
 
-	static void AllResourcesDestory();
+	static void AllResourcesDestroy();
 
 private:
 	static std::map<std::string, GameEngineSound*> AllRes;

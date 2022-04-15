@@ -4,6 +4,7 @@
 #include "GameEngineImageManager.h"
 #include <GameEngineBase/GameEngineInput.h>
 #include <GameEngineBase/GameEngineTime.h>
+#include <GameEngineBase/GameEngineSound.h>
 
 std::map<std::string, GameEngineLevel*> GameEngine::AllLevel_;
 GameEngineLevel* GameEngine::CurrentLevel_ = nullptr;
@@ -122,7 +123,7 @@ void GameEngine::EngineEnd()
 		delete StartIter->second;
 	}
 
-
+	GameEngineSound::AllResourcesDestroy();
 	GameEngineImageManager::Destory();
 	GameEngineInput::Destroy();
 	GameEngineTime::Destory();
