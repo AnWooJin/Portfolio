@@ -19,7 +19,6 @@ protected:
 
 private:
 	GameEngineRenderer* MyRenderer_;
-	unsigned int TextPage_;
 
 	void Start() override;
 	void Update() override;

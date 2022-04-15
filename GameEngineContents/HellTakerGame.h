@@ -23,5 +23,6 @@ protected:
 private:
 	void GameImageLoad();
 	void GameImageCut();
+	void FolderImageLoad();
 };
 
