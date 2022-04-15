@@ -1,6 +1,5 @@
 #include "TitleLevel.h"
-#include <GameEngineBase/GameEngineInput.h>
-#include <GameEngine/GameEngine.h>
+#include "GameEngine/GameEngine.h"
 #include "BlackBackGround.h"
 #include "TitleBackGround.h"
 #include "TitleCG.h"
@@ -8,7 +7,6 @@
 #include "Booper.h"
 #include "SelectActor.h"
 
-int TitleLevel::TextPage_ = 0;
 
 TitleLevel::TitleLevel()
 {
@@ -20,11 +18,6 @@ TitleLevel::~TitleLevel()
 
 void TitleLevel::Loading()
 {
-	if (false == GameEngineInput::GetInst()->IsKey("Next"))
-	{
-		GameEngineInput::GetInst()->CreateKey("Next", VK_SPACE);
-	}
-
 	CreateActor<BlackBackGround>(0);
 	CreateActor<TitleBackGround>(1);
 	CreateActor<TitleCG>(2);
@@ -42,11 +35,6 @@ void TitleLevel::Update()
 	{
 		SetCameraPos({ 680,0 });
 	}
-	if (true == GameEngineInput::GetInst()->IsDown("Next"))
-	{
-		++TextPage_;
-	}
-
 }
 
 void TitleLevel::LevelChangeStart()

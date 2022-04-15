@@ -18,14 +18,10 @@ public:
 protected:
 
 private:
-	GameEngineRenderer* SelectRenderer0_;
-	GameEngineRenderer* SelectRenderer1_;
-
-	bool IsSelected_;
+	GameEngineRenderer* MyRenderer_;
 
 	void Start() override;
 	void Update() override;
 	void Render() override {};
-	void TitleImageChange();
 };
 
