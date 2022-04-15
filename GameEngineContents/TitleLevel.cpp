@@ -1,5 +1,6 @@
 #include "TitleLevel.h"
 #include <GameEngineBase/GameEngineInput.h>
+#include <GameEngineBase/GameEngineSound.h>
 #include <GameEngine/GameEngine.h>
 #include "BlackBackGround.h"
 #include "TitleBackGround.h"
@@ -51,9 +52,5 @@ void TitleLevel::Update()
 
 void TitleLevel::LevelChangeStart()
 {
-	MyBgmPlayer_ = GameEngineSound::SoundPlayControl("TitleBGM.wav");
-}
-void TitleLevel::LevelChangeEnd()
-{
-	MyBgmPlayer_.Stop();
+	GameEngineSound::SoundPlayOneShot("TitleBGM.wav");
 }
