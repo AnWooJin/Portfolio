@@ -1,5 +1,6 @@
 #include "TitleLevel.h"
 #include <GameEngineBase/GameEngineInput.h>
+#include <GameEngineBase/GameEngineSound.h>
 #include <GameEngine/GameEngine.h>
 #include "BlackBackGround.h"
 #include "TitleBackGround.h"
@@ -47,4 +48,9 @@ void TitleLevel::Update()
 		++TextPage_;
 	}
 
+}
+
+void TitleLevel::LevelChangeStart()
+{
+	GameEngineSound::SoundPlayOneShot("TitleBGM.wav");
 }
