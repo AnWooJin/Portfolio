@@ -15,10 +15,10 @@ public:
 	PrologueLevel& operator=(PrologueLevel&& _Other) noexcept = delete;
 
 protected:
+	
+private:
 	void Loading() override;
 	void Update() override {};
-
-private:
-
+	void LevelChangeEnd() override;
 };
 
