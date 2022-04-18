@@ -5,12 +5,11 @@
 #include "DevilSD.h"
 #include "BackGroundMap.h"
 #include "Thorn.h"
-#include "Chapter1Map.h"
+#include "HellTakerGame.h"
 
 
 PlayLevel::PlayLevel()
-	: ChapterLevel_(1),
-	  MyPlayer_(nullptr)
+	: MyPlayer_(nullptr)
 	, MyMap_(nullptr)
 	, MyDevil_(nullptr)
 {
@@ -18,10 +17,13 @@ PlayLevel::PlayLevel()
 
 PlayLevel::~PlayLevel()
 {
+	
 }
 
 void PlayLevel::Loading()
 {
+	
+	int Chapter = dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount();
 
 	if (MyPlayer_ == nullptr)
 	{
@@ -29,11 +31,11 @@ void PlayLevel::Loading()
 		MyPlayer_ = CreateActor<Player>(2);
 		MyMap_ = CreateActor<BackGroundMap>(0);
 	}
-	SkullSeting(ChapterLevel_);
-	BlockSetting(ChapterLevel_);
-	MyPlayer_->PlayerSetting(ChapterLevel_);
-	MyDevil_->ImageSetting(ChapterLevel_);
-	MyMap_->MapSetting(ChapterLevel_);
+	SkullSeting(Chapter);
+	BlockSetting(Chapter);
+	MyPlayer_->PlayerSetting(Chapter);
+	MyDevil_->ImageSetting(Chapter);
+	MyMap_->MapSetting(Chapter);
 }
 
 void PlayLevel::Update()
@@ -46,11 +48,6 @@ void PlayLevel::LevelChangeStart()
 	
 }
 
-
-void PlayLevel::NextChapter()
-{
-	++ChapterLevel_;
-}
 
 
 void PlayLevel::SkullSeting(int _ChapterLevel)

@@ -140,6 +140,7 @@ private:
 	void ActorRelease();
 
 private:
+
 	std::map<int, std::list<GameEngineRenderer*>> AllRenderer_;
 
 	std::vector<ChangeOrderItem> ChangeOrderList;

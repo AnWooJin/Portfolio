@@ -18,9 +18,20 @@ public:
 	void GameLoop() override;
 	void GameEnd() override;
 
+public:
+	inline int GetChapterCount() const
+	{
+		return ChapterCount_;
+	}
+	inline void NextChapterCount()
+	{
+		++ChapterCount_;
+	}
+
 protected:
 
 private:
+	int ChapterCount_;
 	void GameSoundLoad();
 	void GameImageLoad();
 	void GameImageCut();

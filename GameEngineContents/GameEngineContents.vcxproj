@@ -93,6 +93,26 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TalkBackGround.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TalkCG.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TalkLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TalkSelectActor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TalkText.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TitleSelectActor.h">
       <SubType>
       </SubType>
@@ -102,10 +122,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Skull.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Sucesss.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -209,6 +225,29 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TalkBackGround.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TalkCG.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TalkCGState.cpp" />
+    <ClCompile Include="TalkLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TalkSelectActor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TalkSelectActorState.cpp" />
+    <ClCompile Include="TalkText.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TalkTextState.cpp" />
     <ClCompile Include="TitleSelectActor.cpp">
       <SubType>
       </SubType>
@@ -218,10 +257,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Skull.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Sucesss.cpp">
       <SubType>
       </SubType>
     </ClCompile>

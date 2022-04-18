@@ -2,7 +2,7 @@
 #include "OpeningLevel.h"
 #include "PlayLevel.h"
 #include "TitleLevel.h"
-
+#include "TalkLevel.h"
 #include "EndingLevel.h"
 #include <GameEngineBase/GameEngineWindow.h>
 #include <GameEngineBase/GameEngineDirectory.h>
@@ -11,6 +11,7 @@
 #include <GameEngineBase/GameEngineSound.h>
 
 HellTakerGame::HellTakerGame()
+	: ChapterCount_(1)
 {
 }
 
@@ -29,13 +30,14 @@ void HellTakerGame::GameInit()
 	CreateLevel<OpeningLevel>("Opening");
 	CreateLevel<TitleLevel>("Title");
 	CreateLevel<PlayLevel>("Play");
+	CreateLevel<TalkLevel>("Talk");
 	CreateLevel<EndingLevel>("Ending");
-	ChangeLevel("Opening");
+	ChangeLevel("Talk");
 }
 
 void HellTakerGame::GameLoop()
 {
-
+	
 }
 
 void HellTakerGame::GameEnd()

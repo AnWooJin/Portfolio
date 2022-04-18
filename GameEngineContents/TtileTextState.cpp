@@ -24,9 +24,8 @@ void TitleText::PrologueStart()
 void TitleText::SceneChangerStart()
 {
 	SetPosition(GameEngineWindow::GetScale().Half());
-	MyRenderer_->CreateFolderAnimation("SceneChange", "SceneChange", 0, 28, 0.1f, false);
+	MyRenderer_->CreateFolderAnimation("SceneChange", "SceneChange", 0, 28, 0.05f, false);
 	MyRenderer_->ChangeAnimation("SceneChange");
-	//GameEngineSound::SoundPlayOneShot()
 }
 
 void TitleText::TextUpdate()

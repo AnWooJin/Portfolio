@@ -26,7 +26,6 @@ protected:
 	void Update() override;
 	void LevelChangeStart() override;
 private:
-	int ChapterLevel_;
 	Player* MyPlayer_;
 	BackGroundMap* MyMap_;
 	DevilSD* MyDevil_;
