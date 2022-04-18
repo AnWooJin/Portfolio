@@ -17,7 +17,10 @@ public:
 protected:
 
 private:
-	void Start() override {}
+	GameEngineRenderer* MyRenderer_;
+
+	void Start() override;
+	void Update() override;
 	void Render() override {};
 };
 

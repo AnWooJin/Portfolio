@@ -2,7 +2,7 @@
 #include "OpeningLevel.h"
 #include "PlayLevel.h"
 #include "TitleLevel.h"
-#include "PrologueLevel.h"
+
 #include "EndingLevel.h"
 #include <GameEngineBase/GameEngineWindow.h>
 #include <GameEngineBase/GameEngineDirectory.h>
@@ -29,7 +29,6 @@ void HellTakerGame::GameInit()
 	CreateLevel<OpeningLevel>("Opening");
 	CreateLevel<TitleLevel>("Title");
 	CreateLevel<PlayLevel>("Play");
-	CreateLevel<PrologueLevel>("Prologue");
 	CreateLevel<EndingLevel>("Ending");
 	ChangeLevel("Opening");
 }
@@ -286,8 +285,13 @@ void HellTakerGame::GameImageCut()
 
 
 	{
-		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("TitleText_1.bmp");
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("TitleText.bmp");
 		Image->Cut({ 1280,244 });
+	}
+
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("PrologueScene.bmp");
+		Image->Cut({ 1280,720 });
 	}
 }
 

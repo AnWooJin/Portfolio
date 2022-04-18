@@ -21,7 +21,7 @@ void Booper::Start()
 
 void Booper::Update()
 {
-	if (TitleLevel::TextPage_ == 2)
+	if (TitleLevel::TextPage_ == 2 || TitleLevel::TextPage_ >= 7)
 	{
 		MyRenderer_->Off();
 	}

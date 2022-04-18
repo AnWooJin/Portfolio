@@ -5,7 +5,8 @@
 #include <GameEngineBase/GameEngineInput.h>
 
 TitleText::TitleText()
-	: MyRenderer_(nullptr)
+	: MyRenderer_(nullptr),
+	CurState_(TitleTextState::Text)
 {
 }
 
@@ -15,26 +16,56 @@ TitleText::~TitleText()
 
 void TitleText::Start()
 {
-
-	SetPosition({ 640, 598 });
-	MyRenderer_ = CreateRenderer("TitleText_1.bmp");
-	MyRenderer_->SetIndex(TitleLevel::TextPage_);
-
+	TextStart();
 }
 
 void TitleText::Update()
 {
-	if (true == GameEngineInput::GetInst()->IsDown("Next"))
-	{
+	StateUpdate();
+}
 
-		if (TitleLevel::TextPage_ >= 2)
-		{
-			MyRenderer_->SetImage("TitleText01.bmp");
-			return;
-		}
-		MyRenderer_->SetIndex(TitleLevel::TextPage_);
+void TitleText::ChangeState(TitleTextState _State)
+{
+	if (CurState_ == _State)
+	{
+		return;
+	}
+	switch (_State)
+	{
+	case Text:
+		TextStart();
+		break;
+	case Prologue:
+		PrologueStart();
+		break;
+	case SceneChagnger:
+		SceneChangerStart();
+		break;
+	case Max:
+		break;
+	default:
+		break;
 	}
 
+	CurState_ = _State;
+}
 
-
+void TitleText::StateUpdate()
+{
+	switch (CurState_)
+	{
+	case Text:
+		TextUpdate();
+		break;
+	case Prologue:
+		PrologueUpdate();
+		break;
+	case SceneChagnger:
+		SceneChangerUpdate();
+		break;
+	case Max:
+		break;
+	default:
+		break;
+	}
 }

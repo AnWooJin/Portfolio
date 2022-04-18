@@ -86,7 +86,7 @@ void GameEngineSound::SoundPlayOneShot(const std::string& _Name, int LoopCount /
 
 	FMOD::Channel* PlayControl = nullptr;
 
-	SoundSystem_->playSound(FindSound->Sound, nullptr, false, nullptr);
+	SoundSystem_->playSound(FindSound->Sound, nullptr, false, &PlayControl);
 
 	PlayControl->setLoopCount(LoopCount);
 }

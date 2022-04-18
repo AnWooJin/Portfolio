@@ -16,11 +16,11 @@
     <Filter Include="Ending">
       <UniqueIdentifier>{63c4db3c-14c0-43d8-9ff1-c5fd0f2ac8ce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Prologue">
-      <UniqueIdentifier>{46a2b12c-9627-423c-ab71-60c1379a74e1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Play">
       <UniqueIdentifier>{b765cdeb-645f-4ecf-89ae-9e0c25a95711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Title\State">
+      <UniqueIdentifier>{602ad891-491d-4eee-adca-01de1d37586c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -67,17 +67,8 @@
     <ClInclude Include="Sucesss.h">
       <Filter>Global</Filter>
     </ClInclude>
-    <ClInclude Include="SelectActor.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="Transition.h">
-      <Filter>Global</Filter>
-    </ClInclude>
     <ClInclude Include="ClearAni.h">
       <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="PrologueScene.h">
-      <Filter>Prologue</Filter>
     </ClInclude>
     <ClInclude Include="TitleCG.h">
       <Filter>Title</Filter>
@@ -86,9 +77,6 @@
       <Filter>Ending</Filter>
     </ClInclude>
     <ClInclude Include="OpeningLevel.h">
-      <Filter>Level</Filter>
-    </ClInclude>
-    <ClInclude Include="PrologueLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
     <ClInclude Include="BackGroundMap.h">
@@ -120,6 +108,9 @@
     </ClInclude>
     <ClInclude Include="BlackBackGround.h">
       <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleSelectActor.h">
+      <Filter>Title</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -166,17 +157,8 @@
     <ClCompile Include="Sucesss.cpp">
       <Filter>Global</Filter>
     </ClCompile>
-    <ClCompile Include="SelectActor.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="Transition.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
     <ClCompile Include="ClearAni.cpp">
       <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="PrologueScene.cpp">
-      <Filter>Prologue</Filter>
     </ClCompile>
     <ClCompile Include="TitleCG.cpp">
       <Filter>Title</Filter>
@@ -185,9 +167,6 @@
       <Filter>Ending</Filter>
     </ClCompile>
     <ClCompile Include="OpeningLevel.cpp">
-      <Filter>Level</Filter>
-    </ClCompile>
-    <ClCompile Include="PrologueLevel.cpp">
       <Filter>Level</Filter>
     </ClCompile>
     <ClCompile Include="BackGroundMap.cpp">
@@ -219,6 +198,12 @@
     </ClCompile>
     <ClCompile Include="BlackBackGround.cpp">
       <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleSelectActor.cpp">
+      <Filter>Title</Filter>
+    </ClCompile>
+    <ClCompile Include="TtileTextState.cpp">
+      <Filter>Title\State</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

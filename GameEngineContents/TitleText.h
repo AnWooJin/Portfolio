@@ -1,6 +1,14 @@
 #pragma once
 #include <GameEngine/GameEngineActor.h>
 
+enum TitleTextState
+{
+	Text,
+	Prologue,
+	SceneChagnger,
+	Max,
+};
+
 class GameEngineRenderer;
 class TitleText : public GameEngineActor
 {
@@ -19,9 +27,22 @@ protected:
 
 private:
 	GameEngineRenderer* MyRenderer_;
+	TitleTextState CurState_;
 
 	void Start() override;
 	void Update() override;
 	void Render() override {};
+
+	void ChangeState(TitleTextState _State);
+	void StateUpdate();
+
+private:
+	void TextStart();
+	void PrologueStart();
+	void SceneChangerStart();
+
+	void TextUpdate();
+	void PrologueUpdate();
+	void SceneChangerUpdate();
 };
 

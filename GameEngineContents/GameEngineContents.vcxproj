@@ -93,15 +93,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="PrologueLevel.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="PrologueScene.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="SelectActor.h">
+    <ClInclude Include="TitleSelectActor.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -134,10 +126,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="TitleText.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Transition.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -221,15 +209,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="PrologueLevel.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="PrologueScene.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="SelectActor.cpp">
+    <ClCompile Include="TitleSelectActor.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -265,10 +245,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Transition.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
+    <ClCompile Include="TtileTextState.cpp" />
     <ClCompile Include="UnityLogo.cpp">
       <SubType>
       </SubType>

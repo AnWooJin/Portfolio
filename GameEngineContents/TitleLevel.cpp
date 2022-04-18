@@ -1,13 +1,13 @@
 #include "TitleLevel.h"
 #include <GameEngineBase/GameEngineInput.h>
-#include <GameEngineBase/GameEngineSound.h>
 #include <GameEngine/GameEngine.h>
 #include "BlackBackGround.h"
 #include "TitleBackGround.h"
 #include "TitleCG.h"
 #include "TitleText.h"
+#include "Transition.h"
+#include "TitleSelectActor.h"
 #include "Booper.h"
-#include "SelectActor.h"
 
 int TitleLevel::TextPage_ = 0;
 
@@ -31,7 +31,7 @@ void TitleLevel::Loading()
 	CreateActor<TitleCG>(2);
 	CreateActor<TitleText>(3);
 	CreateActor<Booper>(4);
-	CreateActor<SelectActor>(5);
+	CreateActor<TitleSelectActor>(3);
 	SetCameraPos({ 680, 0 });
 
 }
@@ -43,14 +43,20 @@ void TitleLevel::Update()
 	{
 		SetCameraPos({ 680,0 });
 	}
-	if (true == GameEngineInput::GetInst()->IsDown("Next"))
+	if (true == GameEngineInput::GetInst()->IsDown("Next") && TextPage_ <= 7)
 	{
 		++TextPage_;
+		GameEngineSound::SoundPlayOneShot("dialogue_text_end_01.wav");
 	}
 
 }
 
 void TitleLevel::LevelChangeStart()
 {
-	GameEngineSound::SoundPlayOneShot("TitleBGM.wav");
+	TitleBgmPlayer_ = GameEngineSound::SoundPlayControl("TitleBGM.wav");
+}
+
+void TitleLevel::LevelChangeEnd()
+{
+	TitleBgmPlayer_.Stop();
 }
