@@ -1,6 +1,11 @@
 #pragma once
 #include <GameEngine/GameEngineActor.h>
-
+enum class TitleSelectActorState
+{
+	Booper,
+	SelectActor,
+	Max,
+};
 class GameEngineRenderer;
 class TitleSelectActor : public GameEngineActor
 {
@@ -18,8 +23,10 @@ public:
 protected:
 
 private:
-	GameEngineRenderer* SelectRenderer0_;
-	GameEngineRenderer* SelectRenderer1_;
+	TitleSelectActorState CurState_;
+
+	GameEngineRenderer* MyRenderer0_;
+	GameEngineRenderer* MyRenderer1_;
 
 	bool IsSelected_;
 
@@ -27,5 +34,14 @@ private:
 	void Update() override;
 	void Render() override {};
 	void TitleImageChange();
+	void ChangeState(TitleSelectActorState _State);
+	void StateUpdate();
+
+
+	void BooperStart();
+	void SelectActorStart();
+
+	void BooperUpdate();
+	void SelectActorUpdate();
 };
 

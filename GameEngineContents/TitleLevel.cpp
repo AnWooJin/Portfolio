@@ -30,7 +30,7 @@ void TitleLevel::Loading()
 	CreateActor<TitleBackGround>(1);
 	CreateActor<TitleCG>(2);
 	CreateActor<TitleText>(3);
-	CreateActor<Booper>(4);
+	//CreateActor<Booper>(4);
 	CreateActor<TitleSelectActor>(3);
 	SetCameraPos({ 680, 0 });
 

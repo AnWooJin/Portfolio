@@ -205,5 +205,8 @@
     <ClCompile Include="TtileTextState.cpp">
       <Filter>Title\State</Filter>
     </ClCompile>
+    <ClCompile Include="TitleSelectActorState.cpp">
+      <Filter>Title\State</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

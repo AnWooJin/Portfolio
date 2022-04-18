@@ -6,7 +6,7 @@
 
 TitleText::TitleText()
 	: MyRenderer_(nullptr),
-	CurState_(TitleTextState::Text)
+	CurState_(TitleTextState::Max)
 {
 }
 
@@ -16,7 +16,7 @@ TitleText::~TitleText()
 
 void TitleText::Start()
 {
-	TextStart();
+	ChangeState(TitleTextState::Text);
 }
 
 void TitleText::Update()

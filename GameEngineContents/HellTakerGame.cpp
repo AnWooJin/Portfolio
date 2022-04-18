@@ -217,6 +217,82 @@ void  HellTakerGame::GameImageLoad()
 			GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
 		}
 	}
+
+	{
+		GameEngineDirectory ResourceDir;
+
+		ResourceDir.MoveParent("Portfolio");
+		ResourceDir.Move("Resource");
+		ResourceDir.Move("Image");
+		ResourceDir.Move("Scene");
+		std::vector<GameEngineFile> AllImageFileList = ResourceDir.GetAllFile("Bmp");
+
+		for (size_t i = 0; i < AllImageFileList.size(); i++)
+		{
+			GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
+		}
+	}
+
+
+	{
+		GameEngineDirectory ResourceDir;
+
+		ResourceDir.MoveParent("Portfolio");
+		ResourceDir.Move("Resource");
+		ResourceDir.Move("Image");
+		ResourceDir.Move("Enemy");
+		std::vector<GameEngineFile> AllImageFileList = ResourceDir.GetAllFile("Bmp");
+
+		for (size_t i = 0; i < AllImageFileList.size(); i++)
+		{
+			GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
+		}
+	}
+
+	{
+		GameEngineDirectory ResourceDir;
+
+		ResourceDir.MoveParent("Portfolio");
+		ResourceDir.Move("Resource");
+		ResourceDir.Move("Image");
+		ResourceDir.Move("etc");
+		std::vector<GameEngineFile> AllImageFileList = ResourceDir.GetAllFile("Bmp");
+
+		for (size_t i = 0; i < AllImageFileList.size(); i++)
+		{
+			GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
+		}
+	}
+
+	{
+		GameEngineDirectory ResourceDir;
+
+		ResourceDir.MoveParent("Portfolio");
+		ResourceDir.Move("Resource");
+		ResourceDir.Move("Image");
+		ResourceDir.Move("SelectActor");
+		std::vector<GameEngineFile> AllImageFileList = ResourceDir.GetAllFile("Bmp");
+
+		for (size_t i = 0; i < AllImageFileList.size(); i++)
+		{
+			GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
+		}
+	}
+
+	{
+		GameEngineDirectory ResourceDir;
+
+		ResourceDir.MoveParent("Portfolio");
+		ResourceDir.Move("Resource");
+		ResourceDir.Move("Image");
+		ResourceDir.Move("Text");
+		std::vector<GameEngineFile> AllImageFileList = ResourceDir.GetAllFile("Bmp");
+
+		for (size_t i = 0; i < AllImageFileList.size(); i++)
+		{
+			GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
+		}
+	}
 }
 
 void HellTakerGame::GameImageCut()

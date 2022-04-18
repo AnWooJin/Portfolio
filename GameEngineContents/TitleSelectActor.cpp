@@ -6,9 +6,11 @@
 #include <GameEngineBase/GameEngineSound.h>
 
 TitleSelectActor::TitleSelectActor()
-	:SelectRenderer0_(nullptr),
-	SelectRenderer1_(nullptr),
+	:MyRenderer0_(nullptr),
+	MyRenderer1_(nullptr),
+	CurState_(TitleSelectActorState::Max),
 	IsSelected_(true)
+
 {
 }
 
@@ -18,43 +20,12 @@ TitleSelectActor::~TitleSelectActor()
 
 void TitleSelectActor::Start()
 {
-	SelectRenderer0_ = CreateRenderer("NewGame_Selected.bmp");
-	SelectRenderer1_ = CreateRenderer("Exit_UnSelected.bmp");
-	SelectRenderer1_->SetPivot({ 0, 50 });
-	SetPosition({ 640, 580 });
-	SelectRenderer0_->Off();
-	SelectRenderer1_->Off();
-	if (false == GameEngineInput::GetInst()->IsKey("Up"))
-	{
-		GameEngineInput::GetInst()->CreateKey("Up", 'W');
-		GameEngineInput::GetInst()->CreateKey("Down", 'S');
-	}
+	ChangeState(TitleSelectActorState::Booper);
 }
 
 void TitleSelectActor::Update()
 {
-	if (TitleLevel::TextPage_ == 2)
-	{
-		SelectRenderer0_->On();
-		SelectRenderer1_->On();
-	}
-
-	if (true == GameEngineInput::GetInst()->IsDown("Up"))
-	{
-		TitleImageChange();
-	}
-	if (true == GameEngineInput::GetInst()->IsDown("Down"))
-	{
-		TitleImageChange();
-	}
-	if (true == GameEngineInput::GetInst()->IsDown("Next") && TitleLevel::TextPage_ == 3)
-	{
-		if (true == IsSelected_)
-		{
-			GameEngineSound::SoundPlayOneShot("button_menu_confirm_01.wav");
-			Death();
-		}
-	}
+	StateUpdate();
 }
 
 
@@ -64,12 +35,53 @@ void TitleSelectActor::TitleImageChange()
 	GameEngineSound::SoundPlayOneShot("button_menu_highlight_01.wav");
 	if (IsSelected_ == true)
 	{
-		SelectRenderer0_->SetImage("NewGame_Selected.bmp");
-		SelectRenderer1_->SetImage("Exit_UnSelected.bmp");
+		MyRenderer0_->SetImage("NewGame_Selected.bmp");
+		MyRenderer1_->SetImage("Exit_UnSelected.bmp");
 	}
 	else
 	{
-		SelectRenderer0_->SetImage("NewGame_UnSelected.bmp");
-		SelectRenderer1_->SetImage("Exit_Selected.bmp");
+		MyRenderer0_->SetImage("NewGame_UnSelected.bmp");
+		MyRenderer1_->SetImage("Exit_Selected.bmp");
+	}
+}
+
+
+void TitleSelectActor::ChangeState(TitleSelectActorState _State)
+{
+	if (CurState_ == _State)
+	{
+		return;
+	}
+	switch (_State)
+	{
+	case TitleSelectActorState::Booper:
+		BooperStart();
+		break;
+	case TitleSelectActorState::SelectActor:
+		SelectActorStart();
+		break;
+	case TitleSelectActorState::Max:
+		break;
+	default:
+		break;
+	}
+
+	CurState_ = _State;
+}
+
+void TitleSelectActor::StateUpdate()
+{
+	switch (CurState_)
+	{
+	case TitleSelectActorState::Booper:
+		BooperUpdate();
+		break;
+	case TitleSelectActorState::SelectActor:
+		SelectActorUpdate();
+		break;
+	case TitleSelectActorState::Max:
+		break;
+	default:
+		break;
 	}
 }

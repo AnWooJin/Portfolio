@@ -241,6 +241,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TitleSelectActorState.cpp" />
     <ClCompile Include="TitleText.cpp">
       <SubType>
       </SubType>

@@ -4,8 +4,8 @@ float4 GameEngineRendererTileMap::GetWorldPosition(int _X, int _Y)
 {
 	float4 ReturnPos = TileSize_;
 
-	ReturnPos.x = _X;
-	ReturnPos.y = _Y;
+	ReturnPos.x = static_cast<float>(_X);
+	ReturnPos.y = static_cast<float>(_Y);
 	ReturnPos += TileSizeHalf_;
 
 	return ReturnPos;
