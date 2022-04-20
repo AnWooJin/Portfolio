@@ -4,6 +4,7 @@ enum class TalkSelectActorState
 {
 	Booper,
 	SelectActor,
+	Success,
 	Max,
 };
 class GameEngineRenderer;
@@ -51,18 +52,24 @@ private:
 
 	void BooperStart();
 	void SelectActorStart();
+	void SuccessStart();
 
 	void BooperUpdate();
 	void SelectActorUpdate();
+	void SuccessUpdate();
 
 private:
 	////////////////////// 챕터별로 셀렉트 이미지를 정해주는 함수
 	void Chapter1Setting();
+	void Chapter2Setting();
+	void Chapter3Setting();
 
 
 
 private:
 	/////////////////////// 챕터별로 성공여부를 판단하는 함수
 	void Chapter1Check();
+	void Chapter2Check();
+	void Chapter3Check();
 };
 

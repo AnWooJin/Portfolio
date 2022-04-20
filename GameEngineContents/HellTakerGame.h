@@ -27,11 +27,11 @@ public:
 	{
 		return ChapterCount_;
 	}
-	inline void IsSuccesssTrue()
+	inline void IsSuccesssOn()
 	{
 		IsSuccess_ = true;
 	}
-	inline void IsSuccesssfalse()
+	inline void IsSuccesssOff()
 	{
 		IsSuccess_ = false;
 	}

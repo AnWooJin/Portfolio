@@ -12,20 +12,21 @@ void TalkSelectActor::BooperStart()
 	if (MyRenderer0_ == nullptr)
 	{
 		MyRenderer0_ = CreateRenderer();
-		MyRenderer1_ = CreateRenderer();
 	}
-	MyRenderer1_->Off();
 	MyRenderer0_->CreateAnimation("Booper.bmp", "Booper", 0, 18, 0.1f);
-	MyRenderer0_->ChangeAnimation("Booper");
+	MyRenderer0_->ChangeAnimation("Booper");	
 }
 
 
 void TalkSelectActor::SelectActorStart()
 {
-	MyRenderer1_->On();
-	MyRenderer0_ = CreateRenderer();
+	if (MyRenderer0_ == nullptr)
+	{
+		MyRenderer0_ = CreateRenderer();
+		MyRenderer1_ = CreateRenderer();
+	}
 	SetPosition({ 640, 620 });
-	Chapter1Setting();
+	TalkSelectActorChange(Chapter_);
 	MyRenderer1_->SetPivot({ 0, 50 });
 	if (false == GameEngineInput::GetInst()->IsKey("Up"))
 	{
@@ -34,11 +35,17 @@ void TalkSelectActor::SelectActorStart()
 	}
 }
 
+void TalkSelectActor::SuccessStart()
+{
+
+}
+
 void TalkSelectActor::BooperUpdate()
 {
 	if (dynamic_cast<TalkLevel*>(GetLevel())->GetTextPage() == 1)
 	{
 		MyRenderer0_->Death();
+		MyRenderer0_ = nullptr;
 		ChangeState(TalkSelectActorState::SelectActor);
 	}
 }
@@ -63,6 +70,11 @@ void TalkSelectActor::SelectActorUpdate()
 	}
 }
 
+void TalkSelectActor::SuccessUpdate()
+{
+
+}
+
 void TalkSelectActor::TalkSuccessCheck(int _Chapter)
 {
 	switch (_Chapter)
@@ -71,8 +83,10 @@ void TalkSelectActor::TalkSuccessCheck(int _Chapter)
 		Chapter1Check();
 		break;
 	case 2:
+		Chapter2Check();
 		break;
 	case 3:
+		Chapter3Check();
 		break;
 	default:
 		break;
@@ -87,9 +101,16 @@ void TalkSelectActor::TalkSelectActorChange(int _Chapter)
 		Chapter1Setting();
 		break;
 	case 2:
+		Chapter2Setting();
 		break;
 	case 3:
+		Chapter2Setting();
 		break;
+	case 4:
+		Chapter2Setting();
+		break;
+	case 5:
+		Chapter2Setting();
 	default:
 		break;
 	}
@@ -113,6 +134,37 @@ void TalkSelectActor::Chapter1Setting()
 	}
 }
 
+void TalkSelectActor::Chapter2Setting()
+{
+
+	if (Selected0_ == true)
+	{
+		MyRenderer0_->SetImage("Chapter2_Select0_Selected.bmp");
+		MyRenderer1_->SetImage("Chapter2_Select1_UnSelected.bmp");
+	}
+	else
+	{
+		MyRenderer0_->SetImage("Chapter2_Select0_UnSelected.bmp");
+		MyRenderer1_->SetImage("Chapter2_Select1_Selected.bmp");
+	}
+}
+
+void TalkSelectActor::Chapter3Setting()
+{
+
+	if (Selected0_ == true)
+	{
+		MyRenderer0_->SetImage("Chapter2_Select0_Selected.bmp");
+		MyRenderer1_->SetImage("Chapter2_Select1_UnSelected.bmp");
+	}
+	else
+	{
+		MyRenderer0_->SetImage("Chapter2_Select0_UnSelected.bmp");
+		MyRenderer1_->SetImage("Chapter2_Select1_Selected.bmp");
+	}
+}
+
+
 
 /////////////////////////////////////    챕터별로 성공여부를 판단하는 함수
 
@@ -122,13 +174,51 @@ void TalkSelectActor::Chapter1Check()
 	///////  두번째 선택지가 정답이다.
 	if (Selected0_ == false)
 	{
-		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssTrue();
+		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOn();
+		MyRenderer0_->Death();
+		MyRenderer1_->Death();
+		MyRenderer0_ = nullptr;
+		MyRenderer1_ = nullptr;
 		ChangeState(TalkSelectActorState::Booper);
 	}
 	else
 	{
-		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssfalse();
+		//dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
 		ChangeState(TalkSelectActorState::Booper);
 	}
 	
+}
+
+void TalkSelectActor::Chapter2Check()
+{
+	IsSelect_ = true;
+	///////  두번째 선택지가 정답이다.
+	if (Selected0_ == false)
+	{
+		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOn();
+		ChangeState(TalkSelectActorState::Success);
+	}
+	else
+	{
+		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
+		ChangeState(TalkSelectActorState::Booper);
+	}
+
+}
+
+void TalkSelectActor::Chapter3Check()
+{
+	IsSelect_ = true;
+	///////  두번째 선택지가 정답이다.
+	if (Selected0_ == false)
+	{
+		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOn();
+		ChangeState(TalkSelectActorState::Booper);
+	}
+	else
+	{
+		//dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
+		ChangeState(TalkSelectActorState::Booper);
+	}
+
 }

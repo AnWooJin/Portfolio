@@ -18,7 +18,7 @@ TalkCG::~TalkCG()
 void TalkCG::Start()
 {
 	MyRenderer_ = CreateRenderer();
-	ChangeState(TalkCGState::Success);
+	ChangeState(TalkCGState::Nomal);
 }
 
 void TalkCG::Update()

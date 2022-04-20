@@ -11,7 +11,7 @@
 #include <GameEngineBase/GameEngineSound.h>
 
 HellTakerGame::HellTakerGame()
-	: ChapterCount_(3),
+	: ChapterCount_(6),
 	  IsSuccess_(false)
 {
 }
