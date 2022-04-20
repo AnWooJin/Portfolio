@@ -119,11 +119,13 @@ protected:
 	// 현재 해야하는 일을 실행하는 함수
 	virtual void Update() = 0;
 	// CurrentLevel->NextLevel로 전환할 때 CurrentLevel이 실행하는 함수
-	void ActorLevelChangeStart();
-	virtual void LevelChangeStart() {}
+	void ActorLevelChangeStart(GameEngineLevel* _PrevLevel);
+	virtual void LevelChangeStart(GameEngineLevel* _PrevLevel) {}
 	// CurrentLevel->NextLevel로 전환할 때 NextLevel이 실행하는 함수
-	void ActorLevelChangeEnd();
-	virtual void LevelChangeEnd() {}
+	void ActorLevelChangeEnd(GameEngineLevel* _NextLevel);
+	virtual void LevelChangeEnd(GameEngineLevel* _NextLevel) {}
+
+	void ObjectLevelMoveCheck(GameEngineLevel* _NextLevel);
 	
 private:
 	static bool IsDebug;

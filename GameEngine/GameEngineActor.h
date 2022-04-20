@@ -59,6 +59,11 @@ public:
 		Scale_ = _Value;
 	}
 
+	inline void NextLevelOn()
+	{
+		NextLevelOn_ = true;
+	}
+
 	void SetOrder(int _Order) override;
 
 protected:
@@ -69,8 +74,8 @@ protected:
 	// 지속적으로 게임이 실행될 때 엑터의 이미지를 그리는 함수
 	virtual void Render() {}
 
-	virtual void LevelChangeStart() {}
-	virtual void LevelChangeEnd() {};
+	virtual void LevelChangeStart(GameEngineLevel* _PrevLevel) {}
+	virtual void LevelChangeEnd(GameEngineLevel* _NextLevel) {};
 
 	void Release();
 
@@ -82,6 +87,13 @@ private:
 	GameEngineLevel* Level_;
 	float4 Position_;
 	float4 Scale_;
+
+	bool NextLevelOn_;
+
+	inline void NextLevelOff()
+	{
+		NextLevelOn_ = false;
+	}
 
 	// 액터를 만들어준 레벨을 설정하는 함수
 	inline void SetLevel(GameEngineLevel* _Level)

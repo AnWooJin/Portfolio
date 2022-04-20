@@ -43,7 +43,7 @@ void PlayLevel::Update()
 
 }
 
-void PlayLevel::LevelChangeStart()
+void PlayLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	
 }

@@ -1,10 +1,14 @@
 #include "TalkCG.h"
+#include "HellTakerGame.h"
+#include <GameEngine/GameEngine.h>
 #include <GameEngine/GameEngineRenderer.h>
 
 TalkCG::TalkCG()
 	: MyRenderer_(nullptr),
-	CurState_(TalkCGState::Max)
+	  Chapter_(0),
+	  CurState_(TalkCGState::Max)
 {
+	Chapter_ = dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetChapterCount();
 }
 
 TalkCG::~TalkCG()
@@ -13,7 +17,8 @@ TalkCG::~TalkCG()
 
 void TalkCG::Start()
 {
-	ChangeState(TalkCGState::Nomal);
+	MyRenderer_ = CreateRenderer();
+	ChangeState(TalkCGState::Success);
 }
 
 void TalkCG::Update()
@@ -27,6 +32,7 @@ void TalkCG::ChangeState(TalkCGState _State)
 	{
 		return;
 	}
+	CurState_ = _State;
 	switch (_State)
 	{
 	case TalkCGState::Nomal:
@@ -40,7 +46,6 @@ void TalkCG::ChangeState(TalkCGState _State)
 	default:
 		break;
 	}
-	CurState_ = _State;
 }
 
 void TalkCG::StateUpdate()
@@ -58,4 +63,12 @@ void TalkCG::StateUpdate()
 	default:
 		break;
 	}
+}
+
+
+
+void TalkCG::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	Chapter_ = dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetChapterCount();
+	//ChangeState(TalkCGState::Nomal);
 }

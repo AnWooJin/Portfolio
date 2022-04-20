@@ -9,6 +9,14 @@ enum class TalkSelectActorState
 class GameEngineRenderer;
 class TalkSelectActor : public GameEngineActor
 {
+
+public:
+
+	bool GetIsSelect()
+	{
+		return IsSelect_;
+	}
+
 public:
 	//construcuter destructer
 	TalkSelectActor();
@@ -27,12 +35,16 @@ private:
 
 	GameEngineRenderer* MyRenderer0_;
 	GameEngineRenderer* MyRenderer1_;
-	bool IsSelected_;
+	bool Selected0_;
+	bool IsSelect_;
+	int Chapter_;
 
 	void Start() override;
 	void Update() override;
+	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 
-	void TitleImageChange();
+	void TalkSelectActorChange(int _Chapter);
+	void TalkSuccessCheck(int _Chapter);
 	void ChangeState(TalkSelectActorState _State);
 	void StateUpdate();
 
@@ -42,5 +54,15 @@ private:
 
 	void BooperUpdate();
 	void SelectActorUpdate();
+
+private:
+	////////////////////// 챕터별로 셀렉트 이미지를 정해주는 함수
+	void Chapter1Setting();
+
+
+
+private:
+	/////////////////////// 챕터별로 성공여부를 판단하는 함수
+	void Chapter1Check();
 };
 

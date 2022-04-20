@@ -7,7 +7,10 @@
 class TalkLevel : public GameEngineLevel
 {
 public:
-	static int TextPage_;
+	inline int GetTextPage()
+	{
+		return TextPage_;
+	}
 
 
 public:
@@ -26,9 +29,10 @@ protected:
 private:
 	void Loading() override;
 	void Update() override;
-	void LevelChangeStart() override;
-	void LevelChangeEnd() override;
+	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
+	void LevelChangeEnd(GameEngineLevel* _NextLevel) override;
 
 	GameEngineSoundPlayer TitleBgmPlayer_;
+	int TextPage_;
 };
 

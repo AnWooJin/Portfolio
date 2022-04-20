@@ -19,9 +19,21 @@ public:
 	void GameEnd() override;
 
 public:
+	inline bool GetIsSuccess() const
+	{
+		return IsSuccess_;
+	}
 	inline int GetChapterCount() const
 	{
 		return ChapterCount_;
+	}
+	inline void IsSuccesssTrue()
+	{
+		IsSuccess_ = true;
+	}
+	inline void IsSuccesssfalse()
+	{
+		IsSuccess_ = false;
 	}
 	inline void NextChapterCount()
 	{
@@ -31,6 +43,7 @@ public:
 protected:
 
 private:
+	bool IsSuccess_;
 	int ChapterCount_;
 	void GameSoundLoad();
 	void GameImageLoad();

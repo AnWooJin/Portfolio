@@ -1,4 +1,5 @@
 #include "TalkText.h"
+#include "HellTakerGame.h"
 #include "TalkLevel.h"
 #include "TalkSelectActor.h"
 #include <GameEngine/GameEngine.h>
@@ -19,19 +20,28 @@ void TalkText::NomalStart()
 
 void TalkText::SuccessStart()
 {
-	
+	MyRenderer_->SetImage("Chapter1_TalkText_Success.bmp");
 }
 
 void TalkText::BadStart()
 {
-
+	MyRenderer_->SetImage("Chapter1_TalkText_Bad.bmp");
 }
 
 
 void TalkText::NomalUpdate()
 {
 	TalkSelectActor* SelectActor = GetLevel()->FindActor<TalkSelectActor>("TalkSelectActor");
-
+	bool IsSuccess = dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetIsSuccess();
+	bool IsSelect = SelectActor->GetIsSelect();
+	if (true == IsSuccess && true == IsSelect)
+	{
+		ChangeState(TalkTextState::Success);
+	}
+	else if (false == IsSuccess && true == IsSelect)
+	{
+		ChangeState(TalkTextState::Bad);
+	}
 }
 
 

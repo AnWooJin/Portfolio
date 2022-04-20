@@ -3,10 +3,12 @@
 #include "TalkCG.h"
 #include "TalkSelectActor.h"
 #include "TalkText.h"
+#include <GameEngineBase/GameEngineInput.h>
 
-int TalkLevel::TextPage_ = 0;
+
 
 TalkLevel::TalkLevel()
+	:TextPage_(0)
 {
 }
 
@@ -16,23 +18,33 @@ TalkLevel::~TalkLevel()
 
 void TalkLevel::Loading()
 {
+	if (false == GameEngineInput::GetInst()->IsKey("Next"))
+	{
+		GameEngineInput::GetInst()->CreateKey("Next", VK_SPACE);
+	}
+
+	CreateActor<TalkSelectActor>(4);
 	CreateActor<TalkBackGround>(1);
 	CreateActor<TalkCG>(2);
 	CreateActor<TalkText>(3);
-	CreateActor<TalkSelectActor>(4);
+	
 }
 
 void TalkLevel::Update()
 {
-
+	if (true == GameEngineInput::GetInst()->IsDown("Next") && TextPage_ <= 2)
+	{
+		++TextPage_;
+		GameEngineSound::SoundPlayOneShot("dialogue_text_end_01.wav");
+	}
 }
 
-void TalkLevel::LevelChangeStart()
+void TalkLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 
 }
 
-void TalkLevel::LevelChangeEnd()
+void TalkLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 
 }

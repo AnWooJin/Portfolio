@@ -15,6 +15,7 @@ GameEngineRenderer::GameEngineRenderer()
 	, RenderImagePivot_({ 0,0 })
 	, IsCameraEffect_(false)
 	, Alpha_(255)
+	, Pause_(false)
 {
 }	
 

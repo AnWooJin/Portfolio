@@ -27,6 +27,7 @@ protected:
 
 
 private:
+	
 	GameEngineRenderer* MyRenderer_;
 	TalkTextState CurState_;
 

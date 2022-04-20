@@ -1,11 +1,11 @@
 #pragma once
 #include <GameEngine/GameEngineActor.h>
 
+
 enum class TalkCGState
 {
 	Nomal,
 	Success,
-	Bad,
 	Max,
 };
 
@@ -26,14 +26,17 @@ public:
 protected:
 
 private:
+	int Chapter_;
 	GameEngineRenderer* MyRenderer_;
 	TalkCGState CurState_;
 
 	void Start() override;
 	void Update() override;
+	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 
 	void ChangeState(TalkCGState _State);
 	void StateUpdate();
+	void TalkCGSetting(int _Chapter);
 private:
 
 
@@ -42,5 +45,12 @@ private:
 
 	void NomalUpdate();
 	void SuccessUpdate();
+
+private:
+	////////////////////////////  챕터별로 이미지를 지정해주는 함수
+	void Chapter1ImageSetting();
+	void Chapter2ImageSetting();
+	void Chapter3ImageSetting();
+	void Chapter4ImageSetting();
 };
 
