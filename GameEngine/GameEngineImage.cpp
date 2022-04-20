@@ -158,7 +158,26 @@ void GameEngineImage::BitCopy(GameEngineImage* _Other, const float4& _CopyPos, c
 	);
 }
 
+///////////////////////////////////////////////////////////////////  회전하는 이미지 출력
 
+void GameEngineImage::PlgCopy(GameEngineImage* _Other, GameEngineImage* _Filter)
+{
+
+	POINT Test;
+
+	PlgBlt(
+		ImageDC_,
+		&Test,
+		_Other->ImageDC_,
+		0,
+		0,
+		0,
+		0,
+		_Filter->BitMap_,
+		0,
+		0
+	);
+}
 //////////////////////////////////////////////////////////////////trans
 
 

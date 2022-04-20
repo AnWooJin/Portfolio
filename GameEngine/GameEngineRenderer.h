@@ -132,6 +132,18 @@ private:
 	bool IsCameraEffect_;
 	bool Pause_;
 
+////////////////////////   회전용 트랜스 이미지
+
+	float RotZ_;
+	GameEngineImage* RotationCuttingImage_;
+
+public:
+	void SetRotationZ(float _RotZ)
+	{
+		RotZ_ = _RotZ;
+		Alpha_ = 255;
+	}
+
 
 ////////////////////////////////////////////////////////////// 애니메이션
 

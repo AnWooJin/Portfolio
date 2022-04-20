@@ -32,6 +32,19 @@ public:
 	{
 		return { cosf(_Radian), sinf(_Radian) };
 	}
+
+	static float4 VectorRotationToDegreeZ(const float4& _Value, float _Degree)
+	{
+		return VectorRotationToRadianZ(_Value, _Degree * GameEngineMath::DegreeToRadian);
+	}
+
+	static float4 VectorRotationToRadianZ(const float4& _Value, float _Radian)
+	{
+		float4 Rot;
+		Rot.x = _Value.x * cosf(_Radian) - _Value.y * sinf(_Radian);
+		Rot.y = _Value.y * cosf(_Radian) + _Value.y * cosf(_Radian);
+		return Rot;
+	}
 public:
 	float x;
 	float y;
