@@ -54,5 +54,6 @@ private:
 	void Chapter4ImageSetting();
 	void Chapter5ImageSetting();
 	void Chapter6ImageSetting();
+	void Chapter7ImageSetting();
 };
 

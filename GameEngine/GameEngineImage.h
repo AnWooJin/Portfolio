@@ -54,7 +54,12 @@ public:
 		const float4& _CopyScale,
 		const float4& _OtherPivot, const float4& _OtherScale, unsigned int _Alpha);
 
-	void PlgCopy(GameEngineImage* _Other, GameEngineImage* _Filter);
+
+	/////////  이미지를 지정해준 각도만큼 돌려서 
+
+	void PlgCopy(GameEngineImage* _Other, const float4& _CopyPos,
+		const float4& _CopyScale,
+		const float4& _OtherPivot, const float4& _OtherScale, float _Angle, GameEngineImage* _Filter);
 
 	void Cut(const float4& _CutScale);
 

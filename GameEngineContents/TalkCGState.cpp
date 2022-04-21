@@ -57,6 +57,9 @@ void TalkCG::TalkCGSetting(int _Chapter)
 	case 6:
 		Chapter6ImageSetting();
 		break;
+	case 7:
+		Chapter7ImageSetting();
+		break;
 	default:
 		break;
 	}
@@ -154,6 +157,22 @@ void TalkCG::Chapter6ImageSetting()
 		break;
 	case TalkCGState::Success:
 		MyRenderer_->SetImage("Chapter6CG_Success.bmp");
+		break;
+	default:
+		break;
+	}
+}
+
+void TalkCG::Chapter7ImageSetting()
+{
+	SetPosition({ 640, 250 });
+	switch (CurState_)
+	{
+	case TalkCGState::Nomal:
+		MyRenderer_->SetImage("Chapter7CG_Nomal.bmp");
+		break;
+	case TalkCGState::Success:
+		MyRenderer_->SetImage("Chapter7CG_Success.bmp");
 		break;
 	default:
 		break;

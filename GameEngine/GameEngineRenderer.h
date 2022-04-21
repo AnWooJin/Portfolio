@@ -135,9 +135,11 @@ private:
 ////////////////////////   회전용 트랜스 이미지
 
 	float RotZ_;
-	GameEngineImage* RotationCuttingImage_;
+	GameEngineImage* RotationFilterImage_;
 
 public:
+	void SetRotationFilter(const std::string& _ImageName);
+
 	void SetRotationZ(float _RotZ)
 	{
 		RotZ_ = _RotZ;
