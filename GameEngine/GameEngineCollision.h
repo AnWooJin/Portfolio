@@ -37,11 +37,18 @@ public:
 
 	inline GameEngineRect GetRect()
 	{
-		return GameEngineRect(GetActor()->GetPosition() + Pivot_, Scale_);
+		return GameEngineRect(GetActor()->GetPosition() + Pivot_ + NextPos_, Scale_);
 	}
 
 	bool CollisionCheck(
 		const std::string& _TargetGroup,
+		CollisionType _This = CollisionType::Circle,
+		CollisionType _Target = CollisionType::Circle
+	);
+
+	bool NextPostCollisionCheck(
+		const std::string& _TargetGroup,
+		float4 _NextPos,
 		CollisionType _This = CollisionType::Circle,
 		CollisionType _Target = CollisionType::Circle
 	);
@@ -59,7 +66,13 @@ private:
 	friend class FrameAnimation;
 	float4 Pivot_;
 	float4 Scale_;
+	float4 NextPos_;
 
 	std::string CollisionName_;
+
+	void NextPosReset()
+	{
+		NextPos_ = float4::ZERO;
+	}
 };
 
