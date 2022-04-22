@@ -40,6 +40,16 @@ public:
 		return GameEngineRect(GetActor()->GetPosition() + Pivot_ + NextPos_, Scale_);
 	}
 
+	void CameraEffectOff()
+	{
+		IsCameraEffect_ = false;
+	}
+
+	void CameraEffectOn()
+	{
+		IsCameraEffect_ = true;
+	}
+
 	bool CollisionCheck(
 		const std::string& _TargetGroup,
 		CollisionType _This = CollisionType::Circle,
@@ -67,6 +77,7 @@ private:
 	float4 Pivot_;
 	float4 Scale_;
 	float4 NextPos_;
+	bool IsCameraEffect_;
 
 	std::string CollisionName_;
 
