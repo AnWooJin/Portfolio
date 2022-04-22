@@ -20,9 +20,8 @@ void TalkSelectActor::BooperStart()
 
 void TalkSelectActor::SelectActorStart()
 {
-	if (MyRenderer0_ == nullptr)
+	if (MyRenderer1_ == nullptr)
 	{
-		MyRenderer0_ = CreateRenderer();
 		MyRenderer1_ = CreateRenderer();
 	}
 	SetPosition({ 640, 620 });
@@ -44,8 +43,6 @@ void TalkSelectActor::BooperUpdate()
 {
 	if (dynamic_cast<TalkLevel*>(GetLevel())->GetTextPage() == 1)
 	{
-		MyRenderer0_->Death();
-		MyRenderer0_ = nullptr;
 		ChangeState(TalkSelectActorState::SelectActor);
 	}
 }
@@ -130,12 +127,12 @@ void TalkSelectActor::Chapter1Setting()
 	
 	if (Selected0_ == true)
 	{
-		MyRenderer0_->SetImage("Chapter1_Select0_Selected.bmp");
+		MyRenderer0_->SetImageAnimationReset("Chapter1_Select0_Selected.bmp");
 		MyRenderer1_->SetImage("Chapter1_Select1_UnSelected.bmp");
 	}
 	else
 	{
-		MyRenderer0_->SetImage("Chapter1_Select0_UnSelected.bmp");
+		MyRenderer0_->SetImageAnimationReset("Chapter1_Select0_UnSelected.bmp");
 		MyRenderer1_->SetImage("Chapter1_Select1_Selected.bmp");
 	}
 }
@@ -145,12 +142,12 @@ void TalkSelectActor::Chapter2Setting()
 
 	if (Selected0_ == true)
 	{
-		MyRenderer0_->SetImage("Chapter2_Select0_Selected.bmp");
+		MyRenderer0_->SetImageAnimationReset("Chapter2_Select0_Selected.bmp");
 		MyRenderer1_->SetImage("Chapter2_Select1_UnSelected.bmp");
 	}
 	else
 	{
-		MyRenderer0_->SetImage("Chapter2_Select0_UnSelected.bmp");
+		MyRenderer0_->SetImageAnimationReset("Chapter2_Select0_UnSelected.bmp");
 		MyRenderer1_->SetImage("Chapter2_Select1_Selected.bmp");
 	}
 }
@@ -160,12 +157,12 @@ void TalkSelectActor::Chapter3Setting()
 
 	if (Selected0_ == true)
 	{
-		MyRenderer0_->SetImage("Chapter2_Select0_Selected.bmp");
+		MyRenderer0_->SetImageAnimationReset("Chapter2_Select0_Selected.bmp");
 		MyRenderer1_->SetImage("Chapter2_Select1_UnSelected.bmp");
 	}
 	else
 	{
-		MyRenderer0_->SetImage("Chapter2_Select0_UnSelected.bmp");
+		MyRenderer0_->SetImageAnimationReset("Chapter2_Select0_UnSelected.bmp");
 		MyRenderer1_->SetImage("Chapter2_Select1_Selected.bmp");
 	}
 }

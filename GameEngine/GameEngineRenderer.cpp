@@ -52,6 +52,11 @@ void GameEngineRenderer::SetImage(const std::string& _Name)
 	SetImageScale();
 }
 
+void GameEngineRenderer::SetImageAnimationReset(const std::string& _Name)
+{
+	SetImage(_Name);
+	CurrentAnimation_ = nullptr;
+}
 
 ////// 이미지 회전을 위한 필터 이미지를 지정한다.
 void GameEngineRenderer::SetRotationFilter(const std::string& _Name)
