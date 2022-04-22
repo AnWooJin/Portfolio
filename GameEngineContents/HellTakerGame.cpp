@@ -33,7 +33,7 @@ void HellTakerGame::GameInit()
 	CreateLevel<PlayLevel>("Play");
 	CreateLevel<TalkLevel>("Talk");
 	CreateLevel<EndingLevel>("Ending");
-	ChangeLevel("Talk");
+	ChangeLevel("Opening");
 }
 
 void HellTakerGame::GameLoop()
