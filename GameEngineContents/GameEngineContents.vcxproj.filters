@@ -28,6 +28,12 @@
     <Filter Include="Talk\TalkState">
       <UniqueIdentifier>{9e50b793-0f44-4d71-bc27-1cc1bc45c069}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Talk_Chapter8">
+      <UniqueIdentifier>{0452d53f-08a3-45fc-9a53-74ee7b80993d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Talk_Chapter8\Talk_Chapter8">
+      <UniqueIdentifier>{50f8cc44-3f61-40e3-aff7-799971a303e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HellTakerGame.h" />
@@ -129,6 +135,24 @@
     </ClInclude>
     <ClInclude Include="TalkBackGround.h">
       <Filter>Talk</Filter>
+    </ClInclude>
+    <ClInclude Include="Talk_Chapter8Level.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="TalkCG_Chapter8.h">
+      <Filter>Talk_Chapter8</Filter>
+    </ClInclude>
+    <ClInclude Include="TalkExtraCG_Chapter8.h">
+      <Filter>Talk_Chapter8</Filter>
+    </ClInclude>
+    <ClInclude Include="TalkSelectActor_Chapter8.h">
+      <Filter>Talk_Chapter8</Filter>
+    </ClInclude>
+    <ClInclude Include="TalkText_Chapter8.h">
+      <Filter>Talk_Chapter8</Filter>
+    </ClInclude>
+    <ClInclude Include="TalkBackGround_Chapter8.h">
+      <Filter>Talk_Chapter8</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -246,6 +270,30 @@
     </ClCompile>
     <ClCompile Include="TalkSelectActorState.cpp">
       <Filter>Talk\TalkState</Filter>
+    </ClCompile>
+    <ClCompile Include="Talk_Chapter8Level.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkCG_Chapter8.cpp">
+      <Filter>Talk_Chapter8</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkExtraCG_Chapter8.cpp">
+      <Filter>Talk_Chapter8</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkSelectActor_Chapter8.cpp">
+      <Filter>Talk_Chapter8</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkText_Chapter8.cpp">
+      <Filter>Talk_Chapter8</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkBackGround_Chapter8.cpp">
+      <Filter>Talk_Chapter8</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkSelectActorState_Chapter8.cpp">
+      <Filter>Talk_Chapter8\Talk_Chapter8</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkCG_Chapter8State.cpp">
+      <Filter>Talk_Chapter8\Talk_Chapter8</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

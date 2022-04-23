@@ -3,6 +3,7 @@
 #include "PlayLevel.h"
 #include "TitleLevel.h"
 #include "TalkLevel.h"
+#include "Talk_Chapter8Level.h"
 #include "EndingLevel.h"
 #include <GameEngineBase/GameEngineWindow.h>
 #include <GameEngineBase/GameEngineDirectory.h>
@@ -32,8 +33,9 @@ void HellTakerGame::GameInit()
 	CreateLevel<TitleLevel>("Title");
 	CreateLevel<PlayLevel>("Play");
 	CreateLevel<TalkLevel>("Talk");
+	CreateLevel<Talk_Chapter8Level>("Talk_Chapter8");
 	CreateLevel<EndingLevel>("Ending");
-	ChangeLevel("Opening");
+	ChangeLevel("Talk_Chapter8");
 }
 
 void HellTakerGame::GameLoop()
@@ -371,6 +373,11 @@ void HellTakerGame::GameImageCut()
 	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("PrologueScene.bmp");
 		Image->Cut({ 1280,720 });
+	}
+
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter8CG_Idle.bmp");
+		Image->Cut({ 358,500 });
 	}
 }
 

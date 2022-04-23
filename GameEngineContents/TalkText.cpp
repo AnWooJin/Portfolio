@@ -15,7 +15,7 @@ TalkText::~TalkText()
 
 void TalkText::Start()
 {
-	ChangeState(TalkTextState::Nomal);
+	ChangeState(TalkTextState::Idle);
 }
 
 void TalkText::Update()
@@ -34,8 +34,8 @@ void TalkText::ChangeState(TalkTextState _State)
 	}
 	switch (_State)
 	{
-	case TalkTextState::Nomal:
-		NomalStart();
+	case TalkTextState::Idle:
+		IdleStart();
 		break;
 	case TalkTextState::Success:
 		SuccessStart();
@@ -55,8 +55,8 @@ void TalkText::StateUpdate()
 {
 	switch (CurState_)
 	{
-	case TalkTextState::Nomal:
-		NomalUpdate();
+	case TalkTextState::Idle:
+		IdleUpdate();
 		break;
 	case TalkTextState::Success:
 		SuccessUpdate();
@@ -103,7 +103,7 @@ void TalkText::StateUpdate()
 
 //////////////////  스테이지에 맞는 이미지로 세팅해 주는 함수
 
-void TalkText::ChapterNomalSetting()
+void TalkText::ChapterIdleSetting()
 {
 	int Chapter = dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount();
 

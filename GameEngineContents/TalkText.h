@@ -3,7 +3,7 @@
 
 enum class TalkTextState
 {
-	Nomal,
+	Idle,
 	Success,
 	Bad,
 	Max,
@@ -41,11 +41,11 @@ private:
 private:
 
 
-	void NomalStart();
+	void IdleStart();
 	void SuccessStart();
 	void BadStart();
 
-	void NomalUpdate();
+	void IdleUpdate();
 	void SuccessUpdate();
 	void BadUpdate();
 
@@ -53,7 +53,7 @@ private:
 	////////////////////////////////////  스테이지에 맞는 이미지를 세팅해주는 함수
 private:
 
-	void ChapterNomalSetting();
+	void ChapterIdleSetting();
 
 };
 

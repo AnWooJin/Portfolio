@@ -18,7 +18,7 @@ TalkCG::~TalkCG()
 void TalkCG::Start()
 {
 	MyRenderer_ = CreateRenderer();
-	ChangeState(TalkCGState::Nomal);
+	ChangeState(TalkCGState::Idle);
 }
 
 void TalkCG::Update()
@@ -35,8 +35,8 @@ void TalkCG::ChangeState(TalkCGState _State)
 	CurState_ = _State;
 	switch (_State)
 	{
-	case TalkCGState::Nomal:
-		NomalStart();
+	case TalkCGState::Idle:
+		IdleStart();
 		break;
 	case TalkCGState::Success:
 		SuccessStart();
@@ -52,8 +52,8 @@ void TalkCG::StateUpdate()
 {
 	switch (CurState_)
 	{
-	case TalkCGState::Nomal:
-		NomalUpdate();
+	case TalkCGState::Idle:
+		IdleUpdate();
 		break;
 	case TalkCGState::Success:
 		SuccessUpdate();
@@ -70,5 +70,5 @@ void TalkCG::StateUpdate()
 void TalkCG::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	Chapter_ = dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetChapterCount();
-	//ChangeState(TalkCGState::Nomal);
+	//ChangeState(TalkCGState::Idle);
 }

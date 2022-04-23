@@ -5,7 +5,7 @@
 #include <GameEngine/GameEngine.h>
 #include <GameEngine/GameEngineRenderer.h>
 
-void TalkText::NomalStart()
+void TalkText::IdleStart()
 {
 	SetPosition({ 640, 598 });
 	if (MyRenderer_ == nullptr)
@@ -29,7 +29,7 @@ void TalkText::BadStart()
 }
 
 
-void TalkText::NomalUpdate()
+void TalkText::IdleUpdate()
 {
 	TalkSelectActor* SelectActor = GetLevel()->FindActor<TalkSelectActor>("TalkSelectActor");
 	bool IsSuccess = dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetIsSuccess();

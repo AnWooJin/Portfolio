@@ -4,7 +4,7 @@
 
 enum class TalkCGState
 {
-	Nomal,
+	Idle,
 	Success,
 	Max,
 };
@@ -40,10 +40,10 @@ private:
 private:
 
 
-	void NomalStart();
+	void IdleStart();
 	void SuccessStart();
 
-	void NomalUpdate();
+	void IdleUpdate();
 	void SuccessUpdate();
 
 private:

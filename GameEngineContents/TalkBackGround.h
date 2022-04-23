@@ -1,15 +1,6 @@
 #pragma once
 #include <GameEngine/GameEngineActor.h>
 
-enum class TalkBackGroundState
-{
-	Nomal,
-	Success,
-	Bad,
-	Max,
-};
-
-
 class GameEngineRenderer;
 class TalkBackGround : public GameEngineActor
 {

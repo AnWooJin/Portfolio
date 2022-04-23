@@ -97,7 +97,19 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TalkBackGround_Chapter8.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TalkCG.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TalkCG_Chapter8.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TalkExtraCG_Chapter8.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -109,7 +121,19 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TalkSelectActor_Chapter8.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TalkText.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TalkText_Chapter8.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Talk_Chapter8Level.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -229,11 +253,24 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TalkBackGround_Chapter8.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="TalkCG.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="TalkCGState.cpp" />
+    <ClCompile Include="TalkCG_Chapter8.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TalkCG_Chapter8State.cpp" />
+    <ClCompile Include="TalkExtraCG_Chapter8.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="TalkLevel.cpp">
       <SubType>
       </SubType>
@@ -243,11 +280,24 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="TalkSelectActorState.cpp" />
+    <ClCompile Include="TalkSelectActorState_Chapter8.cpp" />
+    <ClCompile Include="TalkSelectActor_Chapter8.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="TalkText.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="TalkTextState.cpp" />
+    <ClCompile Include="TalkText_Chapter8.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Talk_Chapter8Level.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="TitleSelectActor.cpp">
       <SubType>
       </SubType>

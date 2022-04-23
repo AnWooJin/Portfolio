@@ -5,19 +5,18 @@
 #include <GameEngine/GameEngineRenderer.h>
 #include <GameEngineBase/GameEngineWindow.h>
 
-void TalkCG::NomalStart()
+void TalkCG::IdleStart()
 {
 	TalkCGSetting(Chapter_);
 }
+
 
 void TalkCG::SuccessStart()
 {
 	TalkCGSetting(Chapter_);
 }
 
-
-
-void TalkCG::NomalUpdate()
+void TalkCG::IdleUpdate()
 {
 	if (true == dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetIsSuccess())
 	{
@@ -72,8 +71,8 @@ void TalkCG::Chapter1ImageSetting()
 	SetPosition({ 640, 250 });
 	switch (CurState_)
 	{
-	case TalkCGState::Nomal:
-		MyRenderer_->SetImage("Chapter1CG_Nomal.bmp");
+	case TalkCGState::Idle:
+		MyRenderer_->SetImage("Chapter1CG_Idle.bmp");
 		break;
 	case TalkCGState::Success:
 		MyRenderer_->SetImage("Chapter1CG_Success.bmp");
@@ -88,8 +87,8 @@ void TalkCG::Chapter2ImageSetting()
 	SetPosition({ 640, 250 });
 	switch (CurState_)
 	{
-	case TalkCGState::Nomal:
-		MyRenderer_->SetImage("Chapter2CG_Nomal.bmp");
+	case TalkCGState::Idle:
+		MyRenderer_->SetImage("Chapter2CG_Idle.bmp");
 		break;
 	case TalkCGState::Success:
 		MyRenderer_->SetImage("Chapter2CG_Success.bmp");
@@ -104,8 +103,8 @@ void TalkCG::Chapter3ImageSetting()
 	SetPosition({ 640, 250 });
 	switch (CurState_)
 	{
-	case TalkCGState::Nomal:
-		MyRenderer_->SetImage("Chapter3CG_Nomal.bmp");
+	case TalkCGState::Idle:
+		MyRenderer_->SetImage("Chapter3CG_Idle.bmp");
 		break;
 	case TalkCGState::Success:
 		MyRenderer_->SetImage("Chapter3CG_Success.bmp");
@@ -120,8 +119,8 @@ void TalkCG::Chapter4ImageSetting()
 	SetPosition({ 640, 250 });
 	switch (CurState_)
 	{
-	case TalkCGState::Nomal:
-		MyRenderer_->SetImage("Chapter4CG_Nomal.bmp");
+	case TalkCGState::Idle:
+		MyRenderer_->SetImage("Chapter4CG_Idle.bmp");
 		break;
 	case TalkCGState::Success:
 		MyRenderer_->SetImage("Chapter4CG_Success.bmp");
@@ -136,8 +135,8 @@ void TalkCG::Chapter5ImageSetting()
 	SetPosition({ 640, 250 });
 	switch (CurState_)
 	{
-	case TalkCGState::Nomal:
-		MyRenderer_->SetImage("Chapter5CG_Nomal.bmp");
+	case TalkCGState::Idle:
+		MyRenderer_->SetImage("Chapter5CG_Idle.bmp");
 		break;
 	case TalkCGState::Success:
 		MyRenderer_->SetImage("Chapter5CG_Success.bmp");
@@ -152,8 +151,8 @@ void TalkCG::Chapter6ImageSetting()
 	SetPosition({ 640, 250 });
 	switch (CurState_)
 	{
-	case TalkCGState::Nomal:
-		MyRenderer_->SetImage("Chapter6CG_Nomal.bmp");
+	case TalkCGState::Idle:
+		MyRenderer_->SetImage("Chapter6CG_Idle.bmp");
 		break;
 	case TalkCGState::Success:
 		MyRenderer_->SetImage("Chapter6CG_Success.bmp");
@@ -168,8 +167,8 @@ void TalkCG::Chapter7ImageSetting()
 	SetPosition({ 640, 250 });
 	switch (CurState_)
 	{
-	case TalkCGState::Nomal:
-		MyRenderer_->SetImage("Chapter7CG_Nomal.bmp");
+	case TalkCGState::Idle:
+		MyRenderer_->SetImage("Chapter7CG_Idle.bmp");
 		break;
 	case TalkCGState::Success:
 		MyRenderer_->SetImage("Chapter7CG_Success.bmp");

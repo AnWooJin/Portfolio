@@ -20,12 +20,12 @@ void TalkBackGround::Start()
 	SetPosition({640,300});
 	if (nullptr == MyRenderer_)
 	{
-		MyRenderer_ = CreateRenderer("PlayLevelBG.bmp");
+		MyRenderer_ = CreateRenderer("TalkBG.bmp");
 		BlackRenderer_ = CreateRenderer("BlackBG.bmp");
 	}
 	else
 	{
-		MyRenderer_->SetImage("PlayLevelBG.bmp");
+		MyRenderer_->SetImage("TalkBG.bmp");
 		BlackRenderer_->SetImage("BlackBG.bmp");
 	}
 	BlackRenderer_->SetOrder(0);
