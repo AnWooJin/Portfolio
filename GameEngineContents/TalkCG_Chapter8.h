@@ -4,7 +4,8 @@
 enum class TalkCGState_Chapter8
 {
 	Idle,
-	Success,
+	Success0,
+	Success1,
 	Max,
 };
 
@@ -33,18 +34,18 @@ private:
 	void Start() override;
 	void Update() override;
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
-	void CreateExtraActor0();
-	void CreateExtraActor1();
 
 	void ChangeState(TalkCGState_Chapter8 _State);
 	void StateUpdate();
 
 private:
 	void IdleStart();
-	void SuccessStart();
+	void Success0Start();
+	void Success1Start();
 
 	void IdleUpdate();
-	void SuccessUpdate();
+	void Success0Update();
+	void Success1Update();
 
 };
 

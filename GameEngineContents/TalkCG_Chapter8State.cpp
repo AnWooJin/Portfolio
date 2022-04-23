@@ -1,6 +1,7 @@
+#include "Talk_Chapter8Level.h"
+#include "TalkSelectActor_Chapter8.h"
 #include "TalkCG_Chapter8.h"
 #include "HellTakerGame.h"
-#include "TalkExtraCG_Chapter8.h"
 #include <GameEngine/GameEngine.h>
 #include <GameEngine/GameEngineRenderer.h>
 #include <GameEngineBase/GameEngineWindow.h>
@@ -9,50 +10,73 @@ void TalkCG_Chapter8::IdleStart()
 {
 	if (MyRenderer_ != nullptr)
 	{
-		MyRenderer_->CreateAnimation("Chapter8CG_Idle.bmp", "Chapter8CG_Idle", 0, 9, 0.3f, false);
-		MyRenderer_->ChangeAnimation("Chapter8CG_Idle");
+		MyRenderer_->CreateFolderAnimation("TalkCG_Chapter8", "TalkCG_Chapter8", 0, 154, 0.01f, false);
+		MyRenderer_->ChangeAnimation("TalkCG_Chapter8");
+	}
+	else
+	{
+		MyRenderer_ = CreateRenderer();
+		MyRenderer_->CreateFolderAnimation("TalkCG_Chapter8", "TalkCG_Chapter8", 0, 154, 0.01f, false);
+		MyRenderer_->ChangeAnimation("TalkCG_Chapter8");
 	}
 }
 
-void TalkCG_Chapter8::SuccessStart()
+void TalkCG_Chapter8::Success0Start()
 {
-	
+	if (MyRenderer_ != nullptr)
+	{
+		MyRenderer_->SetImageAnimationReset("Chapter8CG_Success00.bmp");
+		
+	}
+	else
+	{
+		MyRenderer_ = CreateRenderer("Chapter8CG_Success00.bmp");
+	}
+}
+
+void TalkCG_Chapter8::Success1Start()
+{
+	if (MyRenderer_ != nullptr)
+	{
+		MyRenderer_->SetImageAnimationReset("Chapter8CG_Success01.bmp");
+	}
+	else
+	{
+		MyRenderer_ = CreateRenderer("Chapter8CG_Success01.bmp");
+	}
 }
 
 void TalkCG_Chapter8::IdleUpdate()
 {
-	if (4 == MyRenderer_->CurrentAnimation()->WorldCurrentFrame() && false == IsCreateExtraActor_)
+	TalkSelectActor_Chapter8* SelectActor = GetLevel()->FindActor<TalkSelectActor_Chapter8>("TalkSelectActor_Chapter8");
+
+	if (true == SelectActor->GetIsSelect0() && 
+		true == dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetIsSuccess())
 	{
-		CreateExtraActor0();
-		CreateExtraActor1();
-		IsCreateExtraActor_ = true;
+		ChangeState(TalkCGState_Chapter8::Success0);
+		/*if (nullptr != MyRenderer_)
+		{
+			MyRenderer_->Death();
+			MyRenderer_ = nullptr;
+		}*/
 	}
-	if (true == dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetIsSuccess())
+	
+}
+
+void TalkCG_Chapter8::Success0Update()
+{
+	TalkSelectActor_Chapter8* SelectActor = GetLevel()->FindActor<TalkSelectActor_Chapter8>("TalkSelectActor_Chapter8");
+
+	if (true == SelectActor->GetIsSelect1() &&
+		true == dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetIsSuccess())
 	{
-		ChangeState(TalkCGState_Chapter8::Success);
+		ChangeState(TalkCGState_Chapter8::Success1);
 	}
 }
 
-void TalkCG_Chapter8::SuccessUpdate()
+void TalkCG_Chapter8::Success1Update()
 {
-		
+
 }
 
-void TalkCG_Chapter8::CreateExtraActor0()
-{
-	TalkExtraCG_Chapter8* ExtraCG0 = GetLevel()->CreateActor<TalkExtraCG_Chapter8>(2);
-	ExtraCG0->SetMovePos({ 360,250 });
-	ExtraCG0->SetPosition({ 640,250 });
-	
 
-	
-
-	
-}
-
-void TalkCG_Chapter8::CreateExtraActor1()
-{
-	TalkExtraCG_Chapter8* ExtraCG1 = GetLevel()->CreateActor<TalkExtraCG_Chapter8>(2);
-	ExtraCG1->SetMovePos({ 900, 250 });
-	ExtraCG1->SetPosition({ 1180,250 });
-}

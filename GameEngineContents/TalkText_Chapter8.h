@@ -27,6 +27,7 @@ private:
 
 	GameEngineRenderer* MyRenderer_;
 	TalkText_Chapter8State CurState_;
+	float ChangeTime_;
 
 	void Start() override;
 	void Update() override;

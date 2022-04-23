@@ -4,8 +4,9 @@
 #include <GameEngine/GameEngineRenderer.h>
 
 TalkText_Chapter8::TalkText_Chapter8()
-	: MyRenderer_(nullptr),
-	CurState_(TalkText_Chapter8State::Max)
+	: ChangeTime_(2.0f),
+	  MyRenderer_(nullptr),
+	  CurState_(TalkText_Chapter8State::Max)
 {
 }
 
@@ -33,6 +34,7 @@ void TalkText_Chapter8::ChangeState(TalkText_Chapter8State _State)
 	{
 	case TalkText_Chapter8State::Empty:
 		EmptyStart();
+		break;
 	case TalkText_Chapter8State::Idle:
 		IdleStart();
 		break;
@@ -43,6 +45,28 @@ void TalkText_Chapter8::ChangeState(TalkText_Chapter8State _State)
 		Bad1Start();
 		break;
 	case TalkText_Chapter8State::Max:
+		break;
+	default:
+		break;
+	}
+	CurState_ = _State;
+}
+
+void TalkText_Chapter8::StateUpdate()
+{
+	switch (CurState_)
+	{
+	case TalkText_Chapter8State::Empty:
+		EmptyUpdate();
+		break;
+	case TalkText_Chapter8State::Idle:
+		IdleUpdate();
+		break;
+	case TalkText_Chapter8State::Bad0:
+		Bad0Update();
+		break;
+	case TalkText_Chapter8State::Bad1:
+		Bad1Update();
 		break;
 	default:
 		break;

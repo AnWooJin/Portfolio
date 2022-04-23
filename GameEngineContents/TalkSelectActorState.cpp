@@ -108,6 +108,7 @@ void TalkSelectActor::TalkSelectActorChange(int _Chapter)
 		break;
 	case 5:
 		Chapter2Setting();
+		break;
 	case 6:
 		Chapter2Setting();
 		break;

@@ -142,16 +142,10 @@
     <ClInclude Include="TalkCG_Chapter8.h">
       <Filter>Talk_Chapter8</Filter>
     </ClInclude>
-    <ClInclude Include="TalkExtraCG_Chapter8.h">
-      <Filter>Talk_Chapter8</Filter>
-    </ClInclude>
     <ClInclude Include="TalkSelectActor_Chapter8.h">
       <Filter>Talk_Chapter8</Filter>
     </ClInclude>
     <ClInclude Include="TalkText_Chapter8.h">
-      <Filter>Talk_Chapter8</Filter>
-    </ClInclude>
-    <ClInclude Include="TalkBackGround_Chapter8.h">
       <Filter>Talk_Chapter8</Filter>
     </ClInclude>
   </ItemGroup>
@@ -277,22 +271,19 @@
     <ClCompile Include="TalkCG_Chapter8.cpp">
       <Filter>Talk_Chapter8</Filter>
     </ClCompile>
-    <ClCompile Include="TalkExtraCG_Chapter8.cpp">
-      <Filter>Talk_Chapter8</Filter>
-    </ClCompile>
     <ClCompile Include="TalkSelectActor_Chapter8.cpp">
       <Filter>Talk_Chapter8</Filter>
     </ClCompile>
     <ClCompile Include="TalkText_Chapter8.cpp">
       <Filter>Talk_Chapter8</Filter>
     </ClCompile>
-    <ClCompile Include="TalkBackGround_Chapter8.cpp">
-      <Filter>Talk_Chapter8</Filter>
-    </ClCompile>
     <ClCompile Include="TalkSelectActorState_Chapter8.cpp">
       <Filter>Talk_Chapter8\Talk_Chapter8</Filter>
     </ClCompile>
     <ClCompile Include="TalkCG_Chapter8State.cpp">
+      <Filter>Talk_Chapter8\Talk_Chapter8</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkText_Chapter8State.cpp">
       <Filter>Talk_Chapter8\Talk_Chapter8</Filter>
     </ClCompile>
   </ItemGroup>

@@ -371,6 +371,11 @@ void HellTakerGame::GameImageCut()
 	}
 
 	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter8_TalkText_Idle.bmp");
+		Image->Cut({ 1280,244 });
+	}
+
+	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("PrologueScene.bmp");
 		Image->Cut({ 1280,720 });
 	}
@@ -390,6 +395,15 @@ void HellTakerGame::FolderImageLoad()
 		ResourceDir.Move("Resource");
 		ResourceDir.Move("Image");
 		ResourceDir.Move("SceneChange");
+		GameEngineImageManager::GetInst()->FolderImageLoad(ResourceDir.GetFullPath());
+	}
+
+	{
+		GameEngineDirectory ResourceDir;
+		ResourceDir.MoveParent("Portfolio");
+		ResourceDir.Move("Resource");
+		ResourceDir.Move("Image");
+		ResourceDir.Move("TalkCG_Chapter8");
 		GameEngineImageManager::GetInst()->FolderImageLoad(ResourceDir.GetFullPath());
 	}
 }

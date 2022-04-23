@@ -3,6 +3,7 @@
 
 enum class TalkSelectActor_Chapter8State
 {
+	Empty,
 	Booper,
 	SelectActor,
 	Success,
@@ -24,34 +25,51 @@ public:
 
 public:
 
-	bool GetIsSelect()
+	bool GetIsSelect0()
 	{
-		return IsSelect_;
+		return IsSelect0_;
+	}
+
+	bool GetIsSelect1()
+	{
+		return IsSelect1_;
 	}
 private:
 	TalkSelectActor_Chapter8State CurState_;
 
 	GameEngineRenderer* MyRenderer0_;
 	GameEngineRenderer* MyRenderer1_;
+	bool IsSelect0_;
+	bool IsSelect1_;
+
 	bool Selected0_;
-	bool IsSelect_;
+
+	int SelectActorSetNum_;
+
+	float ChangeTime_;
 
 	void Start() override;
 	void Update() override;
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 
-	//void TalkSelectActorChange(int _Chapter);
-	//void TalkSuccessCheck(int _Chapter);
+	void TalkSelectActorChange();
+	void TalkSuccessCheck();
 	void ChangeState(TalkSelectActor_Chapter8State _State);
 	void StateUpdate();
 
-
+	void EmptyStart();
 	void BooperStart();
 	void SelectActorStart();
 	void SuccessStart();
 
+	void EmptyUpdate();
 	void BooperUpdate();
 	void SelectActorUpdate();
 	void SuccessUpdate();
+
+	void Select0Check();
+	void Select1Check();
+	void Select0Setting();
+	void Select1Setting();
 };
 

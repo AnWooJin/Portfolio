@@ -5,8 +5,8 @@
 
 TalkCG_Chapter8::TalkCG_Chapter8()
 	: MyRenderer_(nullptr),
-	CurState_(TalkCGState_Chapter8::Max),
-	IsCreateExtraActor_(false)
+	  CurState_(TalkCGState_Chapter8::Max),
+	  IsCreateExtraActor_(false)
 {
 }
 
@@ -16,7 +16,7 @@ TalkCG_Chapter8::~TalkCG_Chapter8()
 
 void TalkCG_Chapter8::Start()
 {
-	SetPosition({ 640, 250 });
+	SetPosition({ 640, 238 });
 	MyRenderer_ = CreateRenderer();
 	ChangeState(TalkCGState_Chapter8::Idle);
 }
@@ -39,8 +39,11 @@ void TalkCG_Chapter8::ChangeState(TalkCGState_Chapter8 _State)
 	case TalkCGState_Chapter8::Idle:
 		IdleStart();
 		break;
-	case TalkCGState_Chapter8::Success:
-		SuccessStart();
+	case TalkCGState_Chapter8::Success0:
+		Success0Start();
+		break;
+	case TalkCGState_Chapter8::Success1:
+		Success1Start();
 		break;
 	case TalkCGState_Chapter8::Max:
 		break;
@@ -56,8 +59,11 @@ void TalkCG_Chapter8::StateUpdate()
 	case TalkCGState_Chapter8::Idle:
 		IdleUpdate();
 		break;
-	case TalkCGState_Chapter8::Success:
-		SuccessUpdate();
+	case TalkCGState_Chapter8::Success0:
+		Success0Update();
+		break;
+	case TalkCGState_Chapter8::Success1:
+		Success1Update();
 		break;
 	case TalkCGState_Chapter8::Max:
 		break;

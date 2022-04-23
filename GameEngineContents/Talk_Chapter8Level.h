@@ -15,6 +15,30 @@ public:
 	Talk_Chapter8Level& operator=(const Talk_Chapter8Level& _Other) = delete;
 	Talk_Chapter8Level& operator=(Talk_Chapter8Level&& _Other) noexcept = delete;
 
+public:
+	inline int GetTextPage()
+	{
+		return TextPage_;
+	}
+
+	inline void SelectActorCallOn()
+	{
+		SelectActorCall_ = true;
+	}
+
+	inline void SelectActorCallOff()
+	{
+		SelectActorCall_ = false;
+		TextPage_ += 1;
+	}
+
+	bool GetSelectActorCall()
+	{
+		return SelectActorCall_;
+	}
+
+
+
 protected:
 
 
@@ -24,7 +48,8 @@ private:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 	void LevelChangeEnd(GameEngineLevel* _NextLevel) override;
 
-	GameEngineSoundPlayer TitleBgmPlayer_;
 	int TextPage_;
+	GameEngineSoundPlayer TitleBgmPlayer_;
+	bool SelectActorCall_;
 };
 
