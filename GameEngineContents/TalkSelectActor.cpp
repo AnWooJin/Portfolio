@@ -24,6 +24,10 @@ TalkSelectActor::~TalkSelectActor()
 
 void TalkSelectActor::Start()
 {
+	MyRenderer0_ = CreateRenderer();
+	MyRenderer1_ = CreateRenderer();
+	MyRenderer0_->CreateAnimation("Booper.bmp", "Booper", 0, 18, 0.1f);
+	MyRenderer0_->CreateAnimation("Success.bmp", "Success", 0, 8, 0.1f, false);
 	ChangeState(TalkSelectActorState::Booper);
 	LevelRegist("TalkSelectActor");
 }
@@ -48,6 +52,9 @@ void TalkSelectActor::ChangeState(TalkSelectActorState _State)
 	case TalkSelectActorState::SelectActor:
 		SelectActorStart();
 		break;
+	case TalkSelectActorState::Success:
+		SuccessStart();
+		break;
 	case TalkSelectActorState::Max:
 		break;
 	default:
@@ -66,6 +73,9 @@ void TalkSelectActor::StateUpdate()
 		break;
 	case TalkSelectActorState::SelectActor:
 		SelectActorUpdate();
+		break;
+	case TalkSelectActorState::Success:
+		SuccessUpdate();
 		break;
 	case TalkSelectActorState::Max:
 		break;

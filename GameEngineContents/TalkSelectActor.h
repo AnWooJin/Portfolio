@@ -63,13 +63,18 @@ private:
 	void Chapter1Setting();
 	void Chapter2Setting();
 	void Chapter3Setting();
-
-
-
+	void Chapter4Setting();
+	void Chapter5Setting();
+	void Chapter6Setting();
+	void Chapter7Setting();
 private:
 	/////////////////////// 챕터별로 성공여부를 판단하는 함수
 	void Chapter1Check();
 	void Chapter2Check();
 	void Chapter3Check();
+	void Chapter4Check();
+	void Chapter5Check();
+	void Chapter6Check();
+	void Chapter7Check();
 };
 

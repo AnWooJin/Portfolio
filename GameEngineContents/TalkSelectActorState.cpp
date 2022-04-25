@@ -9,23 +9,16 @@
 void TalkSelectActor::BooperStart()
 {
 	SetPosition({ 640, 630 });
-	if (MyRenderer0_ == nullptr)
-	{
-		MyRenderer0_ = CreateRenderer();
-	}
-	MyRenderer0_->CreateAnimation("Booper.bmp", "Booper", 0, 18, 0.1f);
 	MyRenderer0_->ChangeAnimation("Booper");	
+	MyRenderer1_->Off();
 }
 
 
 void TalkSelectActor::SelectActorStart()
 {
-	if (MyRenderer1_ == nullptr)
-	{
-		MyRenderer1_ = CreateRenderer();
-	}
 	SetPosition({ 640, 620 });
 	TalkSelectActorChange(Chapter_);
+	MyRenderer1_->On();
 	MyRenderer1_->SetPivot({ 0, 50 });
 	if (false == GameEngineInput::GetInst()->IsKey("Up"))
 	{
@@ -36,7 +29,9 @@ void TalkSelectActor::SelectActorStart()
 
 void TalkSelectActor::SuccessStart()
 {
-
+	SetPosition({ 640, 640 });
+	MyRenderer1_->Off();
+	MyRenderer0_->ChangeAnimation("Success");
 }
 
 void TalkSelectActor::BooperUpdate()
@@ -69,7 +64,10 @@ void TalkSelectActor::SelectActorUpdate()
 
 void TalkSelectActor::SuccessUpdate()
 {
-
+	if (true == GameEngineInput::GetInst()->IsDown("Next"))
+	{
+		GameEngine::GetInst().ChangeLevel("Play");
+	}
 }
 
 void TalkSelectActor::TalkSuccessCheck(int _Chapter)
@@ -84,6 +82,18 @@ void TalkSelectActor::TalkSuccessCheck(int _Chapter)
 		break;
 	case 3:
 		Chapter3Check();
+		break;
+	case 4:
+		Chapter4Check();
+		break;
+	case 5:
+		Chapter5Check();
+		break;
+	case 6:
+		Chapter6Check();
+		break;
+	case 7:
+		Chapter7Check();
 		break;
 	default:
 		break;
@@ -101,19 +111,19 @@ void TalkSelectActor::TalkSelectActorChange(int _Chapter)
 		Chapter2Setting();
 		break;
 	case 3:
-		Chapter2Setting();
+		Chapter3Setting();
 		break;
 	case 4:
-		Chapter2Setting();
+		Chapter4Setting();
 		break;
 	case 5:
-		Chapter2Setting();
+		Chapter5Setting();
 		break;
 	case 6:
-		Chapter2Setting();
+		Chapter6Setting();
 		break;
 	case 7:
-		Chapter2Setting();
+		Chapter7Setting();
 		break;
 	default:
 		break;
@@ -158,13 +168,73 @@ void TalkSelectActor::Chapter3Setting()
 
 	if (Selected0_ == true)
 	{
-		MyRenderer0_->SetImageAnimationReset("Chapter2_Select0_Selected.bmp");
-		MyRenderer1_->SetImage("Chapter2_Select1_UnSelected.bmp");
+		MyRenderer0_->SetImageAnimationReset("Chapter3_Select0_Selected.bmp");
+		MyRenderer1_->SetImage("Chapter3_Select1_UnSelected.bmp");
 	}
 	else
 	{
-		MyRenderer0_->SetImageAnimationReset("Chapter2_Select0_UnSelected.bmp");
-		MyRenderer1_->SetImage("Chapter2_Select1_Selected.bmp");
+		MyRenderer0_->SetImageAnimationReset("Chapter3_Select0_UnSelected.bmp");
+		MyRenderer1_->SetImage("Chapter3_Select1_Selected.bmp");
+	}
+}
+
+void TalkSelectActor::Chapter4Setting()
+{
+
+	if (Selected0_ == true)
+	{
+		MyRenderer0_->SetImageAnimationReset("Chapter4_Select0_Selected.bmp");
+		MyRenderer1_->SetImage("Chapter4_Select1_UnSelected.bmp");
+	}
+	else
+	{
+		MyRenderer0_->SetImageAnimationReset("Chapter4_Select0_UnSelected.bmp");
+		MyRenderer1_->SetImage("Chapter4_Select1_Selected.bmp");
+	}
+}
+
+void TalkSelectActor::Chapter5Setting()
+{
+
+	if (Selected0_ == true)
+	{
+		MyRenderer0_->SetImageAnimationReset("Chapter5_Select0_Selected.bmp");
+		MyRenderer1_->SetImage("Chapter5_Select1_UnSelected.bmp");
+	}
+	else
+	{
+		MyRenderer0_->SetImageAnimationReset("Chapter5_Select0_UnSelected.bmp");
+		MyRenderer1_->SetImage("Chapter5_Select1_Selected.bmp");
+	}
+}
+
+void TalkSelectActor::Chapter6Setting()
+{
+
+	if (Selected0_ == true)
+	{
+		MyRenderer0_->SetImageAnimationReset("Chapter6_Select0_Selected.bmp");
+		MyRenderer1_->SetImage("Chapter6_Select1_UnSelected.bmp");
+	}
+	else
+	{
+		MyRenderer0_->SetImageAnimationReset("Chapter6_Select0_UnSelected.bmp");
+		MyRenderer1_->SetImage("Chapter6_Select1_Selected.bmp");
+	}
+}
+
+void TalkSelectActor::Chapter7Setting()
+{
+
+	if (Selected0_ == true)
+	{
+		MyRenderer0_->SetImageAnimationReset("Chapter7_Select0_Selected.bmp");
+		MyRenderer1_->SetImage("Chapter7_Select1_UnSelected.bmp");
+	}
+	else
+	{
+		MyRenderer0_->SetImageAnimationReset("Chapter7_Select0_UnSelected.bmp");
+		MyRenderer1_->SetImage("Chapter7_Select1_Selected.bmp");
 	}
 }
 
@@ -179,15 +249,11 @@ void TalkSelectActor::Chapter1Check()
 	if (Selected0_ == false)
 	{
 		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOn();
-		MyRenderer0_->Death();
-		MyRenderer1_->Death();
-		MyRenderer0_ = nullptr;
-		MyRenderer1_ = nullptr;
-		ChangeState(TalkSelectActorState::Booper);
+		ChangeState(TalkSelectActorState::Success);
 	}
 	else
 	{
-		//dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
+		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
 		ChangeState(TalkSelectActorState::Booper);
 	}
 	
@@ -213,11 +279,28 @@ void TalkSelectActor::Chapter2Check()
 void TalkSelectActor::Chapter3Check()
 {
 	IsSelect_ = true;
-	///////  두번째 선택지가 정답이다.
-	if (Selected0_ == false)
+	///////  첫번째 선택지가 정답이다.
+	if (Selected0_ == true)
 	{
 		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOn();
+		ChangeState(TalkSelectActorState::Success);
+	}
+	else
+	{
+		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
 		ChangeState(TalkSelectActorState::Booper);
+	}
+
+}
+
+void TalkSelectActor::Chapter4Check()
+{
+	IsSelect_ = true;
+	///////  첫번째 선택지가 정답이다.
+	if (Selected0_ == true)
+	{
+		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOn();
+		ChangeState(TalkSelectActorState::Success);
 	}
 	else
 	{
@@ -225,4 +308,50 @@ void TalkSelectActor::Chapter3Check()
 		ChangeState(TalkSelectActorState::Booper);
 	}
 
+}
+
+
+void TalkSelectActor::Chapter5Check()
+{
+	IsSelect_ = true;
+	///////  첫번째 선택지가 정답이다.
+	if (Selected0_ == true)
+	{
+		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOn();
+		ChangeState(TalkSelectActorState::Success);
+	}
+	else
+	{
+		//dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
+		ChangeState(TalkSelectActorState::Booper);
+	}
+
+}
+
+
+void TalkSelectActor::Chapter6Check()
+{
+	IsSelect_ = true;
+	///////  첫번째 선택지가 정답이다.
+	if (Selected0_ == true)
+	{
+		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOn();
+		ChangeState(TalkSelectActorState::Success);
+	}
+	else
+	{
+		//dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
+		ChangeState(TalkSelectActorState::Booper);
+	}
+
+}
+
+
+void TalkSelectActor::Chapter7Check()
+{
+	IsSelect_ = true;
+	///////  두번째 선택지가 정답이다.
+	
+	dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOn();
+	ChangeState(TalkSelectActorState::Success);
 }
