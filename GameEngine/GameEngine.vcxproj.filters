@@ -58,6 +58,9 @@
     <ClInclude Include="GameEngineRendererTileMap.h">
       <Filter>Contents</Filter>
     </ClInclude>
+    <ClInclude Include="GameEngineFont.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp" />
@@ -90,6 +93,9 @@
     </ClCompile>
     <ClCompile Include="GameEngineRendererTileMap.cpp">
       <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineFont.cpp">
+      <Filter>Resource</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

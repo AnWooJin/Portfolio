@@ -2,6 +2,7 @@
 #include "TalkLevel.h"
 #include "HellTakerGame.h"
 #include <GameEngine/GameEngineRenderer.h>
+#include <GameEngineBase/GameEngineInput.h>
 
 TalkText::TalkText()
 	: MyRenderer_(nullptr),

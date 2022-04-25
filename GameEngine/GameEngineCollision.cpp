@@ -48,6 +48,11 @@ bool GameEngineCollision::CollisionCheck(
 	CollisionType _Target /*= CollisionType::Rect*/
 	)
 {
+	if (false || true == IsDeath())
+	{
+		return false;
+	}
+
 	std::map<std::string, std::list<GameEngineCollision*>>::iterator FindTargetGroup = GetActor()->GetLevel()->AllCollision_.find(_TargetGroup);
 
 	if (FindTargetGroup == GetActor()->GetLevel()->AllCollision_.end())

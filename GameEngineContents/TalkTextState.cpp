@@ -4,6 +4,7 @@
 #include "TalkSelectActor.h"
 #include <GameEngine/GameEngine.h>
 #include <GameEngine/GameEngineRenderer.h>
+#include <GameEngineBase/GameEngineInput.h>
 
 void TalkText::IdleStart()
 {
@@ -39,12 +40,18 @@ void TalkText::IdleUpdate()
 
 void TalkText::SuccessUpdate()
 {
-	int a = 0;
+	if (true == GameEngineInput::GetInst()->IsDown("Next"))
+	{
+		GameEngine::GetInst().ChangeLevel("Play");
+	}
 }
 
 void TalkText::BadUpdate()
 {
-	int a = 0;
+	if (true == GameEngineInput::GetInst()->IsDown("Next"))
+	{
+		GameEngine::GetInst().ChangeLevel("Death");
+	}
 }
 
 

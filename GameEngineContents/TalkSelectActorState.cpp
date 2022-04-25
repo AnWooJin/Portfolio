@@ -64,10 +64,6 @@ void TalkSelectActor::SelectActorUpdate()
 
 void TalkSelectActor::SuccessUpdate()
 {
-	if (true == GameEngineInput::GetInst()->IsDown("Next"))
-	{
-		GameEngine::GetInst().ChangeLevel("Play");
-	}
 }
 
 void TalkSelectActor::TalkSuccessCheck(int _Chapter)
