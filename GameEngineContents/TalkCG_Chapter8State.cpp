@@ -10,13 +10,13 @@ void TalkCG_Chapter8::IdleStart()
 {
 	if (MyRenderer_ != nullptr)
 	{
-		MyRenderer_->CreateFolderAnimation("TalkCG_Chapter8", "TalkCG_Chapter8", 0, 154, 0.01f, false);
+		MyRenderer_->CreateFolderAnimation("TalkCG_Chapter8", "TalkCG_Chapter8", 0, 154, 0.015f, false);
 		MyRenderer_->ChangeAnimation("TalkCG_Chapter8");
 	}
 	else
 	{
 		MyRenderer_ = CreateRenderer();
-		MyRenderer_->CreateFolderAnimation("TalkCG_Chapter8", "TalkCG_Chapter8", 0, 154, 0.01f, false);
+		MyRenderer_->CreateFolderAnimation("TalkCG_Chapter8", "TalkCG_Chapter8", 0, 154, 0.015f, false);
 		MyRenderer_->ChangeAnimation("TalkCG_Chapter8");
 	}
 }

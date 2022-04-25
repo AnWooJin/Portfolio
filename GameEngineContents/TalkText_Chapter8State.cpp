@@ -46,7 +46,14 @@ void TalkText_Chapter8::Bad0Start()
 
 void TalkText_Chapter8::Bad1Start()
 {
-
+	if (MyRenderer_ == nullptr)
+	{
+		MyRenderer_ = CreateRenderer("Chapter8_TalkText_Bad01.bmp");
+	}
+	else
+	{
+		MyRenderer_->SetImage("Chapter8_TalkText_Bad01.bmp");
+	}
 }
 
 void TalkText_Chapter8::EmptyUpdate()
