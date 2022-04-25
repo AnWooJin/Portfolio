@@ -180,13 +180,13 @@ void TalkSelectActor_Chapter8::Select0Setting()
 
 	if (Selected0_ == true)
 	{
-		MyRenderer0_->SetImageAnimationReset("Chapter1_Select0_Selected.bmp");
-		MyRenderer1_->SetImage("Chapter1_Select1_UnSelected.bmp");
+		MyRenderer0_->SetImageAnimationReset("Chapter8_0_Select0_Selected.bmp");
+		MyRenderer1_->SetImage("Chapter8_0_Select1_UnSelected.bmp");
 	}
 	else
 	{
-		MyRenderer0_->SetImageAnimationReset("Chapter1_Select0_UnSelected.bmp");
-		MyRenderer1_->SetImage("Chapter1_Select1_Selected.bmp");
+		MyRenderer0_->SetImageAnimationReset("Chapter8_0_Select0_UnSelected.bmp");
+		MyRenderer1_->SetImage("Chapter8_0_Select1_Selected.bmp");
 	}
 }
 
@@ -195,12 +195,12 @@ void TalkSelectActor_Chapter8::Select1Setting()
 
 	if (Selected0_ == true)
 	{
-		MyRenderer0_->SetImageAnimationReset("Chapter2_Select0_Selected.bmp");
-		MyRenderer1_->SetImage("Chapter2_Select1_UnSelected.bmp");
+		MyRenderer0_->SetImageAnimationReset("Chapter8_1_Select0_Selected.bmp");
+		MyRenderer1_->SetImage("Chapter8_1_Select1_UnSelected.bmp");
 	}
 	else
 	{
-		MyRenderer0_->SetImageAnimationReset("Chapter2_Select0_UnSelected.bmp");
-		MyRenderer1_->SetImage("Chapter2_Select1_Selected.bmp");
+		MyRenderer0_->SetImageAnimationReset("Chapter8_1_Select0_UnSelected.bmp");
+		MyRenderer1_->SetImage("Chapter8_1_Select1_Selected.bmp");
 	}
 }
