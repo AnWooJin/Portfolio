@@ -29,7 +29,7 @@ void TalkSelectActor::SelectActorStart()
 
 void TalkSelectActor::SuccessStart()
 {
-	SetPosition({ 640, 640 });
+	SetPosition({ 640, 652 });
 	MyRenderer1_->Off();
 	MyRenderer0_->ChangeAnimation("Success");
 }

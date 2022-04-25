@@ -16,8 +16,8 @@ TalkText::~TalkText()
 void TalkText::Start()
 {
 	SetPosition({ 640, 598 });
-	MyRenderer_ = CreateRenderer();
 	ChangeState(TalkTextState::Idle);
+	ChapterTextSetting();
 }
 
 void TalkText::Update()
@@ -25,33 +25,6 @@ void TalkText::Update()
 	StateUpdate();
 }
 
-
-
-
-void TalkText::ChangeState(TalkTextState _State)
-{
-	if (CurState_ == _State)
-	{
-		return;
-	}
-	switch (_State)
-	{
-	case TalkTextState::Idle:
-		IdleStart();
-		break;
-	case TalkTextState::Success:
-		SuccessStart();
-		break;
-	case TalkTextState::Bad:
-		BadStart();
-		break;
-	case TalkTextState::Max:
-		break;
-	default:
-		break;
-	}
-	CurState_ = _State;
-}
 
 void TalkText::StateUpdate()
 {
