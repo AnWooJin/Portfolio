@@ -364,6 +364,10 @@ void HellTakerGame::GameImageCut()
 		Image->Cut({ 60,60 });
 	}
 
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Success.bmp");
+		Image->Cut({ 740,134 });
+	}
 
 	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("TitleText.bmp");
@@ -380,10 +384,6 @@ void HellTakerGame::GameImageCut()
 		Image->Cut({ 1280,720 });
 	}
 
-	{
-		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter8CG_Idle.bmp");
-		Image->Cut({ 358,500 });
-	}
 }
 
 void HellTakerGame::FolderImageLoad()

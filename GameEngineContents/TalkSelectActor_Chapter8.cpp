@@ -1,4 +1,5 @@
 #include "TalkSelectActor_Chapter8.h"
+#include <GameEngine/GameEngineRenderer.h>
 
 TalkSelectActor_Chapter8::TalkSelectActor_Chapter8()
 	:MyRenderer0_(nullptr),
@@ -19,6 +20,12 @@ TalkSelectActor_Chapter8::~TalkSelectActor_Chapter8()
 
 void TalkSelectActor_Chapter8::Start()
 {
+	MyRenderer0_ = CreateRenderer();
+	MyRenderer1_ = CreateRenderer();
+	MyRenderer0_->Off();
+	MyRenderer1_->Off();
+	MyRenderer0_->CreateAnimation("Booper.bmp", "Booper", 0, 18, 0.1f);
+	MyRenderer0_->CreateAnimation("Success.bmp", "Success", 0, 8, 0.1f,false);
 	ChangeState(TalkSelectActor_Chapter8State::Empty);
 	
 }

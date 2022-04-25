@@ -13,28 +13,19 @@ void TalkSelectActor_Chapter8::EmptyStart()
 void TalkSelectActor_Chapter8::BooperStart()
 {
 	SetPosition({ 640, 630 });
-	if (MyRenderer0_ == nullptr)
+	if (false == MyRenderer0_->IsUpdate())
 	{
-		MyRenderer0_ = CreateRenderer();
-		MyRenderer1_ = CreateRenderer();
-		MyRenderer0_->CreateAnimation("Booper.bmp", "Booper", 0, 18, 0.1f);
-		MyRenderer1_->Off();
+		MyRenderer0_->On();
 	}
-	
 	MyRenderer0_->ChangeAnimation("Booper");
 }
 
 void TalkSelectActor_Chapter8::SelectActorStart()
 {
 	dynamic_cast<Talk_Chapter8Level*>(GetLevel())->SelectActorCallOn();
-	if (MyRenderer1_ == nullptr)
-	{
-		MyRenderer1_ = CreateRenderer();
-	}
 	MyRenderer1_->On();
 	SetPosition({ 640, 620 });
 	MyRenderer1_->SetPivot({ 0, 50 });
-	
 	TalkSelectActorChange();
 	if (false == GameEngineInput::GetInst()->IsKey("Up"))
 	{
@@ -45,7 +36,8 @@ void TalkSelectActor_Chapter8::SelectActorStart()
 
 void TalkSelectActor_Chapter8::SuccessStart()
 {
-	
+	SetPosition({ 640, 640 });
+	MyRenderer0_->ChangeAnimation("Success");
 }
 
 void TalkSelectActor_Chapter8::EmptyUpdate()
@@ -80,22 +72,20 @@ void TalkSelectActor_Chapter8::SelectActorUpdate()
 		TalkSelectActorChange();
 		GameEngineSound::SoundPlayOneShot("button_menu_highlight_01.wav");	
 	}
-	if (true == GameEngineInput::GetInst()->IsDown("Next") && true == IsSelect0_)
-	{
-		GameEngineSound::SoundPlayOneShot("dialogue_text_end_01.wav");
-		TalkSuccessCheck();
-	}
-	else if (true == GameEngineInput::GetInst()->IsDown("Next"))
+
+	if (true == GameEngineInput::GetInst()->IsDown("Next"))
 	{	
 		GameEngineSound::SoundPlayOneShot("dialogue_text_end_01.wav");
 		TalkSuccessCheck();
-		ChangeState(TalkSelectActor_Chapter8State::Booper);
 	}
 }
  //TextPage = 5
 void TalkSelectActor_Chapter8::SuccessUpdate()
 {
-
+	if (true == GameEngineInput::GetInst()->IsDown("Next"))
+	{
+		ChangeState(TalkSelectActor_Chapter8State::Booper);
+	}
 }
 void TalkSelectActor_Chapter8::TalkSuccessCheck()
 {
@@ -138,18 +128,12 @@ void TalkSelectActor_Chapter8::Select0Check()
 	if (Selected0_ == false)
 	{
 		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOn();
-		MyRenderer0_->Death();
-		MyRenderer1_->Death();
-		MyRenderer0_ = nullptr;
-		MyRenderer1_ = nullptr;
-		ChangeState(TalkSelectActor_Chapter8State::Booper);
 	}
 	else
 	{
 		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
-		ChangeState(TalkSelectActor_Chapter8State::Booper);
 	}
-
+	ChangeState(TalkSelectActor_Chapter8State::Booper);
 }
 
 void TalkSelectActor_Chapter8::Select1Check()
@@ -161,11 +145,7 @@ void TalkSelectActor_Chapter8::Select1Check()
 	if (Selected0_ == false)
 	{
 		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOn();
-		MyRenderer0_->Death();
-		MyRenderer1_->Death();
-		MyRenderer0_ = nullptr;
-		MyRenderer1_ = nullptr;
-		ChangeState(TalkSelectActor_Chapter8State::Booper);
+		ChangeState(TalkSelectActor_Chapter8State::Success);
 	}
 	else
 	{

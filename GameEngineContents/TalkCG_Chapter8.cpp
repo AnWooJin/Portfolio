@@ -17,8 +17,7 @@ TalkCG_Chapter8::~TalkCG_Chapter8()
 void TalkCG_Chapter8::Start()
 {
 	SetPosition({ 640, 238 });
-	MyRenderer_ = CreateRenderer();
-	ChangeState(TalkCGState_Chapter8::Idle);
+	ChangeState(TalkCGState_Chapter8::Animation);
 }
 
 void TalkCG_Chapter8::Update()
@@ -36,6 +35,9 @@ void TalkCG_Chapter8::ChangeState(TalkCGState_Chapter8 _State)
 	
 	switch (_State)
 	{
+	case TalkCGState_Chapter8::Animation:
+		AnimationStart();
+		break;
 	case TalkCGState_Chapter8::Idle:
 		IdleStart();
 		break;
@@ -56,6 +58,9 @@ void TalkCG_Chapter8::StateUpdate()
 {
 	switch (CurState_)
 	{
+	case TalkCGState_Chapter8::Animation:
+		AnimationUpdate();
+		break;
 	case TalkCGState_Chapter8::Idle:
 		IdleUpdate();
 		break;

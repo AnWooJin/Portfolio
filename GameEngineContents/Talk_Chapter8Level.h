@@ -21,6 +21,11 @@ public:
 		return TextPage_;
 	}
 
+	void NextPage()
+	{
+		TextPage_ += 1;
+	}
+
 	inline void SelectActorCallOn()
 	{
 		SelectActorCall_ = true;

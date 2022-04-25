@@ -33,7 +33,6 @@ void Talk_Chapter8Level::Update()
 	if (true == GameEngineInput::GetInst()->IsDown("Next") && false == SelectActorCall_)
 	{
 		GameEngineSound::SoundPlayOneShot("dialogue_text_end_01.wav");
-
 		if (TextPage_ == 1 || TextPage_ == 3)
 		{
 			SelectActorCallOn();

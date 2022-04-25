@@ -3,6 +3,7 @@
 
 enum class TalkCGState_Chapter8
 {
+	Animation,
 	Idle,
 	Success0,
 	Success1,
@@ -39,10 +40,12 @@ private:
 	void StateUpdate();
 
 private:
+	void AnimationStart();
 	void IdleStart();
 	void Success0Start();
 	void Success1Start();
 
+	void AnimationUpdate();
 	void IdleUpdate();
 	void Success0Update();
 	void Success1Update();
