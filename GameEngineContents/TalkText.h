@@ -53,7 +53,14 @@ private:
 	////////////////////////////////////  스테이지에 맞는 이미지를 세팅해주는 함수
 private:
 
-	void ChapterIdleSetting();
+	void ChapterTextSetting();
 
+	void Chapter1TextSetting();
+	void Chapter2TextSetting();
+	void Chapter3TextSetting();
+	void Chapter4TextSetting();
+	void Chapter5TextSetting();
+	void Chapter6TextSetting();
+	void Chapter7TextSetting();
 };
 

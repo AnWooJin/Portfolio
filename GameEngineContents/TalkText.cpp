@@ -15,6 +15,8 @@ TalkText::~TalkText()
 
 void TalkText::Start()
 {
+	SetPosition({ 640, 598 });
+	MyRenderer_ = CreateRenderer();
 	ChangeState(TalkTextState::Idle);
 }
 
@@ -72,53 +74,5 @@ void TalkText::StateUpdate()
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//////////////////  스테이지에 맞는 이미지로 세팅해 주는 함수
-
-void TalkText::ChapterIdleSetting()
-{
-	int Chapter = dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount();
-
-	switch (Chapter)
-	{
-	case 1:
-		MyRenderer_->SetImage("Chapter1_TalkText.bmp");
-		break;
-	case 2:
-		break;
-	case 3:
-		break;
-	default:
-		break;
-	}
-}
 
 
