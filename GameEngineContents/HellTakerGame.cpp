@@ -300,6 +300,22 @@ void  HellTakerGame::GameImageLoad()
 			GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
 		}
 	}
+
+
+	{
+		GameEngineDirectory ResourceDir;
+
+		ResourceDir.MoveParent("Portfolio");
+		ResourceDir.Move("Resource");
+		ResourceDir.Move("Image");
+		ResourceDir.Move("DeathScene");
+		std::vector<GameEngineFile> AllImageFileList = ResourceDir.GetAllFile("Bmp");
+
+		for (size_t i = 0; i < AllImageFileList.size(); i++)
+		{
+			GameEngineImageManager::GetInst()->Load(AllImageFileList[i].GetFullPath());
+		}
+	}
 }
 
 void HellTakerGame::GameImageCut()
@@ -389,6 +405,12 @@ void HellTakerGame::GameImageCut()
 	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("DeathScene.bmp");
 		Image->Cut({ 1080,330 });
+	}
+
+
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter6_DeathScene.bmp");
+		Image->Cut({ 1280,720 });
 	}
 }
 

@@ -7,7 +7,8 @@
 DeathScene::DeathScene()
 	: MyRenderer_(nullptr),
 	  CurState_(DeathSceneState::Max),
-	  Chapter_(0)
+	  Chapter_(0),
+	  Chapter6Index_(0)
 {
 }
 
@@ -28,8 +29,6 @@ void DeathScene::Start()
 	}
 	MyRenderer_->CreateAnimation("DeathScene.bmp", "DeathScene", 0, 8, 0.1f);
 	CreateRenderer("BlackBG.bmp", 0)->SetPivot({0, 60});
-
-	ChangeState(DeathSceneState::Ani);
 }
 
 void DeathScene::Update()
@@ -60,6 +59,9 @@ void DeathScene::ChangeState(DeathSceneState _State)
 	case DeathSceneState::Idle:
 		IdleStart();
 		break;
+	case DeathSceneState::Chapter6:
+		Chapter6Start();
+		break;
 	case DeathSceneState::Max:
 		break;
 	default:
@@ -77,9 +79,25 @@ void DeathScene::StateUpdate()
 	case DeathSceneState::Idle:
 		IdleUpdate();
 		break;
+	case DeathSceneState::Chapter6:
+		Chapter6Update();
+		break;
 	case DeathSceneState::Max:
 		break;
 	default:
 		break;
+	}
+}
+
+void DeathScene::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	Chapter_ = dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetChapterCount();
+	if (Chapter_ != 6)
+	{
+		ChangeState(DeathSceneState::Ani);
+	}
+	else
+	{
+		ChangeState(DeathSceneState::Chapter6);
 	}
 }
