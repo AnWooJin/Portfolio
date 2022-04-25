@@ -2,6 +2,7 @@
 #include "OpeningLevel.h"
 #include "PlayLevel.h"
 #include "TitleLevel.h"
+#include "DeathLevel.h"
 #include "TalkLevel.h"
 #include "Talk_Chapter8Level.h"
 #include "EndingLevel.h"
@@ -33,9 +34,10 @@ void HellTakerGame::GameInit()
 	CreateLevel<TitleLevel>("Title");
 	CreateLevel<PlayLevel>("Play");
 	CreateLevel<TalkLevel>("Talk");
+	CreateLevel<DeathLevel>("Death");
 	CreateLevel<Talk_Chapter8Level>("Talk_Chapter8");
 	CreateLevel<EndingLevel>("Ending");
-	ChangeLevel("Talk_Chapter8");
+	ChangeLevel("Death");
 }
 
 void HellTakerGame::GameLoop()
@@ -384,6 +386,10 @@ void HellTakerGame::GameImageCut()
 		Image->Cut({ 1280,720 });
 	}
 
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("DeathScene.bmp");
+		Image->Cut({ 1080,330 });
+	}
 }
 
 void HellTakerGame::FolderImageLoad()

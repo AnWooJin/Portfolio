@@ -23,10 +23,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="BadEnding.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="BlackBackGround.h">
       <SubType>
       </SubType>
@@ -40,11 +36,11 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ClearAni.h">
+    <ClInclude Include="DeathLevel.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="DeathAni.h">
+    <ClInclude Include="DeathScene.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -171,10 +167,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="BadEnding.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="BlackBackGround.cpp">
       <SubType>
       </SubType>
@@ -188,14 +180,15 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="ClearAni.cpp">
+    <ClCompile Include="DeathLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="DeathAni.cpp">
+    <ClCompile Include="DeathScene.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="DeathSceneState.cpp" />
     <ClCompile Include="DevilSD.cpp">
       <SubType>
       </SubType>

@@ -22,17 +22,23 @@
     <Filter Include="Ending">
       <UniqueIdentifier>{c3e08289-df0b-494a-add0-56e7f1fb5248}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Talk_Chapter8">
+      <UniqueIdentifier>{0452d53f-08a3-45fc-9a53-74ee7b80993d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Talk_Chapter8\Talk_Chapter8">
+      <UniqueIdentifier>{50f8cc44-3f61-40e3-aff7-799971a303e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Death">
+      <UniqueIdentifier>{03b8cb92-df48-4a2e-a15b-d19252f1e3eb}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Talk">
       <UniqueIdentifier>{4a717dff-d580-4b1d-8bcf-10d62d8ffeb0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Talk\TalkState">
       <UniqueIdentifier>{9e50b793-0f44-4d71-bc27-1cc1bc45c069}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Talk_Chapter8">
-      <UniqueIdentifier>{0452d53f-08a3-45fc-9a53-74ee7b80993d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Talk_Chapter8\Talk_Chapter8">
-      <UniqueIdentifier>{50f8cc44-3f61-40e3-aff7-799971a303e1}</UniqueIdentifier>
+    <Filter Include="Death\DeathState">
+      <UniqueIdentifier>{c158ab13-f1aa-4983-80d4-86178cc245f2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -49,34 +55,13 @@
     <ClInclude Include="TitleBackGround.h">
       <Filter>Title</Filter>
     </ClInclude>
-    <ClInclude Include="Block.h">
-      <Filter>Global</Filter>
-    </ClInclude>
     <ClInclude Include="MoveEffect.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="DeathAni.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="BadEnding.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="Thorn.h">
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="Flame.h">
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="LookBlock.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="Key.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="BotUI.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="ClearAni.h">
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="TitleCG.h">
@@ -148,6 +133,24 @@
     <ClInclude Include="TalkText_Chapter8.h">
       <Filter>Talk_Chapter8</Filter>
     </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>Play</Filter>
+    </ClInclude>
+    <ClInclude Include="Thorn.h">
+      <Filter>Play</Filter>
+    </ClInclude>
+    <ClInclude Include="Key.h">
+      <Filter>Play</Filter>
+    </ClInclude>
+    <ClInclude Include="BotUI.h">
+      <Filter>Play</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathScene.h">
+      <Filter>Death</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HellTakerGame.cpp" />
@@ -163,34 +166,13 @@
     <ClCompile Include="TitleBackGround.cpp">
       <Filter>Title</Filter>
     </ClCompile>
-    <ClCompile Include="Block.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
     <ClCompile Include="MoveEffect.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="DeathAni.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="BadEnding.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="Thorn.cpp">
       <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="Flame.cpp">
       <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="LookBlock.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="Key.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="BotUI.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="ClearAni.cpp">
       <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="TitleCG.cpp">
@@ -285,6 +267,27 @@
     </ClCompile>
     <ClCompile Include="TalkText_Chapter8State.cpp">
       <Filter>Talk_Chapter8\Talk_Chapter8</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>Play</Filter>
+    </ClCompile>
+    <ClCompile Include="Thorn.cpp">
+      <Filter>Play</Filter>
+    </ClCompile>
+    <ClCompile Include="Key.cpp">
+      <Filter>Play</Filter>
+    </ClCompile>
+    <ClCompile Include="BotUI.cpp">
+      <Filter>Play</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathLevel.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathScene.cpp">
+      <Filter>Death</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathSceneState.cpp">
+      <Filter>Death\DeathState</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

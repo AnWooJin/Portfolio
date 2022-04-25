@@ -22,9 +22,7 @@ public:
 	PlayLevel& operator=(PlayLevel&& _Other) noexcept = delete;
 
 protected:
-	void Loading() override;
-	void Update() override;
-	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
+	
 private:
 	Player* MyPlayer_;
 	BackGroundMap* MyMap_;
@@ -32,8 +30,10 @@ private:
 	std::vector<Block*> Blocks_;
 	std::vector<Skull*> Skulls_;
 
+	void Loading() override;
+	void Update() override;
+	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 
-	void NextChapter();
 	void SkullSeting(int _ChapterLevel);
 	void BlockSetting(int _ChapterLevel);
 
