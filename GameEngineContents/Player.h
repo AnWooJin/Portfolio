@@ -1,6 +1,16 @@
 #pragma once
 #include <GameEngine/GameEngineActor.h>
 
+enum class PlayerState
+{
+	Idle,
+	Move,
+	Attack,
+	Victory,
+	Max,
+};
+
+
 class GameEngineImage;
 class Player : public GameEngineActor
 {
@@ -24,14 +34,35 @@ private:
 	void Start() override;
 	void Update() override;
 	void Render() override;
-	void KeyCheck();
+	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
+
+	void ChangeState(PlayerState _State);
+	void StateUpdate();
 	void CreateMoveEffect();
+	void ChangeAnimation();
+
 	bool IsMoveKey();
+	void PlayerMove();
 private:
-	GameEngineRenderer* MyRender_;
-	GameEngineRenderer* MyMoveRender_;
+	GameEngineRenderer* MyRenderer_;
 	GameEngineImage* ColMapImage_;
+	PlayerState CurState_;
+	std::string dir_;
+	std::string State_;
 	float KeyCheckTime_;
 	bool IsKeyOn_;
+
+
+private:
+
+	void IdleStart();
+	void MoveStart();
+	void AttackStart();
+	void VictoryStart();
+
+	void IdleUpdate();
+	void MoveUpdate();
+	void AttackUpdate();
+	void VictoryUpdate();
 };
 

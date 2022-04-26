@@ -2,6 +2,7 @@
 #include "OpeningLevel.h"
 #include "PlayLevel.h"
 #include "TitleLevel.h"
+#include "SceneChangeLevel.h"
 #include "DeathLevel.h"
 #include "TalkLevel.h"
 #include "Talk_Chapter8Level.h"
@@ -35,9 +36,10 @@ void HellTakerGame::GameInit()
 	CreateLevel<PlayLevel>("Play");
 	CreateLevel<TalkLevel>("Talk");
 	CreateLevel<DeathLevel>("Death");
+	CreateLevel<SceneChangeLevel>("SceneChange");
 	CreateLevel<Talk_Chapter8Level>("Talk_Chapter8");
 	CreateLevel<EndingLevel>("Ending");
-	ChangeLevel("Talk");
+	ChangeLevel("SceneChange");
 }
 
 void HellTakerGame::GameLoop()

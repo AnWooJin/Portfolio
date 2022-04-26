@@ -89,6 +89,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SceneChangeLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SceneChanger.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TalkBackGround.h">
       <SubType>
       </SubType>
@@ -230,7 +238,16 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerState.cpp" />
     <ClCompile Include="PlayLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SceneChangeLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SceneChanger.cpp">
       <SubType>
       </SubType>
     </ClCompile>

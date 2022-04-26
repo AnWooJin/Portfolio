@@ -40,6 +40,12 @@
     <Filter Include="Death\DeathState">
       <UniqueIdentifier>{c158ab13-f1aa-4983-80d4-86178cc245f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SceneChange">
+      <UniqueIdentifier>{bcde86f4-8d23-4912-b866-b09f472dc8d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Play\PlayState">
+      <UniqueIdentifier>{7abfee69-97ff-4643-b964-b24005ccc62c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HellTakerGame.h" />
@@ -55,13 +61,7 @@
     <ClInclude Include="TitleBackGround.h">
       <Filter>Title</Filter>
     </ClInclude>
-    <ClInclude Include="MoveEffect.h">
-      <Filter>Global</Filter>
-    </ClInclude>
     <ClInclude Include="Flame.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="LookBlock.h">
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="TitleCG.h">
@@ -151,6 +151,18 @@
     <ClInclude Include="DeathScene.h">
       <Filter>Death</Filter>
     </ClInclude>
+    <ClInclude Include="SceneChangeLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneChanger.h">
+      <Filter>SceneChange</Filter>
+    </ClInclude>
+    <ClInclude Include="LookBlock.h">
+      <Filter>Play</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveEffect.h">
+      <Filter>Play</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HellTakerGame.cpp" />
@@ -166,13 +178,7 @@
     <ClCompile Include="TitleBackGround.cpp">
       <Filter>Title</Filter>
     </ClCompile>
-    <ClCompile Include="MoveEffect.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
     <ClCompile Include="Flame.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="LookBlock.cpp">
       <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="TitleCG.cpp">
@@ -288,6 +294,21 @@
     </ClCompile>
     <ClCompile Include="DeathSceneState.cpp">
       <Filter>Death\DeathState</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneChangeLevel.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneChanger.cpp">
+      <Filter>SceneChange</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState.cpp">
+      <Filter>Play\PlayState</Filter>
+    </ClCompile>
+    <ClCompile Include="LookBlock.cpp">
+      <Filter>Play</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveEffect.cpp">
+      <Filter>Play</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

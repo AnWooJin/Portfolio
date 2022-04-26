@@ -9,11 +9,13 @@
 #include <GameEngineBase/GameEngineTime.h>
 
 Player::Player()
-	: MyRender_(nullptr)
+	: MyRenderer_(nullptr)
 	 ,ColMapImage_(nullptr)
-	 ,MyMoveRender_(nullptr)
-	 ,KeyCheckTime_(0.2f)
+	 ,KeyCheckTime_(0.15f)
 	 ,IsKeyOn_(false)
+	 , dir_("Right")
+	 , State_("Idle")
+	 ,CurState_(PlayerState::Max)
 {
 }
 
@@ -36,14 +38,14 @@ bool Player::IsMoveKey()
 
 void Player::Start()
 {
-	if (nullptr == MyRender_)
+	if (nullptr == MyRenderer_)
 	{
-		MyRender_ = CreateRenderer();
-		MyRender_->CreateAnimation("Player_Right.bmp", "Player_Right", 0, 10, 0.075f);
-		MyRender_->CreateAnimation("Player_Left.bmp", "Player_Left", 0, 10, 0.075f);
-		MyRender_->CreateAnimation("Player_Kick_Left.bmp", "Player_Kick_Left", 0, 8, 0.15f);
-		MyRender_->CreateAnimation("Player_Victory.bmp", "Player_Victory", 0, 18, 0.1f);
-		MyRender_->ChangeAnimation("Player_Right");
+		MyRenderer_ = CreateRenderer();
+		MyRenderer_->CreateAnimation("Player_Right.bmp", "Player_Idle_Right", 0, 10, 0.075f);
+		MyRenderer_->CreateAnimation("Player_Left.bmp", "Player_Idle_Left", 0, 10, 0.075f);
+		MyRenderer_->CreateAnimation("Player_Kick_Left.bmp", "Player_Kick_Left", 0, 8, 0.15f);
+		MyRenderer_->CreateAnimation("Player_Victory.bmp", "Player_Victory_Left", 0, 18, 0.1f);
+		MyRenderer_->ChangeAnimation("Player_Idle_Right");
 	}
 	
 
@@ -56,20 +58,17 @@ void Player::Start()
 		GameEngineInput::GetInst()->CreateKey("MoveDown", 'S');
 		GameEngineInput::GetInst()->CreateKey("Die", 'K');
 	}
+	ChangeState(PlayerState::Idle);
 }
 
 void Player::Update()
 {
-
 	KeyCheckTime_ -= GameEngineTime::GetDeltaTime();
 	if (KeyCheckTime_ <= 0)
 	{
 		IsKeyOn_ = true;
 	}
-	if (true == IsMoveKey())
-	{
-		KeyCheck();
-	}
+	StateUpdate();
 }
 
 
@@ -78,54 +77,67 @@ void Player::Render()
 
 }
 
-
-void Player::KeyCheck()
+void Player::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
-	float4 NextPos = GetPosition();
-	if (true == IsKeyOn_)
-	{
-		if (true == GameEngineInput::GetInst()->IsPress("MoveLeft"))
-		{
-			MyRender_->ChangeAnimation("Player_Left");
-			NextPos += float4::LEFT * 66;
-			IsKeyOn_ = false;
-		}
 
-		else if (true == GameEngineInput::GetInst()->IsPress("MoveRight"))
-		{
-			MyRender_->ChangeAnimation("Player_Right");
-			NextPos += float4::RIGHT * 66;
-			IsKeyOn_ = false;
-		}
-
-		else if (true == GameEngineInput::GetInst()->IsPress("MoveUp"))
-		{
-			NextPos += float4::UP * 65;
-			IsKeyOn_ = false;
-		}
-
-		else if (true == GameEngineInput::GetInst()->IsPress("MoveDown"))
-		{
-			
-			NextPos += float4::DOWN * 65;
-			IsKeyOn_ = false;
-			
-		}	
-		int Color = ColMapImage_->GetImagePixel(NextPos);
-		if (RGB(0, 0, 0) != Color)
-		{
-			CreateMoveEffect();
-			SetPosition(NextPos);
-			KeyCheckTime_ = 0.15f;
-		}
-	}
-	
 }
 
-void Player::CreateMoveEffect()
+
+
+void Player::ChangeState(PlayerState _State)
 {
-	GameEngineActor* Actor = GetLevel()->CreateActor<MoveEffect>(1, "Move");
-	Actor->SetPosition(GetPosition() + (float4::DOWN * 5.0f));
+	if (CurState_ == _State)
+	{
+		return;
+	}
+	switch (_State)
+	{
+	case PlayerState::Idle:
+		IdleStart();
+		State_ = "Idle";
+		break;
+	case PlayerState::Move:
+		MoveStart();
+		State_ = "Move";
+		break;
+	case PlayerState::Attack:
+		AttackStart();
+		State_ = "Attack";
+		break;
+	case PlayerState::Victory:
+		VictoryStart();
+		State_ = "Victory";
+		break;
+	case PlayerState::Max:
+		break;
+	default:
+		break;
+	}
+	ChangeAnimation();
+	CurState_ = _State;
+}
+
+void Player::StateUpdate()
+{
+	switch (CurState_)
+	{
+	case PlayerState::Idle:
+		IdleUpdate();
+		break;
+	case PlayerState::Move:
+		MoveUpdate();
+		break;
+	case PlayerState::Attack:
+		AttackUpdate();
+		break;
+	case PlayerState::Victory:
+		VictoryUpdate();
+		break;
+	case PlayerState::Max:
+		break;
+	default:
+		break;
+	}
 }
 
 void Player::PlayerSetting(int _Chapter)
