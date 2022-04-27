@@ -31,10 +31,6 @@ public:
 		RenderPivot_ = _Pos;
 	}
 
-	inline float4 GetPivot()
-	{
-		return RenderPivot_;
-	}
 
 	inline void SetPivotType(const RenderPivot& _Type)
 	{
@@ -54,12 +50,6 @@ public:
 		ScaleMode_ = RenderScaleMode::User;
 		RenderScale_ = _Scale;
 	}
-
-	inline GameEngineImage* GetImage()
-	{
-		return Image_;
-	}
-
 	inline void SetAlpha(unsigned int _Alpha)
 	{
 		Alpha_ = _Alpha;
@@ -69,6 +59,37 @@ public:
 			Alpha_ = 255;
 		}
 	}
+	inline float4 GetScale()
+	{
+		return RenderScale_;
+	}
+
+	inline float4 GetImagePivot()
+	{
+		return RenderImagePivot_;
+	}
+
+	inline float4 GetImageScale()
+	{
+		return RenderImageScale_;
+	}
+
+	inline float4 GetSortingPivot()
+	{
+		return GetActor()->GetPosition() + RenderPivot_ + SortingPivot;
+	}
+
+
+	inline float4 GetPivot()
+	{
+		return RenderPivot_;
+	}
+
+	inline GameEngineImage* GetImage()
+	{
+		return Image_;
+	}
+
 
 	void CameraEffectOff()
 	{
@@ -127,6 +148,8 @@ private:
 	// 이미지에서 잘라내는 크기
 	float4 RenderImageScale_; // 복사받으려는 이미지의 크기
 	float4 RenderImagePivot_; // 복사받으려는 이미지를 잘라오는 시작 좌표
+
+	float4 SortingPivot;	// 복사받으려는 이미지 한칸의 크기
 
 	unsigned int TransColor_;
 	unsigned int Alpha_;

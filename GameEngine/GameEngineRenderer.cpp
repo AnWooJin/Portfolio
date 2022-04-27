@@ -17,6 +17,7 @@ GameEngineRenderer::GameEngineRenderer()
 	, Alpha_(255)
 	, Pause_(false)
 	, RotZ_(0.0f)
+	, SortingPivot(float4::ZERO)
 {
 }	
 

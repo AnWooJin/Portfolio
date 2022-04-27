@@ -1,6 +1,7 @@
 #pragma once
 #include <list>
 #include <map>
+#include <set>
 #include <vector>
 #include "GameEngineBase/GameEngineNameObject.h"
 #include <GameEngineBase/GameEngineMath.h>
@@ -113,6 +114,12 @@ public:
 
 	void RegistActor(const std::string & _Name, GameEngineActor* _Actor);
 
+	// 이 오더는 sort를 하겠다.
+	void YSortOn(int _SortOrder)
+	{
+		IsYSort_.insert(_SortOrder);
+	}
+
 protected:
 	// 리소스를 가져오거나 엑터를 만드는 함수
 	virtual void Loading() = 0;
@@ -144,6 +151,10 @@ private:
 private:
 
 	std::map<int, std::list<GameEngineRenderer*>> AllRenderer_;
+
+	// 존재하냐 안하냐
+	std::set<int> IsYSort_;
+
 
 	std::vector<ChangeOrderItem> ChangeOrderList;
 

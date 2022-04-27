@@ -1,5 +1,7 @@
 #pragma once
+#include "Player.h"
 #include <GameEngine/GameEngineActor.h>
+#include <GameEngine/GameEngineFont.h>
 
 class SideUI : public GameEngineActor 
 {
@@ -17,7 +19,11 @@ public:
 protected:
 	
 private:
-	void Start() override {};
-	void Render() override {};
+	Player* MyPlayer_;
+	GameEngineFont TextFont;
+
+	void Start() override;
+	void Update() override;
+	void Render() override;
 };
 

@@ -15,6 +15,7 @@ Player::Player()
 	 ,IsKeyOn_(false)
 	 , dir_("Right")
 	 , State_("Idle")
+	 , MoveCount_(11)
 	 ,CurState_(PlayerState::Max)
 {
 }
@@ -41,9 +42,12 @@ void Player::Start()
 	if (nullptr == MyRenderer_)
 	{
 		MyRenderer_ = CreateRenderer();
-		MyRenderer_->CreateAnimation("Player_Right.bmp", "Player_Idle_Right", 0, 10, 0.075f);
-		MyRenderer_->CreateAnimation("Player_Left.bmp", "Player_Idle_Left", 0, 10, 0.075f);
+		MyRenderer_->CreateAnimation("Player_Idle_Right.bmp", "Player_Idle_Right", 0, 10, 0.075f);
+		MyRenderer_->CreateAnimation("Player_Idle_Left.bmp", "Player_Idle_Left", 0, 10, 0.075f);
+		MyRenderer_->CreateAnimation("Player_Move_Right.bmp", "Player_Move_Right", 0, 5, 1.075f);
+		MyRenderer_->CreateAnimation("Player_Move_Left.bmp", "Player_Move_Left", 0, 5, 1.075f);
 		MyRenderer_->CreateAnimation("Player_Kick_Left.bmp", "Player_Kick_Left", 0, 8, 0.15f);
+		MyRenderer_->CreateAnimation("Player_Kick_Right.bmp", "Player_Kick_Right", 0, 8, 0.15f);
 		MyRenderer_->CreateAnimation("Player_Victory.bmp", "Player_Victory_Left", 0, 18, 0.1f);
 		MyRenderer_->ChangeAnimation("Player_Idle_Right");
 	}
@@ -59,6 +63,7 @@ void Player::Start()
 		GameEngineInput::GetInst()->CreateKey("Die", 'K');
 	}
 	ChangeState(PlayerState::Idle);
+	LevelRegist("Player");
 }
 
 void Player::Update()
@@ -69,6 +74,7 @@ void Player::Update()
 		IsKeyOn_ = true;
 	}
 	StateUpdate();
+
 }
 
 
@@ -79,7 +85,7 @@ void Player::Render()
 
 void Player::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
-
+	
 }
 
 
@@ -153,21 +159,27 @@ void Player::PlayerSetting(int _Chapter)
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter2_ColMap.bmp");
 		break;
 	case 3:
+		SetPosition({ 870,274 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter3_ColMap.bmp");
 		break;
 	case 4:
+		SetPosition({ 405,212 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter4_ColMap.bmp");
 		break;
 	case 5:
+		SetPosition({ 475,274 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter5_ColMap.bmp");
 		break;
 	case 6:
+		SetPosition({ 575,114 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter6_ColMap.bmp");
 		break;
 	case 7:
+		SetPosition({ 805,404 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter7_ColMap.bmp");
 		break;
 	case 8:
+		SetPosition({ 640,542 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter8_ColMap.bmp");
 		break;
 	case 9:

@@ -70,6 +70,23 @@ bool GameEngineInput::IsKey(const std::string& _Name)
 	return false;
 }
 
+void GameEngineInput::Reset()
+{
+	CurWheelValue = 0;
+	CurWheelValue = WheelValue;
+	WheelValue = 0;
+
+	std::map<std::string, GameEngineKey>::iterator KeyUpdateStart = AllInputKey_.begin();
+	std::map<std::string, GameEngineKey>::iterator KeyUpdateEnd = AllInputKey_.end();
+
+	for (; KeyUpdateStart != KeyUpdateEnd; ++KeyUpdateStart)
+	{
+		GameEngineKey& CurrentKey = KeyUpdateStart->second;
+
+		CurrentKey.Reset();
+	}
+}
+
 void GameEngineInput::CreateKey(const std::string& _Name, int _Key)
 {
 	std::string UpperKey = GameEngineString::ToUpperReturn(_Name);

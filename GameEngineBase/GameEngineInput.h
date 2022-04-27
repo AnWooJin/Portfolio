@@ -58,6 +58,7 @@ public:
 	}
 
 public:
+	void Reset();
 	void Update(float _DetaTime = 0.0f);
 	void CreateKey(const std::string& _Name, int _Key);
 

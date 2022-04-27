@@ -3,6 +3,7 @@
 #include "Skull.h"
 #include "Block.h"
 #include "DevilSD.h"
+#include "SideUI.h"
 #include "BackGroundMap.h"
 #include "Thorn.h"
 #include "HellTakerGame.h"
@@ -30,22 +31,27 @@ void PlayLevel::Loading()
 		MyDevil_ = CreateActor<DevilSD>(2);
 		MyPlayer_ = CreateActor<Player>(2);
 		MyMap_ = CreateActor<BackGroundMap>(0);
+		CreateActor<SideUI>(1);
 	}
 	SkullSeting(Chapter);
 	BlockSetting(Chapter);
 	MyPlayer_->PlayerSetting(Chapter);
 	MyDevil_->ImageSetting(Chapter);
 	MyMap_->MapSetting(Chapter);
+	SetCameraPos({ 0,0 });
 }
 
 void PlayLevel::Update()
 {
-
+	
 }
 
 void PlayLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
-	
+	if (dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount() == 8)
+	{
+		SetCameraPos({0,612 });
+	}
 }
 
 
@@ -94,6 +100,7 @@ void PlayLevel::BlockSetting(int _ChaptherLevel)
 				Blocks_[2]->SetPosition({ 510,500 + 10 });
 				Blocks_[3]->BlockRender_->SetIndex(3);
 				Blocks_[3]->SetPosition({ 642,500 + 10 });
+				break;
 		}
 	default:
 		break;

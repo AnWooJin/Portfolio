@@ -14,7 +14,7 @@
 #include <GameEngineBase/GameEngineSound.h>
 
 HellTakerGame::HellTakerGame()
-	: ChapterCount_(1),
+	: ChapterCount_(8),
 	  IsSuccess_(false)
 {
 }
@@ -335,16 +335,44 @@ void HellTakerGame::GameImageCut()
 		Image->Cut({ 64, 64 });
 	}
 	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter4_Devil.bmp");
+		Image->Cut({ 64, 64 });
+	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter5_Devil.bmp");
+		Image->Cut({ 64, 64 });
+	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter6_Devil.bmp");
+		Image->Cut({ 64, 64 });
+	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter7_Devil.bmp");
+		Image->Cut({ 64, 64 });
+	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter8_Devil.bmp");
+		Image->Cut({ 64, 64 });
+	}
+	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("PlayerDead.bmp");
 		Image->Cut({ 250, 700 });
 	}
 	{
-		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Right.bmp");
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Idle_Right.bmp");
 		Image->Cut({ 80, 80 });
 	}
 	{
-		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Left.bmp");
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Idle_Left.bmp");
 		Image->Cut({ 80, 80 });
+	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Move_Left.bmp");
+		Image->Cut({ 70, 70 });
+	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Move_Right.bmp");
+		Image->Cut({ 70, 70 });
 	}
 	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Kick_Right.bmp");

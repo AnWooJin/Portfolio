@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "HellTakerGame.h"
 #include "MoveEffect.h"
 #include <GameEngine/GameEngine.h>
 #include <GameEngineBase/GameEngineWindow.h>
@@ -94,20 +95,25 @@ void Player::PlayerMove()
 		NextPos += float4::DOWN * 65;
 		IsKeyOn_ = false;
 	}
-	int Color = ColMapImage_->GetImagePixel(NextPos);
+	int Color = ColMapImage_->GetImagePixel(NextPos + GetLevel()->GetCameraPos());
 	if (RGB(0, 0, 0) != Color)
 	{
 		ChangeAnimation();
 		CreateMoveEffect();
-		SetPosition(NextPos);
+		CameraCheck(NextPos);
 		KeyCheckTime_ = 0.15f;
 	}
 }
 
 void Player::CreateMoveEffect()
 {
+	
 	GameEngineActor* Actor = GetLevel()->CreateActor<MoveEffect>(1, "Move");
 	Actor->SetPosition(GetPosition() + (float4::DOWN * 5.0f));
+	if (8 == dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount())
+	{
+		Actor->SetPosition(GetLevel()->GetCameraPos() + GetPosition() + (float4::DOWN * 5.0f));
+	}
 }
 
 void Player::ChangeAnimation()
@@ -124,4 +130,35 @@ void Player::ChangeAnimation()
 	}
 }
 
+void Player::CameraCheck(float4 _Pos)
+{
+	int Chapter = dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount();
 
+	if (Chapter != 8)
+	{
+		SetPosition(_Pos);
+	}
+	else if (Chapter == 8)
+	{
+		Chapter8CameraCheck(_Pos);
+	}
+}
+
+void Player::Chapter8CameraCheck(float4 _Pos)
+{
+	float4 CameraPos = GetLevel()->GetCameraPos() + _Pos - GetPosition();
+	if (CameraPos.ix() != 0)
+	{
+		SetPosition(_Pos);
+		return;
+	}
+	else if (CameraPos.iy() > 612 || CameraPos.iy() < 0)
+	{
+		SetPosition(_Pos);
+		return;
+	}
+	else
+	{
+		GetLevel()->MoveCameraPos(_Pos - GetPosition());
+	}
+}

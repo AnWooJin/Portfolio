@@ -1,5 +1,6 @@
 #include "BackGroundMap.h"
 #include <GameEngineBase/GameEngineWindow.h>
+#include <GameEngine/GameEngineRenderer.h>
 
 BackGroundMap::BackGroundMap()
 	: MapRenderer_(nullptr)
@@ -13,7 +14,9 @@ BackGroundMap::~BackGroundMap()
 void BackGroundMap::Start()
 {
 	SetPosition(GameEngineWindow::GetScale().Half());
+
 	MapRenderer_ = CreateRenderer();
+	MapRenderer_->CameraEffectOn();
 }
 
 void BackGroundMap::Render()
@@ -62,6 +65,8 @@ void BackGroundMap::MapSetting(int _Level)
 	}
 	case 8:
 	{
+		SetPosition({ 640,666 });
+		MapRenderer_->CameraEffectOn();
 		MapRenderer_->SetImage("Chapter8_Map.bmp");
 		break;
 	}

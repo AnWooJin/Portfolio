@@ -28,6 +28,11 @@ public:
 public:
 	void PlayerSetting(int _Chapter);
 
+	int GetMoveCount()
+	{
+		return MoveCount_;
+	}
+
 protected:
 
 private:
@@ -43,6 +48,8 @@ private:
 
 	bool IsMoveKey();
 	void PlayerMove();
+	void CameraCheck(float4 _Pos);
+	void Chapter8CameraCheck(float4 _Pos);
 private:
 	GameEngineRenderer* MyRenderer_;
 	GameEngineImage* ColMapImage_;
@@ -50,6 +57,7 @@ private:
 	std::string dir_;
 	std::string State_;
 	float KeyCheckTime_;
+	int MoveCount_;
 	bool IsKeyOn_;
 
 

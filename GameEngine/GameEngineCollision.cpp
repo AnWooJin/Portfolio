@@ -44,11 +44,11 @@ GameEngineCollision::~GameEngineCollision()
 
 bool GameEngineCollision::CollisionCheck(
 	const std::string& _TargetGroup,
-	CollisionType _This /*= CollisionType::Circle*/,
+	CollisionType _This /*= CollisionType::Rect*/,
 	CollisionType _Target /*= CollisionType::Rect*/
 	)
 {
-	if (false || true == IsDeath())
+	if (false == IsUpdate() || true == IsDeath())
 	{
 		return false;
 	}
@@ -73,6 +73,11 @@ bool GameEngineCollision::CollisionCheck(
 
 	for (; StartIter != EndIter; ++StartIter)
 	{
+		if (false == (*StartIter)->IsUpdate() || true == (*StartIter)->IsDeath())
+		{
+			continue;
+		}
+
 		if (CollisionCheckArray[static_cast<int>(_This)][static_cast<int>(_Target)](this, *StartIter))
 		{
 			return true;
@@ -82,11 +87,11 @@ bool GameEngineCollision::CollisionCheck(
 	return false;
 }
 
-bool GameEngineCollision::NextPostCollisionCheck(
+bool GameEngineCollision::NextPosCollisionCheck(
 	const std::string& _TargetGroup,
 	float4 _NextPos,
-	CollisionType _This /*= CollisionType::Circle*/,
-	CollisionType _Target /*= CollisionType::Circle*/
+	CollisionType _This /*= CollisionType::Rect*/,
+	CollisionType _Target /*= CollisionType::Rect*/
 )
 {
 	std::map<std::string, std::list<GameEngineCollision*>>::iterator FindTargetGroup = GetActor()->GetLevel()->AllCollision_.find(_TargetGroup);
@@ -113,6 +118,11 @@ bool GameEngineCollision::NextPostCollisionCheck(
 
 	for (; StartIter != EndIter; ++StartIter)
 	{
+		if (false == (*StartIter)->IsUpdate() || true == (*StartIter)->IsDeath())
+		{
+			continue;
+		}
+
 		if (CollisionCheckArray[static_cast<int>(_This)][static_cast<int>(_Target)](this, *StartIter))
 		{
 			return true;
@@ -147,8 +157,8 @@ void GameEngineCollision::DebugRender()
 bool GameEngineCollision::CollisionResult(
 	const std::string& _TargetGroup,
 	std::vector<GameEngineCollision*>& _ColResult,
-	CollisionType _This /*=CollisionType::Circle*/,
-	CollisionType _Target /*= CollisionType::Circle*/
+	CollisionType _This /*=CollisionType::Rect*/,
+	CollisionType _Target /*= CollisionType::Rect*/
 )
 {
 	size_t StartSize = _ColResult.size();
@@ -173,6 +183,12 @@ bool GameEngineCollision::CollisionResult(
 
 	for (; StartIter != EndIter;)
 	{
+		if (false == (*StartIter)->IsUpdate() || true == (*StartIter)->IsDeath())
+		{
+			continue;
+		}
+
+
 		if (CollisionCheckArray[static_cast<int>(_This)][static_cast<int>(_Target)](this, *StartIter))
 		{
 			_ColResult.push_back(*StartIter);
