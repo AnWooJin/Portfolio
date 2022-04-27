@@ -98,10 +98,11 @@ void Player::PlayerMove()
 	int Color = ColMapImage_->GetImagePixel(NextPos + GetLevel()->GetCameraPos());
 	if (RGB(0, 0, 0) != Color)
 	{
+		--MoveCount_;
 		ChangeAnimation();
 		CreateMoveEffect();
 		CameraCheck(NextPos);
-		KeyCheckTime_ = 0.15f;
+		KeyCheckTime_ = 0.3f;
 	}
 }
 

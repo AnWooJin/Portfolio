@@ -12,7 +12,7 @@ SideUI::~SideUI()
 
 void SideUI::Start()
 {
-	TextFont.Load("arial.ttf");
+	TextFont.Load("C:\\Users\\asus\\Desktop\\C++\\Portfolio\\Resource\\Font\\Segment7Standard.otf");
 
 	MyPlayer_ = GetLevel()->FindActor<Player>("Player");
 	CreateRenderer("SideUI.bmp");
@@ -27,8 +27,10 @@ void SideUI::Update()
 void SideUI::Render()
 {
 	int Count = MyPlayer_->GetMoveCount();
-
-
-
-	//TextFont.Draw("23", {100.0f, 620.0f}, 100, 50);
+	if (Count <= 0)
+	{
+		TextFont.Draw("X", {110.0f, 515.0f}, RGB(255, 255, 255), 100, 50);
+		return;
+	}
+	TextFont.Draw(std::to_string(Count), {110.0f, 515.0f}, RGB(255, 255, 255), 100, 50);
 }
