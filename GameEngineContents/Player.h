@@ -7,6 +7,7 @@ enum class PlayerState
 	Move,
 	Attack,
 	Victory,
+	Death,
 	Max,
 };
 
@@ -52,6 +53,7 @@ private:
 	void Chapter8CameraCheck(float4 _Pos);
 private:
 	GameEngineRenderer* MyRenderer_;
+	GameEngineRenderer* BlackBackGround_;
 	GameEngineImage* ColMapImage_;
 	PlayerState CurState_;
 	std::string dir_;
@@ -67,10 +69,12 @@ private:
 	void MoveStart();
 	void AttackStart();
 	void VictoryStart();
+	void DeathStart();
 
 	void IdleUpdate();
 	void MoveUpdate();
 	void AttackUpdate();
 	void VictoryUpdate();
+	void DeathUpdate();
 };
 

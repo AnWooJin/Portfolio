@@ -10,13 +10,14 @@
 
 Player::Player()
 	: MyRenderer_(nullptr)
-	 ,ColMapImage_(nullptr)
-	 ,KeyCheckTime_(0.15f)
-	 ,IsKeyOn_(false)
-	 , dir_("Right")
-	 , State_("Idle")
-	 , MoveCount_(11)
-	 ,CurState_(PlayerState::Max)
+	, BlackBackGround_(nullptr)
+	, ColMapImage_(nullptr)
+	, KeyCheckTime_(0.15f)
+	, IsKeyOn_(false)
+	, dir_("Right")
+	, State_("Idle")
+	, MoveCount_(11)
+	, CurState_(PlayerState::Max)
 {
 }
 
@@ -49,6 +50,7 @@ void Player::Start()
 		MyRenderer_->CreateAnimation("Player_Kick_Left.bmp", "Player_Kick_Left", 0, 8, 0.15f);
 		MyRenderer_->CreateAnimation("Player_Kick_Right.bmp", "Player_Kick_Right", 0, 8, 0.15f);
 		MyRenderer_->CreateAnimation("Player_Victory.bmp", "Player_Victory_Left", 0, 18, 0.1f);
+		MyRenderer_->CreateAnimation("Player_Death.bmp", "Player_Death", 0, 17, 0.1f);
 		MyRenderer_->ChangeAnimation("Player_Idle_Right");
 	}
 	
@@ -96,6 +98,7 @@ void Player::ChangeState(PlayerState _State)
 	{
 		return;
 	}
+	CurState_ = _State;
 	switch (_State)
 	{
 	case PlayerState::Idle:
@@ -114,13 +117,17 @@ void Player::ChangeState(PlayerState _State)
 		VictoryStart();
 		State_ = "Victory";
 		break;
+	case PlayerState::Death:
+		DeathStart();
+		State_ = "Death";
+		break;
 	case PlayerState::Max:
 		break;
 	default:
 		break;
 	}
 	ChangeAnimation();
-	CurState_ = _State;
+	
 }
 
 void Player::StateUpdate()
@@ -138,6 +145,9 @@ void Player::StateUpdate()
 		break;
 	case PlayerState::Victory:
 		VictoryUpdate();
+		break;
+	case PlayerState::Death:
+		DeathUpdate();
 		break;
 	case PlayerState::Max:
 		break;

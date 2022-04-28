@@ -27,9 +27,14 @@ void SideUI::Update()
 void SideUI::Render()
 {
 	int Count = MyPlayer_->GetMoveCount();
-	if (Count <= 0)
+	if (Count == 0)
 	{
 		TextFont.Draw("X", {110.0f, 515.0f}, RGB(255, 255, 255), 100, 50);
+		return;
+	}
+	if (Count >= 10)
+	{
+		TextFont.Draw(std::to_string(Count), { 105.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
 		return;
 	}
 	TextFont.Draw(std::to_string(Count), {110.0f, 515.0f}, RGB(255, 255, 255), 100, 50);

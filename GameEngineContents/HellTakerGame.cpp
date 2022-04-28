@@ -355,10 +355,6 @@ void HellTakerGame::GameImageCut()
 		Image->Cut({ 64, 64 });
 	}
 	{
-		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("PlayerDead.bmp");
-		Image->Cut({ 250, 700 });
-	}
-	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Idle_Right.bmp");
 		Image->Cut({ 80, 80 });
 	}
@@ -390,6 +386,11 @@ void HellTakerGame::GameImageCut()
 	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Victory.bmp");
 		Image->Cut({ 60, 82 });
+	}
+
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Death.bmp");
+		Image->Cut({ 250, 700 });
 	}
 
 	{

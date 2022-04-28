@@ -27,8 +27,8 @@ void PlayLevel::Loading()
 	Chapter_ = dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount();
 	if (MyPlayer_ == nullptr)
 	{
-		MyDevil_ = CreateActor<DevilSD>(2);
-		MyPlayer_ = CreateActor<Player>(2);
+		MyDevil_ = CreateActor<DevilSD>(3);
+		MyPlayer_ = CreateActor<Player>(5);
 		MyMap_ = CreateActor<BackGroundMap>(0);
 		CreateActor<SideUI>(1);
 	}

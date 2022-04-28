@@ -31,6 +31,13 @@ void Player::VictoryStart()
 
 }
 
+void Player::DeathStart()
+{
+	BlackBackGround_ = CreateRenderer("BlackBG.bmp",4);
+	SetPosition({ GetPosition().x , GetPosition().y - 315.0f });
+	BlackBackGround_->SetPivot(GameEngineWindow::GetScale().Half() - GetPosition());
+}
+
 void Player::IdleUpdate()
 {
 	if (true == IsMoveKey() && true == IsKeyOn_)
@@ -45,10 +52,15 @@ void Player::IdleUpdate()
 
 void Player::MoveUpdate()
 {
-	if (true == IsKeyOn_)
+	if (true == IsKeyOn_ && true == IsMoveKey())
 	{
+		if (MoveCount_ == 0)
+		{
+			ChangeState(PlayerState::Death);
+			return;
+		}
 		PlayerMove();
-	}
+	}	
 	if (false == IsMoveKey())
 	{
 		ChangeState(PlayerState::Idle);
@@ -63,6 +75,15 @@ void Player::AttackUpdate()
 void Player::VictoryUpdate()
 {
 
+}
+
+void Player::DeathUpdate()
+{
+	if (true == MyRenderer_->IsEndAnimation())
+	{
+		BlackBackGround_->Death();
+		GameEngine::GetInst().ChangeLevel("SceneChange");
+	}
 }
 
 
@@ -121,6 +142,10 @@ void Player::ChangeAnimation()
 {
 
 	std::string Name = "Player_" + State_ + dir_ ;
+	if (CurState_ == PlayerState::Death)
+	{
+		Name = "Player_" + State_;
+	}
 	if (nullptr != MyRenderer_->FindAnimation(Name))
 	{
 		MyRenderer_->ChangeAnimation(Name);

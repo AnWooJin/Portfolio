@@ -13,4 +13,5 @@ void BlackBackGround::Start()
 {
 	CreateRenderer("BlackBG.bmp");
 	SetPosition(GameEngineWindow::GetScale().Half());
+	
 }
