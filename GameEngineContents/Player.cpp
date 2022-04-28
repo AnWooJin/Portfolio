@@ -153,37 +153,46 @@ void Player::PlayerSetting(int _Chapter)
 	case 1:
 		SetPosition({ 774,175 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter1_ColMap.bmp");
+		MoveCount_ = 23;
 		break;
 	case 2:
 		SetPosition({ 440,435 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter2_ColMap.bmp");
+		MoveCount_ = 24;
 		break;
 	case 3:
 		SetPosition({ 870,274 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter3_ColMap.bmp");
+		MoveCount_ = 32;
 		break;
 	case 4:
 		SetPosition({ 405,212 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter4_ColMap.bmp");
+		MoveCount_ = 23;
 		break;
 	case 5:
 		SetPosition({ 475,274 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter5_ColMap.bmp");
+		MoveCount_ = 23;
 		break;
 	case 6:
 		SetPosition({ 575,114 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter6_ColMap.bmp");
+		MoveCount_ = 43;
 		break;
 	case 7:
 		SetPosition({ 805,404 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter7_ColMap.bmp");
+		MoveCount_ = 32;
 		break;
 	case 8:
 		SetPosition({ 640,522 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter8_ColMap.bmp");
+		MoveCount_ = 12;
 		break;
 	case 9:
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter9_ColMap.bmp");
+		MoveCount_ = 33;
 		break;
 	default:
 		break;
