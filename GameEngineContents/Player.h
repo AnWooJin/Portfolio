@@ -59,6 +59,7 @@ private:
 	std::string dir_;
 	std::string State_;
 	float KeyCheckTime_;
+	float Time_;
 	int MoveCount_;
 	bool IsKeyOn_;
 

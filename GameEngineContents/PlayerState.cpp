@@ -52,7 +52,7 @@ void Player::IdleUpdate()
 
 void Player::MoveUpdate()
 {
-	if (true == IsKeyOn_ && true == IsMoveKey())
+	if (true == IsMoveKey())
 	{
 		if (MoveCount_ == 0)
 		{
@@ -89,6 +89,10 @@ void Player::DeathUpdate()
 
 void Player::PlayerMove()
 {
+	if (Time_ >= 0.0f)
+	{
+		return;
+	}
 	float4 NextPos = GetPosition();
 
 	if (true == GameEngineInput::GetInst()->IsPress("MoveLeft"))
@@ -116,15 +120,21 @@ void Player::PlayerMove()
 		NextPos += float4::DOWN * 65;
 		IsKeyOn_ = false;
 	}
+	
 	int Color = ColMapImage_->GetImagePixel(NextPos + GetLevel()->GetCameraPos());
 	if (RGB(0, 0, 0) != Color)
 	{
-		--MoveCount_;
 		ChangeAnimation();
+		--MoveCount_;
 		CreateMoveEffect();
 		CameraCheck(NextPos);
 		KeyCheckTime_ = 0.3f;
 	}
+	else
+	{
+		ChangeState(PlayerState::Idle);
+	}
+	Time_ = 0.3f;
 }
 
 void Player::CreateMoveEffect()
