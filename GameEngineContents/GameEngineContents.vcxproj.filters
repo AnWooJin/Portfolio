@@ -142,9 +142,6 @@
     <ClInclude Include="Key.h">
       <Filter>Play</Filter>
     </ClInclude>
-    <ClInclude Include="BotUI.h">
-      <Filter>Play</Filter>
-    </ClInclude>
     <ClInclude Include="DeathLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
@@ -281,9 +278,6 @@
       <Filter>Play</Filter>
     </ClCompile>
     <ClCompile Include="Key.cpp">
-      <Filter>Play</Filter>
-    </ClCompile>
-    <ClCompile Include="BotUI.cpp">
       <Filter>Play</Filter>
     </ClCompile>
     <ClCompile Include="DeathLevel.cpp">

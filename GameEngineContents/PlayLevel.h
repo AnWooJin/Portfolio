@@ -24,6 +24,7 @@ public:
 protected:
 	
 private:
+	int Chapter_;
 	Player* MyPlayer_;
 	BackGroundMap* MyMap_;
 	DevilSD* MyDevil_;
@@ -33,9 +34,38 @@ private:
 	void Loading() override;
 	void Update() override;
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
+	void LevelChangeEnd(GameEngineLevel* _NextLevel) override;
+	void ActorsReset();
+	void ActorsCreate();
 
-	void SkullSeting(int _ChapterLevel);
-	void BlockSetting(int _ChapterLevel);
+	void SkullSeting();
+	void BlockSetting();
+	void ThornSetting();
+
+
+private:
+	////////////////////////        블록의 위치와 이미지를 정해주는 함수들
+	void Block_Chapter1Set();
+	void Block_Chapter2Set();
+	void Block_Chapter3Set();
+	void Block_Chapter4Set();
+	void Block_Chapter5Set();
+	void Block_Chapter6Set();
+	void Block_Chapter7Set();
+	void Block_Chapter8Set();
+	void Block_Chapter9Set();
+private:
+	///////////////////////          스컬들의 위치와 업데이트를 끈 스컬을 다시 켜주는 함수들
+	void SKull_Chapter1Set();
+	void SKull_Chapter2Set();
+	void SKull_Chapter3Set();
+	void SKull_Chapter4Set();
+	void SKull_Chapter5Set();
+	void SKull_Chapter6Set();
+	void SKull_Chapter7Set();
+	void SKull_Chapter8Set();
+	void SKull_Chapter9Set();
+
 
 };
 

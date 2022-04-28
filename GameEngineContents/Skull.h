@@ -15,6 +15,7 @@ public:
 	Skull& operator=(const Skull& _Other) = delete;
 	Skull& operator=(Skull&& _Other) noexcept = delete;
 
+
 protected:
 
 private:
@@ -23,6 +24,6 @@ private:
 	void Render() override {};
 
 private:
-	GameEngineRenderer* SkullRenderer_;
+	GameEngineRenderer* MyRenderer_;
 };
 

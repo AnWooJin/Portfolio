@@ -1,4 +1,6 @@
 #include "DevilSD.h"
+#include "HellTakerGame.h"
+#include <GameEngine/GameEngine.h>
 #include <GameEngine/GameEngineRenderer.h>
 
 DevilSD::DevilSD()
@@ -24,6 +26,19 @@ void DevilSD::Render()
 
 }
 
+void DevilSD::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	if (8 == dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount())
+	{
+		MyRenderer_->CameraEffectOn();
+	}
+	else
+	{
+		MyRenderer_->CameraEffectOff();
+	}
+
+}
+
 void DevilSD::ImageSetting(int _ChapterLevel)
 {
 	switch (_ChapterLevel)
@@ -32,16 +47,16 @@ void DevilSD::ImageSetting(int _ChapterLevel)
 	{
 		{
 			SetPosition({ 842,505 });
-			GameEngineRenderer* Render = CreateRenderer("Chapter1Devil.bmp");
-			Render->CreateAnimation("Chapter1Devil.bmp", "Chapter1Devil", 0, 11, 0.065f);
-			Render->ChangeAnimation("Chapter1Devil");
+			MyRenderer_ = CreateRenderer("Chapter1Devil.bmp");
+			MyRenderer_->CreateAnimation("Chapter1Devil.bmp", "Chapter1Devil", 0, 11, 0.065f);
+			MyRenderer_->ChangeAnimation("Chapter1Devil");
 		}
 
 		{
-			GameEngineRenderer* Render = CreateRenderer("LoveSign.bmp");
-			Render->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
-			Render->ChangeAnimation("LoveSign");
-			Render->SetPivot({ -30, -20 });
+			GameEngineRenderer* Renderer_ = CreateRenderer("LoveSign.bmp");
+			Renderer_->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
+			Renderer_->ChangeAnimation("LoveSign");
+			Renderer_->SetPivot({ -30, -20 });
 		}
 		break;
 	}
@@ -49,16 +64,16 @@ void DevilSD::ImageSetting(int _ChapterLevel)
 	{
 		{
 			SetPosition({ 710,505 });
-			GameEngineRenderer* Render = CreateRenderer("Chapter2_Devil.bmp");
-			Render->CreateAnimation("Chapter2_Devil.bmp", "Chapter2_Devil", 0, 11, 0.065f);
-			Render->ChangeAnimation("Chapter2_Devil");
+			MyRenderer_ = CreateRenderer("Chapter2_Devil.bmp");
+			MyRenderer_->CreateAnimation("Chapter2_Devil.bmp", "Chapter2_Devil", 0, 11, 0.065f);
+			MyRenderer_->ChangeAnimation("Chapter2_Devil");
 		}
 
 		{
-			GameEngineRenderer* Render = CreateRenderer("LoveSign.bmp");
-			Render->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
-			Render->ChangeAnimation("LoveSign");
-			Render->SetPivot({ -30, -20 });
+			GameEngineRenderer* Renderer_ = CreateRenderer("LoveSign.bmp");
+			Renderer_->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
+			Renderer_->ChangeAnimation("LoveSign");
+			Renderer_->SetPivot({ -30, -20 });
 		}
 		break;
 	}
@@ -66,44 +81,44 @@ void DevilSD::ImageSetting(int _ChapterLevel)
 	{
 		{
 			SetPosition({ 666,144 });
-			GameEngineRenderer* Render = CreateRenderer("Chapter3_Devil.bmp");
-			Render->CreateAnimation("Chapter3_Devil.bmp", "Chapter3_Devil", 0, 11, 0.065f);
-			Render->ChangeAnimation("Chapter3_Devil");
+			MyRenderer_ = CreateRenderer("Chapter3_Devil.bmp");
+			MyRenderer_->CreateAnimation("Chapter3_Devil.bmp", "Chapter3_Devil", 0, 11, 0.065f);
+			MyRenderer_->ChangeAnimation("Chapter3_Devil");
 		}
 
 		{
-			GameEngineRenderer* Render = CreateRenderer("Chapter3_Devil.bmp");
-			Render->CreateAnimation("Chapter3_Devil.bmp", "Chapter3_Devil", 0, 11, 0.065f);
-			Render->ChangeAnimation("Chapter3_Devil");
-			Render->SetPivot({ -64, 0 });
+			GameEngineRenderer* MyRenderer_ = CreateRenderer("Chapter3_Devil.bmp");
+			MyRenderer_->CreateAnimation("Chapter3_Devil.bmp", "Chapter3_Devil", 0, 11, 0.065f);
+			MyRenderer_->ChangeAnimation("Chapter3_Devil");
+			MyRenderer_->SetPivot({ -64, 0 });
 		}
 
 		{
-			GameEngineRenderer* Render = CreateRenderer("Chapter3_Devil.bmp");
-			Render->CreateAnimation("Chapter3_Devil.bmp", "Chapter3_Devil", 0, 11, 0.065f);
-			Render->ChangeAnimation("Chapter3_Devil");
-			Render->SetPivot({ 64, 0 });
+			GameEngineRenderer* MyRenderer_ = CreateRenderer("Chapter3_Devil.bmp");
+			MyRenderer_->CreateAnimation("Chapter3_Devil.bmp", "Chapter3_Devil", 0, 11, 0.065f);
+			MyRenderer_->ChangeAnimation("Chapter3_Devil");
+			MyRenderer_->SetPivot({ 64, 0 });
 		}
 
 		{
-			GameEngineRenderer* Render = CreateRenderer("LoveSign.bmp");
-			Render->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
-			Render->ChangeAnimation("LoveSign");
-			Render->SetPivot({ -30, -20 });
+			GameEngineRenderer* Renderer_ = CreateRenderer("LoveSign.bmp");
+			Renderer_->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
+			Renderer_->ChangeAnimation("LoveSign");
+			Renderer_->SetPivot({ -30, -20 });
 		}
 
 		{
-			GameEngineRenderer* Render = CreateRenderer("LoveSign.bmp");
-			Render->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
-			Render->ChangeAnimation("LoveSign");
-			Render->SetPivot({ -94, -20 });
+			GameEngineRenderer* Renderer_ = CreateRenderer("LoveSign.bmp");
+			Renderer_->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
+			Renderer_->ChangeAnimation("LoveSign");
+			Renderer_->SetPivot({ -94, -20 });
 		}
 
 		{
-			GameEngineRenderer* Render = CreateRenderer("LoveSign.bmp");
-			Render->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
-			Render->ChangeAnimation("LoveSign");
-			Render->SetPivot({ 34, -20 });
+			GameEngineRenderer* Renderer_ = CreateRenderer("LoveSign.bmp");
+			Renderer_->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
+			Renderer_->ChangeAnimation("LoveSign");
+			Renderer_->SetPivot({ 34, -20 });
 		}
 		break;
 	}
@@ -111,16 +126,16 @@ void DevilSD::ImageSetting(int _ChapterLevel)
 	{
 		{
 			SetPosition({ 875,350 });
-			GameEngineRenderer* Render = CreateRenderer("Chapter4_Devil.bmp");
-			Render->CreateAnimation("Chapter4_Devil.bmp", "Chapter4_Devil", 0, 11, 0.065f);
-			Render->ChangeAnimation("Chapter4_Devil");
+			MyRenderer_ = CreateRenderer("Chapter4_Devil.bmp");
+			MyRenderer_->CreateAnimation("Chapter4_Devil.bmp", "Chapter4_Devil", 0, 11, 0.065f);
+			MyRenderer_->ChangeAnimation("Chapter4_Devil");
 		}
 
 		{
-			GameEngineRenderer* Render = CreateRenderer("LoveSign.bmp");
-			Render->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
-			Render->ChangeAnimation("LoveSign");
-			Render->SetPivot({ -30, -20 });
+			GameEngineRenderer* Renderer_ = CreateRenderer("LoveSign.bmp");
+			Renderer_->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
+			Renderer_->ChangeAnimation("LoveSign");
+			Renderer_->SetPivot({ -30, -20 });
 		}
 		break;
 	}
@@ -128,16 +143,16 @@ void DevilSD::ImageSetting(int _ChapterLevel)
 	{
 		{
 			SetPosition({ 746,144 });
-			GameEngineRenderer* Render = CreateRenderer("Chapter5_Devil.bmp");
-			Render->CreateAnimation("Chapter5_Devil.bmp", "Chapter5_Devil", 0, 11, 0.065f);
-			Render->ChangeAnimation("Chapter5_Devil");
+			MyRenderer_ = CreateRenderer("Chapter5_Devil.bmp");
+			MyRenderer_->CreateAnimation("Chapter5_Devil.bmp", "Chapter5_Devil", 0, 11, 0.065f);
+			MyRenderer_->ChangeAnimation("Chapter5_Devil");
 		}
 
 		{
-			GameEngineRenderer* Render = CreateRenderer("LoveSign.bmp");
-			Render->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
-			Render->ChangeAnimation("LoveSign");
-			Render->SetPivot({ -30, -20 });
+			GameEngineRenderer* Renderer_ = CreateRenderer("LoveSign.bmp");
+			Renderer_->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
+			Renderer_->ChangeAnimation("LoveSign");
+			Renderer_->SetPivot({ -30, -20 });
 		}
 		break;
 	}
@@ -145,16 +160,16 @@ void DevilSD::ImageSetting(int _ChapterLevel)
 	{
 		{
 			SetPosition({ 776,576 });
-			GameEngineRenderer* Render = CreateRenderer("Chapter6_Devil.bmp");
-			Render->CreateAnimation("Chapter6_Devil.bmp", "Chapter6_Devil", 0, 11, 0.065f);
-			Render->ChangeAnimation("Chapter6_Devil");
+			MyRenderer_ = CreateRenderer("Chapter6_Devil.bmp");
+			MyRenderer_->CreateAnimation("Chapter6_Devil.bmp", "Chapter6_Devil", 0, 11, 0.065f);
+			MyRenderer_->ChangeAnimation("Chapter6_Devil");
 		}
 
 		{
-			GameEngineRenderer* Render = CreateRenderer("LoveSign.bmp");
-			Render->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
-			Render->ChangeAnimation("LoveSign");
-			Render->SetPivot({ -30, -20 });
+			GameEngineRenderer* Renderer_ = CreateRenderer("LoveSign.bmp");
+			Renderer_->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
+			Renderer_->ChangeAnimation("LoveSign");
+			Renderer_->SetPivot({ -30, -20 });
 		}
 		break;
 	}
@@ -162,33 +177,33 @@ void DevilSD::ImageSetting(int _ChapterLevel)
 	{
 		{
 			SetPosition({675,140 });
-			GameEngineRenderer* Render = CreateRenderer("Chapter7_Devil.bmp");
-			Render->CreateAnimation("Chapter7_Devil.bmp", "Chapter7_Devil", 0, 11, 0.065f);
-			Render->ChangeAnimation("Chapter7_Devil");
+			MyRenderer_ = CreateRenderer("Chapter7_Devil.bmp");
+			MyRenderer_->CreateAnimation("Chapter7_Devil.bmp", "Chapter7_Devil", 0, 11, 0.065f);
+			MyRenderer_->ChangeAnimation("Chapter7_Devil");
 		}
 
 		{
-			GameEngineRenderer* Render = CreateRenderer("LoveSign.bmp");
-			Render->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
-			Render->ChangeAnimation("LoveSign");
-			Render->SetPivot({ -30, -20 });
+			GameEngineRenderer* Renderer_ = CreateRenderer("LoveSign.bmp");
+			Renderer_->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
+			Renderer_->ChangeAnimation("LoveSign");
+			Renderer_->SetPivot({ -30, -20 });
 		}
 		break;
 	}
 	case 8:
 	{
 		{
-			SetPosition({ 710,505 });
-			GameEngineRenderer* Render = CreateRenderer("Chapter8_Devil.bmp");
-			Render->CreateAnimation("Chapter8_Devil.bmp", "Chapter8_Devil", 0, 11, 0.065f);
-			Render->ChangeAnimation("Chapter8_Devil");
+			SetPosition({ 640,416 });
+			MyRenderer_ = CreateRenderer("Chapter8_Devil.bmp");
+			MyRenderer_->CreateAnimation("Chapter8_Devil.bmp", "Chapter8_Devil", 0, 11, 0.065f);
+			MyRenderer_->ChangeAnimation("Chapter8_Devil");
 		}
 
 		{
-			GameEngineRenderer* Render = CreateRenderer("LoveSign.bmp");
-			Render->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
-			Render->ChangeAnimation("LoveSign");
-			Render->SetPivot({ -30, -20 });
+			GameEngineRenderer* Renderer_ = CreateRenderer("LoveSign.bmp");
+			Renderer_->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
+			Renderer_->ChangeAnimation("LoveSign");
+			Renderer_->SetPivot({ -30, -20 });
 		}
 		break;
 	}

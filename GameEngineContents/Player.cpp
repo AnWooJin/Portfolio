@@ -179,7 +179,7 @@ void Player::PlayerSetting(int _Chapter)
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter7_ColMap.bmp");
 		break;
 	case 8:
-		SetPosition({ 640,542 });
+		SetPosition({ 640,522 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter8_ColMap.bmp");
 		break;
 	case 9:

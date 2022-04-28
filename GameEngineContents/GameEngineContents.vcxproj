@@ -32,10 +32,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="BotUI.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="DeathLevel.h">
       <SubType>
       </SubType>
@@ -181,10 +177,6 @@
     </ClCompile>
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Booper.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BotUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>
