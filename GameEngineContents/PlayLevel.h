@@ -2,6 +2,18 @@
 #include <GameEngine/GameEngineLevel.h>
 #include <vector>
 
+
+enum class PlayOrder
+{
+	BackGround,
+	UI,
+	Block,
+	SKull,
+	Devil,
+	Player,
+};
+
+
 class GameEngineActor;
 class Block;
 class Skull;
@@ -35,10 +47,10 @@ private:
 	void Update() override;
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 	void LevelChangeEnd(GameEngineLevel* _NextLevel) override;
-	void ActorsReset();
-	void ActorsCreate();
+	
 
-	void SkullSeting();
+	void ActorOff();                ////  엑터의 업데이트를 일시적으로 안하게 만드는 함수
+	void SkullSetting();
 	void BlockSetting();
 	void ThornSetting();
 

@@ -162,6 +162,8 @@ void Player::StateUpdate()
 
 void Player::PlayerSetting(int _Chapter)
 {
+	ChangeState(PlayerState::Idle);
+	dir_ = "_Right";
 	switch (_Chapter)
 	{
 	case 1:

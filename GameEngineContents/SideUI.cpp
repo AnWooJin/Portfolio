@@ -1,4 +1,6 @@
 #include "SideUI.h"
+#include "HellTakerGame.h"
+#include "GameEngine/GameEngine.h"
 #include <GameEngine/GameEngineRenderer.h>
 
 SideUI::SideUI()
@@ -26,7 +28,12 @@ void SideUI::Update()
 
 void SideUI::Render()
 {
+	ChapterRender();
 	int Count = MyPlayer_->GetMoveCount();
+	if (Count < 0)
+	{
+		return;
+	}
 	if (Count == 0)
 	{
 		TextFont.Draw("X", {110.0f, 515.0f}, RGB(255, 255, 255), 100, 50);
@@ -34,8 +41,47 @@ void SideUI::Render()
 	}
 	if (Count >= 10)
 	{
-		TextFont.Draw(std::to_string(Count), { 105.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
+		TextFont.Draw(std::to_string(Count), { 80.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
 		return;
 	}
+	
 	TextFont.Draw(std::to_string(Count), {110.0f, 515.0f}, RGB(255, 255, 255), 100, 50);
+}
+
+void SideUI::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	Chapter_ = dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount();
+}
+
+void SideUI::ChapterRender()
+{
+	switch (Chapter_)
+	{
+	case 1:
+		TextFont.Draw("グ", { 1100.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
+		break;
+	case 2:
+		TextFont.Draw("ケ", { 110.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
+		break;
+	case 3:
+		TextFont.Draw("ゲ", { 110.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
+		break;
+	case 4:
+		TextFont.Draw("コ", { 110.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
+		break;
+	case 5:
+		TextFont.Draw("ゴ", { 110.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
+		break;
+	case 6:
+		TextFont.Draw("サ", { 110.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
+		break;
+	case 7:
+		TextFont.Draw("ザ", { 110.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
+		break;
+	case 8:
+		TextFont.Draw("シ", { 1100.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
+		break;
+	default:
+		break;
+	}
 }
