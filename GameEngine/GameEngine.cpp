@@ -106,6 +106,13 @@ void GameEngine::EngineLoop()
 	CurrentLevel_->CollisionDebugRender();
 	WindowMainImage_->BitCopy(BackBufferImage_);
 	CurrentLevel_->ActorRelease();
+
+	if (true == CurrentLevel_->IsReset)
+	{
+		CurrentLevel_->Reset();
+		// 리셋이 되고나서 자신이 하고 싶은 일을 처리하는 함수
+		CurrentLevel_->UserResetEnd();
+	}
 	
 }
 
