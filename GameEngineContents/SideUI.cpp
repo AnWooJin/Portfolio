@@ -29,6 +29,10 @@ void SideUI::Update()
 
 void SideUI::Render()
 {
+	if (true == MyPlayer_->IsPlayerDeath())
+	{
+		return;
+	}
 	ChapterRender();
 	int Count = MyPlayer_->GetMoveCount();
 	if (Count < 0)

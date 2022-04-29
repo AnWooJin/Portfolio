@@ -34,6 +34,11 @@ public:
 		return MoveCount_;
 	}
 
+	bool IsPlayerDeath()
+	{
+		return CurState_ == PlayerState::Death;
+	}
+
 protected:
 
 private:
