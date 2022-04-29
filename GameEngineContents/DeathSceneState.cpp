@@ -36,7 +36,7 @@ void DeathScene::IdleUpdate()
 {
 	if (true == GameEngineInput::GetInst()->IsDown("Next"))
 	{
-		//GameEngine::GetInst().ChangeLevel("SceneChange");
+		GameEngine::GetInst().ChangeLevel("SceneChange");
 	}
 }
 
@@ -47,7 +47,7 @@ void DeathScene::Chapter6Update()
 	{
 		if (1 == Chapter6Index_)
 		{
-			//GameEngine::GetInst().ChangeLevel("SceneChange");
+			GameEngine::GetInst().ChangeLevel("SceneChange");
 			return;
 		}
 		Chapter6Index_ += 1;

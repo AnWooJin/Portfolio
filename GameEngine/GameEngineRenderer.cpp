@@ -165,7 +165,18 @@ void GameEngineRenderer::ChangeAnimation(const std::string& _Name)
 		return;
 	}
 
-	CurrentAnimation_ = &FindIter->second;
+	if (nullptr != CurrentAnimation_
+		&& CurrentAnimation_->GetNameConstPtr() == _Name)
+	{
+		return;
+	}
+
+	CurrentAnimation_ = &FindIter->second;	//FrameAnimation은 값형이다.
+
+	if (nullptr != CurrentAnimation_)
+	{
+		CurrentAnimation_->Reset();
+	}
 }
 
 void GameEngineRenderer::CreateAnimation(

@@ -41,7 +41,7 @@ void TalkLevel::Update()
 
 void TalkLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
-
+	TextPage_ = 0;
 }
 
 void TalkLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)

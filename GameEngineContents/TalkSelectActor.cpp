@@ -88,4 +88,7 @@ void TalkSelectActor::StateUpdate()
 void TalkSelectActor::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	Chapter_ = dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetChapterCount();
+	ChangeState(TalkSelectActorState::Booper);
+	IsSelect_ = false;
+	Selected0_ = true;
 }

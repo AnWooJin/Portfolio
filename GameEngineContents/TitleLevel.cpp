@@ -43,7 +43,7 @@ void TitleLevel::Update()
 	{
 		SetCameraPos({ 680,0 });
 	}
-	if (true == GameEngineInput::GetInst()->IsDown("Next") && TextPage_ <= 7)
+	if (true == GameEngineInput::GetInst()->IsDown("Next") && TextPage_ <= 6)
 	{
 		++TextPage_;
 		GameEngineSound::SoundPlayOneShot("dialogue_text_end_01.wav");

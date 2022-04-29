@@ -1,4 +1,5 @@
 #pragma once
+#include <GameEngineBase/GameEngineSound.h>
 #include <GameEngine/GameEngineLevel.h>
 #include <vector>
 
@@ -37,11 +38,13 @@ protected:
 	
 private:
 	int Chapter_;
+	bool IsBgmPlay_;
 	Player* MyPlayer_;
 	BackGroundMap* MyMap_;
 	DevilSD* MyDevil_;
 	std::vector<Block*> Blocks_;
 	std::vector<Skull*> Skulls_;
+	GameEngineSoundPlayer PlayBgmPlayer_;
 
 	void Loading() override;
 	void Update() override;

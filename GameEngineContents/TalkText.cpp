@@ -27,6 +27,13 @@ void TalkText::Update()
 }
 
 
+void TalkText::LevelChangeStart(GameEngineLevel* PrevLevel)
+{
+	ChangeState(TalkTextState::Idle);
+	ChapterTextSetting();
+}
+
+
 void TalkText::StateUpdate()
 {
 	switch (CurState_)

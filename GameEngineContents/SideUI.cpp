@@ -5,6 +5,7 @@
 
 SideUI::SideUI()
 	: MyPlayer_(nullptr)
+	, Chapter_(0)
 {
 }
 
@@ -61,22 +62,22 @@ void SideUI::ChapterRender()
 		TextFont.Draw("グ", { 1100.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
 		break;
 	case 2:
-		TextFont.Draw("ケ", { 110.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
+		TextFont.Draw("ケ", { 1100.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
 		break;
 	case 3:
-		TextFont.Draw("ゲ", { 110.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
+		TextFont.Draw("ゲ", { 1100.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
 		break;
 	case 4:
-		TextFont.Draw("コ", { 110.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
+		TextFont.Draw("コ", { 1100.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
 		break;
 	case 5:
-		TextFont.Draw("ゴ", { 110.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
+		TextFont.Draw("ゴ", { 1100.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
 		break;
 	case 6:
-		TextFont.Draw("サ", { 110.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
+		TextFont.Draw("サ", { 1100.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
 		break;
 	case 7:
-		TextFont.Draw("ザ", { 110.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
+		TextFont.Draw("ザ", { 1100.0f, 515.0f }, RGB(255, 255, 255), 100, 50);
 		break;
 	case 8:
 		TextFont.Draw("シ", { 1100.0f, 515.0f }, RGB(255, 255, 255), 100, 50);

@@ -70,5 +70,5 @@ void TalkCG::StateUpdate()
 void TalkCG::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	Chapter_ = dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetChapterCount();
-	//ChangeState(TalkCGState::Idle);
+	ChangeState(TalkCGState::Idle);
 }

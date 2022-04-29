@@ -14,6 +14,7 @@ PlayLevel::PlayLevel()
 	, MyPlayer_(nullptr)
 	, MyMap_(nullptr)
 	, MyDevil_(nullptr)
+	, IsBgmPlay_(false)
 {
 }
 
@@ -24,6 +25,7 @@ PlayLevel::~PlayLevel()
 
 void PlayLevel::Loading()
 {
+	
 	Chapter_ = dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount();
 	if (MyPlayer_ == nullptr)
 	{
@@ -57,6 +59,12 @@ void PlayLevel::Update()
 
 void PlayLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	if (false == IsBgmPlay_)
+	{
+		PlayBgmPlayer_ = GameEngineSound::SoundPlayControl("PlayBGM.wav");
+		IsBgmPlay_ = true;
+	}
+	
 	Chapter_ = dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount();
 	SetCameraPos({ 0,0 });
 	if (8 == Chapter_)
@@ -64,9 +72,13 @@ void PlayLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 		SetCameraPos({0,612 });
 	}
 
-	MyDevil_ = CreateActor<DevilSD>(static_cast<int>(PlayOrder::Devil));
-	MyDevil_->ImageSetting(Chapter_);
+	if (nullptr == MyDevil_)
+	{
+		MyDevil_ = CreateActor<DevilSD>(static_cast<int>(PlayOrder::Devil));
+		MyDevil_->ImageSetting(Chapter_);
 
+	}
+	
 	if (false == dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetIsSuccess())
 	{
 		MyPlayer_->PlayerSetting(Chapter_);
@@ -83,6 +95,7 @@ void PlayLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 		MyDevil_->Death();
 		MyDevil_ = nullptr;
 	}
+
 }
 
 

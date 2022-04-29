@@ -48,6 +48,11 @@ void Player::IdleUpdate()
 	{
 		GameEngine::GetInst().ChangeLevel("SceneChange");
 	}
+
+	if (true == dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetIsSuccess())
+	{
+		ChangeState(PlayerState::Victory);
+	}
 }
 
 void Player::MoveUpdate()
@@ -122,6 +127,10 @@ void Player::PlayerMove()
 	}
 	
 	int Color = ColMapImage_->GetImagePixel(NextPos + GetLevel()->GetCameraPos());
+	if (RGB(0, 0, 255) == Color)
+	{
+		GameEngine::GetInst().ChangeLevel("Talk");
+	}
 	if (RGB(0, 0, 0) != Color)
 	{
 		ChangeAnimation();
