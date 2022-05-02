@@ -160,6 +160,19 @@ void GameEngineSound::AllResourcesDestroy()
 
 ///////////////////////////////////////////////////  사운드 플레이어
 
+void GameEngineSoundPlayer::PlaySpeed(float _Speed)
+{
+	if (nullptr == ControlHandle_)
+	{
+		MsgBoxAssert("사운드 컨트롤 채널에 치명적인 문제가 있습니다.\n");
+		return;
+	}
+
+	ControlHandle_->setPitch(_Speed);
+}
+
+
+
 void GameEngineSoundPlayer::Stop()
 {
 	if (nullptr == ControlHandle_)

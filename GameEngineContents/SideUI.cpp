@@ -15,7 +15,7 @@ SideUI::~SideUI()
 
 void SideUI::Start()
 {
-	TextFont.Load("C:\\Users\\asus\\Desktop\\C++\\Portfolio\\Resource\\Font\\Segment7Standard.otf");
+	TextFont.Load("..\\Resource\\Font\\Segment7Standard.otf");
 
 	MyPlayer_ = GetLevel()->FindActor<Player>("Player");
 	CreateRenderer("SideUI.bmp");

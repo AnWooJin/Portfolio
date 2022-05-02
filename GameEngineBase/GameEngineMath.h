@@ -9,6 +9,21 @@ public:
 	static const float DEG;
 	static const float DegreeToRadian;
 
+	static float Lerp(float p1, float p2, float Time)
+	{
+		return (1.0f - Time) * p1 + Time * p2;
+	}
+
+	static float LerpLimit(float p1, float p2, float Time)
+	{
+		if (1.0f <= Time)
+		{
+			Time = 1.0f;
+		}
+
+		return Lerp(p1, p2, Time);
+	}
+
 private:
 	//construcuter destructer
 	GameEngineMath();
@@ -59,14 +74,14 @@ public:
 	static float4 DOWN;
 	static float4 ZERO;
 
-public: 
+public:
 	bool IsZero2D() const
 	{
 		return x == 0.0f && y == 0.0f;
 	}
 
 public:
-	int ix()	const 
+	int ix()	const
 	{
 		return static_cast<int>(x);
 	}
@@ -80,7 +95,7 @@ public:
 	{
 		return static_cast<int>(z);
 	}
-	
+
 	int iw()const
 	{
 		return static_cast<int>(w);
@@ -132,7 +147,7 @@ public:
 	void Range2D(float _Max)
 	{
 		Nomal2D();
-		
+
 		x *= _Max;
 		y *= _Max;
 		return;
@@ -158,7 +173,7 @@ public:
 	}
 
 	float4& operator+=(const float4& _Other)
-	{	
+	{
 		x += _Other.x;
 		y += _Other.y;
 		z += _Other.z;
@@ -214,6 +229,23 @@ public:
 		*this = VectorRotationToRadianZ(*this, _Radian);
 		return *this;
 	}
+
+
+	static float4 Lerp(float4 p1, float4 p2, float Time)
+	{
+		return p1 * (1.0f - Time) + p2 * Time;
+	}
+
+	static float4 LerpLimit(float4 p1, float4 p2, float Time)
+	{
+		if (1.0f <= Time)
+		{
+			Time = 1.0f;
+		}
+
+		return Lerp(p1, p2, Time);
+	}
+
 
 	POINT ToWinAPIPOINT() const
 	{
