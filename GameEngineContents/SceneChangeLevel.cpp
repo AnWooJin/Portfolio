@@ -1,6 +1,7 @@
 #include "SceneChangeLevel.h"
 #include "SceneChanger.h"
 
+
 SceneChangeLevel::SceneChangeLevel()
 {
 }
@@ -21,5 +22,5 @@ void SceneChangeLevel::Update()
 
 void SceneChangeLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
-
+	
 }

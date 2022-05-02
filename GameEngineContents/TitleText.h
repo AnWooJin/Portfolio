@@ -1,7 +1,7 @@
 #pragma once
 #include <GameEngine/GameEngineActor.h>
 
-enum TitleTextState
+enum class TitleTextState
 {
 	Text,
 	Prologue,
@@ -44,5 +44,8 @@ private:
 	void TextUpdate();
 	void PrologueUpdate();
 	void SceneChangerUpdate();
+
+	bool PlayOpenSound_;
+	bool PlayCloseSound_;
 };
 

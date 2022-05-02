@@ -19,6 +19,8 @@ protected:
 
 private:
 	GameEngineRenderer* MyRenderer_;
+	bool PlayOpenSound_;
+	bool PlayCloseSound_;
 
 	void Start() override;
 	void Update() override;

@@ -6,6 +6,8 @@
 
 TitleText::TitleText()
 	: MyRenderer_(nullptr),
+	  PlayOpenSound_(false),
+	  PlayCloseSound_(false),
 	CurState_(TitleTextState::Max)
 {
 }
@@ -32,16 +34,16 @@ void TitleText::ChangeState(TitleTextState _State)
 	}
 	switch (_State)
 	{
-	case Text:
+	case TitleTextState::Text:
 		TextStart();
 		break;
-	case Prologue:
+	case TitleTextState::Prologue:
 		PrologueStart();
 		break;
-	case SceneChagnger:
+	case TitleTextState::SceneChagnger:
 		SceneChangerStart();
 		break;
-	case Max:
+	case TitleTextState::Max:
 		break;
 	default:
 		break;
@@ -54,16 +56,16 @@ void TitleText::StateUpdate()
 {
 	switch (CurState_)
 	{
-	case Text:
+	case TitleTextState::Text:
 		TextUpdate();
 		break;
-	case Prologue:
+	case TitleTextState::Prologue:
 		PrologueUpdate();
 		break;
-	case SceneChagnger:
+	case TitleTextState::SceneChagnger:
 		SceneChangerUpdate();
 		break;
-	case Max:
+	case TitleTextState::Max:
 		break;
 	default:
 		break;

@@ -8,6 +8,7 @@
 #include "Thorn.h"
 #include "HellTakerGame.h"
 #include <GameEngineBase/GameEngineInput.h>
+#include <GameEngine/GameEngine.h>
 
 
 PlayLevel::PlayLevel()
@@ -39,6 +40,7 @@ void PlayLevel::Loading()
 	if (false == GameEngineInput::GetInst()->IsKey("DebugChange"))
 	{
 		GameEngineInput::GetInst()->CreateKey("DebugChange", 'i');
+		GameEngineInput::GetInst()->CreateKey("Reset", 'r');
 	}
 
 	Skulls_.reserve(8);
@@ -64,6 +66,10 @@ void PlayLevel::Update()
 	if (true == GameEngineInput::GetInst()->IsDown("DebugChange"))
 	{
 		IsDebugModeSwitch();
+	}
+	if (true == GameEngineInput::GetInst()->IsDown("Reset"))
+	{
+		GameEngine::GetInst().ChangeLevel("SceneChange");
 	}
 }
 

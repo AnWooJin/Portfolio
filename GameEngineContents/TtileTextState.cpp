@@ -50,8 +50,22 @@ void TitleText::PrologueUpdate()
 
 void TitleText::SceneChangerUpdate()
 {
+	if (false == PlayOpenSound_)
+	{
+		GameEngineSound::SoundPlayOneShot("SceneChangerOpen.wav");
+		PlayOpenSound_ = true;
+	}
+
+	if (false == PlayCloseSound_ && 21 == MyRenderer_->CurrentAnimation()->WorldCurrentFrame())
+	{
+		GameEngineSound::SoundPlayOneShot("SceneChangerClose.wav");
+		PlayCloseSound_ = true;
+	}
+
 	if (true == MyRenderer_->IsEndAnimation())
 	{
 		GameEngine::GetInst().ChangeLevel("Play");
+		PlayOpenSound_ = false;
+		PlayCloseSound_ = false;
 	}
 }
