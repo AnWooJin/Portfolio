@@ -35,6 +35,7 @@ void Player::VictoryStart()
 
 void Player::DeathStart()
 {
+	GameEngineSound::SoundPlayOneShot("Player_Death.wav");
 	BlackBackGround_ = CreateRenderer("BlackBG.bmp",4);
 	SetPosition({ GetPosition().x , GetPosition().y - 315.0f });
 	BlackBackGround_->SetPivot(GameEngineWindow::GetScale().Half() - GetPosition());
@@ -155,6 +156,7 @@ void Player::PlayerMove()
 			ChangeState(PlayerState::Attack);
 			return;
 		}
+		GameEngineSound::SoundPlayOneShot("Player_Move.wav");
 		CreateMoveEffect();
 		CameraCheck(NextPos);
 		KeyCheckTime_ = 0.1f;
