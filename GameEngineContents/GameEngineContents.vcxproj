@@ -251,6 +251,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SkullState.cpp" />
     <ClCompile Include="TalkBackGround.cpp">
       <SubType>
       </SubType>

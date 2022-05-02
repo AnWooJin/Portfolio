@@ -2,6 +2,14 @@
 #include <GameEngine/GameEngineActor.h>
 #include <GameEngine/GameEngineRenderer.h>
 
+
+enum class SkullState
+{
+	Idle,
+	Hit,
+	Max,
+};
+
 class Player;
 class Skull : public GameEngineActor
 {
@@ -25,13 +33,26 @@ private:
 	void Render() override {};
 
 	void SkullPush();
+	void SkullDeathCheck();
 
 	void CreateMoveEffect();
 	void CreateHitEffect();
 
+
+private:
+	void ChangeState(SkullState _State);
+	void StateUpdate();
+
+private:
+	void IdleStart();
+	void HitStart();
+	void IdleUpdate();
+	void HitUpdate();
+
 private:
 	GameEngineRenderer* MyRenderer_;
 	GameEngineCollision* MyCollision_;
+	SkullState CurState_;
 	Player* MyPlayer_;
 };
 

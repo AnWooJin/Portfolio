@@ -310,5 +310,8 @@
     <ClCompile Include="HitEffect.cpp">
       <Filter>Play</Filter>
     </ClCompile>
+    <ClCompile Include="SkullState.cpp">
+      <Filter>Play\PlayState</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -399,8 +399,13 @@ void HellTakerGame::GameImageCut()
 	}
 
 	{
-		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Skull_Nomal.bmp");
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Skull_Idle.bmp");
 		Image->Cut({ 60,62 });
+	}
+
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Skull_Hit.bmp");
+		Image->Cut({ 60,60 });
 	}
 
 	{

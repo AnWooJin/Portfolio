@@ -7,6 +7,10 @@
 #include <GameEngine/GameEngineCollision.h>
 
 Skull::Skull()
+	: MyRenderer_(nullptr)
+	, MyPlayer_(nullptr)
+	, CurState_(SkullState::Max)
+	, MyCollision_(nullptr)
 {
 }
 
@@ -17,10 +21,12 @@ Skull::~Skull()
 void Skull::Start()
 {
 	MyRenderer_ = CreateRenderer();
-	MyRenderer_->CreateAnimation("Skull_Nomal.bmp", "Skull_Nomal", 0, 11, 0.065f);
-	MyRenderer_->ChangeAnimation("Skull_Nomal");
+	MyRenderer_->CreateAnimation("Skull_Idle.bmp", "Skull_Idle", 0, 11, 0.065f);
+	MyRenderer_->CreateAnimation("Skull_Hit.bmp", "Skull_Hit", 0, 7, 0.05f, false);
+	MyRenderer_->ChangeAnimation("Skull_Idle");
 	MyCollision_ = CreateCollision("Skull", { 60,60});
 	MyPlayer_ = GetLevel()->FindActor<Player>("Player");
+	ChangeState(SkullState::Idle);
 }
 
 void Skull::Update()
@@ -33,61 +39,47 @@ void Skull::Update()
 	{
 		MyRenderer_->CameraEffectOff();
 	}
-	float4 CheckPos = MyPlayer_->GetPlayerMovePos();
-	CheckPos *= {-1.0f, -1.0f};
 
-	if (MyCollision_->CollisionCheck("Player"))
-	{
-		CreateMoveEffect();
-		CreateHitEffect();
-		SkullPush();
-	}
-}
-
-void Skull::CreateMoveEffect()
-{
-
-	GameEngineActor* Actor = GetLevel()->CreateActor<MoveEffect>(1, "Move");
-	Actor->SetPosition(GetPosition() + (float4::DOWN * 5.0f));
-	if (8 == dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount())
-	{
-		Actor->SetPosition(GetLevel()->GetCameraPos() + GetPosition() + (float4::DOWN * 5.0f));
-	}
-}
-
-void Skull::CreateHitEffect()
-{
-
-	GameEngineActor* Actor = GetLevel()->CreateActor<HitEffect>(1, "Hit");
-	Actor->SetPosition(GetPosition());
-	if (8 == dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount())
-	{
-		Actor->SetPosition(GetLevel()->GetCameraPos() + GetPosition());
-	}
+	StateUpdate();
 }
 
 
-void Skull::SkullPush()
+void Skull::ChangeState(SkullState _State)
 {
-	float4 PlayerPos = MyPlayer_->GetPosition();
-
-	if (GetPosition().x > PlayerPos.x)
+	if (CurState_ == _State)
 	{
-		SetMove(float4::RIGHT * 65);
+		return;
 	}
-	if (GetPosition().x < PlayerPos.x)
-	{
-		SetMove(float4::LEFT * 65);
-	}
-	if (GetPosition().y > PlayerPos.y)
-	{
-		SetMove(float4::DOWN * 65);
-	}
-	if (GetPosition().y < PlayerPos.y)
-	{
-		SetMove(float4::UP * 65);
-	}
+	CurState_ = _State;
 
+	switch (CurState_)
+	{
+	case SkullState::Idle:
+		IdleStart();
+		break;
+	case SkullState::Hit:
+		HitStart();
+		break;
+	case SkullState::Max:
+		break;
+	default:
+		break;
+	}
+}
 
-
+void Skull::StateUpdate()
+{
+	switch (CurState_)
+	{
+	case SkullState::Idle:
+		IdleUpdate();
+		break;
+	case SkullState::Hit:
+		HitUpdate();
+		break;
+	case SkullState::Max:
+		break;
+	default:
+		break;
+	}
 }

@@ -78,6 +78,11 @@ bool GameEngineCollision::CollisionCheck(
 			continue;
 		}
 
+		/*if (this == *StartIter)
+		{
+			continue;
+		}*/
+
 		if (CollisionCheckArray[static_cast<int>(_This)][static_cast<int>(_Target)](this, *StartIter))
 		{
 			return true;
