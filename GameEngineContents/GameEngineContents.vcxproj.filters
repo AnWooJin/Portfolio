@@ -160,6 +160,9 @@
     <ClInclude Include="MoveEffect.h">
       <Filter>Play</Filter>
     </ClInclude>
+    <ClInclude Include="HitEffect.h">
+      <Filter>Play</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HellTakerGame.cpp" />
@@ -302,6 +305,9 @@
       <Filter>Play</Filter>
     </ClCompile>
     <ClCompile Include="MoveEffect.cpp">
+      <Filter>Play</Filter>
+    </ClCompile>
+    <ClCompile Include="HitEffect.cpp">
       <Filter>Play</Filter>
     </ClCompile>
   </ItemGroup>

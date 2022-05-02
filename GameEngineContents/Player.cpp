@@ -12,6 +12,7 @@ Player::Player()
 	: MyRenderer_(nullptr)
 	, BlackBackGround_(nullptr)
 	, ColMapImage_(nullptr)
+	, MovePos_(float4::ZERO)
 	, KeyCheckTime_(0.15f)
 	, Time_(0.3f)
 	, IsKeyOn_(false)
@@ -48,8 +49,8 @@ void Player::Start()
 		MyRenderer_->CreateAnimation("Player_Idle_Left.bmp", "Player_Idle_Left", 0, 10, 0.075f);
 		MyRenderer_->CreateAnimation("Player_Move_Right.bmp", "Player_Move_Right", 0, 5, 0.075f,false);
 		MyRenderer_->CreateAnimation("Player_Move_Left.bmp", "Player_Move_Left", 0, 5, 0.075f, false);
-		MyRenderer_->CreateAnimation("Player_Kick_Left.bmp", "Player_Kick_Left", 0, 8, 0.15f);
-		MyRenderer_->CreateAnimation("Player_Kick_Right.bmp", "Player_Kick_Right", 0, 8, 0.15f);
+		MyRenderer_->CreateAnimation("Player_Kick_Left.bmp", "Player_Attack_Left", 0, 8, 0.05f);
+		MyRenderer_->CreateAnimation("Player_Kick_Right.bmp", "Player_Attack_Right", 0, 8, 0.05f);
 		MyRenderer_->CreateAnimation("Player_Victory.bmp", "Player_Victory_Left", 0, 18, 0.1f);
 		MyRenderer_->CreateAnimation("Player_Death.bmp", "Player_Death", 0, 17, 0.1f);
 		MyRenderer_->ChangeAnimation("Player_Idle_Right");
@@ -65,6 +66,7 @@ void Player::Start()
 		GameEngineInput::GetInst()->CreateKey("MoveDown", 'S');
 		GameEngineInput::GetInst()->CreateKey("Die", 'K');
 	}
+	MyCollision_ = CreateCollision("Player", { 60,60 });
 	ChangeState(PlayerState::Idle);
 	LevelRegist("Player");
 }

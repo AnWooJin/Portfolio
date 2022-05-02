@@ -39,7 +39,7 @@ void HellTakerGame::GameInit()
 	CreateLevel<SceneChangeLevel>("SceneChange");
 	CreateLevel<Talk_Chapter8Level>("Talk_Chapter8");
 	CreateLevel<EndingLevel>("Ending");
-	ChangeLevel("Opening");
+	ChangeLevel("Play");
 }
 
 void HellTakerGame::GameLoop()
@@ -381,6 +381,11 @@ void HellTakerGame::GameImageCut()
 	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Move_Right.bmp");
 		Image->Cut({ 64, 64 });
+	}
+
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("HitEffect.bmp");
+		Image->Cut({ 100, 100 });
 	}
 
 	{

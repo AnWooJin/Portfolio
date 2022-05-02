@@ -7,6 +7,7 @@
 #include "BackGroundMap.h"
 #include "Thorn.h"
 #include "HellTakerGame.h"
+#include <GameEngineBase/GameEngineInput.h>
 
 
 PlayLevel::PlayLevel()
@@ -34,6 +35,12 @@ void PlayLevel::Loading()
 		MyMap_ = CreateActor<BackGroundMap>(static_cast<int>(PlayOrder::BackGround));
 		CreateActor<SideUI>(static_cast<int>(PlayOrder::UI));
 	}
+
+	if (false == GameEngineInput::GetInst()->IsKey("DebugChange"))
+	{
+		GameEngineInput::GetInst()->CreateKey("DebugChange", 'i');
+	}
+
 	Skulls_.reserve(8);
 	for (size_t i = 0; i < 8; i++)
 	{
@@ -54,7 +61,10 @@ void PlayLevel::Loading()
 
 void PlayLevel::Update()
 {
-	
+	if (true == GameEngineInput::GetInst()->IsDown("DebugChange"))
+	{
+		IsDebugModeSwitch();
+	}
 }
 
 void PlayLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)

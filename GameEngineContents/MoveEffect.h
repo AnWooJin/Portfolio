@@ -13,7 +13,6 @@ public:
 	MoveEffect& operator=(const MoveEffect& _Other) = delete;
 	MoveEffect& operator=(MoveEffect&& _Other) noexcept = delete;
 
-	float Time_;
 protected:
 
 private:

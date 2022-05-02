@@ -13,6 +13,7 @@ enum class PlayerState
 
 
 class GameEngineImage;
+class GameEngineCollision;
 class Player : public GameEngineActor
 {
 public:
@@ -39,6 +40,11 @@ public:
 		return CurState_ == PlayerState::Death;
 	}
 
+	const float4 GetPlayerMovePos() const
+	{
+		return MovePos_;
+	}
+
 protected:
 
 private:
@@ -59,10 +65,12 @@ private:
 private:
 	GameEngineRenderer* MyRenderer_;
 	GameEngineRenderer* BlackBackGround_;
+	GameEngineCollision* MyCollision_;
 	GameEngineImage* ColMapImage_;
 	PlayerState CurState_;
 	std::string dir_;
 	std::string State_;
+	float4 MovePos_;
 	float KeyCheckTime_;
 	float Time_;
 	int MoveCount_;

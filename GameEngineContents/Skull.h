@@ -2,6 +2,7 @@
 #include <GameEngine/GameEngineActor.h>
 #include <GameEngine/GameEngineRenderer.h>
 
+class Player;
 class Skull : public GameEngineActor
 {
 public:
@@ -23,7 +24,14 @@ private:
 	void Update() override;
 	void Render() override {};
 
+	void SkullPush();
+
+	void CreateMoveEffect();
+	void CreateHitEffect();
+
 private:
 	GameEngineRenderer* MyRenderer_;
+	GameEngineCollision* MyCollision_;
+	Player* MyPlayer_;
 };
 

@@ -4,6 +4,8 @@
 #include <GameEngine/GameEngine.h>
 #include <GameEngineBase/GameEngineWindow.h>
 #include <GameEngine/GameEngineImageManager.h>
+#include <GameEngineBase/GameEngineSound.h>
+#include <GameEngine/GameEngineCollision.h>
 #include <GameEngine/GameEngineImage.h>
 #include <GameEngine/GameEngineRenderer.h>
 #include <GameEngineBase/GameEngineInput.h>
@@ -57,6 +59,10 @@ void Player::IdleUpdate()
 
 void Player::MoveUpdate()
 {
+	if (false == IsMoveKey())
+	{
+		ChangeState(PlayerState::Idle);
+	}
 	if (true == IsMoveKey())
 	{
 		if (MoveCount_ == 0)
@@ -66,15 +72,15 @@ void Player::MoveUpdate()
 		}
 		PlayerMove();
 	}	
-	if (false == IsMoveKey())
-	{
-		ChangeState(PlayerState::Idle);
-	}
+
 }
 
 void Player::AttackUpdate()
 {
-
+	if (true == MyRenderer_->IsEndAnimation())
+	{
+		ChangeState(PlayerState::Idle);
+	}
 }
 
 void Player::VictoryUpdate()
@@ -99,11 +105,13 @@ void Player::PlayerMove()
 		return;
 	}
 	float4 NextPos = GetPosition();
+	float4 MovePos = float4::ZERO;
 
 	if (true == GameEngineInput::GetInst()->IsPress("MoveLeft"))
 	{
 		dir_ = "_Left";
 		NextPos += float4::LEFT * 66;
+		MovePos = float4::LEFT * 66;
 		IsKeyOn_ = false;
 	}
 
@@ -111,22 +119,27 @@ void Player::PlayerMove()
 	{
 		dir_ = "_Right";
 		NextPos += float4::RIGHT * 66;
+		MovePos = float4::RIGHT * 66;
 		IsKeyOn_ = false;
 	}
 
 	else if (true == GameEngineInput::GetInst()->IsPress("MoveUp"))
 	{
 		NextPos += float4::UP * 65;
+		MovePos = float4::UP * 65;
 		IsKeyOn_ = false;
 	}
 
 	else if (true == GameEngineInput::GetInst()->IsPress("MoveDown"))
 	{
 		NextPos += float4::DOWN * 65;
+		MovePos = float4::DOWN * 65;
 		IsKeyOn_ = false;
 	}
 	
 	int Color = ColMapImage_->GetImagePixel(NextPos + GetLevel()->GetCameraPos());
+
+
 	if (RGB(0, 0, 255) == Color)
 	{
 		GameEngine::GetInst().ChangeLevel("Talk");
@@ -135,9 +148,16 @@ void Player::PlayerMove()
 	{
 		ChangeAnimation();
 		--MoveCount_;
+		if(MyCollision_->NextPosCollisionCheck("Skull", MovePos))
+		{
+			GameEngineSound::SoundPlayOneShot("Skull_kick_.wav");
+			MovePos_ = MovePos;
+			ChangeState(PlayerState::Attack);
+			return;
+		}
 		CreateMoveEffect();
 		CameraCheck(NextPos);
-		KeyCheckTime_ = 0.3f;
+		KeyCheckTime_ = 0.1f;
 	}
 	else
 	{

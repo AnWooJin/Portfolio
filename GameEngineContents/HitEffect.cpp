@@ -1,29 +1,28 @@
-#include "MoveEffect.h"
+#include "HitEffect.h"
 #include "HellTakerGame.h"
 #include <GameEngine/GameEngineRenderer.h>
 
-MoveEffect::MoveEffect()
+HitEffect::HitEffect()
 {
 }
 
-MoveEffect::~MoveEffect()
+HitEffect::~HitEffect()
 {
 }
 
-void MoveEffect::Start()
+void HitEffect::Start()
 {
 	GameEngineRenderer* Render = CreateRenderer();
 	if (8 == dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount())
 	{
 		Render->CameraEffectOn();
 	}
-	Render->CreateAnimation("Move_Right.bmp", "Move_Right", 0, 2, 0.1f, false);
-	Render->ChangeAnimation("Move_Right");
-	Render->SetAlpha(160);
+	Render->CreateAnimation("HitEffect.bmp", "HitEffect", 0, 2, 0.15f, false);
+	Render->ChangeAnimation("HitEffect");
 	Death(0.3f);
 }
 
-void MoveEffect::Update()
+void HitEffect::Update()
 {
 
 }
