@@ -26,3 +26,8 @@ void HitEffect::Update()
 {
 
 }
+
+void HitEffect::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	Death();
+}

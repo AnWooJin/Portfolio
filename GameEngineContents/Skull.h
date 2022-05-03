@@ -31,9 +31,11 @@ private:
 	void Start() override;
 	void Update() override;
 	void Render() override {};
+	void LevelChangeStart(GameEngineLevel* PrevLevel) override;
 
 	void SkullPush();
-	void SkullDeathCheck();
+	void SkullDeathCheck(float4 _MovePos);
+	void SetColImage(int _Chapter);
 
 	void CreateMoveEffect();
 	void CreateHitEffect();
@@ -52,6 +54,7 @@ private:
 private:
 	GameEngineRenderer* MyRenderer_;
 	GameEngineCollision* MyCollision_;
+	GameEngineImage* ColMapImage_;
 	SkullState CurState_;
 	Player* MyPlayer_;
 };

@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "HellTakerGame.h"
 #include "MoveEffect.h"
+#include "HitEffect.h"
 #include <GameEngine/GameEngine.h>
 #include <GameEngineBase/GameEngineWindow.h>
 #include <GameEngine/GameEngineImageManager.h>
@@ -43,6 +44,16 @@ void Player::DeathStart()
 
 void Player::IdleUpdate()
 {
+	if (true == dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetIsSuccess())
+	{
+		ChangeState(PlayerState::Victory);
+		return;
+	}
+	int Color = ColMapImage_->GetImagePixel(GetPosition() + GetLevel()->GetCameraPos());
+	if (RGB(0, 0, 255) == Color)
+	{
+		GameEngine::GetInst().ChangeLevel("Talk");
+	}
 	if (true == IsMoveKey() && true == IsKeyOn_)
 	{
 		ChangeState(PlayerState::Move);
@@ -52,10 +63,7 @@ void Player::IdleUpdate()
 		GameEngine::GetInst().ChangeLevel("SceneChange");
 	}
 
-	if (true == dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetIsSuccess())
-	{
-		ChangeState(PlayerState::Victory);
-	}
+
 }
 
 void Player::MoveUpdate()
@@ -66,7 +74,7 @@ void Player::MoveUpdate()
 	}
 	if (true == IsMoveKey())
 	{
-		if (MoveCount_ == 0)
+		if (MoveCount_ < 0)
 		{
 			ChangeState(PlayerState::Death);
 			return;
@@ -101,6 +109,10 @@ void Player::DeathUpdate()
 
 void Player::PlayerMove()
 {
+	if (MyCollision_->NextPosCollisionCheck("Block",{0,0}))
+	{
+		int a = 0;
+	}
 	if (Time_ >= 0.0f)
 	{
 		return;
@@ -140,11 +152,6 @@ void Player::PlayerMove()
 	
 	int Color = ColMapImage_->GetImagePixel(NextPos + GetLevel()->GetCameraPos());
 
-
-	if (RGB(0, 0, 255) == Color)
-	{
-		GameEngine::GetInst().ChangeLevel("Talk");
-	}
 	if (RGB(0, 0, 0) != Color)
 	{
 		ChangeAnimation();
@@ -156,6 +163,16 @@ void Player::PlayerMove()
 			ChangeState(PlayerState::Attack);
 			return;
 		}
+
+		if (MyCollision_->NextPosCollisionCheck("Block", MovePos))
+		{
+			GameEngineSound::SoundPlayOneShot("Skull_kick_.wav");
+			CreateHitEffect(MovePos);
+			MovePos_ = MovePos;
+			ChangeState(PlayerState::Attack);
+			return;
+		}
+
 		GameEngineSound::SoundPlayOneShot("Player_Move.wav");
 		CreateMoveEffect();
 		CameraCheck(NextPos);
@@ -176,6 +193,17 @@ void Player::CreateMoveEffect()
 	if (8 == dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount())
 	{
 		Actor->SetPosition(GetLevel()->GetCameraPos() + GetPosition() + (float4::DOWN * 5.0f));
+	}
+}
+
+void Player::CreateHitEffect(float4 _Pos)
+{
+
+	GameEngineActor* Actor = GetLevel()->CreateActor<HitEffect>(6, "Hit");
+	Actor->SetPosition(GetPosition() + _Pos);
+	if (8 == dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount())
+	{
+		Actor->SetPosition(GetLevel()->GetCameraPos() + GetPosition());
 	}
 }
 

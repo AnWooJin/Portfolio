@@ -19,5 +19,7 @@ private:
 	void Start() override;
 	void Update() override;
 	void Render() override {};
+
+	void LevelChangeStart(GameEngineLevel* _PrevLevel);
 };
 

@@ -105,7 +105,10 @@ void PlayLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void PlayLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
-	ActorOff();
+	if (true == dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetIsSuccess())
+	{
+		ActorOff();
+	}
 	if (nullptr != MyDevil_)
 	{
 		MyDevil_->Death();

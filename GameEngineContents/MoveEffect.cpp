@@ -27,3 +27,8 @@ void MoveEffect::Update()
 {
 
 }
+
+void MoveEffect::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	Death();
+}

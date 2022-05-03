@@ -56,6 +56,7 @@ private:
 	void ChangeState(PlayerState _State);
 	void StateUpdate();
 	void CreateMoveEffect();
+	void CreateHitEffect(float4 _Pos);
 	void ChangeAnimation();
 
 	bool IsMoveKey();

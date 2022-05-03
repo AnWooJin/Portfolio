@@ -5,10 +5,12 @@
 #include "Player.h"
 #include <GameEngine/GameEngine.h>
 #include <GameEngine/GameEngineCollision.h>
+#include <GameEngine/GameEngineImageManager.h>
 
 Skull::Skull()
 	: MyRenderer_(nullptr)
 	, MyPlayer_(nullptr)
+	, ColMapImage_(nullptr)
 	, CurState_(SkullState::Max)
 	, MyCollision_(nullptr)
 {
@@ -82,4 +84,48 @@ void Skull::StateUpdate()
 	default:
 		break;
 	}
+}
+
+
+void Skull::SetColImage(int _Chapter)
+{
+	switch (_Chapter)
+	{
+	case 1:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter1_ColMap.bmp");
+		break;
+	case 2:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter2_ColMap.bmp");
+		break;
+	case 3:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter3_ColMap.bmp");
+		break;
+	case 4:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter4_ColMap.bmp");
+		break;
+	case 5:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter5_ColMap.bmp");
+		break;
+	case 6:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter6_ColMap.bmp");
+		break;
+	case 7:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter7_ColMap.bmp");
+		break;
+	case 8:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter8_ColMap.bmp");
+		break;
+	case 9:
+		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter9_ColMap.bmp");
+		break;
+	default:
+		break;
+	}
+}
+
+void Skull::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	int Chapter = dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount();
+	SetColImage(Chapter);
+	ChangeState(SkullState::Idle);
 }
