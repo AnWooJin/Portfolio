@@ -264,13 +264,13 @@ void PlayLevel::Block_Chapter2Set()
 {
 	Blocks_[0]->On();
 	Blocks_[0]->BlockRender_->SetIndex(1);
-	Blocks_[0]->SetPosition({ 710, 315 + 10 });
+	Blocks_[0]->SetPosition({ 440 + 66 * 4, 315 + 10 });
 	Blocks_[1]->On();
 	Blocks_[1]->BlockRender_->SetIndex(3);
-	Blocks_[1]->SetPosition({ 775, 315 + 10 });
+	Blocks_[1]->SetPosition({ 440 + 66 * 5, 315 + 10 });
 	Blocks_[2]->On();
 	Blocks_[2]->BlockRender_->SetIndex(5);
-	Blocks_[2]->SetPosition({ 840, 315 + 10 });
+	Blocks_[2]->SetPosition({ 440 + 66 * 6, 315 + 10 });
 }
 
 void PlayLevel::Block_Chapter3Set()
@@ -281,112 +281,112 @@ void PlayLevel::Block_Chapter4Set()
 {
 	Blocks_[0]->On();
 	Blocks_[0]->BlockRender_->SetIndex(6);
-	Blocks_[0]->SetPosition({ 670, 212 + 10 });
+	Blocks_[0]->SetPosition({ 405 + 66 * 4, 212 + 10 });
 	Blocks_[1]->On();
 	Blocks_[1]->BlockRender_->SetIndex(1);
-	Blocks_[1]->SetPosition({ 605, 278 + 10 });
+	Blocks_[1]->SetPosition({ 405 + 66, 278 + 10 });
 	Blocks_[2]->On();
 	Blocks_[2]->BlockRender_->SetIndex(5);
-	Blocks_[2]->SetPosition({ 475, 278 + 10 });
+	Blocks_[2]->SetPosition({ 405 + 66 * 3, 278 + 10 });
 	Blocks_[3]->On();
 	Blocks_[3]->BlockRender_->SetIndex(7);
-	Blocks_[3]->SetPosition({ 410, 344 + 10 });
+	Blocks_[3]->SetPosition({ 405, 344 + 10 });
 	Blocks_[4]->On();
 	Blocks_[4]->BlockRender_->SetIndex(4);
-	Blocks_[4]->SetPosition({ 540, 344 + 10 });
+	Blocks_[4]->SetPosition({ 405 + 66 * 2, 344 + 10 });
 	Blocks_[5]->On();
 	Blocks_[5]->BlockRender_->SetIndex(0);
-	Blocks_[5]->SetPosition({ 670, 344 + 10 });
+	Blocks_[5]->SetPosition({ 405 + 66 * 4, 344 + 10 });
 	Blocks_[6]->On();
 	Blocks_[6]->BlockRender_->SetIndex(5);
-	Blocks_[6]->SetPosition({ 735, 344 + 10 });
+	Blocks_[6]->SetPosition({ 405 + 66 * 5, 344 + 10 });
 	Blocks_[7]->On();
 	Blocks_[7]->BlockRender_->SetIndex(6);
-	Blocks_[7]->SetPosition({ 475, 410 + 10 });
+	Blocks_[7]->SetPosition({ 405 + 66, 410 + 10 });
 	Blocks_[8]->On();
 	Blocks_[8]->BlockRender_->SetIndex(2);
-	Blocks_[8]->SetPosition({ 605, 410 + 10 });
+	Blocks_[8]->SetPosition({ 405 + 66 * 3, 410 + 10 });
 	Blocks_[9]->On();
 	Blocks_[9]->BlockRender_->SetIndex(1);
-	Blocks_[9]->SetPosition({ 735, 410 + 10 });
+	Blocks_[9]->SetPosition({ 405 + 66 * 5, 410 + 10 });
 	Blocks_[10]->On();
 	Blocks_[10]->BlockRender_->SetIndex(9);
-	Blocks_[10]->SetPosition({ 800, 410 + 10 });
+	Blocks_[10]->SetPosition({ 405 + 66 * 6, 410 + 10 });
 	Blocks_[11]->On();
 	Blocks_[11]->BlockRender_->SetIndex(3);
-	Blocks_[11]->SetPosition({ 540, 476 + 10 });
+	Blocks_[11]->SetPosition({ 405 + 66 * 2, 476 + 10 });
 	Blocks_[12]->On();
 	Blocks_[12]->BlockRender_->SetIndex(7);
-	Blocks_[12]->SetPosition({ 670, 476 + 10 });
+	Blocks_[12]->SetPosition({ 405 + 66 * 4, 476 + 10 });
 }
 
 void PlayLevel::Block_Chapter5Set()
 {
 	Blocks_[0]->On();
-	Blocks_[0]->BlockRender_->SetIndex(9);
-	Blocks_[0]->SetPosition({ 740, 208 + 10 });
+	Blocks_[0]->BlockRender_->SetIndex(10);
+	Blocks_[0]->SetPosition({ 475 + 66 *4, 208 + 10 });
 	Blocks_[1]->On();
 	Blocks_[1]->BlockRender_->SetIndex(1);
-	Blocks_[1]->SetPosition({ 740, 274 + 10 });
+	Blocks_[1]->SetPosition({ 475 + 66 * 4, 274 + 10 });
 	Blocks_[2]->On();
 	Blocks_[2]->BlockRender_->SetIndex(5);
-	Blocks_[2]->SetPosition({ 610, 406 + 10 });
+	Blocks_[2]->SetPosition({ 475 + 66 * 2, 406 + 10 });
 	Blocks_[3]->On();
 	Blocks_[3]->BlockRender_->SetIndex(3);
-	Blocks_[3]->SetPosition({ 675, 406 + 10 });
+	Blocks_[3]->SetPosition({ 475 + 66 * 3, 406 + 10 });
 	Blocks_[4]->On();
 	Blocks_[4]->BlockRender_->SetIndex(7);
-	Blocks_[4]->SetPosition({ 740, 406 + 10 });
+	Blocks_[4]->SetPosition({ 475 + 66 * 4, 406 + 10 });
 	Blocks_[5]->On();
 	Blocks_[5]->BlockRender_->SetIndex(0);
-	Blocks_[5]->SetPosition({ 805, 406 + 10 });
+	Blocks_[5]->SetPosition({ 475 + 66 * 5, 406 + 10 });
 }
 
 void PlayLevel::Block_Chapter6Set()
 {
 	Blocks_[0]->On();
 	Blocks_[0]->BlockRender_->SetIndex(4);
-	Blocks_[0]->SetPosition({ 510, 180 + 10 });
+	Blocks_[0]->SetPosition({ 575 - 66, 180 + 10 });
 	Blocks_[1]->On();
 	Blocks_[1]->BlockRender_->SetIndex(3);
 	Blocks_[1]->SetPosition({ 575, 180 + 10 });
 	Blocks_[2]->On();
 	Blocks_[2]->BlockRender_->SetIndex(2);
-	Blocks_[2]->SetPosition({ 640, 180 + 10 });
+	Blocks_[2]->SetPosition({ 575 + 66, 180 + 10 });
 	Blocks_[3]->On();
 	Blocks_[3]->BlockRender_->SetIndex(1);
 	Blocks_[3]->SetPosition({ 575, 312 + 10 });
 	Blocks_[4]->On();
 	Blocks_[4]->BlockRender_->SetIndex(0);
-	Blocks_[4]->SetPosition({ 640, 378 + 10 });
+	Blocks_[4]->SetPosition({ 575 + 66, 378 + 10 });
 	Blocks_[5]->On();
 	Blocks_[5]->BlockRender_->SetIndex(7);
-	Blocks_[5]->SetPosition({ 705, 378 + 10 });
+	Blocks_[5]->SetPosition({ 575 + 66 * 2, 378 + 10 });
 	Blocks_[6]->On();
 	Blocks_[6]->BlockRender_->SetIndex(6);
-	Blocks_[6]->SetPosition({ 640, 444 + 10 });
+	Blocks_[6]->SetPosition({ 575 + 66, 444 + 10 });
 	Blocks_[7]->On();
 	Blocks_[7]->BlockRender_->SetIndex(8);
-	Blocks_[7]->SetPosition({ 770, 510 + 10 });
+	Blocks_[7]->SetPosition({ 575 + 66 * 3, 510 + 10 });
 }
 
 void PlayLevel::Block_Chapter7Set()
 {
 	Blocks_[0]->On();
 	Blocks_[0]->BlockRender_->SetIndex(7);
-	Blocks_[0]->SetPosition({ 675, 272 + 10 });
+	Blocks_[0]->SetPosition({ 805 - 66 * 2, 272 + 10 });
 	Blocks_[1]->On();
 	Blocks_[1]->BlockRender_->SetIndex(3);
-	Blocks_[1]->SetPosition({ 740, 272 + 10 });
+	Blocks_[1]->SetPosition({ 805 - 66, 272 + 10 });
 	Blocks_[2]->On();
 	Blocks_[2]->BlockRender_->SetIndex(5);
 	Blocks_[2]->SetPosition({ 805, 272 + 10 });
 	Blocks_[3]->On();
 	Blocks_[3]->BlockRender_->SetIndex(4);
-	Blocks_[3]->SetPosition({ 540, 338 + 10 });
+	Blocks_[3]->SetPosition({ 805 - 66 * 4, 338 + 10 });
 	Blocks_[4]->On();
 	Blocks_[4]->BlockRender_->SetIndex(0);
-	Blocks_[4]->SetPosition({ 740, 338 + 10 });
+	Blocks_[4]->SetPosition({ 805 - 66, 338 + 10 });
 }
 
 void PlayLevel::Block_Chapter8Set()
@@ -409,9 +409,9 @@ void PlayLevel::SKull_Chapter1Set()
 
 void PlayLevel::SKull_Chapter2Set()
 {
-	Skulls_[0]->SetPosition({ 510, 249 });
-	Skulls_[1]->SetPosition({ 775, 437 });
-	Skulls_[2]->SetPosition({ 840, 503 });
+	Skulls_[0]->SetPosition({ 440 + 66, 249 });
+	Skulls_[1]->SetPosition({ 440 + 66 * 5, 437 });
+	Skulls_[2]->SetPosition({ 440 + 66 * 6, 503 });
 	Skulls_[0]->On();
 	Skulls_[1]->On();
 	Skulls_[2]->On();
@@ -419,8 +419,8 @@ void PlayLevel::SKull_Chapter2Set()
 
 void PlayLevel::SKull_Chapter3Set()
 {
-	Skulls_[0]->SetPosition({ 670, 406 });
-	Skulls_[1]->SetPosition({ 735, 538 });
+	Skulls_[0]->SetPosition({ 870 - 66 * 3, 406 });
+	Skulls_[1]->SetPosition({ 870 - 66 * 2, 538 });
 	Skulls_[0]->On();
 	Skulls_[1]->On();
 }
@@ -438,19 +438,19 @@ void PlayLevel::SKull_Chapter5Set()
 
 void PlayLevel::SKull_Chapter6Set()
 {
-	Skulls_[0]->SetPosition({ 510, 378 });
+	Skulls_[0]->SetPosition({ 575 - 66, 378 });
 	Skulls_[0]->On();
-	Skulls_[1]->SetPosition({ 770, 444 });
+	Skulls_[1]->SetPosition({ 575 + 66 * 3, 444 });
 	Skulls_[1]->On();
 }
 
 void PlayLevel::SKull_Chapter7Set()
 {
-	Skulls_[0]->SetPosition({ 670, 340 });
+	Skulls_[0]->SetPosition({ 805 - 66 * 2, 340 });
 	Skulls_[0]->On();
-	Skulls_[1]->SetPosition({ 475, 340 });
+	Skulls_[1]->SetPosition({ 805 - 66 * 5, 340 });
 	Skulls_[1]->On();
-	Skulls_[2]->SetPosition({ 605, 406 });
+	Skulls_[2]->SetPosition({ 805 - 66 * 3, 406 });
 	Skulls_[2]->On();
 }
 

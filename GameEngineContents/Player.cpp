@@ -4,6 +4,7 @@
 #include <GameEngineBase/GameEngineWindow.h>
 #include <GameEngine/GameEngineImageManager.h>
 #include <GameEngine/GameEngineImage.h>
+#include <GameEngine/GameEngineCollision.h>
 #include <GameEngine/GameEngineRenderer.h>
 #include <GameEngineBase/GameEngineInput.h>
 #include <GameEngineBase/GameEngineTime.h>
@@ -66,7 +67,9 @@ void Player::Start()
 		GameEngineInput::GetInst()->CreateKey("MoveDown", 'S');
 		GameEngineInput::GetInst()->CreateKey("Die", 'K');
 	}
-	MyCollision_ = CreateCollision("Player", { 60,60 });
+	MyCollision_ = CreateCollision("Player", {30,30 });
+	MyCollision_->CameraEffectOn();
+	MyRenderer_->CameraEffectOn();
 	ChangeState(PlayerState::Idle);
 	LevelRegist("Player");
 }
@@ -204,7 +207,7 @@ void Player::PlayerSetting(int _Chapter)
 		MoveCount_ = 32;
 		break;
 	case 8:
-		SetPosition({ 640,522 });
+		SetPosition({ 640,1140 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter8_ColMap.bmp");
 		MoveCount_ = 12;
 		break;

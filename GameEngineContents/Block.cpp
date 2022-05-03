@@ -67,11 +67,11 @@ void Block::BlockPush()
 
 	if (GetPosition().x > PlayerPos.x)
 	{
-		MovePos = float4::RIGHT * 65;
+		MovePos = float4::RIGHT * 66;
 	}
 	else if (GetPosition().x < PlayerPos.x)
 	{
-		MovePos = float4::LEFT * 65;
+		MovePos = float4::LEFT * 66;
 	}
 	else if (GetPosition().y > PlayerPos.y)
 	{
@@ -102,7 +102,6 @@ void Block::BlockMoveCheck(float4 _MovePos)
 	if (MyCollision_->CollisionCheck("Block"))
 	{
 		SetMove(_MovePos);
-		CreateHitEffect();
 		return;
 	}
 

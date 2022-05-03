@@ -67,7 +67,7 @@ void BackGroundMap::MapSetting(int _Level)
 	{
 		SetPosition({ 640,666 });
 		MapRenderer_->CameraEffectOn();
-		MapRenderer_->SetImage("Chapter8_ColMap.bmp");
+		MapRenderer_->SetImage("Chapter8_Map.bmp");
 		break;
 	}
 	case 9:

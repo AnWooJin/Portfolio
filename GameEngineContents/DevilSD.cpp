@@ -201,6 +201,7 @@ void DevilSD::ImageSetting(int _ChapterLevel)
 
 		{
 			GameEngineRenderer* Renderer_ = CreateRenderer("LoveSign.bmp");
+			Renderer_->CameraEffectOn();
 			Renderer_->CreateAnimation("LoveSign.bmp", "LoveSign", 0, 3, 0.1f);
 			Renderer_->ChangeAnimation("LoveSign");
 			Renderer_->SetPivot({ -30, -20 });

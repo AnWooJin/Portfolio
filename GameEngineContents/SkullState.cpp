@@ -70,19 +70,19 @@ void Skull::SkullPush()
 	float4 PlayerPos = MyPlayer_->GetPosition();
 	float4 MovePos = float4::ZERO;
 
-	if (GetPosition().x > PlayerPos.x)
+	if (GetPosition().x + GetLevel()->GetCameraPos().x > PlayerPos.x)
 	{
-		MovePos = float4::RIGHT * 65;
+		MovePos = float4::RIGHT * 66;
 	}
-	if (GetPosition().x < PlayerPos.x)
+	else if (GetPosition().x < PlayerPos.x)
 	{
-		MovePos = float4::LEFT * 65;
+		MovePos = float4::LEFT * 66;
 	}
-	if (GetPosition().y > PlayerPos.y)
+	else if (GetPosition().y > PlayerPos.y)
 	{
 		MovePos = float4::DOWN * 65;
 	}
-	if (GetPosition().y < PlayerPos.y)
+	else if (GetPosition().y < PlayerPos.y)
 	{
 		MovePos = float4::UP * 65;
 	}
@@ -94,7 +94,7 @@ void Skull::SkullPush()
 
 void Skull::SkullDeathCheck(float4 _MovePos)
 {
-	int Color = ColMapImage_->GetImagePixel(GetPosition() + _MovePos + GetLevel()->GetCameraPos());
+	int Color = ColMapImage_->GetImagePixel(GetPosition() + _MovePos);
 	if (Color == RGB(0, 0, 0))
 	{
 		GameEngineSound::SoundPlayOneShot("Skull_die.wav");

@@ -49,6 +49,11 @@ void Player::IdleUpdate()
 		ChangeState(PlayerState::Victory);
 		return;
 	}
+	else if (MoveCount_ == 0 && true == IsMoveKey())
+	{
+		ChangeState(PlayerState::Death);
+		return;
+	}
 	int Color = ColMapImage_->GetImagePixel(GetPosition() + GetLevel()->GetCameraPos());
 	if (RGB(0, 0, 255) == Color)
 	{
@@ -74,11 +79,6 @@ void Player::MoveUpdate()
 	}
 	if (true == IsMoveKey())
 	{
-		if (MoveCount_ < 0)
-		{
-			ChangeState(PlayerState::Death);
-			return;
-		}
 		PlayerMove();
 	}	
 
@@ -150,7 +150,7 @@ void Player::PlayerMove()
 		IsKeyOn_ = false;
 	}
 	
-	int Color = ColMapImage_->GetImagePixel(NextPos + GetLevel()->GetCameraPos());
+	int Color = ColMapImage_->GetImagePixel(NextPos);
 
 	if (RGB(0, 0, 0) != Color)
 	{
@@ -255,5 +255,6 @@ void Player::Chapter8CameraCheck(float4 _Pos)
 	else
 	{
 		GetLevel()->MoveCameraPos(_Pos - GetPosition());
+		SetPosition(_Pos);
 	}
 }
