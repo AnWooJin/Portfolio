@@ -78,10 +78,10 @@ bool GameEngineCollision::CollisionCheck(
 			continue;
 		}
 
-		/*if (this == *StartIter)
+		if ((*StartIter) == this)
 		{
 			continue;
-		}*/
+		}
 
 		if (CollisionCheckArray[static_cast<int>(_This)][static_cast<int>(_Target)](this, *StartIter))
 		{
@@ -127,6 +127,12 @@ bool GameEngineCollision::NextPosCollisionCheck(
 		{
 			continue;
 		}
+
+		if ((*StartIter) == this)
+		{
+			continue;
+		}
+
 
 		if (CollisionCheckArray[static_cast<int>(_This)][static_cast<int>(_Target)](this, *StartIter))
 		{
@@ -193,6 +199,11 @@ bool GameEngineCollision::CollisionResult(
 			continue;
 		}
 
+
+		if ((*StartIter) == this)
+		{
+			continue;
+		}
 
 		if (CollisionCheckArray[static_cast<int>(_This)][static_cast<int>(_Target)](this, *StartIter))
 		{

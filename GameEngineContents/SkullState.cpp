@@ -20,8 +20,6 @@ void Skull::IdleUpdate()
 		CreateMoveEffect();
 		CreateHitEffect();
 		SkullPush();
-		
-		SkullDeathCheck();
 		ChangeState(SkullState::Hit);
 	}
 }
@@ -39,6 +37,7 @@ void Skull::HitUpdate()
 	{
 		ChangeState(SkullState::Idle);
 	}
+
 }
 
 void Skull::CreateMoveEffect()
@@ -95,5 +94,4 @@ void Skull::SkullDeathCheck()
 	{
 		Off();
 	}
-	MyCollision_->On();
 }
