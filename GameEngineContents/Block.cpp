@@ -1,7 +1,6 @@
 #include "Block.h"
 #include "HellTakerGame.h"
 #include "MoveEffect.h"
-#include "HitEffect.h"
 #include "Player.h"
 #include <GameEngine/GameEngine.h>
 #include <GameEngine/GameEngineCollision.h>
@@ -49,16 +48,6 @@ void Block::CreateMoveEffect()
 	}
 }
 
-void Block::CreateHitEffect()
-{
-
-	GameEngineActor* Actor = GetLevel()->CreateActor<HitEffect>(10, "Hit");
-	Actor->SetPosition(GetPosition());
-	if (8 == dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount())
-	{
-		Actor->SetPosition(GetLevel()->GetCameraPos() + GetPosition());
-	}
-}
 
 void Block::BlockPush()
 {
@@ -105,7 +94,7 @@ void Block::BlockMoveCheck(float4 _MovePos)
 		return;
 	}
 
-
+	//GameEngineSound::SoundPlayOneShot()
 	CreateMoveEffect();
 }
 

@@ -64,11 +64,15 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="HugeEffect.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Key.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="LookBlock.h">
+    <ClInclude Include="LockBlock.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -217,11 +221,15 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="HugeEffect.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Key.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="LookBlock.cpp">
+    <ClCompile Include="LockBlock.cpp">
       <SubType>
       </SubType>
     </ClCompile>

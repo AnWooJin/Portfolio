@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Skull.h"
 #include "Block.h"
+#include "LockBlock.h"
 #include "DevilSD.h"
 #include "SideUI.h"
 #include "BackGroundMap.h"
@@ -53,9 +54,11 @@ void PlayLevel::Loading()
 	{
 		Blocks_.push_back(CreateActor<Block>(static_cast<int>(PlayOrder::Block)));
 	}
+	LockBlock_ = CreateActor<LockBlock>(static_cast<int>(PlayOrder::Block));
 	ActorOff();
 	BlockSetting();
 	SkullSetting();
+
 	MyPlayer_->PlayerSetting(Chapter_);
 	MyDevil_->ImageSetting(Chapter_);
 	MyMap_->MapSetting(Chapter_);
@@ -128,7 +131,7 @@ void PlayLevel::ActorOff()
 	{
 		Blocks_[i]->Off();
 	}
-
+	LockBlock_->Off();
 }
 
 
@@ -275,10 +278,14 @@ void PlayLevel::Block_Chapter2Set()
 
 void PlayLevel::Block_Chapter3Set()
 {
+	LockBlock_->On();
+	LockBlock_->SetPosition({ 870 - 66 , 208 });
 }
 
 void PlayLevel::Block_Chapter4Set()
 {
+	LockBlock_->On();
+	LockBlock_->SetPosition({ 405 + 66 * 5 ,278 });
 	Blocks_[0]->On();
 	Blocks_[0]->BlockRender_->SetIndex(6);
 	Blocks_[0]->SetPosition({ 405 + 66 * 4, 212 + 10 });
@@ -322,6 +329,8 @@ void PlayLevel::Block_Chapter4Set()
 
 void PlayLevel::Block_Chapter5Set()
 {
+	LockBlock_->On();
+	LockBlock_->SetPosition({ 475 + 66 * 3 , 208 });
 	Blocks_[0]->On();
 	Blocks_[0]->BlockRender_->SetIndex(10);
 	Blocks_[0]->SetPosition({ 475 + 66 *4, 208 + 10 });
@@ -344,6 +353,8 @@ void PlayLevel::Block_Chapter5Set()
 
 void PlayLevel::Block_Chapter6Set()
 {
+	LockBlock_->On();
+	LockBlock_->SetPosition({ 575 + 66 * 2, 510 + 10 });
 	Blocks_[0]->On();
 	Blocks_[0]->BlockRender_->SetIndex(4);
 	Blocks_[0]->SetPosition({ 575 - 66, 180 + 10 });
@@ -372,6 +383,8 @@ void PlayLevel::Block_Chapter6Set()
 
 void PlayLevel::Block_Chapter7Set()
 {
+	LockBlock_->On();
+	LockBlock_->SetPosition({ 805 - 66, 208 + 10 });
 	Blocks_[0]->On();
 	Blocks_[0]->BlockRender_->SetIndex(7);
 	Blocks_[0]->SetPosition({ 805 - 66 * 2, 272 + 10 });

@@ -16,6 +16,7 @@ bool RectToRect(GameEngineCollision* _Left, GameEngineCollision* _Right)
 	GameEngineRect LeftRc = _Left->GetRect();
 	GameEngineRect RightRc = _Right->GetRect();
 
+	
 	return LeftRc.OverLap(RightRc);
 }
 

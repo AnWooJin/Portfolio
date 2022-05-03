@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngine/GameEngineActor.h>
 
+class GameEngineCollision;
 class Thorn : public GameEngineActor	
 {
 public:
@@ -18,6 +19,9 @@ protected:
 
 private:
 	void Start() override;
+	void Update() override;
 	void Render() override {};
+
+	GameEngineCollision* MyCollision_;
 };
 

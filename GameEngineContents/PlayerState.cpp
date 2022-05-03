@@ -109,10 +109,6 @@ void Player::DeathUpdate()
 
 void Player::PlayerMove()
 {
-	if (MyCollision_->NextPosCollisionCheck("Block",{0,0}))
-	{
-		int a = 0;
-	}
 	if (Time_ >= 0.0f)
 	{
 		return;
@@ -156,7 +152,7 @@ void Player::PlayerMove()
 	{
 		ChangeAnimation();
 		--MoveCount_;
-		if(MyCollision_->NextPosCollisionCheck("Skull", MovePos))
+		if (MyCollision_->NextPosCollisionCheck("Skull", MovePos))
 		{
 			GameEngineSound::SoundPlayOneShot("Skull_kick_.wav");
 			MovePos_ = MovePos;
@@ -164,7 +160,7 @@ void Player::PlayerMove()
 			return;
 		}
 
-		if (MyCollision_->NextPosCollisionCheck("Block", MovePos))
+		else if (MyCollision_->NextPosCollisionCheck("Block", MovePos))
 		{
 			GameEngineSound::SoundPlayOneShot("Skull_kick_.wav");
 			CreateHitEffect(MovePos);
@@ -173,11 +169,33 @@ void Player::PlayerMove()
 			return;
 		}
 
+		else if (MyCollision_->NextPosCollisionCheck("LockBlock", MovePos))
+		{
+			MovePos_ = MovePos;
+			if (false == HasKey_)
+			{
+				GameEngineSound::SoundPlayOneShot("Skull_kick_.wav");
+				ChangeState(PlayerState::Attack);
+				CreateHitEffect(MovePos);
+				return;
+			}
+			else if (true == HasKey_)
+			{
+				MyCollision_->NextPosCollisionCheck("LockBlock", { 0,0 });
+			}
+		}
+
 		GameEngineSound::SoundPlayOneShot("Player_Move.wav");
 		CreateMoveEffect();
 		CameraCheck(NextPos);
+		if (MyCollision_->CollisionCheck("Thron"))
+		{
+			MoveCount_--;
+			CreateBloodEffect();
+		}
 		KeyCheckTime_ = 0.1f;
 	}
+	
 	else
 	{
 		ChangeState(PlayerState::Idle);
@@ -194,6 +212,11 @@ void Player::CreateMoveEffect()
 	{
 		Actor->SetPosition(GetLevel()->GetCameraPos() + GetPosition() + (float4::DOWN * 5.0f));
 	}
+}
+
+void Player::CreateBloodEffect()
+{
+
 }
 
 void Player::CreateHitEffect(float4 _Pos)

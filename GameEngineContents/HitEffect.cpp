@@ -19,7 +19,7 @@ void HitEffect::Start()
 	}
 	Render->CreateAnimation("HitEffect.bmp", "HitEffect", 0, 2, 0.15f, false);
 	Render->ChangeAnimation("HitEffect");
-	Death(0.3f);
+	Death(0.45f);
 }
 
 void HitEffect::Update()

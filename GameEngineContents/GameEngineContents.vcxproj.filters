@@ -46,6 +46,9 @@
     <Filter Include="Play\PlayState">
       <UniqueIdentifier>{7abfee69-97ff-4643-b964-b24005ccc62c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Play\Effect">
+      <UniqueIdentifier>{e5cc825f-ddf3-4f8f-9ab9-38842cc7f392}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HellTakerGame.h" />
@@ -154,14 +157,17 @@
     <ClInclude Include="SceneChanger.h">
       <Filter>SceneChange</Filter>
     </ClInclude>
-    <ClInclude Include="LookBlock.h">
-      <Filter>Play</Filter>
-    </ClInclude>
-    <ClInclude Include="MoveEffect.h">
+    <ClInclude Include="LockBlock.h">
       <Filter>Play</Filter>
     </ClInclude>
     <ClInclude Include="HitEffect.h">
-      <Filter>Play</Filter>
+      <Filter>Play\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="HugeEffect.h">
+      <Filter>Play\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveEffect.h">
+      <Filter>Play\Effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -301,17 +307,20 @@
     <ClCompile Include="PlayerState.cpp">
       <Filter>Play\PlayState</Filter>
     </ClCompile>
-    <ClCompile Include="LookBlock.cpp">
-      <Filter>Play</Filter>
+    <ClCompile Include="SkullState.cpp">
+      <Filter>Play\PlayState</Filter>
     </ClCompile>
-    <ClCompile Include="MoveEffect.cpp">
+    <ClCompile Include="LockBlock.cpp">
       <Filter>Play</Filter>
     </ClCompile>
     <ClCompile Include="HitEffect.cpp">
-      <Filter>Play</Filter>
+      <Filter>Play\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="SkullState.cpp">
-      <Filter>Play\PlayState</Filter>
+    <ClCompile Include="HugeEffect.cpp">
+      <Filter>Play\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveEffect.cpp">
+      <Filter>Play\Effect</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

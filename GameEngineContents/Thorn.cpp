@@ -1,5 +1,6 @@
 #include "Thorn.h"
 #include <GameEngine/GameEngineRenderer.h>
+#include <GameEngine/GameEngineCollision.h>
 
 Thorn::Thorn()
 {
@@ -12,5 +13,10 @@ Thorn::~Thorn()
 void Thorn::Start()
 {
 	GameEngineRenderer* Render = CreateRenderer("Thorn.bmp");
-	SetPosition({ 510, 435 + 20 });
+	MyCollision_ = CreateCollision("Thorn", { 40,40 });
+}
+
+void Thorn::Update()
+{
+
 }

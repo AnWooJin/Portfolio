@@ -16,6 +16,7 @@ enum class PlayOrder
 
 
 class GameEngineActor;
+class LockBlock;
 class Block;
 class Skull;
 class BackGroundMap;
@@ -44,6 +45,7 @@ private:
 	DevilSD* MyDevil_;
 	std::vector<Block*> Blocks_;
 	std::vector<Skull*> Skulls_;
+	LockBlock* LockBlock_;
 	GameEngineSoundPlayer PlayBgmPlayer_;
 
 	void Loading() override;

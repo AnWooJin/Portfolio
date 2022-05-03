@@ -30,6 +30,11 @@ public:
 public:
 	void PlayerSetting(int _Chapter);
 
+	bool GetHasKey()
+	{
+		return HasKey_;
+	}
+
 	int GetMoveCount()
 	{
 		return MoveCount_;
@@ -56,6 +61,7 @@ private:
 	void ChangeState(PlayerState _State);
 	void StateUpdate();
 	void CreateMoveEffect();
+	void CreateBloodEffect();
 	void CreateHitEffect(float4 _Pos);
 	void ChangeAnimation();
 
@@ -76,6 +82,7 @@ private:
 	float Time_;
 	int MoveCount_;
 	bool IsKeyOn_;
+	bool HasKey_;
 
 
 private:
