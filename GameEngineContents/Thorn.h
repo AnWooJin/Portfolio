@@ -21,6 +21,7 @@ private:
 	void Start() override;
 	void Update() override;
 	void Render() override {};
+	void LevelChangeEnd(GameEngineLevel* _NextLevel) override;
 
 	GameEngineCollision* MyCollision_;
 };

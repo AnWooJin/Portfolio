@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Skull.h"
 #include "Block.h"
+#include "Thorn.h"
 #include "LockBlock.h"
 #include "DevilSD.h"
 #include "SideUI.h"
@@ -58,6 +59,7 @@ void PlayLevel::Loading()
 	ActorOff();
 	BlockSetting();
 	SkullSetting();
+	ThornSetting();
 
 	MyPlayer_->PlayerSetting(Chapter_);
 	MyDevil_->ImageSetting(Chapter_);
@@ -86,6 +88,7 @@ void PlayLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	
 	Chapter_ = dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount();
 	SetCameraPos({ 0,0 });
+
 	if (8 == Chapter_)
 	{
 		SetCameraPos({0,612 });
@@ -104,6 +107,7 @@ void PlayLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 		BlockSetting();
 		SkullSetting();
 	}
+	ThornSetting();
 }
 
 void PlayLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
@@ -239,6 +243,51 @@ void PlayLevel::BlockSetting()
 
 void PlayLevel::ThornSetting()
 {
+	switch (Chapter_)
+	{
+	case 1:
+	{
+		Thorn_Chapter1Set();
+		break;
+	}
+	case 2:
+	{
+		Thorn_Chapter2Set();
+		break;
+	}
+	case 3:
+	{
+		Thorn_Chapter3Set();
+		break;
+	}
+	case 4:
+	{
+		Thorn_Chapter4Set();
+		break;
+	}
+	case 5:
+	{
+		Thorn_Chapter5Set();
+		break;
+	}
+	case 6:
+	{
+		Thorn_Chapter6Set();
+		break;
+	}
+	case 7:
+	{
+		Thorn_Chapter7Set();
+		break;
+	}
+	case 8:
+	{
+		Thorn_Chapter8Set();
+		break;
+	}
+	default:
+		break;
+	}
 
 }
 
@@ -487,3 +536,60 @@ void PlayLevel::SKull_Chapter8Set()
 	Skulls_[7]->On();
 	
 }
+
+
+//////////////////////////////////  가시의 위치와 상태를 지정해주는 함수들
+
+void PlayLevel::Thorn_Chapter1Set()
+{
+
+}
+
+void PlayLevel::Thorn_Chapter2Set()
+{
+
+}
+
+
+void PlayLevel::Thorn_Chapter3Set()
+{
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 4, 274 + 15 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 3, 274 + 15 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 5, 340 + 15 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 3, 340 + 15 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 2, 406 +15 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66, 406 + 15});
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 5, 472 + 15 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 3, 472 + 15 });
+}
+
+
+void PlayLevel::Thorn_Chapter4Set()
+{
+
+}
+
+void PlayLevel::Thorn_Chapter5Set()
+{
+
+}
+
+
+void PlayLevel::Thorn_Chapter6Set()
+{
+
+}
+
+
+void PlayLevel::Thorn_Chapter7Set()
+{
+
+}
+
+
+void PlayLevel::Thorn_Chapter8Set()
+{
+
+}
+
+

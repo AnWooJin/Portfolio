@@ -1,4 +1,5 @@
 #include "Thorn.h"
+#include "HellTakerGame.h"
 #include <GameEngine/GameEngineRenderer.h>
 #include <GameEngine/GameEngineCollision.h>
 
@@ -19,4 +20,9 @@ void Thorn::Start()
 void Thorn::Update()
 {
 
+}
+
+void Thorn::LevelChangeEnd(GameEngineLevel* _NextLevel)
+{
+	Death();
 }

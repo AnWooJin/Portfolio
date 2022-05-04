@@ -40,6 +40,6 @@ void LockBlock::KeyCheck()
 
 void LockBlock::CreateHugeEffect()
 {
-	GameEngineActor* Actor = GetLevel()->CreateActor<HugeEffect>(6);
+	GameEngineActor* Actor = GetLevel()->CreateActor<HugeEffect>(7);
 	Actor->SetPosition(GetPosition());
 }

@@ -2,6 +2,7 @@
 #include "HellTakerGame.h"
 #include "MoveEffect.h"
 #include "HitEffect.h"
+#include "BloodEffect.h"
 #include <GameEngine/GameEngine.h>
 #include <GameEngineBase/GameEngineWindow.h>
 #include <GameEngine/GameEngineImageManager.h>
@@ -37,7 +38,7 @@ void Player::VictoryStart()
 void Player::DeathStart()
 {
 	GameEngineSound::SoundPlayOneShot("Player_Death.wav");
-	BlackBackGround_ = CreateRenderer("BlackBG.bmp",4);
+	BlackBackGround_ = CreateRenderer("BlackBG.bmp",5);
 	SetPosition({ GetPosition().x , GetPosition().y - 315.0f });
 	BlackBackGround_->SetPivot(GameEngineWindow::GetScale().Half() - GetPosition());
 }
@@ -188,7 +189,7 @@ void Player::PlayerMove()
 		GameEngineSound::SoundPlayOneShot("Player_Move.wav");
 		CreateMoveEffect();
 		CameraCheck(NextPos);
-		if (MyCollision_->CollisionCheck("Thron"))
+		if (MyCollision_->CollisionCheck("Thorn"))
 		{
 			MoveCount_--;
 			CreateBloodEffect();
@@ -216,13 +217,14 @@ void Player::CreateMoveEffect()
 
 void Player::CreateBloodEffect()
 {
-
+	GameEngineActor* Actor = GetLevel()->CreateActor<BloodEffect>(7);
+	Actor->SetPosition(GetPosition());
 }
 
 void Player::CreateHitEffect(float4 _Pos)
 {
 
-	GameEngineActor* Actor = GetLevel()->CreateActor<HitEffect>(6, "Hit");
+	GameEngineActor* Actor = GetLevel()->CreateActor<HitEffect>(7, "Hit");
 	Actor->SetPosition(GetPosition() + _Pos);
 	if (8 == dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount())
 	{

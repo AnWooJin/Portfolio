@@ -56,7 +56,7 @@ void Skull::CreateMoveEffect()
 void Skull::CreateHitEffect()
 {
 
-	GameEngineActor* Actor = GetLevel()->CreateActor<HitEffect>(1, "Hit");
+	GameEngineActor* Actor = GetLevel()->CreateActor<HitEffect>(7, "Hit");
 	Actor->SetPosition(GetPosition());
 	if (8 == dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount())
 	{

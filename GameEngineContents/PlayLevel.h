@@ -8,6 +8,7 @@ enum class PlayOrder
 {
 	BackGround,
 	UI,
+	Thorn,
 	Block,
 	SKull,
 	Devil,
@@ -82,6 +83,18 @@ private:
 	void SKull_Chapter7Set();
 	void SKull_Chapter8Set();
 	void SKull_Chapter9Set();
+
+private:
+	void Thorn_Chapter1Set();
+	void Thorn_Chapter2Set();
+	void Thorn_Chapter3Set();
+	void Thorn_Chapter4Set();
+	void Thorn_Chapter5Set();
+	void Thorn_Chapter6Set();
+	void Thorn_Chapter7Set();
+	void Thorn_Chapter8Set();
+	void Thorn_Chapter9Set();
+
 
 
 };
