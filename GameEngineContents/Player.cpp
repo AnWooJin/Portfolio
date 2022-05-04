@@ -14,9 +14,7 @@ Player::Player()
 	, BlackBackGround_(nullptr)
 	, ColMapImage_(nullptr)
 	, MovePos_(float4::ZERO)
-	, KeyCheckTime_(0.15f)
 	, Time_(0.3f)
-	, IsKeyOn_(false)
 	, HasKey_(false)
 	, dir_("Right")
 	, State_("Idle")
@@ -77,12 +75,6 @@ void Player::Start()
 
 void Player::Update()
 {
-	KeyCheckTime_ -= GameEngineTime::GetDeltaTime();
-	Time_ -= GameEngineTime::GetDeltaTime();
-	if (KeyCheckTime_ <= 0)
-	{
-		IsKeyOn_ = true;
-	}
 	StateUpdate();
 }
 
@@ -133,10 +125,7 @@ void Player::ChangeState(PlayerState _State)
 	default:
 		break;
 	}
-	if (CurState_ != PlayerState::Move)
-	{
-		ChangeAnimation();
-	}	
+	ChangeAnimation();	
 }
 
 void Player::StateUpdate()
@@ -170,10 +159,13 @@ void Player::PlayerSetting(int _Chapter)
 {
 	ChangeState(PlayerState::Idle);
 	dir_ = "_Right";
+	StartPos_ = GetPosition();
+	EndPos_ = GetPosition();
 	switch (_Chapter)
 	{
 	case 1:
 		SetPosition({ 774,175 });
+		
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter1_ColMap.bmp");
 		MoveCount_ = 23;
 		break;

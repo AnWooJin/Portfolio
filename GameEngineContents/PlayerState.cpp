@@ -16,12 +16,12 @@
 
 void Player::IdleStart()
 {
-
+	
 }
 
 void Player::MoveStart()
 {
-
+	
 }
 
 void Player::AttackStart()
@@ -56,39 +56,59 @@ void Player::IdleUpdate()
 		return;
 	}
 	int Color = ColMapImage_->GetImagePixel(GetPosition() + GetLevel()->GetCameraPos());
+	
+	if (true == IsMoveKey())
+	{
+		if (true == PlayerMove())
+		{
+			ChangeState(PlayerState::Move);
+		}
+	}
+	else if (true == GameEngineInput::GetInst()->IsPress("Die"))
+	{
+		GameEngine::GetInst().ChangeLevel("SceneChange");
+	}
 	if (RGB(0, 0, 255) == Color)
 	{
 		GameEngine::GetInst().ChangeLevel("Talk");
 	}
-	if (true == IsMoveKey() && true == IsKeyOn_)
-	{
-		ChangeState(PlayerState::Move);
-	}
-	if (true == GameEngineInput::GetInst()->IsPress("Die"))
-	{
-		GameEngine::GetInst().ChangeLevel("SceneChange");
-	}
-
 
 }
 
 void Player::MoveUpdate()
 {
-	if (false == IsMoveKey())
+	Time_ += GameEngineTime::GetDeltaTime() * 5.0f;
+	if (false == GetPosition().CompareInt2D(EndPos_))
 	{
+		CameraCheck(float4::LerpLimit(StartPos_, EndPos_, Time_));
+		return;
+	}
+	else if (true == GetPosition().CompareInt2D(EndPos_))
+	{
+		SetPosition({static_cast<float>(floor(GetPosition().x)), static_cast<float>(floor(GetPosition().y)) });
+		if (MyCollision_->CollisionCheck("Thorn"))
+		{
+			MoveCount_--;
+			CreateBloodEffect();
+		}
+
+		else if (MyCollision_->CollisionCheck("Key"))
+		{
+			HasKey_ = true;
+		}
 		ChangeState(PlayerState::Idle);
 	}
-	if (true == IsMoveKey())
-	{
-		PlayerMove();
-	}	
-
 }
 
 void Player::AttackUpdate()
 {
 	if (true == MyRenderer_->IsEndAnimation())
 	{
+		if (MyCollision_->NextPosCollisionCheck("Thorn", {0,0}))
+		{
+			MoveCount_--;
+			CreateBloodEffect();
+		}
 		ChangeState(PlayerState::Idle);
 	}
 }
@@ -108,12 +128,8 @@ void Player::DeathUpdate()
 }
 
 
-void Player::PlayerMove()
+bool Player::PlayerMove()
 {
-	if (Time_ >= 0.0f)
-	{
-		return;
-	}
 	float4 NextPos = GetPosition();
 	float4 MovePos = float4::ZERO;
 
@@ -122,7 +138,6 @@ void Player::PlayerMove()
 		dir_ = "_Left";
 		NextPos += float4::LEFT * 66;
 		MovePos = float4::LEFT * 66;
-		IsKeyOn_ = false;
 	}
 
 	else if (true == GameEngineInput::GetInst()->IsPress("MoveRight"))
@@ -130,35 +145,30 @@ void Player::PlayerMove()
 		dir_ = "_Right";
 		NextPos += float4::RIGHT * 66;
 		MovePos = float4::RIGHT * 66;
-		IsKeyOn_ = false;
 	}
 
 	else if (true == GameEngineInput::GetInst()->IsPress("MoveUp"))
 	{
 		NextPos += float4::UP * 65;
 		MovePos = float4::UP * 65;
-		IsKeyOn_ = false;
 	}
 
 	else if (true == GameEngineInput::GetInst()->IsPress("MoveDown"))
 	{
 		NextPos += float4::DOWN * 65;
 		MovePos = float4::DOWN * 65;
-		IsKeyOn_ = false;
 	}
 	
 	int Color = ColMapImage_->GetImagePixel(NextPos);
 
 	if (RGB(0, 0, 0) != Color)
 	{
-		ChangeAnimation();
 		--MoveCount_;
 		if (MyCollision_->NextPosCollisionCheck("Skull", MovePos))
 		{
 			GameEngineSound::SoundPlayOneShot("Skull_kick_.wav");
-			MovePos_ = MovePos;
 			ChangeState(PlayerState::Attack);
-			return;
+			return false;
 		}
 
 		else if (MyCollision_->NextPosCollisionCheck("Block", MovePos))
@@ -167,7 +177,7 @@ void Player::PlayerMove()
 			CreateHitEffect(MovePos);
 			MovePos_ = MovePos;
 			ChangeState(PlayerState::Attack);
-			return;
+			return false;
 		}
 
 		else if (MyCollision_->NextPosCollisionCheck("LockBlock", MovePos))
@@ -178,7 +188,7 @@ void Player::PlayerMove()
 				GameEngineSound::SoundPlayOneShot("Skull_kick_.wav");
 				ChangeState(PlayerState::Attack);
 				CreateHitEffect(MovePos);
-				return;
+				return false;
 			}
 			else if (true == HasKey_)
 			{
@@ -188,26 +198,15 @@ void Player::PlayerMove()
 
 		GameEngineSound::SoundPlayOneShot("Player_Move.wav");
 		CreateMoveEffect();
-		CameraCheck(NextPos);
-		if (MyCollision_->CollisionCheck("Thorn"))
-		{
-			MoveCount_--;
-			CreateBloodEffect();
-		}
-
-		else if (MyCollision_->CollisionCheck("Key"))
-		{
-			MovePos_ = MovePos;
-			HasKey_ = true;
-		}
-		KeyCheckTime_ = 0.1f;
+		StartPos_ = GetPosition();
+		EndPos_ = GetPosition() + MovePos;
+		Time_ = 0.0f;
+		return true;
 	}
-	
 	else
 	{
-		ChangeState(PlayerState::Idle);
+		return false;
 	}
-	Time_ = 0.3f;
 }
 
 void Player::CreateMoveEffect()

@@ -66,7 +66,7 @@ private:
 	void ChangeAnimation();
 
 	bool IsMoveKey();
-	void PlayerMove();
+	bool PlayerMove();
 	void CameraCheck(float4 _Pos);
 	void Chapter8CameraCheck(float4 _Pos);
 private:
@@ -78,10 +78,10 @@ private:
 	std::string dir_;
 	std::string State_;
 	float4 MovePos_;
-	float KeyCheckTime_;
 	float Time_;
+	float4 StartPos_;
+	float4 EndPos_;
 	int MoveCount_;
-	bool IsKeyOn_;
 	bool HasKey_;
 
 
