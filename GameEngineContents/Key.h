@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngine/GameEngineActor.h>
 
+class Player;
 class GameEngineCollision;
 class Key : public GameEngineActor
 {
@@ -24,6 +25,7 @@ private:
 
 	void CreateHugeEffect();
 
+	Player* MyPlayer_;
 	GameEngineCollision* MyCollision_;
 };
 

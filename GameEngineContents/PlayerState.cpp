@@ -92,10 +92,6 @@ void Player::MoveUpdate()
 			CreateBloodEffect();
 		}
 
-		else if (MyCollision_->CollisionCheck("Key"))
-		{
-			HasKey_ = true;
-		}
 		ChangeState(PlayerState::Idle);
 	}
 }
@@ -105,6 +101,11 @@ void Player::AttackUpdate()
 	if (true == MyRenderer_->IsEndAnimation())
 	{
 		if (MyCollision_->NextPosCollisionCheck("Thorn", {0,0}))
+		{
+			MoveCount_--;
+			CreateBloodEffect();
+		}
+		if (MyCollision_->NextPosCollisionCheck("Thorn", { 0,0 }))
 		{
 			MoveCount_--;
 			CreateBloodEffect();
@@ -166,6 +167,7 @@ bool Player::PlayerMove()
 		--MoveCount_;
 		if (MyCollision_->NextPosCollisionCheck("Skull", MovePos))
 		{
+			MovePos_ = MovePos;
 			GameEngineSound::SoundPlayOneShot("Skull_kick_.wav");
 			ChangeState(PlayerState::Attack);
 			return false;
@@ -173,6 +175,7 @@ bool Player::PlayerMove()
 
 		else if (MyCollision_->NextPosCollisionCheck("Block", MovePos))
 		{
+			MovePos_ = MovePos;
 			GameEngineSound::SoundPlayOneShot("Skull_kick_.wav");
 			CreateHitEffect(MovePos);
 			MovePos_ = MovePos;

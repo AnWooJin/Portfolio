@@ -16,6 +16,7 @@ class GameEngineImage;
 class GameEngineCollision;
 class Player : public GameEngineActor
 {
+
 public:
 	//construcuter destructer
 	Player();
@@ -48,6 +49,11 @@ public:
 	const float4 GetPlayerMovePos() const
 	{
 		return MovePos_;
+	}
+
+	void HasKeyOn()
+	{
+		HasKey_ = true;
 	}
 
 protected:

@@ -1,4 +1,5 @@
 #include "Key.h"
+#include "Player.h"
 #include "HugeEffect.h"
 #include <GameEngine/GameEngineRenderer.h>
 #include <GameEngine/GameEngineCollision.h>
@@ -14,6 +15,7 @@ Key::~Key()
 
 void Key::Start()
 {
+	MyPlayer_ = GetLevel()->FindActor<Player>("Player");
 	GameEngineRenderer* Renderer = CreateRenderer();
 	Renderer->CreateAnimation("Key.bmp", "Key", 0, 11, 0.1f, true);
 	Renderer->ChangeAnimation("Key");
@@ -25,6 +27,7 @@ void Key::Update()
 	if (true == MyCollision_->CollisionCheck("Player"))
 	{
 		CreateHugeEffect();
+		MyPlayer_->HasKeyOn();
 		Off();
 	}
 }
