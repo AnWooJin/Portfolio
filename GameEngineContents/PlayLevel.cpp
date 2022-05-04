@@ -4,6 +4,7 @@
 #include "Block.h"
 #include "Thorn.h"
 #include "LockBlock.h"
+#include "Key.h"
 #include "DevilSD.h"
 #include "SideUI.h"
 #include "BackGroundMap.h"
@@ -18,6 +19,8 @@ PlayLevel::PlayLevel()
 	, MyPlayer_(nullptr)
 	, MyMap_(nullptr)
 	, MyDevil_(nullptr)
+	, LockBlock_(nullptr)
+	, MyKey_(nullptr)
 	, IsBgmPlay_(false)
 {
 }
@@ -56,6 +59,7 @@ void PlayLevel::Loading()
 		Blocks_.push_back(CreateActor<Block>(static_cast<int>(PlayOrder::Block)));
 	}
 	LockBlock_ = CreateActor<LockBlock>(static_cast<int>(PlayOrder::Block));
+	MyKey_ = CreateActor<Key>(static_cast<int>(PlayOrder::Block));
 	ActorOff();
 	BlockSetting();
 	SkullSetting();
@@ -136,6 +140,7 @@ void PlayLevel::ActorOff()
 		Blocks_[i]->Off();
 	}
 	LockBlock_->Off();
+	MyKey_->Off();
 }
 
 
@@ -329,6 +334,8 @@ void PlayLevel::Block_Chapter3Set()
 {
 	LockBlock_->On();
 	LockBlock_->SetPosition({ 870 - 66 , 208 });
+	MyKey_->On();
+	MyKey_->SetPosition({870 - 66 * 7, 468});
 }
 
 void PlayLevel::Block_Chapter4Set()

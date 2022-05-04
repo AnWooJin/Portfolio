@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngine/GameEngineActor.h>
 
+class GameEngineCollision;
 class Key : public GameEngineActor
 {
 public:
@@ -17,7 +18,12 @@ public:
 protected:
 
 private:
-	void Start();
-	void Render();
+	void Start() override;
+	void Update() override;
+	void Render() override {};
+
+	void CreateHugeEffect();
+
+	GameEngineCollision* MyCollision_;
 };
 

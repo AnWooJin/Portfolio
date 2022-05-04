@@ -194,6 +194,12 @@ void Player::PlayerMove()
 			MoveCount_--;
 			CreateBloodEffect();
 		}
+
+		else if (MyCollision_->CollisionCheck("Key"))
+		{
+			MovePos_ = MovePos;
+			HasKey_ = true;
+		}
 		KeyCheckTime_ = 0.1f;
 	}
 	

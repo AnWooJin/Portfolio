@@ -22,6 +22,7 @@ class Block;
 class Skull;
 class BackGroundMap;
 class Player;
+class Key;
 class DevilSD;
 class PlayLevel : public GameEngineLevel
 {
@@ -42,6 +43,7 @@ private:
 	int Chapter_;
 	bool IsBgmPlay_;
 	Player* MyPlayer_;
+	Key* MyKey_;
 	BackGroundMap* MyMap_;
 	DevilSD* MyDevil_;
 	std::vector<Block*> Blocks_;

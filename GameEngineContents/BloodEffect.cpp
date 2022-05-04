@@ -16,12 +16,12 @@ void BloodEffect::Start()
 	
 	{
 		GameEngineRenderer* Render = CreateRenderer();
-		Render->CreateAnimation("BloodEffect_2.bmp", "BloodEffect_2", 0, 5, 0.15f, false);
+		Render->CreateAnimation("BloodEffect_2.bmp", "BloodEffect_2", 0, 5, 0.05f, false);
 		Render->SetPivot({ 0.0f, 30.0f });
 		Render->ChangeAnimation("BloodEffect_2");
 	}
 
-	Death(0.9f);
+	Death(0.3f);
 }
 
 void BloodEffect::Update()

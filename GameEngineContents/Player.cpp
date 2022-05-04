@@ -17,7 +17,7 @@ Player::Player()
 	, KeyCheckTime_(0.15f)
 	, Time_(0.3f)
 	, IsKeyOn_(false)
-	, HasKey_(true)
+	, HasKey_(false)
 	, dir_("Right")
 	, State_("Idle")
 	, MoveCount_(11)
@@ -185,7 +185,7 @@ void Player::PlayerSetting(int _Chapter)
 	case 3:
 		SetPosition({ 870,274 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter3_ColMap.bmp");
-		MoveCount_ = 32;
+		MoveCount_ = 132;
 		break;
 	case 4:
 		SetPosition({ 405,212 });
