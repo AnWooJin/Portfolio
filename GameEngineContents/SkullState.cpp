@@ -4,6 +4,7 @@
 #include "HitEffect.h"
 #include "Player.h"
 #include <GameEngine/GameEngine.h>
+#include <GameEngineBase/GameEngineMath.h>
 #include <GameEngineBase/GameEngineSound.h>
 #include <GameEngine/GameEngineImage.h>
 #include <GameEngine/GameEngineCollision.h>
@@ -12,12 +13,20 @@
 void Skull::IdleStart()
 {
 	MyRenderer_->ChangeAnimation("Skull_Idle");
+	StartPos_ = GetPosition();
+	EndPos_ = GetPosition();
+	Time_ = 0.0f;
 }
 
 void Skull::IdleUpdate()
 {
-
-	if (MyCollision_->CollisionCheck("Player"))
+	if (MyCollision_->CollisionCheck("Thorn"))
+	{
+		GameEngineSound::SoundPlayOneShot("Skull_die.wav");
+		CreateHitEffect();
+		Off();
+	}
+	else if (MyCollision_->CollisionCheck("Player"))
 	{
 		CreateMoveEffect();
 		CreateHitEffect();
@@ -35,11 +44,19 @@ void Skull::HitStart()
 void Skull::HitUpdate()
 {
 	
-	if (true == MyRenderer_->IsEndAnimation())
+	Time_ += GameEngineTime::GetDeltaTime() * 10.0f;
+	if (false == GetPosition().CompareInt2D(EndPos_))
 	{
+		SetPosition(float4::LerpLimit(StartPos_, EndPos_, Time_));
+	}
+	else if (true == GetPosition().CompareInt2D(EndPos_))
+	{
+		SkullDeathCheck(GetPosition());
 		ChangeState(SkullState::Idle);
 	}
+	
 
+	
 }
 
 void Skull::CreateMoveEffect()
@@ -62,6 +79,8 @@ void Skull::CreateHitEffect()
 	{
 		Actor->SetPosition(GetLevel()->GetCameraPos() + GetPosition());
 	}
+
+
 }
 
 
@@ -70,7 +89,9 @@ void Skull::SkullPush()
 	float4 PlayerPos = MyPlayer_->GetPosition();
 	float4 MovePos = float4::ZERO;
 
-	if (GetPosition().x + GetLevel()->GetCameraPos().x > PlayerPos.x)
+
+
+	if (GetPosition().x > PlayerPos.x)
 	{
 		MovePos = float4::RIGHT * 66;
 	}
@@ -86,15 +107,13 @@ void Skull::SkullPush()
 	{
 		MovePos = float4::UP * 65;
 	}
-
-
-	SkullDeathCheck(MovePos);
-	
+	StartPos_ = GetPosition();
+	EndPos_ = GetPosition() + MovePos;	
 }
 
 void Skull::SkullDeathCheck(float4 _MovePos)
 {
-	int Color = ColMapImage_->GetImagePixel(GetPosition() + _MovePos);
+	int Color = ColMapImage_->GetImagePixel(_MovePos);
 	if (Color == RGB(0, 0, 0))
 	{
 		GameEngineSound::SoundPlayOneShot("Skull_die.wav");
@@ -102,7 +121,6 @@ void Skull::SkullDeathCheck(float4 _MovePos)
 		return;
 	}
 
-	SetMove(_MovePos);
 	
 	if (MyCollision_->CollisionCheck("Skull"))
 	{

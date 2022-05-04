@@ -13,6 +13,7 @@ Skull::Skull()
 	, ColMapImage_(nullptr)
 	, CurState_(SkullState::Max)
 	, MyCollision_(nullptr)
+	, Time_(0.0f)
 {
 }
 
@@ -24,7 +25,7 @@ void Skull::Start()
 {
 	MyRenderer_ = CreateRenderer();
 	MyRenderer_->CreateAnimation("Skull_Idle.bmp", "Skull_Idle", 0, 11, 0.065f);
-	MyRenderer_->CreateAnimation("Skull_Hit.bmp", "Skull_Hit", 0, 7, 0.05f, false);
+	MyRenderer_->CreateAnimation("Skull_Hit.bmp", "Skull_Hit", 0, 7, 0.03f, false);
 	MyRenderer_->ChangeAnimation("Skull_Idle");
 	MyCollision_ = CreateCollision("Skull", { 60,60});
 	MyPlayer_ = GetLevel()->FindActor<Player>("Player");

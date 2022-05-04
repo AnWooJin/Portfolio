@@ -57,5 +57,8 @@ private:
 	GameEngineImage* ColMapImage_;
 	SkullState CurState_;
 	Player* MyPlayer_;
+	float4 StartPos_;
+	float4 EndPos_;
+	float Time_;
 };
 
