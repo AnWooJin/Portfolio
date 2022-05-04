@@ -400,7 +400,7 @@ void HellTakerGame::GameImageCut()
 
 	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("BloodEffect_2.bmp");
-		Image->Cut({ 340, 340 });
+		Image->Cut({ 200, 200 });
 	}
 
 	{
