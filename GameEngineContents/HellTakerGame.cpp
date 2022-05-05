@@ -14,7 +14,7 @@
 #include <GameEngineBase/GameEngineSound.h>
 
 HellTakerGame::HellTakerGame()
-	: ChapterCount_(4),
+	: ChapterCount_(7),
 	  IsSuccess_(false)
 {
 }
@@ -446,6 +446,17 @@ void HellTakerGame::GameImageCut()
 	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Skull_Hit.bmp");
 		Image->Cut({ 60,60 });
+	}
+
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Thorn_InAni.bmp");
+		Image->Cut({ 68,66 });
+	}
+
+
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Thorn_OutAni.bmp");
+		Image->Cut({ 68,66 });
 	}
 
 	{

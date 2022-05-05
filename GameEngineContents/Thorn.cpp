@@ -13,8 +13,8 @@ Thorn::~Thorn()
 
 void Thorn::Start()
 {
-	GameEngineRenderer* Render = CreateRenderer("Thorn.bmp");
-	MyCollision_ = CreateCollision("Thorn", { 40,40 });
+	GameEngineRenderer* Render = CreateRenderer("Thorn_Out.bmp");
+	MyCollision_ = CreateCollision("Thorn", { 20,20 });
 }
 
 void Thorn::Update()

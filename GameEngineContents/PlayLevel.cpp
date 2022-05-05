@@ -3,6 +3,7 @@
 #include "Skull.h"
 #include "Block.h"
 #include "Thorn.h"
+#include "Thorn_InOut.h"
 #include "LockBlock.h"
 #include "Key.h"
 #include "DevilSD.h"
@@ -58,8 +59,13 @@ void PlayLevel::Loading()
 	{
 		Blocks_.push_back(CreateActor<Block>(static_cast<int>(PlayOrder::Block)));
 	}
+	Thorns_.reserve(6);
+	for (size_t i = 0; i < 6; i++)
+	{
+		Thorns_.push_back(CreateActor<Thorn_InOut>(static_cast<int>(PlayOrder::Thorn)));
+	}
 	LockBlock_ = CreateActor<LockBlock>(static_cast<int>(PlayOrder::Block));
-	MyKey_ = CreateActor<Key>(1);
+	MyKey_ = CreateActor<Key>(5);
 	ActorOff();
 	BlockSetting();
 	SkullSetting();
@@ -138,6 +144,10 @@ void PlayLevel::ActorOff()
 	for (size_t i = 0; i < Blocks_.size(); i++)
 	{
 		Blocks_[i]->Off();
+	}
+	for (size_t i = 0; i < 6; i++)
+	{
+		Thorns_[i]->Off();
 	}
 	LockBlock_->Off();
 	MyKey_->Off();
@@ -389,6 +399,8 @@ void PlayLevel::Block_Chapter5Set()
 {
 	LockBlock_->On();
 	LockBlock_->SetPosition({ 475 + 66 * 3 , 208 });
+	MyKey_->On();
+	MyKey_->SetPosition({ 475 + 66 * 5, 538 + 10 });
 	Blocks_[0]->On();
 	Blocks_[0]->BlockRender_->SetIndex(10);
 	Blocks_[0]->SetPosition({ 475 + 66 *4, 208 + 10 });
@@ -413,6 +425,8 @@ void PlayLevel::Block_Chapter6Set()
 {
 	LockBlock_->On();
 	LockBlock_->SetPosition({ 575 + 66 * 2, 510 + 10 });
+	MyKey_->On();
+	MyKey_->SetPosition({ 575 + 66, 244 + 10 });
 	Blocks_[0]->On();
 	Blocks_[0]->BlockRender_->SetIndex(4);
 	Blocks_[0]->SetPosition({ 575 - 66, 180 + 10 });
@@ -443,6 +457,8 @@ void PlayLevel::Block_Chapter7Set()
 {
 	LockBlock_->On();
 	LockBlock_->SetPosition({ 805 - 66, 208 + 10 });
+	MyKey_->On();
+	MyKey_->SetPosition({ 805 - 66 * 4, 272 + 10 });
 	Blocks_[0]->On();
 	Blocks_[0]->BlockRender_->SetIndex(7);
 	Blocks_[0]->SetPosition({ 805 - 66 * 2, 272 + 10 });
@@ -562,38 +578,77 @@ void PlayLevel::Thorn_Chapter2Set()
 
 void PlayLevel::Thorn_Chapter3Set()
 {
-	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 4, 274 + 15 });
-	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 3, 274 + 15 });
-	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 5, 340 + 15 });
-	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 3, 340 + 15 });
-	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 2, 406 +15 });
-	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66, 406 + 15});
-	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 5, 472 + 15 });
-	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 3, 472 + 15 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 4, 274 + 20 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 3, 274 + 20 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 5, 340 + 20 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 3, 340 + 20 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 2, 406 + 20 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66, 406 + 20 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 5, 472 + 20 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 870 - 66 * 3, 472 + 20 });
 }
 
 
 void PlayLevel::Thorn_Chapter4Set()
 {
-	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 405 + 66 * 2, 278 + 15 });
-	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 405 + 66 * 3, 278 + 15 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 405 + 66 * 2, 278 + 20 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 405 + 66 * 3, 278 + 20 });
 }
 
 void PlayLevel::Thorn_Chapter5Set()
 {
-
+	Thorns_[0]->On();
+	Thorns_[0]->SetState(Thorn_InOutState::In);
+	Thorns_[0]->SetPosition({ 475 + 66 * 2,274 + 20 });
+	Thorns_[1]->On();
+	Thorns_[1]->SetState(Thorn_InOutState::In);
+	Thorns_[1]->SetPosition({ 475 + 66 * 3, 340 + 20 });
+	Thorns_[2]->On();
+	Thorns_[2]->SetState(Thorn_InOutState::In);
+	Thorns_[2]->SetPosition({ 475 + 66 * 5,340 + 20 });
+	Thorns_[3]->On();
+	Thorns_[3]->SetState(Thorn_InOutState::In);
+	Thorns_[3]->SetPosition({ 475 , 472 + 20 });
+	Thorns_[4]->On();
+	Thorns_[4]->SetState(Thorn_InOutState::In);
+	Thorns_[4]->SetPosition({ 475 + 66 * 2, 472 + 20 });
+	Thorns_[5]->On();
+	Thorns_[5]->SetState(Thorn_InOutState::In);
+	Thorns_[5]->SetPosition({ 475 + 66 * 5, 472 + 20 });
 }
 
 
 void PlayLevel::Thorn_Chapter6Set()
 {
-
+	Thorns_[0]->On();
+	Thorns_[0]->SetState(Thorn_InOutState::In);
+	Thorns_[0]->SetPosition({ 575 - 66 ,312 + 20 });
+	Thorns_[1]->On();
+	Thorns_[1]->SetState(Thorn_InOutState::In);
+	Thorns_[1]->SetPosition({ 575, 312 + 20 });
 }
 
 
 void PlayLevel::Thorn_Chapter7Set()
 {
-
+	Thorns_[0]->On();
+	Thorns_[0]->SetState(Thorn_InOutState::Out);
+	Thorns_[0]->SetPosition({ 805 - 66 * 5,470 + 20 });
+	Thorns_[1]->On();
+	Thorns_[1]->SetState(Thorn_InOutState::In);
+	Thorns_[1]->SetPosition({ 805 - 66 * 2,470 + 20 });
+	Thorns_[2]->On();
+	Thorns_[2]->SetState(Thorn_InOutState::In);
+	Thorns_[2]->SetPosition({ 805 - 66 * 5, 536 + 20 });
+	Thorns_[3]->On();
+	Thorns_[3]->SetState(Thorn_InOutState::Out);
+	Thorns_[3]->SetPosition({ 805 - 66 * 4,536 + 20 });
+	Thorns_[4]->On();
+	Thorns_[4]->SetState(Thorn_InOutState::In);
+	Thorns_[4]->SetPosition({ 805 - 66 * 3,536 + 20 });
+	Thorns_[5]->On();
+	Thorns_[5]->SetState(Thorn_InOutState::Out);
+	Thorns_[5]->SetPosition({ 805 - 66 * 2,536 + 20 });
 }
 
 

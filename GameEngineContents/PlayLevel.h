@@ -20,6 +20,7 @@ class GameEngineActor;
 class LockBlock;
 class Block;
 class Skull;
+class Thorn_InOut;
 class BackGroundMap;
 class Player;
 class Key;
@@ -48,6 +49,7 @@ private:
 	DevilSD* MyDevil_;
 	std::vector<Block*> Blocks_;
 	std::vector<Skull*> Skulls_;
+	std::vector<Thorn_InOut*> Thorns_;
 	LockBlock* LockBlock_;
 	GameEngineSoundPlayer PlayBgmPlayer_;
 
