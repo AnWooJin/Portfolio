@@ -29,7 +29,8 @@ protected:
 private:
 	GameEngineRenderer* MyRenderer_;
 	TalkCGState_Chapter8 CurState_;
-	bool IsCreateExtraActor_;
+	bool VineSoundPlay_; 
+	bool SkeletonSoundPlay_;
 
 
 	void Start() override;

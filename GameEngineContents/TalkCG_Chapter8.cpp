@@ -6,7 +6,8 @@
 TalkCG_Chapter8::TalkCG_Chapter8()
 	: MyRenderer_(nullptr),
 	  CurState_(TalkCGState_Chapter8::Max),
-	  IsCreateExtraActor_(false)
+	  VineSoundPlay_(false),
+	  SkeletonSoundPlay_(false)
 {
 }
 

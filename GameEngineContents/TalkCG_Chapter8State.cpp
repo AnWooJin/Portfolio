@@ -12,14 +12,14 @@ void TalkCG_Chapter8::AnimationStart()
 	{
 		if (false == MyRenderer_->IsAnimationName("TalkCG_Chapter8"))
 		{
-			MyRenderer_->CreateFolderAnimation("TalkCG_Chapter8", "TalkCG_Chapter8", 0, 154, 0.015f, false);
+			MyRenderer_->CreateFolderAnimation("TalkCG_Chapter8", "TalkCG_Chapter8", 0, 154, 0.02f, false);
 			MyRenderer_->ChangeAnimation("TalkCG_Chapter8");
 		}
 	}
 	else
 	{
 		MyRenderer_ = CreateRenderer();
-		MyRenderer_->CreateFolderAnimation("TalkCG_Chapter8", "TalkCG_Chapter8", 0, 154, 0.015f, false);
+		MyRenderer_->CreateFolderAnimation("TalkCG_Chapter8", "TalkCG_Chapter8", 0, 154, 0.02f, false);
 		MyRenderer_->ChangeAnimation("TalkCG_Chapter8");
 	}
 }
@@ -64,8 +64,19 @@ void TalkCG_Chapter8::Success1Start()
 
 void TalkCG_Chapter8::AnimationUpdate()
 {
+	if (false == VineSoundPlay_)
+	{
+		GameEngineSound::SoundPlayOneShot("lucifer_intro_vine_.wav");
+		VineSoundPlay_ = true;
+	}
+	if (false == SkeletonSoundPlay_ && 82 == MyRenderer_->CurrentAnimation()->WorldCurrentFrame())
+	{
+		GameEngineSound::SoundPlayOneShot("lucifer_intro_skeleton_01.wav");
+		SkeletonSoundPlay_ = true;
+	}
 	if (true == MyRenderer_->IsEndAnimation())
 	{
+		GameEngineSound::SoundPlayOneShot("lucifer_intro_dialogue_start_.wav");
 		ChangeState(TalkCGState_Chapter8::Idle);
 	}
 }
