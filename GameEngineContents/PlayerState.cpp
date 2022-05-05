@@ -237,7 +237,7 @@ bool Player::PlayerMove()
 			MovePos_ = MovePos;
 			if (false == HasKey_)
 			{
-				GameEngineSound::SoundPlayOneShot("Skull_kick_.wav");
+				GameEngineSound::SoundPlayOneShot("LockBlock_Kick.wav");
 				ChangeState(PlayerState::Attack);
 				CreateHitEffect(MovePos);
 				return false;
