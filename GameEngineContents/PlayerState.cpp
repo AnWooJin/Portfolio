@@ -28,6 +28,7 @@ void Player::IdleStart()
 	}
 	if (MyCollision_->CollisionCheck("Key"))
 	{
+		GameEngineSound::SoundPlayOneShot("Key_PickUp.wav");
 		CreateHugeEffect();
 		HasKey_ = true;
 		GetLevel()->FindActor<Key>("Key")->Off();
@@ -225,7 +226,7 @@ bool Player::PlayerMove()
 		else if (MyCollision_->NextPosCollisionCheck("Block", MovePos))
 		{
 			MovePos_ = MovePos;
-			GameEngineSound::SoundPlayOneShot("Skull_kick_.wav");
+			GameEngineSound::SoundPlayOneShot("Block_Kick.wav");
 			CreateHitEffect(MovePos);
 			MovePos_ = MovePos;
 			ChangeState(PlayerState::Attack);
