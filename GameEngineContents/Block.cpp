@@ -33,7 +33,6 @@ void Block::Update()
 	if (MyCollision_->CollisionCheck("Player"))
 	{	
 		BlockPush();
-
 	}
 }
 

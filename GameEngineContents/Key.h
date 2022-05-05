@@ -23,9 +23,6 @@ private:
 	void Update() override;
 	void Render() override {};
 
-	void CreateHugeEffect();
-
-	Player* MyPlayer_;
 	GameEngineCollision* MyCollision_;
 };
 

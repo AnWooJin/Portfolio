@@ -68,10 +68,12 @@ private:
 	void StateUpdate();
 	void CreateMoveEffect();
 	void CreateBloodEffect();
+	void CreateHugeEffect();
 	void CreateHitEffect(float4 _Pos);
 	void ChangeAnimation();
 	void TurnOnRedFilter();
 	void RedFilterOff();
+	
 
 	bool IsMoveKey();
 	bool PlayerMove();

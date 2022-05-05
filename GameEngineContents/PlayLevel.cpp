@@ -59,7 +59,7 @@ void PlayLevel::Loading()
 		Blocks_.push_back(CreateActor<Block>(static_cast<int>(PlayOrder::Block)));
 	}
 	LockBlock_ = CreateActor<LockBlock>(static_cast<int>(PlayOrder::Block));
-	MyKey_ = CreateActor<Key>(static_cast<int>(PlayOrder::Block));
+	MyKey_ = CreateActor<Key>(1);
 	ActorOff();
 	BlockSetting();
 	SkullSetting();
@@ -342,6 +342,8 @@ void PlayLevel::Block_Chapter4Set()
 {
 	LockBlock_->On();
 	LockBlock_->SetPosition({ 405 + 66 * 5 ,278 });
+	MyKey_->On();
+	MyKey_->SetPosition({ 405 + 66 * 2 ,212 });
 	Blocks_[0]->On();
 	Blocks_[0]->BlockRender_->SetIndex(6);
 	Blocks_[0]->SetPosition({ 405 + 66 * 4, 212 + 10 });
@@ -573,7 +575,8 @@ void PlayLevel::Thorn_Chapter3Set()
 
 void PlayLevel::Thorn_Chapter4Set()
 {
-
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 405 + 66 * 2, 278 + 15 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 405 + 66 * 3, 278 + 15 });
 }
 
 void PlayLevel::Thorn_Chapter5Set()

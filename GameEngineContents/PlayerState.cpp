@@ -1,6 +1,8 @@
 #include "Player.h"
+#include "Key.h"
 #include "HellTakerGame.h"
 #include "MoveEffect.h"
+#include "HugeEffect.h"
 #include "HitEffect.h"
 #include "BloodEffect.h"
 #include <GameEngine/GameEngine.h>
@@ -17,11 +19,18 @@
 void Player::IdleStart()
 {
 	Time_ = 0.2f;
+	HitCheck_ = false;
 	if (MyCollision_->CollisionCheck("Thorn") && PrevState_ != PlayerState::Attack)
 	{
 		MoveCount_--;
 		CreateBloodEffect();
 		TurnOnRedFilter();
+	}
+	if (MyCollision_->CollisionCheck("Key"))
+	{
+		CreateHugeEffect();
+		HasKey_ = true;
+		GetLevel()->FindActor<Key>("Key")->Off();
 	}
 }
 
@@ -54,6 +63,7 @@ void Player::DeathStart()
 
 void Player::IdleUpdate()
 {
+
 	Time_ -= GameEngineTime::GetDeltaTime();
 
 	FilterTime_ += GameEngineTime::GetDeltaTime() * 4.0f;
@@ -265,6 +275,12 @@ void Player::CreateMoveEffect()
 void Player::CreateBloodEffect()
 {
 	GameEngineActor* Actor = GetLevel()->CreateActor<BloodEffect>(7);
+	Actor->SetPosition(GetPosition());
+}
+
+void Player::CreateHugeEffect()
+{
+	GameEngineActor* Actor = GetLevel()->CreateActor<HugeEffect>(7);
 	Actor->SetPosition(GetPosition());
 }
 

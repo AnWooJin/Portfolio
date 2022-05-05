@@ -172,6 +172,9 @@
     <ClInclude Include="BloodEffect.h">
       <Filter>Play\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="Thorn_InOut.h">
+      <Filter>Play</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HellTakerGame.cpp" />
@@ -327,6 +330,12 @@
     </ClCompile>
     <ClCompile Include="BloodEffect.cpp">
       <Filter>Play\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Thorn_InOutState.cpp">
+      <Filter>Play\PlayState</Filter>
+    </ClCompile>
+    <ClCompile Include="Thorn_InOut.cpp">
+      <Filter>Play</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

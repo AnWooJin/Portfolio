@@ -103,7 +103,6 @@ void Player::LevelChangeStart(GameEngineLevel* _PrevLevel)
 }
 
 
-
 void Player::ChangeState(PlayerState _State)
 {
 	if (CurState_ == _State)
