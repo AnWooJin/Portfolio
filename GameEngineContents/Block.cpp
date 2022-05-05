@@ -99,7 +99,7 @@ void Block::BlockMoveCheck(float4 _MovePos)
 		return;
 	}
 
-	//GameEngineSound::SoundPlayOneShot()
+	GameEngineSound::SoundPlayOneShot("Block_Move.wav");
 	CreateMoveEffect();
 }
 
