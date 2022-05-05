@@ -128,5 +128,10 @@ void Skull::SkullDeathCheck(float4 _MovePos)
 		Off();
 	}
 
+	if (MyCollision_->CollisionCheck("Block"))
+	{
+		GameEngineSound::SoundPlayOneShot("Skull_die.wav");
+		Off();
+	}
 
 }
