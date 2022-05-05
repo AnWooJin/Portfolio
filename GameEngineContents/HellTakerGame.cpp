@@ -363,6 +363,16 @@ void HellTakerGame::GameImageCut()
 		Image->Cut({ 80, 80 });
 	}
 	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Idle_Right_RedFilter.bmp");
+		Image->Cut({ 80, 80 });
+	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Idle_Left_RedFilter.bmp");
+		Image->Cut({ 80, 80 });
+	}
+
+
+	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Move_Left.bmp");
 		Image->Cut({ 64, 64 });
 	}
@@ -378,6 +388,16 @@ void HellTakerGame::GameImageCut()
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Kick_Left.bmp");
 		Image->Cut({ 70, 72 });
 	}
+
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Kick_Right_RedFilter.bmp");
+		Image->Cut({ 70, 72 });
+	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Kick_Left_RedFilter.bmp");
+		Image->Cut({ 70, 72 });
+	}
+
 	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Move_Right.bmp");
 		Image->Cut({ 64, 64 });

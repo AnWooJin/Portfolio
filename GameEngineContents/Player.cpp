@@ -11,15 +11,20 @@
 
 Player::Player()
 	: MyRenderer_(nullptr)
+	, MyCollision_(nullptr)
+	, MyFilter_(nullptr)
 	, BlackBackGround_(nullptr)
 	, ColMapImage_(nullptr)
 	, MovePos_(float4::ZERO)
 	, Time_(0.3f)
+	, FilterTime_(1.0f)
 	, HasKey_(false)
+	, HitCheck_(false)
 	, dir_("Right")
 	, State_("Idle")
 	, MoveCount_(11)
 	, CurState_(PlayerState::Max)
+	, PrevState_(PlayerState::Max)
 {
 }
 
@@ -47,13 +52,21 @@ void Player::Start()
 		MyRenderer_ = CreateRenderer();
 		MyRenderer_->CreateAnimation("Player_Idle_Right.bmp", "Player_Idle_Right", 0, 10, 0.075f);
 		MyRenderer_->CreateAnimation("Player_Idle_Left.bmp", "Player_Idle_Left", 0, 10, 0.075f);
-		MyRenderer_->CreateAnimation("Player_Move_Right.bmp", "Player_Move_Right", 0, 5, 0.075f,false);
-		MyRenderer_->CreateAnimation("Player_Move_Left.bmp", "Player_Move_Left", 0, 5, 0.075f, false);
+		MyRenderer_->CreateAnimation("Player_Move_Right.bmp", "Player_Move_Right", 0, 5, 0.02f,false);
+		MyRenderer_->CreateAnimation("Player_Move_Left.bmp", "Player_Move_Left", 0, 5, 0.02f, false);
 		MyRenderer_->CreateAnimation("Player_Kick_Left.bmp", "Player_Attack_Left", 0, 8, 0.05f);
 		MyRenderer_->CreateAnimation("Player_Kick_Right.bmp", "Player_Attack_Right", 0, 8, 0.05f);
 		MyRenderer_->CreateAnimation("Player_Victory.bmp", "Player_Victory_Left", 0, 18, 0.1f);
 		MyRenderer_->CreateAnimation("Player_Death.bmp", "Player_Death", 0, 17, 0.1f);
 		MyRenderer_->ChangeAnimation("Player_Idle_Right");
+
+		MyFilter_ = CreateRenderer();
+		MyFilter_->CreateAnimation("Player_Idle_Right_RedFilter.bmp", "Player_Idle_Right_RedFilter", 0, 10, 0.075f);
+		MyFilter_->CreateAnimation("Player_Idle_Left_RedFilter.bmp", "Player_Idle_Left_RedFilter", 0, 10, 0.075f);
+		MyFilter_->CreateAnimation("Player_Kick_Right_RedFilter.bmp", "Player_Attack_Right_RedFilter", 0, 8, 0.05f);
+		MyFilter_->CreateAnimation("Player_Kick_Left_RedFilter.bmp", "Player_Attack_Left_RedFilter", 0, 8, 0.05f);
+		MyFilter_->SetAlpha(0);
+		MyFilter_->ChangeAnimation("Player_Idle_Right_RedFilter");
 	}
 	
 
@@ -97,28 +110,29 @@ void Player::ChangeState(PlayerState _State)
 	{
 		return;
 	}
+	PrevState_ = CurState_;
 	CurState_ = _State;
 	switch (_State)
 	{
 	case PlayerState::Idle:
-		IdleStart();
 		State_ = "Idle";
+		IdleStart();
 		break;
 	case PlayerState::Move:
-		MoveStart();
 		State_ = "Move";
+		MoveStart();
 		break;
 	case PlayerState::Attack:
-		AttackStart();
 		State_ = "Attack";
+		AttackStart();
 		break;
 	case PlayerState::Victory:
-		VictoryStart();
 		State_ = "Victory";
+		VictoryStart();
 		break;
 	case PlayerState::Death:
-		DeathStart();
 		State_ = "Death";
+		DeathStart();
 		break;
 	case PlayerState::Max:
 		break;

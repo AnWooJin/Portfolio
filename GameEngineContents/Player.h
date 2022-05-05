@@ -70,6 +70,8 @@ private:
 	void CreateBloodEffect();
 	void CreateHitEffect(float4 _Pos);
 	void ChangeAnimation();
+	void TurnOnRedFilter();
+	void RedFilterOff();
 
 	bool IsMoveKey();
 	bool PlayerMove();
@@ -77,18 +79,22 @@ private:
 	void Chapter8CameraCheck(float4 _Pos);
 private:
 	GameEngineRenderer* MyRenderer_;
+	GameEngineRenderer* MyFilter_;
 	GameEngineRenderer* BlackBackGround_;
 	GameEngineCollision* MyCollision_;
 	GameEngineImage* ColMapImage_;
+	PlayerState PrevState_;
 	PlayerState CurState_;
 	std::string dir_;
 	std::string State_;
 	float4 MovePos_;
 	float Time_;
+	float FilterTime_;
 	float4 StartPos_;
 	float4 EndPos_;
 	int MoveCount_;
 	bool HasKey_;
+	bool HitCheck_;
 
 
 private:

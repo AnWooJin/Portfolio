@@ -16,17 +16,26 @@
 
 void Player::IdleStart()
 {
-	
+	Time_ = 0.2f;
+	if (MyCollision_->CollisionCheck("Thorn") && PrevState_ != PlayerState::Attack)
+	{
+		MoveCount_--;
+		CreateBloodEffect();
+		TurnOnRedFilter();
+	}
 }
 
 void Player::MoveStart()
 {
-	
+	if (true == MyFilter_->IsUpdate())
+	{
+		RedFilterOff();
+	}
 }
 
 void Player::AttackStart()
 {
-
+	HitCheck_ = false;
 }
 
 
@@ -45,6 +54,28 @@ void Player::DeathStart()
 
 void Player::IdleUpdate()
 {
+	Time_ -= GameEngineTime::GetDeltaTime();
+
+	FilterTime_ += GameEngineTime::GetDeltaTime() * 4.0f;
+	if (FilterTime_ <= 1.0f)
+	{
+		MyFilter_->SetAlpha(GameEngineMath::LerpLimit(220, 0, FilterTime_));
+		return;
+	}
+	RedFilterOff();
+	if (Time_ >= 0.0f)
+	{
+		return;
+	}
+	if (true == MyFilter_->IsUpdate())
+	{
+		FilterTime_ -= GameEngineTime::GetDeltaTime();
+		if (FilterTime_ <= 0.0f)
+		{
+			RedFilterOff();
+		}
+	}
+	
 	if (true == dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetIsSuccess())
 	{
 		ChangeState(PlayerState::Victory);
@@ -55,8 +86,8 @@ void Player::IdleUpdate()
 		ChangeState(PlayerState::Death);
 		return;
 	}
+
 	int Color = ColMapImage_->GetImagePixel(GetPosition() + GetLevel()->GetCameraPos());
-	
 	if (true == IsMoveKey())
 	{
 		if (true == PlayerMove())
@@ -64,7 +95,7 @@ void Player::IdleUpdate()
 			ChangeState(PlayerState::Move);
 		}
 	}
-	else if (true == GameEngineInput::GetInst()->IsPress("Die"))
+	else if (true == GameEngineInput::GetInst()->IsDown("Die"))
 	{
 		GameEngine::GetInst().ChangeLevel("SceneChange");
 	}
@@ -77,7 +108,7 @@ void Player::IdleUpdate()
 
 void Player::MoveUpdate()
 {
-	Time_ += GameEngineTime::GetDeltaTime() * 5.0f;
+	Time_ += GameEngineTime::GetDeltaTime() * 10.0f;
 	if (false == GetPosition().CompareInt2D(EndPos_))
 	{
 		CameraCheck(float4::LerpLimit(StartPos_, EndPos_, Time_));
@@ -86,30 +117,33 @@ void Player::MoveUpdate()
 	else if (true == GetPosition().CompareInt2D(EndPos_))
 	{
 		SetPosition({static_cast<float>(floor(GetPosition().x)), static_cast<float>(floor(GetPosition().y)) });
-		if (MyCollision_->CollisionCheck("Thorn"))
-		{
-			MoveCount_--;
-			CreateBloodEffect();
-		}
-
 		ChangeState(PlayerState::Idle);
 	}
 }
 
 void Player::AttackUpdate()
 {
-	if (true == MyRenderer_->IsEndAnimation())
+	FilterTime_ += GameEngineTime::GetDeltaTime() * 5.0f;
+
+	if (MyRenderer_->CurrentAnimation()->WorldCurrentFrame() == 0 && false == HitCheck_)
 	{
-		if (MyCollision_->NextPosCollisionCheck("Thorn", {0,0}))
-		{
-			MoveCount_--;
-			CreateBloodEffect();
-		}
 		if (MyCollision_->NextPosCollisionCheck("Thorn", { 0,0 }))
 		{
 			MoveCount_--;
 			CreateBloodEffect();
+			TurnOnRedFilter();
+			HitCheck_ = true;
 		}
+	}
+
+	if (FilterTime_ <= 1.0f)
+	{
+		MyFilter_->SetAlpha(GameEngineMath::LerpLimit(220, 0, FilterTime_));
+		return;
+	}
+
+	if (true == MyRenderer_->IsEndAnimation())
+	{	
 		ChangeState(PlayerState::Idle);
 	}
 }
@@ -133,17 +167,18 @@ bool Player::PlayerMove()
 {
 	float4 NextPos = GetPosition();
 	float4 MovePos = float4::ZERO;
+	std::string  dir;
 
 	if (true == GameEngineInput::GetInst()->IsPress("MoveLeft"))
 	{
-		dir_ = "_Left";
+		dir = "_Left";
 		NextPos += float4::LEFT * 66;
 		MovePos = float4::LEFT * 66;
 	}
 
 	else if (true == GameEngineInput::GetInst()->IsPress("MoveRight"))
 	{
-		dir_ = "_Right";
+		dir = "_Right";
 		NextPos += float4::RIGHT * 66;
 		MovePos = float4::RIGHT * 66;
 	}
@@ -165,6 +200,10 @@ bool Player::PlayerMove()
 	if (RGB(0, 0, 0) != Color)
 	{
 		--MoveCount_;
+		if (dir != "")
+		{
+			dir_ = dir;
+		}
 		if (MyCollision_->NextPosCollisionCheck("Skull", MovePos))
 		{
 			MovePos_ = MovePos;
@@ -201,9 +240,9 @@ bool Player::PlayerMove()
 
 		GameEngineSound::SoundPlayOneShot("Player_Move.wav");
 		CreateMoveEffect();
+		Time_ = 0.0f;
 		StartPos_ = GetPosition();
 		EndPos_ = GetPosition() + MovePos;
-		Time_ = 0.0f;
 		return true;
 	}
 	else
@@ -256,6 +295,27 @@ void Player::ChangeAnimation()
 	{
 		return;
 	}
+}
+
+void Player::TurnOnRedFilter()
+{
+	std::string Name = "Player_" + State_ + dir_ + "_RedFilter";
+	if (nullptr != MyFilter_->FindAnimation(Name))
+	{
+		MyFilter_->ChangeAnimation(Name);
+		MyFilter_->SetAlpha(220);
+		FilterTime_ = 0.0f;
+	}
+	else
+	{
+		return;
+	}
+
+}
+
+void Player::RedFilterOff()
+{
+	MyFilter_->SetImageAnimationReset("Empty.bmp");
 }
 
 void Player::CameraCheck(float4 _Pos)
