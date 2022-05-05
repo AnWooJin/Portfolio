@@ -39,7 +39,6 @@ private:
 	GameEngineRenderer* MyRenderer_;
 	GameEngineCollision* MyCollision_;
 	Thorn_InOutState CurState_;
-	int MoveCount_;
 
 private:
 	void ChangeState(Thorn_InOutState);

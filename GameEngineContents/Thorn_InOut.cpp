@@ -7,7 +7,6 @@ Thorn_InOut::Thorn_InOut()
 	: MyRenderer_(nullptr)
 	, MyCollision_(nullptr)
 	, MyPlayer_(nullptr)
-	, MoveCount_(0)
 {
 }
 
@@ -35,7 +34,7 @@ void Thorn_InOut::Update()
 
 void Thorn_InOut::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
-	MoveCount_ = MyPlayer_->GetMoveCount();
+
 }
 
 

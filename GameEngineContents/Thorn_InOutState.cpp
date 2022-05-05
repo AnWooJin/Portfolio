@@ -18,18 +18,16 @@ void Thorn_InOut::OutStart()
 
 void Thorn_InOut::InUpdate()
 {
-	if (MoveCount_ != MyPlayer_->GetMoveCount())
+	if (true == MyPlayer_->IsPlayerMove())
 	{
 		ChangeState(Thorn_InOutState::Out);
-		MoveCount_ = MyPlayer_->GetMoveCount();
 	}
 }
 
 void Thorn_InOut::OutUpdate()
 {
-	if (MoveCount_ != MyPlayer_->GetMoveCount())
+	if (true == MyPlayer_->IsPlayerMove())
 	{
 		ChangeState(Thorn_InOutState::In);
-		MoveCount_ = MyPlayer_->GetMoveCount();
 	}
 }

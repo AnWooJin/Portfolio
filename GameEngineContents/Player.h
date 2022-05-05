@@ -31,6 +31,11 @@ public:
 public:
 	void PlayerSetting(int _Chapter);
 
+	bool IsPlayerMove()
+	{
+		return IsPlayerMove_;
+	}
+
 	bool GetHasKey()
 	{
 		return HasKey_;
@@ -97,6 +102,7 @@ private:
 	int MoveCount_;
 	bool HasKey_;
 	bool HitCheck_;
+	bool IsPlayerMove_;
 
 
 private:

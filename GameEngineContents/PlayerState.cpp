@@ -20,8 +20,10 @@ void Player::IdleStart()
 {
 	Time_ = 0.2f;
 	HitCheck_ = false;
+	
 	if (MyCollision_->CollisionCheck("Thorn") && PrevState_ != PlayerState::Attack)
 	{
+		GameEngineSound::SoundPlayOneShot("Thorn_Damage.wav");
 		MoveCount_--;
 		CreateBloodEffect();
 		TurnOnRedFilter();
@@ -46,6 +48,7 @@ void Player::MoveStart()
 void Player::AttackStart()
 {
 	HitCheck_ = false;
+	IsPlayerMove_ = true;
 }
 
 
@@ -119,6 +122,7 @@ void Player::IdleUpdate()
 
 void Player::MoveUpdate()
 {
+	IsPlayerMove_ = false;
 	Time_ += GameEngineTime::GetDeltaTime() * 10.0f;
 	if (false == GetPosition().CompareInt2D(EndPos_))
 	{
@@ -134,6 +138,7 @@ void Player::MoveUpdate()
 
 void Player::AttackUpdate()
 {
+	IsPlayerMove_ = false;
 	FilterTime_ += GameEngineTime::GetDeltaTime() * 5.0f;
 
 	if (MyRenderer_->CurrentAnimation()->WorldCurrentFrame() == 0 && false == HitCheck_)
@@ -254,6 +259,7 @@ bool Player::PlayerMove()
 		Time_ = 0.0f;
 		StartPos_ = GetPosition();
 		EndPos_ = GetPosition() + MovePos;
+		IsPlayerMove_ = true;
 		return true;
 	}
 	else
