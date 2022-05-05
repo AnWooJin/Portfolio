@@ -32,6 +32,7 @@ void TalkSelectActor::SuccessStart()
 	SetPosition({ 640, 652 });
 	MyRenderer1_->Off();
 	MyRenderer0_->ChangeAnimation("Success");
+	GameEngineSound::SoundPlayOneShot("Success.wav");
 }
 
 void TalkSelectActor::BooperUpdate()
