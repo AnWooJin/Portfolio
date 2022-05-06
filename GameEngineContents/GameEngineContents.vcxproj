@@ -36,6 +36,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="ClearEffect.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="DeathLevel.h">
       <SubType>
       </SubType>
@@ -197,6 +201,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Booper.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ClearEffect.cpp">
       <SubType>
       </SubType>
     </ClCompile>

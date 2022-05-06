@@ -14,7 +14,7 @@
 #include <GameEngineBase/GameEngineSound.h>
 
 HellTakerGame::HellTakerGame()
-	: ChapterCount_(1),
+	: ChapterCount_(2),
 	  IsSuccess_(false)
 {
 }
@@ -323,7 +323,11 @@ void  HellTakerGame::GameImageLoad()
 void HellTakerGame::GameImageCut()
 {
 	{
-		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter1Devil.bmp");
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter1_Devil.bmp");
+		Image->Cut({ 64, 64 });
+	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter1_Devil_Filter.bmp");
 		Image->Cut({ 64, 64 });
 	}
 	{
@@ -331,7 +335,15 @@ void HellTakerGame::GameImageCut()
 		Image->Cut({ 64, 64 });
 	}
 	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter2_Devil_Filter.bmp");
+		Image->Cut({ 64, 64 });
+	}
+	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter3_Devil.bmp");
+		Image->Cut({ 64, 64 });
+	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter3_Devil_Filter.bmp");
 		Image->Cut({ 64, 64 });
 	}
 	{
@@ -339,7 +351,15 @@ void HellTakerGame::GameImageCut()
 		Image->Cut({ 64, 64 });
 	}
 	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter4_Devil_Filter.bmp");
+		Image->Cut({ 64, 64 });
+	}
+	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter5_Devil.bmp");
+		Image->Cut({ 64, 64 });
+	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter5_Devil_Filter.bmp");
 		Image->Cut({ 64, 64 });
 	}
 	{
@@ -347,11 +367,23 @@ void HellTakerGame::GameImageCut()
 		Image->Cut({ 64, 64 });
 	}
 	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter6_Devil_Filter.bmp");
+		Image->Cut({ 64, 64 });
+	}
+	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter7_Devil.bmp");
 		Image->Cut({ 64, 64 });
 	}
 	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter7_Devil_Filter.bmp");
+		Image->Cut({ 64, 64 });
+	}
+	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter8_Devil.bmp");
+		Image->Cut({ 64, 64 });
+	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Chapter8_Devil_Filter.bmp");
 		Image->Cut({ 64, 64 });
 	}
 	{
@@ -429,7 +461,16 @@ void HellTakerGame::GameImageCut()
 	}
 
 	{
-		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Victory.bmp");
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("ClearEffect.bmp");
+		Image->Cut({ 340, 340 });
+	}
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Victory_Right.bmp");
+		Image->Cut({ 60, 82 });
+	}
+
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("Player_Victory_Left.bmp");
 		Image->Cut({ 60, 82 });
 	}
 

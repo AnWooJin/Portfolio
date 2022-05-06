@@ -117,6 +117,7 @@ void PlayLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 		BlockSetting();
 		SkullSetting();
 	}
+	MyMap_->MapSetting(Chapter_);
 	ThornSetting();
 }
 
@@ -125,13 +126,16 @@ void PlayLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 	if (true == dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetIsSuccess())
 	{
 		ActorOff();
-	}
-	if (nullptr != MyDevil_)
-	{
-		MyDevil_->Death();
 		MyDevil_ = nullptr;
 	}
-
+	else
+	{
+		if (nullptr != MyDevil_)
+		{
+			MyDevil_->Death();
+			MyDevil_ = nullptr;
+		}
+	}
 }
 
 
@@ -572,7 +576,12 @@ void PlayLevel::Thorn_Chapter1Set()
 
 void PlayLevel::Thorn_Chapter2Set()
 {
-
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 440 + 66 * 3, 237 + 20 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 440 + 66 * 4, 237 + 20 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 440 + 66, 303 + 20 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 440 + 66 * 4, 303 + 20 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 440 + 66 * 5, 303 + 20 });
+	CreateActor<Thorn>(static_cast<int>(PlayOrder::Thorn))->SetPosition({ 440 + 66 * 5, 369 + 20 });
 }
 
 

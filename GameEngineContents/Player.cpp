@@ -57,7 +57,8 @@ void Player::Start()
 		MyRenderer_->CreateAnimation("Player_Move_Left.bmp", "Player_Move_Left", 0, 5, 0.02f, false);
 		MyRenderer_->CreateAnimation("Player_Kick_Left.bmp", "Player_Attack_Left", 0, 8, 0.05f);
 		MyRenderer_->CreateAnimation("Player_Kick_Right.bmp", "Player_Attack_Right", 0, 8, 0.05f);
-		MyRenderer_->CreateAnimation("Player_Victory.bmp", "Player_Victory_Left", 0, 18, 0.1f);
+		MyRenderer_->CreateAnimation("Player_Victory_Left.bmp", "Player_Victory_Left", 0, 18, 0.2f, false);
+		MyRenderer_->CreateAnimation("Player_Victory_Right.bmp", "Player_Victory_Right", 0, 18, 0.2f, false);
 		MyRenderer_->CreateAnimation("Player_Death.bmp", "Player_Death", 0, 17, 0.1f);
 		MyRenderer_->ChangeAnimation("Player_Idle_Right");
 

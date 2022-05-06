@@ -166,7 +166,10 @@ void Player::AttackUpdate()
 
 void Player::VictoryUpdate()
 {
-
+	if (true == MyRenderer_->IsEndAnimation())
+	{
+		GameEngine::GetInst().ChangeLevel("SceneChange");
+	}
 }
 
 void Player::DeathUpdate()

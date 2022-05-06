@@ -25,8 +25,24 @@ private:
 	void Render() override;
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 
-	GameEngineRenderer* MyRenderer_;
+	void CreateClearEffect();
+	void ChapterSucess();
 
+	void Chapter3Sucess();
+	void elseChapterSucess();
+
+	GameEngineRenderer* MyRenderer_;
+	GameEngineRenderer* MyRenderer1_;
+	GameEngineRenderer* MyRenderer2_;
+
+	GameEngineRenderer* FilterRenderer_;
+	GameEngineRenderer* FilterRenderer1_;
+	GameEngineRenderer* FilterRenderer2_;
+
+	int Chapter_;
+	bool IsEffect_;
+	bool SoundPlay_;
+	float Time_;
 	
 };
 

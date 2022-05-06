@@ -27,7 +27,7 @@ void Skull::Start()
 	MyRenderer_->CreateAnimation("Skull_Idle.bmp", "Skull_Idle", 0, 11, 0.065f);
 	MyRenderer_->CreateAnimation("Skull_Hit.bmp", "Skull_Hit", 0, 7, 0.03f, false);
 	MyRenderer_->ChangeAnimation("Skull_Idle");
-	MyCollision_ = CreateCollision("Skull", { 60,60});
+	MyCollision_ = CreateCollision("Skull", { 30,30});
 	MyPlayer_ = GetLevel()->FindActor<Player>("Player");
 	ChangeState(SkullState::Idle);
 }
