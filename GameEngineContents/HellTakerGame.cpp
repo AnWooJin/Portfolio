@@ -14,7 +14,7 @@
 #include <GameEngineBase/GameEngineSound.h>
 
 HellTakerGame::HellTakerGame()
-	: ChapterCount_(8),
+	: ChapterCount_(1),
 	  IsSuccess_(false)
 {
 }
@@ -39,7 +39,7 @@ void HellTakerGame::GameInit()
 	CreateLevel<SceneChangeLevel>("SceneChange");
 	CreateLevel<Talk_Chapter8Level>("Talk_Chapter8");
 	CreateLevel<EpilogueLevel>("Epilogue");
-	ChangeLevel("Play");
+	ChangeLevel("Opening");
 }
 
 void HellTakerGame::GameLoop()
