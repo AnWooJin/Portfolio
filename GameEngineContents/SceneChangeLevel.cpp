@@ -30,6 +30,8 @@ void SceneChangeLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void SceneChangeLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	HellTakerGame& MyGame = dynamic_cast<HellTakerGame&>(GameEngine::GetInst());
+	
+	
 	if (true == MyGame.GetIsSuccess())
 	{
 		MyGame.IsSuccesssOff();

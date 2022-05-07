@@ -64,6 +64,7 @@ public:
 	{
 		return PrevLevel_;
 	}
+
 protected:
 	template<typename LevelType>
 	void CreateLevel(const std::string& _Name)

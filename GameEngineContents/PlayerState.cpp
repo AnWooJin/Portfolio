@@ -73,7 +73,7 @@ void Player::IdleUpdate()
 	FilterTime_ += GameEngineTime::GetDeltaTime() * 4.0f;
 	if (FilterTime_ <= 1.0f)
 	{
-		MyFilter_->SetAlpha(GameEngineMath::LerpLimit(220, 0, FilterTime_));
+		MyFilter_->SetAlpha(static_cast<unsigned int>(GameEngineMath::LerpLimit(220, 0, FilterTime_)));
 		return;
 	}
 	RedFilterOff();
@@ -89,7 +89,7 @@ void Player::IdleUpdate()
 			RedFilterOff();
 		}
 	}
-	
+
 	if (true == dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetIsSuccess())
 	{
 		ChangeState(PlayerState::Victory);
@@ -116,6 +116,17 @@ void Player::IdleUpdate()
 	if (RGB(0, 0, 255) == Color)
 	{
 		GameEngine::GetInst().ChangeLevel("Talk");
+	}
+
+	else if (RGB(0, 1, 255) == Color)
+	{
+		GameEngine::GetInst().ChangeLevel("Talk_Chapter8");
+	}
+
+	else if (RGB(0, 2, 255) == Color)
+	{
+		GameEngine::GetInst().ChangeLevel("Epilogue");
+		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOn();
 	}
 
 }
@@ -154,7 +165,7 @@ void Player::AttackUpdate()
 
 	if (FilterTime_ <= 1.0f)
 	{
-		MyFilter_->SetAlpha(GameEngineMath::LerpLimit(220, 0, FilterTime_));
+		MyFilter_->SetAlpha(static_cast<unsigned int>(GameEngineMath::LerpLimit(220, 0, FilterTime_)));
 		return;
 	}
 
@@ -245,7 +256,8 @@ bool Player::PlayerMove()
 		{
 			MovePos_ = MovePos;
 			if (false == HasKey_)
-			{
+			{	
+				
 				GameEngineSound::SoundPlayOneShot("LockBlock_Kick.wav");
 				ChangeState(PlayerState::Attack);
 				CreateHitEffect(MovePos);
@@ -253,6 +265,7 @@ bool Player::PlayerMove()
 			}
 			else if (true == HasKey_)
 			{
+				
 				MyCollision_->NextPosCollisionCheck("LockBlock", { 0,0 });
 			}
 		}

@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "HugeEffect.h"
 #include <GameEngine/GameEngineCollision.h>
+#include <GameEngineBase/GameEngineSound.h>
 
 LockBlock::LockBlock()
 	: MyRenderer_(nullptr)
@@ -33,6 +34,7 @@ void LockBlock::KeyCheck()
 {
 	if (true == MyPlayer_->GetHasKey())
 	{
+		GameEngineSound::SoundPlayOneShot("LockBlock_Open.wav");
 		CreateHugeEffect();
 		Off();
 	}

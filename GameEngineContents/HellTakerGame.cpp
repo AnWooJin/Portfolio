@@ -6,7 +6,7 @@
 #include "DeathLevel.h"
 #include "TalkLevel.h"
 #include "Talk_Chapter8Level.h"
-#include "EndingLevel.h"
+#include "EpilogueLevel.h"
 #include <GameEngineBase/GameEngineWindow.h>
 #include <GameEngineBase/GameEngineDirectory.h>
 #include <GameEngineBase/GameEngineFile.h>
@@ -14,7 +14,7 @@
 #include <GameEngineBase/GameEngineSound.h>
 
 HellTakerGame::HellTakerGame()
-	: ChapterCount_(2),
+	: ChapterCount_(8),
 	  IsSuccess_(false)
 {
 }
@@ -38,7 +38,7 @@ void HellTakerGame::GameInit()
 	CreateLevel<DeathLevel>("Death");
 	CreateLevel<SceneChangeLevel>("SceneChange");
 	CreateLevel<Talk_Chapter8Level>("Talk_Chapter8");
-	CreateLevel<EndingLevel>("Ending");
+	CreateLevel<EpilogueLevel>("Epilogue");
 	ChangeLevel("Play");
 }
 
@@ -537,6 +537,11 @@ void HellTakerGame::GameImageCut()
 
 	{
 		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("PrologueScene.bmp");
+		Image->Cut({ 1280,720 });
+	}
+
+	{
+		GameEngineImage* Image = GameEngineImageManager::GetInst()->Find("EpilogueScene.bmp");
 		Image->Cut({ 1280,720 });
 	}
 

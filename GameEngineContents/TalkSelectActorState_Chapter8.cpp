@@ -18,6 +18,7 @@ void TalkSelectActor_Chapter8::BooperStart()
 		MyRenderer0_->On();
 	}
 	MyRenderer0_->ChangeAnimation("Booper");
+
 }
 
 void TalkSelectActor_Chapter8::SelectActorStart()
@@ -38,6 +39,7 @@ void TalkSelectActor_Chapter8::SuccessStart()
 {
 	SetPosition({ 640, 640 });
 	MyRenderer0_->ChangeAnimation("Success");
+	GameEngineSound::SoundPlayOneShot("Success.wav");
 }
 
 void TalkSelectActor_Chapter8::EmptyUpdate()
@@ -55,6 +57,7 @@ void TalkSelectActor_Chapter8::BooperUpdate()
 	{
 		ChangeState(TalkSelectActor_Chapter8State::SelectActor);
 	}
+
 }
 
 void TalkSelectActor_Chapter8::SelectActorUpdate()
@@ -75,6 +78,7 @@ void TalkSelectActor_Chapter8::SelectActorUpdate()
 
 	if (true == GameEngineInput::GetInst()->IsDown("Next"))
 	{	
+		GameEngineSound::SoundPlayOneShot("button_dialogue_confirm_01.wav");
 		GameEngineSound::SoundPlayOneShot("dialogue_text_end_01.wav");
 		TalkSuccessCheck();
 	}

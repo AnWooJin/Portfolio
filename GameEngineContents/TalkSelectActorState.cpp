@@ -250,6 +250,7 @@ void TalkSelectActor::Chapter1Check()
 	}
 	else
 	{
+		GameEngineSound::SoundPlayOneShot("button_dialogue_confirm_01.wav");
 		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
 		ChangeState(TalkSelectActorState::Booper);
 	}
@@ -267,6 +268,7 @@ void TalkSelectActor::Chapter2Check()
 	}
 	else
 	{
+		GameEngineSound::SoundPlayOneShot("button_dialogue_confirm_01.wav");
 		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
 		ChangeState(TalkSelectActorState::Booper);
 	}
@@ -284,6 +286,7 @@ void TalkSelectActor::Chapter3Check()
 	}
 	else
 	{
+		GameEngineSound::SoundPlayOneShot("button_dialogue_confirm_01.wav");
 		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
 		ChangeState(TalkSelectActorState::Booper);
 	}
@@ -301,7 +304,8 @@ void TalkSelectActor::Chapter4Check()
 	}
 	else
 	{
-		//dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
+		GameEngineSound::SoundPlayOneShot("button_dialogue_confirm_01.wav");
+		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
 		ChangeState(TalkSelectActorState::Booper);
 	}
 
@@ -319,7 +323,8 @@ void TalkSelectActor::Chapter5Check()
 	}
 	else
 	{
-		//dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
+		GameEngineSound::SoundPlayOneShot("button_dialogue_confirm_01.wav");
+		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
 		ChangeState(TalkSelectActorState::Booper);
 	}
 
@@ -337,7 +342,8 @@ void TalkSelectActor::Chapter6Check()
 	}
 	else
 	{
-		//dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
+		GameEngineSound::SoundPlayOneShot("button_dialogue_confirm_01.wav");
+		dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOff();
 		ChangeState(TalkSelectActorState::Booper);
 	}
 
@@ -348,7 +354,7 @@ void TalkSelectActor::Chapter7Check()
 {
 	IsSelect_ = true;
 	///////  두번째 선택지가 정답이다.
-	
+	GameEngineSound::SoundPlayOneShot("button_dialogue_confirm_01.wav");
 	dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).IsSuccesssOn();
 	ChangeState(TalkSelectActorState::Success);
 }

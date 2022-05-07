@@ -30,7 +30,6 @@ void TitleLevel::Loading()
 	CreateActor<TitleBackGround>(1);
 	CreateActor<TitleCG>(2);
 	CreateActor<TitleText>(3);
-	//CreateActor<Booper>(4);
 	CreateActor<TitleSelectActor>(3);
 	SetCameraPos({ 680, 0 });
 
@@ -53,7 +52,9 @@ void TitleLevel::Update()
 
 void TitleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	SetCameraPos({ 680, 0 });
 	TitleBgmPlayer_ = GameEngineSound::SoundPlayControl("TitleBGM.wav");
+	TextPage_ = 0;
 }
 
 void TitleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)

@@ -42,6 +42,7 @@ void TalkLevel::Update()
 void TalkLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	TextPage_ = 0;
+	GameEngineSound::SoundPlayOneShot("dialogue_start_01.wav");
 }
 
 void TalkLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)

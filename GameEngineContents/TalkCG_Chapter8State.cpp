@@ -8,20 +8,7 @@
 
 void TalkCG_Chapter8::AnimationStart()
 {
-	if (MyRenderer_ != nullptr)
-	{
-		if (false == MyRenderer_->IsAnimationName("TalkCG_Chapter8"))
-		{
-			MyRenderer_->CreateFolderAnimation("TalkCG_Chapter8", "TalkCG_Chapter8", 0, 154, 0.02f, false);
-			MyRenderer_->ChangeAnimation("TalkCG_Chapter8");
-		}
-	}
-	else
-	{
-		MyRenderer_ = CreateRenderer();
-		MyRenderer_->CreateFolderAnimation("TalkCG_Chapter8", "TalkCG_Chapter8", 0, 154, 0.02f, false);
-		MyRenderer_->ChangeAnimation("TalkCG_Chapter8");
-	}
+	 	MyRenderer_->ChangeAnimation("TalkCG_Chapter8");
 }
 
 void TalkCG_Chapter8::IdleStart()
@@ -64,7 +51,7 @@ void TalkCG_Chapter8::Success1Start()
 
 void TalkCG_Chapter8::AnimationUpdate()
 {
-	if (false == VineSoundPlay_)
+	if (false == VineSoundPlay_ && 5 == MyRenderer_->CurrentAnimation()->WorldCurrentFrame())
 	{
 		GameEngineSound::SoundPlayOneShot("lucifer_intro_vine_.wav");
 		VineSoundPlay_ = true;

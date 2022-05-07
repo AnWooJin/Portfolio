@@ -4,6 +4,7 @@
 #include "TalkSelectActor_Chapter8.h"
 #include <GameEngine/GameEngine.h>
 #include <GameEngine/GameEngineRenderer.h>
+#include <GameEngineBase/GameEngineInput.h>
 
 void TalkText_Chapter8::EmptyStart()
 {
@@ -83,10 +84,16 @@ void TalkText_Chapter8::IdleUpdate()
 
 void TalkText_Chapter8::Bad0Update()
 {
-
+	if (true == GameEngineInput::GetInst()->IsDown("Next"))
+	{
+		GameEngine::GetInst().ChangeLevel("Death");
+	}
 }
 
 void TalkText_Chapter8::Bad1Update()
 {
-
+	if (true == GameEngineInput::GetInst()->IsDown("Next"))
+	{
+		GameEngine::GetInst().ChangeLevel("Death");
+	}
 }

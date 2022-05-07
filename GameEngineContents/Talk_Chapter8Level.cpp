@@ -1,4 +1,5 @@
 #include <GameEngineBase/GameEngineInput.h>
+#include <GameEngine/GameEngine.h>
 #include "Talk_Chapter8Level.h"
 #include "TalkCG_Chapter8.h"
 #include "TalkSelectActor_Chapter8.h"
@@ -29,8 +30,11 @@ void Talk_Chapter8Level::Loading()
 
 void Talk_Chapter8Level::Update()
 {
-	
-	if (true == GameEngineInput::GetInst()->IsDown("Next") && false == SelectActorCall_)
+	if (true == GameEngineInput::GetInst()->IsDown("Next") && TextPage_ == 5)
+	{
+		GameEngine::GetInst().ChangeLevel("Play");
+	}
+	else if (true == GameEngineInput::GetInst()->IsDown("Next") && false == SelectActorCall_)
 	{
 		GameEngineSound::SoundPlayOneShot("dialogue_text_end_01.wav");
 		if (TextPage_ == 1 || TextPage_ == 3)
@@ -44,7 +48,8 @@ void Talk_Chapter8Level::Update()
 
 void Talk_Chapter8Level::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
-
+	TextPage_ = 0;
+	GameEngineSound::SoundPlayOneShot("dialogue_start_01.wav");
 }
 
 void Talk_Chapter8Level::LevelChangeEnd(GameEngineLevel* _NextLevel)

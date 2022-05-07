@@ -24,6 +24,13 @@ void TalkText_Chapter8::Update()
 	StateUpdate();
 }
 
+void TalkText_Chapter8::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	ChangeState(TalkText_Chapter8State::Empty);
+	ChangeTime_ = 2.0f;
+}
+
+
 void TalkText_Chapter8::ChangeState(TalkText_Chapter8State _State)
 {
 	if (CurState_ == _State)

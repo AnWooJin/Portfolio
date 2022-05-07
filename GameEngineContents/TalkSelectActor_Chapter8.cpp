@@ -20,6 +20,7 @@ TalkSelectActor_Chapter8::~TalkSelectActor_Chapter8()
 
 void TalkSelectActor_Chapter8::Start()
 {
+	LevelRegist("TalkSelectActor_Chapter8");
 	MyRenderer0_ = CreateRenderer();
 	MyRenderer1_ = CreateRenderer();
 	MyRenderer0_->Off();
@@ -91,5 +92,12 @@ void TalkSelectActor_Chapter8::StateUpdate()
 
 void TalkSelectActor_Chapter8::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
-	LevelRegist("TalkSelectActor_Chapter8");
+	ChangeState(TalkSelectActor_Chapter8State::Empty);
+	ChangeTime_ = 2.5f;
+	MyRenderer0_->Off();
+	MyRenderer1_->Off();
+	IsSelect0_ = false;
+	IsSelect1_ = false;
+	Selected0_ = true;
+	SelectActorSetNum_ = 0;
 }

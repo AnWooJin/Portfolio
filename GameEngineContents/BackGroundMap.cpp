@@ -72,6 +72,8 @@ void BackGroundMap::MapSetting(int _Level)
 	}
 	case 9:
 	{
+		SetPosition(GameEngineWindow::GetScale().Half());
+		MapRenderer_->CameraEffectOff();
 		MapRenderer_->SetImage("Chapter9_Map.bmp");
 		break;
 	}

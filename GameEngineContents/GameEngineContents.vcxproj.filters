@@ -19,9 +19,6 @@
     <Filter Include="Title\State">
       <UniqueIdentifier>{602ad891-491d-4eee-adca-01de1d37586c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Ending">
-      <UniqueIdentifier>{c3e08289-df0b-494a-add0-56e7f1fb5248}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Talk_Chapter8">
       <UniqueIdentifier>{0452d53f-08a3-45fc-9a53-74ee7b80993d}</UniqueIdentifier>
     </Filter>
@@ -49,12 +46,12 @@
     <Filter Include="Play\Effect">
       <UniqueIdentifier>{e5cc825f-ddf3-4f8f-9ab9-38842cc7f392}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Epilogue">
+      <UniqueIdentifier>{2905ad46-a338-4afd-a6ce-034ed37740ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HellTakerGame.h" />
-    <ClInclude Include="EndingLevel.h">
-      <Filter>Level</Filter>
-    </ClInclude>
     <ClInclude Include="PlayLevel.h">
       <Filter>Level</Filter>
     </ClInclude>
@@ -63,9 +60,6 @@
     </ClInclude>
     <ClInclude Include="TitleBackGround.h">
       <Filter>Title</Filter>
-    </ClInclude>
-    <ClInclude Include="Flame.h">
-      <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="TitleCG.h">
       <Filter>Title</Filter>
@@ -97,17 +91,11 @@
     <ClInclude Include="TitleText.h">
       <Filter>Title</Filter>
     </ClInclude>
-    <ClInclude Include="Booper.h">
-      <Filter>Global</Filter>
-    </ClInclude>
     <ClInclude Include="BlackBackGround.h">
       <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="TitleSelectActor.h">
       <Filter>Title</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingScene.h">
-      <Filter>Ending</Filter>
     </ClInclude>
     <ClInclude Include="TalkCG.h">
       <Filter>Talk</Filter>
@@ -178,12 +166,18 @@
     <ClInclude Include="ClearEffect.h">
       <Filter>Play\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="EpilogueLevel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="EpilogueScene.h">
+      <Filter>Epilogue</Filter>
+    </ClInclude>
+    <ClInclude Include="Booper.h">
+      <Filter>Epilogue</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HellTakerGame.cpp" />
-    <ClCompile Include="EndingLevel.cpp">
-      <Filter>Level</Filter>
-    </ClCompile>
     <ClCompile Include="PlayLevel.cpp">
       <Filter>Level</Filter>
     </ClCompile>
@@ -192,9 +186,6 @@
     </ClCompile>
     <ClCompile Include="TitleBackGround.cpp">
       <Filter>Title</Filter>
-    </ClCompile>
-    <ClCompile Include="Flame.cpp">
-      <Filter>Global</Filter>
     </ClCompile>
     <ClCompile Include="TitleCG.cpp">
       <Filter>Title</Filter>
@@ -226,9 +217,6 @@
     <ClCompile Include="TitleText.cpp">
       <Filter>Title</Filter>
     </ClCompile>
-    <ClCompile Include="Booper.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
     <ClCompile Include="BlackBackGround.cpp">
       <Filter>Global</Filter>
     </ClCompile>
@@ -240,9 +228,6 @@
     </ClCompile>
     <ClCompile Include="TitleSelectActorState.cpp">
       <Filter>Title\State</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingScene.cpp">
-      <Filter>Ending</Filter>
     </ClCompile>
     <ClCompile Include="TalkCG.cpp">
       <Filter>Talk</Filter>
@@ -342,6 +327,15 @@
     </ClCompile>
     <ClCompile Include="ClearEffect.cpp">
       <Filter>Play\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="EpilogueLevel.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="EpilogueScene.cpp">
+      <Filter>Epilogue</Filter>
+    </ClCompile>
+    <ClCompile Include="Booper.cpp">
+      <Filter>Epilogue</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

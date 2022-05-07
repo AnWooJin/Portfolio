@@ -174,6 +174,7 @@ void Player::PlayerSetting(int _Chapter)
 {
 	ChangeState(PlayerState::Idle);
 	dir_ = "_Right";
+	HasKey_ = false;
 	StartPos_ = GetPosition();
 	EndPos_ = GetPosition();
 	switch (_Chapter)
@@ -220,6 +221,7 @@ void Player::PlayerSetting(int _Chapter)
 		MoveCount_ = 12;
 		break;
 	case 9:
+		SetPosition({ 440,580 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter9_ColMap.bmp");
 		MoveCount_ = 33;
 		break;

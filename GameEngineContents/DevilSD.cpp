@@ -206,6 +206,7 @@ void DevilSD::ImageSetting(int _ChapterLevel)
 			FilterRenderer1_ = CreateRenderer("Chapter3_Devil_Filter.bmp");
 			FilterRenderer1_->CreateAnimation("Chapter3_Devil_Filter.bmp", "Chapter3_Devil_Filter", 0, 11, 0.065f);
 			FilterRenderer1_->ChangeAnimation("Chapter3_Devil_Filter");
+			FilterRenderer1_->SetPivot({ -64, 0 });
 			FilterRenderer1_->SetAlpha(0);
 		}
 
@@ -217,6 +218,7 @@ void DevilSD::ImageSetting(int _ChapterLevel)
 			FilterRenderer2_ = CreateRenderer("Chapter3_Devil_Filter.bmp");
 			FilterRenderer2_->CreateAnimation("Chapter3_Devil_Filter.bmp", "Chapter3_Devil_Filter", 0, 11, 0.065f);
 			FilterRenderer2_->ChangeAnimation("Chapter3_Devil_Filter");
+			FilterRenderer2_->SetPivot({ 64, 0 });
 			FilterRenderer2_->SetAlpha(0);
 		}
 

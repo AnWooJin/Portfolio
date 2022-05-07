@@ -54,8 +54,8 @@ void PlayLevel::Loading()
 	{
 		Skulls_.push_back(CreateActor<Skull>(static_cast<int>(PlayOrder::SKull)));
 	}
-	Blocks_.reserve(13);
-	for (size_t i = 0; i < 13; i++)
+	Blocks_.reserve(15);
+	for (size_t i = 0; i < 15; i++)
 	{
 		Blocks_.push_back(CreateActor<Block>(static_cast<int>(PlayOrder::Block)));
 	}
@@ -90,21 +90,26 @@ void PlayLevel::Update()
 
 void PlayLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	PlayBgmPlayer_.Volume(1.0f);
 	if (false == IsBgmPlay_)
 	{
 		PlayBgmPlayer_ = GameEngineSound::SoundPlayControl("PlayBGM.wav");
 		IsBgmPlay_ = true;
 	}
+	/*if (3 == Chapter_)
+	{
+		PlayBgmPlayer_.Stop();
+	}*/
 	
 	Chapter_ = dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetChapterCount();
 	SetCameraPos({ 0,0 });
 
-	if (8 == Chapter_)
+	if (8 == Chapter_ && false == dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetIsSuccess())
 	{
 		SetCameraPos({0,612 });
 	}
 
-	if (nullptr == MyDevil_)
+	if (nullptr == MyDevil_ && Chapter_ != 9)
 	{
 		MyDevil_ = CreateActor<DevilSD>(static_cast<int>(PlayOrder::Devil));
 		MyDevil_->ImageSetting(Chapter_);
@@ -123,6 +128,14 @@ void PlayLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void PlayLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
+	if (9 == Chapter_ && true == dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetIsSuccess())
+	{
+		PlayBgmPlayer_.Stop();
+	}
+	if (8 == Chapter_)
+	{
+		PlayBgmPlayer_.Volume(0.2f);
+	}
 	if (true == dynamic_cast<HellTakerGame&>(HellTakerGame::GetInst()).GetIsSuccess())
 	{
 		ActorOff();
@@ -251,6 +264,11 @@ void PlayLevel::BlockSetting()
 	case 8:
 	{
 		Block_Chapter8Set();
+		break;
+	}
+	case 9:
+	{
+		Block_Chapter9Set();
 		break;
 	}
 	default:
@@ -483,6 +501,59 @@ void PlayLevel::Block_Chapter7Set()
 void PlayLevel::Block_Chapter8Set()
 {
 
+}
+
+void PlayLevel::Block_Chapter9Set()
+{
+	LockBlock_->On();
+	LockBlock_->SetPosition({ 440 + 66 * 3, 316 + 10 });
+	MyKey_->On();
+	MyKey_->SetPosition({ 440 + 66 * 7, 448 + 10 });
+	Blocks_[0]->On();
+	Blocks_[0]->BlockRender_->SetIndex(2);
+	Blocks_[0]->SetPosition({ 440 + 66 * 2, 316 + 10 });
+	Blocks_[1]->On();
+	Blocks_[1]->BlockRender_->SetIndex(1);
+	Blocks_[1]->SetPosition({ 440 + 66 * 4, 316 + 10 });
+	Blocks_[2]->On();
+	Blocks_[2]->BlockRender_->SetIndex(3);
+	Blocks_[2]->SetPosition({ 440 , 382 + 10 });
+	Blocks_[3]->On();
+	Blocks_[3]->BlockRender_->SetIndex(1);
+	Blocks_[3]->SetPosition({ 440 + 66 * 2 , 382 + 10});
+	Blocks_[4]->On();
+	Blocks_[4]->BlockRender_->SetIndex(4);
+	Blocks_[4]->SetPosition({ 440 - 66  , 382 + 10 });
+	Blocks_[5]->On();
+	Blocks_[5]->BlockRender_->SetIndex(5);
+	Blocks_[5]->SetPosition({ 440 + 66 * 2  , 448 + 10 });
+	Blocks_[6]->On();
+	Blocks_[6]->BlockRender_->SetIndex(6);
+	Blocks_[6]->SetPosition({ 440 + 66 * 3  , 448 + 10 });
+	Blocks_[7]->On();
+	Blocks_[7]->BlockRender_->SetIndex(0);
+	Blocks_[7]->SetPosition({ 440 + 66 * 4  , 448 + 10 });
+	Blocks_[8]->On();
+	Blocks_[8]->BlockRender_->SetIndex(2);
+	Blocks_[8]->SetPosition({ 440  , 514 + 10 });
+	Blocks_[9]->On();
+	Blocks_[9]->BlockRender_->SetIndex(0);
+	Blocks_[9]->SetPosition({ 440 + 66  , 514 + 10 });
+	Blocks_[10]->On();
+	Blocks_[10]->BlockRender_->SetIndex(1);
+	Blocks_[10]->SetPosition({ 440 + 66 * 2 , 514 + 10 });
+	Blocks_[11]->On();
+	Blocks_[11]->BlockRender_->SetIndex(7);
+	Blocks_[11]->SetPosition({ 440 + 66 * 5 , 514 + 10 });
+	Blocks_[12]->On();
+	Blocks_[12]->BlockRender_->SetIndex(5);
+	Blocks_[12]->SetPosition({ 440 + 66 * 6 , 514 + 10 });
+	Blocks_[13]->On();
+	Blocks_[13]->BlockRender_->SetIndex(3);
+	Blocks_[13]->SetPosition({ 440 + 66 * 2 , 580 + 10 });
+	Blocks_[14]->On();
+	Blocks_[14]->BlockRender_->SetIndex(4);
+	Blocks_[14]->SetPosition({ 440 + 66 * 5 , 580 + 10 });
 }
 
 

@@ -1,4 +1,6 @@
 #include "SceneChanger.h"
+#include "HellTakerGame.h"
+#include <GameEngine/GameEngine.h>
 #include  <GameEngineBase/GameEngineInput.h>
 #include <GameEngineBase/GameEngineSound.h>
 #include <GameEngine/GameEngineRenderer.h>
@@ -37,8 +39,15 @@ void SceneChanger::Update()
 		PlayCloseSound_ = true;
 	}
 
+	
 	if (MyRenderer_->IsEndAnimation())
 	{
+		if (true == dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetIsSuccess()
+			&& 9 == dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetChapterCount())
+		{
+			GameEngine::GetInst().ChangeLevel("Title");
+			return;
+		}
 		GameEngine::GetInst().ChangeLevel("Play");
 	
 	}

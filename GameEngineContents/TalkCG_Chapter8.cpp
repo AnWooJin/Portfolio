@@ -18,6 +18,18 @@ TalkCG_Chapter8::~TalkCG_Chapter8()
 void TalkCG_Chapter8::Start()
 {
 	SetPosition({ 640, 238 });
+	if (MyRenderer_ != nullptr)
+	{
+		if (false == MyRenderer_->IsAnimationName("TalkCG_Chapter8"))
+		{
+			MyRenderer_->CreateFolderAnimation("TalkCG_Chapter8", "TalkCG_Chapter8", 0, 154, 0.02f, false);
+		}
+	}
+	else
+	{
+		MyRenderer_ = CreateRenderer();
+		MyRenderer_->CreateFolderAnimation("TalkCG_Chapter8", "TalkCG_Chapter8", 0, 154, 0.02f, false);
+	}
 	ChangeState(TalkCGState_Chapter8::Animation);
 }
 
@@ -82,5 +94,7 @@ void TalkCG_Chapter8::StateUpdate()
 
 void TalkCG_Chapter8::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
-
+	ChangeState(TalkCGState_Chapter8::Animation);
+	SkeletonSoundPlay_ = false;
+	VineSoundPlay_ = false;
 }

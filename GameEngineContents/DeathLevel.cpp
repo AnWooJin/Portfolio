@@ -1,5 +1,6 @@
 #include "DeathLevel.h"
 #include "DeathScene.h"
+#include <GameEngineBase/GameEngineSound.h>
 
 DeathLevel::DeathLevel()
 {
@@ -21,5 +22,5 @@ void DeathLevel::Update()
 
 void DeathLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
-
+	GameEngineSound::SoundPlayOneShot("DeathScene.wav");
 }
