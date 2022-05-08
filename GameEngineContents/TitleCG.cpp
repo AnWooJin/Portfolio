@@ -36,3 +36,8 @@ void TitleCG::Render()
 {
 
 }
+
+void TitleCG::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	MyRenderer_->Off();
+}

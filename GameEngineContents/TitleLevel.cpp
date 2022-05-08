@@ -53,6 +53,7 @@ void TitleLevel::Update()
 void TitleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	SetCameraPos({ 680, 0 });
+	CreateActor<TitleSelectActor>(3);
 	TitleBgmPlayer_ = GameEngineSound::SoundPlayControl("TitleBGM.wav");
 	TextPage_ = 0;
 }

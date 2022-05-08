@@ -33,6 +33,7 @@ private:
 	void Update() override;
 	void Render() override {};
 
+	void LevelChangeStart(GameEngineLevel* _PrevLevel);
 	void ChangeState(TitleTextState _State);
 	void StateUpdate();
 

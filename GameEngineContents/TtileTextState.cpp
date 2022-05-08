@@ -10,8 +10,16 @@
 void TitleText::TextStart()
 {
 	SetPosition({ 640, 598 });
-	MyRenderer_ = CreateRenderer("TitleText.bmp");
-	MyRenderer_->SetIndex(TitleLevel::TextPage_);
+	if (MyRenderer_ == nullptr)
+	{
+		MyRenderer_ = CreateRenderer("TitleText.bmp");
+		MyRenderer_->SetIndex(TitleLevel::TextPage_);
+	}
+	else
+	{
+		MyRenderer_->SetImageAnimationReset("TitleText.bmp");
+		MyRenderer_->SetIndex(TitleLevel::TextPage_);
+	}
 }
 
 void TitleText::PrologueStart()

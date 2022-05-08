@@ -193,7 +193,7 @@ void Player::PlayerSetting(int _Chapter)
 	case 3:
 		SetPosition({ 870,274 });
 		ColMapImage_ = GameEngineImageManager::GetInst()->Find("Chapter3_ColMap.bmp");
-		MoveCount_ = 132;
+		MoveCount_ = 32;
 		break;
 	case 4:
 		SetPosition({ 405,212 });

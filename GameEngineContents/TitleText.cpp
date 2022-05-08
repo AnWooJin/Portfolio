@@ -26,6 +26,13 @@ void TitleText::Update()
 	StateUpdate();
 }
 
+void TitleText::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	PlayOpenSound_ = false;
+	PlayCloseSound_ = false;
+	ChangeState(TitleTextState::Text);
+}
+
 void TitleText::ChangeState(TitleTextState _State)
 {
 	if (CurState_ == _State)
