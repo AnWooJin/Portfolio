@@ -46,6 +46,7 @@ void PlayLevel::Loading()
 	if (false == GameEngineInput::GetInst()->IsKey("DebugChange"))
 	{
 		GameEngineInput::GetInst()->CreateKey("DebugChange", 'i');
+		GameEngineInput::GetInst()->CreateKey("DebugOff", 'k');
 		GameEngineInput::GetInst()->CreateKey("Reset", 'r');
 	}
 
@@ -81,7 +82,14 @@ void PlayLevel::Update()
 	if (true == GameEngineInput::GetInst()->IsDown("DebugChange"))
 	{
 		IsDebugModeSwitch();
+		MyMap_->ColMapSetting(Chapter_);
 	}
+	if (true == GameEngineInput::GetInst()->IsDown("DebugOff"))
+	{
+		IsDebugModeSwitch();
+		MyMap_->MapSetting(Chapter_);
+	}
+
 	if (true == GameEngineInput::GetInst()->IsDown("Reset"))
 	{
 		GameEngine::GetInst().ChangeLevel("SceneChange");

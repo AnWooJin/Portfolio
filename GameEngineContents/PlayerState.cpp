@@ -109,10 +109,6 @@ void Player::IdleUpdate()
 			ChangeState(PlayerState::Move);
 		}
 	}
-	else if (true == GameEngineInput::GetInst()->IsDown("Die"))
-	{
-		GameEngine::GetInst().ChangeLevel("SceneChange");
-	}
 	if (RGB(0, 0, 255) == Color)
 	{
 		GameEngine::GetInst().ChangeLevel("Talk");

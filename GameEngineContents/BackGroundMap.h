@@ -16,6 +16,7 @@ public:
 	BackGroundMap& operator=(BackGroundMap&& _Other) noexcept = delete;
 
 	void MapSetting(int _Level);
+	void ColMapSetting(int _Level);
 protected:
 
 private:

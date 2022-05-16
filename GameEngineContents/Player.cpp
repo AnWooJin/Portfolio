@@ -79,7 +79,6 @@ void Player::Start()
 		GameEngineInput::GetInst()->CreateKey("MoveRight", 'D');
 		GameEngineInput::GetInst()->CreateKey("MoveUp", 'W');
 		GameEngineInput::GetInst()->CreateKey("MoveDown", 'S');
-		GameEngineInput::GetInst()->CreateKey("Die", 'K');
 	}
 	MyCollision_ = CreateCollision("Player", {30,30 });
 	MyCollision_->CameraEffectOn();
