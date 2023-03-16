@@ -228,3 +228,8 @@ void GameEngineActor::LevelRegist(std::string _RegistName /*= ""*/)
 
 	GetLevel()->RegistActor(_RegistName, this);
 }
+
+float4 GameEngineActor::GetCameraEffectPostion()
+{
+	return Position_ - GetLevel()->GetCameraPos();
+}

@@ -5,13 +5,13 @@
 #include <vector>
 #include "GameEngineBase/GameEngineNameObject.h"
 #include <GameEngineBase/GameEngineMath.h>
+#include "GameEngineActor.h"
 
 class GameEngine;
-class GameEngineActor;
 class GameEngineCollision;
 class GameEngineRenderer;
 
-class GameEngineActor;
+
 struct ChangeOrderItem
 {
 	GameEngineActor* TargetObejct; // ¿Ã ø¢≈Õ∏¶

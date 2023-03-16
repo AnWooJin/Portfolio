@@ -2,10 +2,9 @@
 #include <map>
 #include <string>
 #include <GameEngineBase/GameEngineDebug.h>
-
+#include "GameEngineLevel.h"
 // 게임엔진은 게임 그 자체의 시작점과 끝점 실행중을 담당한다.
 class GameEngineImage;
-class GameEngineLevel;
 class GameEngine
 {
 public:

@@ -76,26 +76,19 @@ void Player::IdleUpdate()
 		MyFilter_->SetAlpha(static_cast<unsigned int>(GameEngineMath::LerpLimit(220, 0, FilterTime_)));
 		return;
 	}
-	RedFilterOff();
+	//RedFilterOff();
 	if (Time_ >= 0.0f)
 	{
 		return;
 	}
-	if (true == MyFilter_->IsUpdate())
-	{
-		FilterTime_ -= GameEngineTime::GetDeltaTime();
-		if (FilterTime_ <= 0.0f)
-		{
-			RedFilterOff();
-		}
-	}
+	
 
 	if (true == dynamic_cast<HellTakerGame&>(GameEngine::GetInst()).GetIsSuccess())
 	{
 		ChangeState(PlayerState::Victory);
 		return;
 	}
-	else if (MoveCount_ == 0 && true == IsMoveKey())
+	else if (MoveCount_ < 0)
 	{
 		ChangeState(PlayerState::Death);
 		return;
@@ -351,6 +344,7 @@ void Player::TurnOnRedFilter()
 void Player::RedFilterOff()
 {
 	MyFilter_->SetImageAnimationReset("Empty.bmp");
+	FilterTime_ = 1.1f;
 }
 
 void Player::CameraCheck(float4 _Pos)

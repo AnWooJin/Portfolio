@@ -35,11 +35,8 @@ void SideUI::Render()
 	}
 	ChapterRender();
 	int Count = MyPlayer_->GetMoveCount();
-	if (Count < 0)
-	{
-		return;
-	}
-	if (Count == 0)
+	
+	if (Count <= 0)
 	{
 		TextFont.Draw("X", {110.0f, 515.0f}, RGB(255, 255, 255), 100, 50);
 		return;
